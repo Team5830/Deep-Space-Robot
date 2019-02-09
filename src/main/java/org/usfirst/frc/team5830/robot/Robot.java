@@ -184,6 +184,8 @@ public class Robot extends TimedRobot{
 		
 		//Vision Coordinates
 		SmartDashboard.putBoolean("lined up", false);
+
+		
 		/**
 		 * SmartDashboard
 		 */		
