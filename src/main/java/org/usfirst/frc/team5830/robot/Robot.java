@@ -183,7 +183,7 @@ public class Robot extends TimedRobot{
 		camera.setFPS(30);
 		
 		//Vision Coordinates
-		
+		SmartDashboard.putBoolean("lined up", false);
 		/**
 		 * SmartDashboard
 		 */		
