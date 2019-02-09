@@ -1,4 +1,4 @@
-Pixie 2 Line Alignment Pseudo Code
+Pixy 2 Line Alignment Pseudo Code
 
 var error = 10
 

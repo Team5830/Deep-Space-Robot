@@ -21,6 +21,9 @@ import org.usfirst.frc.team5830.robot.subsystems.WheelDrive;
 
 import edu.wpi.cscore.UsbCamera;
 import edu.wpi.first.cameraserver.CameraServer;
+import edu.wpi.first.networktables.NetworkTable;
+import edu.wpi.first.networktables.NetworkTableEntry;
+import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.buttons.Button;
@@ -63,7 +66,9 @@ public class Robot extends TimedRobot{
 	public static final double maxElevatorSpeedUp = 1; //Between 0 and 1. NEGATIVE NUMBERS WILL NOT WORK!
 	//Maximum elevator speed up
 	public static final double maxElevatorSpeedDown = -0.75; //Between -1 and 0. POSITIVE NUMBERS WILL NOT WORK!
-	
+	//Pixy 2 line margin of error`
+	public static final double pixy2LineError = 40; //Error in pixels allowed when aligning
+
 	/**
 	 * System-Defined Variables
 	 */
@@ -109,12 +114,21 @@ public class Robot extends TimedRobot{
 	public static WheelDrive frontLeft = new WheelDrive (6, 7, 3);
 	public static SwerveDrive swerveDrive = new SwerveDrive (backRight, backLeft, frontRight, frontLeft);
 	
-	//Vision Processing (For future use)
-	/*public NetworkTableEntry visionX;
+	//Vision Processing
+	public NetworkTableEntry visionX;
 	public NetworkTableEntry visionY;
 	private NetworkTableInstance inst = NetworkTableInstance.getDefault();
-	private NetworkTable table = inst.getTable("grip");*/
-	
+	private NetworkTable pixy = inst.getTable("SmartDashboard");
+	private NetworkTableEntry pixy1x0Network = pixy.getEntry("lifeVisionX0");
+	private NetworkTableEntry pixy1y0Network = pixy.getEntry("lifeVisionY0");
+	private NetworkTableEntry pixy1x1Network = pixy.getEntry("lifeVisionX1");
+	private NetworkTableEntry pixy1y1Network = pixy.getEntry("lifeVisionY1");
+	//Initiates variables (Hunter doesn't know if he needs this. Silly me!)
+	public static double pixy1x0 = 0;
+	public static double pixy1y0 = 0;
+	public static double pixy1x1 = 0;
+	public static double pixy1y1 = 0;
+
 	/**
 	 * Subsystems
 	 */
@@ -299,11 +313,15 @@ public class Robot extends TimedRobot{
 			SmartDashboard.putBoolean("Balance Protection enabled?", false);
 		}
 		
+
 		/**
-		 * Vision Processing (For future use)
+		 * Vision Processing
 		 */
-		//visionX = table.getEntry("X");
-		//visionY = table.getEntry("Y");
+
+		pixy1x0 = pixy1x0Network.getDouble(0);
+		pixy1y0 = pixy1y0Network.getDouble(0);
+		pixy1x1 = pixy1x1Network.getDouble(0);
+		pixy1y1 = pixy1y1Network.getDouble(0);
 	}
 
 	@Override
