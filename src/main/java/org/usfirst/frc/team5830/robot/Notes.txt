@@ -1,0 +1,17 @@
+Pixie 2 Line Alignment Pseudo Code
+
+var error = 10
+
+if (Math.abs(x1 - x2) > error{
+    
+    while x1 < x2{
+        swing tail left
+    }
+
+    while x1 > x2{
+        swing tail right
+    }
+
+} else {
+    return Aligned
+}
