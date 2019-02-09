@@ -13,6 +13,7 @@ import org.usfirst.frc.team5830.robot.commands.JoystickMappingInit;
 import org.usfirst.frc.team5830.robot.commands.JoystickMappingPeriodic;
 import org.usfirst.frc.team5830.robot.subsystems.GyroSubsystem;
 import org.usfirst.frc.team5830.robot.subsystems.LIDARSubsystem;
+import org.usfirst.frc.team5830.robot.subsystems.PIDElevator;
 import org.usfirst.frc.team5830.robot.subsystems.PIDLIDARDistance;
 import org.usfirst.frc.team5830.robot.subsystems.PIDRotationCorrection;
 import org.usfirst.frc.team5830.robot.subsystems.PIDWheelDistance;
@@ -144,6 +145,7 @@ public class Robot extends TimedRobot{
 	public static final PIDRotationCorrection pidROTATIONCORRECTION = new PIDRotationCorrection();
 	public static final PIDWheelDistance WHEELDISTANCEPID = new PIDWheelDistance();
 	public static final GyroSubsystem GYROSUBSYSTEM = new GyroSubsystem();
+	public static final PIDElevator ELEVATOR = new PIDElevator();
 	
 	/**
 	 * Commands
