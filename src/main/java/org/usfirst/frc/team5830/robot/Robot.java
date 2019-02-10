@@ -44,18 +44,6 @@ public class Robot extends TimedRobot{
 	 * User-Defined Variables
 	 */
 	
-	//CENTER SWITCH STRAFE IS DEFINED IN DriveStrafeToLSwitch and DriveStrafeToRSwitch. I don't know why.
-	
-	//Distance from wall to Scale
-	public static final double distanceWallToScale = 310; //Inches
-	//Distance from wall to Switch SIDE
-	public static final double distanceWallToSwitch = 155; //Inches
-	//Distance from wall to Auto Line
-	public static final double distanceWallToAuto = 120; //Inches
-	//Distance from wall to Center Position Auto Line
-	public static final double distanceWallToCAuto = 120; //Inches
-	//Distance from 10 inches from wall to 10 inches from switch, traveling at 45deg angle. Remember, the robot needs room to rotate after getting there
-	public static final double distanceCWallToSwitch = 130;//Inches //TODO Calibrate value - this value is arbitrary
 	//Balance protection elevator height theshold
 	public static final double balanceProtectionElevatorHeight = 1000; //For comparison, ground height is ~300, full raise is ~6000
 	//Xbox controller stick deadzone size. 1 is entire range, 0 is disabled, closer to zero means less deadzone
@@ -91,18 +79,8 @@ public class Robot extends TimedRobot{
 	
 	public static Button button1;
 	public static Button button2;
-	public static Button buttonCubeToScale;
-	public static Button buttonCubeToSwitch;
-	public static Button buttonCubeToGround1;
-	public static Button buttonCubeToGround2;
-	public static Button buttonWinchRelease;
-	public static Button buttonPortalL;
-	public static Button buttonPortalR;
 	
 	//Misc
-	public static Command autonomousCommand;
-	public static SendableChooser<String> autoPosition = new SendableChooser<>();
-	public static SendableChooser<String> autoChooser = new SendableChooser<>();
 	public static SendableChooser<Boolean> driveType = new SendableChooser<>();
 	public static SendableChooser<Integer> controlType = new SendableChooser<>();
 	public static SendableChooser<Command> autoTest = new SendableChooser<>();
@@ -202,10 +180,7 @@ public class Robot extends TimedRobot{
 		SmartDashboard.putData("Control Method", controlType);
 		
 		//Displays whether or not Balance Protection is enabled via a color changing "Boolean Box" in Shuffleboard
-		SmartDashboard.putBoolean("Balance Protection enabled?", false);
-		
-		//Lets the driver know which autonomous path was chosen automatically
-		SmartDashboard.putString("Autonomous Path Chosen", "Waiting for Match Start");
+		SmartDashboard.putBoolean("Balance Protection enabled?", false);		
 		
 		//Shows current robot command running
 		SmartDashboard.putString("Status", "Waiting for Match Start");
@@ -234,7 +209,6 @@ public class Robot extends TimedRobot{
 	@Override
 	public void disabledInit() {
 		SmartDashboard.putString("Status", "Waiting for Match Start");
-		SmartDashboard.putString("Autonomous Path Chosen", "Waiting for Match Start");
 		isFieldOriented = false;
 	}
 
@@ -260,16 +234,11 @@ public class Robot extends TimedRobot{
 	}
 	
 	@Override
-	public void autonomousInit() {
-		//Forces drivetrain into Robot-Oriented drive for auto
-		isFieldOriented = false;
-
-		}
+	public void autonomousInit() {}
 	
 	@Override
 	public void autonomousPeriodic() {
 		Scheduler.getInstance().run();
-		SmartDashboard.putBoolean("Troubleshoot - Boolean", DriveStraight.isItFinished);
 		}
 
 	@Override
