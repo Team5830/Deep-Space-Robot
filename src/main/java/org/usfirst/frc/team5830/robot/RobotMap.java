@@ -31,6 +31,9 @@ public class RobotMap {
 	public static Victor powerCube = new Victor(9);
 	public static Spark winch = new Spark(10);
 	
+	//Pneumatics
+	public static Compressor c = new Compressor(0);
+	
 	
 	/**
 	 * INPUTS

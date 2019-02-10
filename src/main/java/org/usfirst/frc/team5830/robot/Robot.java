@@ -81,6 +81,7 @@ public class Robot extends TimedRobot{
 	public static Button testPixyAlign;
 	public static Button raiseFront;
 	public static Button raiseRear;
+	
 	//Misc
 	public static SendableChooser<Boolean> driveType = new SendableChooser<>();
 	public static SendableChooser<Integer> controlType = new SendableChooser<>();
@@ -110,7 +111,7 @@ public class Robot extends TimedRobot{
 	public static double pixy1y1 = 0;
 
 	//Pneumatics
-	
+	Compressor c = new Compressor(0);
 
 
 	/**
@@ -196,9 +197,8 @@ public class Robot extends TimedRobot{
 		RobotMap.winchEncoder.reset();
 		RobotMap.wheelEncoder1.setDistancePerPulse(0.0965989132622258);
 		RobotMap.wheelEncoder1.reset();
-
 		//Pneumatics
-	//	RobotMap.c.setClosedLoopControl(true);
+		c.setClosedLoopControl(true);
 
 	}
 
@@ -247,7 +247,7 @@ public class Robot extends TimedRobot{
 		joystickMappingInit.start();
 
 		//Pneumatics
-		RobotMap.c.setClosedLoopControl(true);
+		c.setClosedLoopControl(true);
 	}
 
 	@Override
