@@ -8,10 +8,12 @@
 package org.usfirst.frc.team5830.robot;
 
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
+import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.PowerDistributionPanel;
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.Victor;
+import edu.wpi.first.wpilibj.DoubleSolenoid;
 
 /**
  * 
@@ -40,6 +42,11 @@ public class RobotMap {
 	/*
 	 * Sensors
 	 */
+	//Pneumatics
+
+	 //Front and Rear Solenoids for climbing
+	public static DoubleSolenoid frontSolenoid = new DoubleSolenoid(1, 2);
+	public static DoubleSolenoid rearSolenoid = new DoubleSolenoid(3, 4);
 
 	//Encoders
 	public static Encoder armEncoder = new Encoder(5,6,true);
@@ -49,10 +56,10 @@ public class RobotMap {
 	//Gyroscope
 	public static ADXRS450_Gyro gyro = new ADXRS450_Gyro();
 	
+	
 	//LIDAR
 	public static final class DIO{
 		public static final int LIDAR_PORT = 0;	
 
-		
-	}
+		}
 }

@@ -33,6 +33,8 @@ public class JoystickMappingInit extends InstantCommand {
 				Robot.xbox = new Joystick(2);
 				Robot.testPixyAlign = new JoystickButton(Robot.xbox, 1); //A
 				Robot.testPixyAlign.whenPressed(new PixyAlign());
+				Robot.raiseFront = new JoystickButton(Robot.xbox, 2); //B
+				Robot.raiseFront.whenPressed(new RaiseFront());
 				break;
 			case 2: //Daniel
 				Robot.xbox = new Joystick(2);
