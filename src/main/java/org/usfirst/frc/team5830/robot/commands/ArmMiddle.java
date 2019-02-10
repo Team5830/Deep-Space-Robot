@@ -5,28 +5,23 @@ import org.usfirst.frc.team5830.robot.Robot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-public class ArmMID extends Command {
-  public ArmMID() {
-    
-      requires(Robot.ARM);
+public class ArmMiddle extends Command {
+  public ArmMiddle() {
+    requires(Robot.ARM);
     }
 
   // Called just before this Command runs the first time
   @Override
   protected void execute() {
-    SmartDashboard.putString("Status", "Hatch to Portal");
-     Robot.ARM.setSetpoint(4500);
+    SmartDashboard.putString("Status", "Hatch to Rocket Middle");
+    Robot.ARM.setSetpoint(4500); //TODO Calibrate this number or you will kill the robot.
     Robot.ARM.enable();
   }
-
-  // Called repeatedly when this Command is scheduled to run
- 
-  
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return Math.abs (Robot.ARM.getSetpoint() - (Robot.ARM).getPosition()) < 350;
+    return Math.abs(Robot.ARM.getSetpoint() - Robot.ARM.getPosition()) < 250;
   }
 
   // Called once after isFinished returns true
