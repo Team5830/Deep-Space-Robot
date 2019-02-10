@@ -189,18 +189,6 @@ public class Robot extends TimedRobot{
 		/**
 		 * SmartDashboard
 		 */		
-		//Autonmous Mode
-		autoChooser.setDefaultOption("Cross Auto (Default)", "CrossAuto");
-		autoChooser.addOption("Prioritize Scale", "Scale");
-		autoChooser.addOption("Scale ONLY", "ScaleOnly");
-		autoChooser.addOption("Prioritize Switch", "Switch");
-		autoChooser.addOption("Switch ONLY", "SwitchOnly");
-		SmartDashboard.putData("Autonomous Mode", autoChooser);
-		
-		autoPosition.setDefaultOption("Left", "Left");
-		autoPosition.addOption("Center", "Center");
-		autoPosition.addOption("Right", "Right");
-		SmartDashboard.putData("Starting Position", autoPosition);
 		
 		//Choose between field and robot-oriented drive
 		SmartDashboard.putBoolean("Field Oriented?", false);
