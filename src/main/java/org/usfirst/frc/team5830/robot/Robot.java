@@ -190,16 +190,16 @@ public class Robot extends TimedRobot{
 		 * SmartDashboard
 		 */		
 		//Autonmous Mode
-		autoChooser.addDefault("Cross Auto (Default)", "CrossAuto");
-		autoChooser.addObject("Prioritize Scale", "Scale");
-		autoChooser.addObject("Scale ONLY", "ScaleOnly");
-		autoChooser.addObject("Prioritize Switch", "Switch");
-		autoChooser.addObject("Switch ONLY", "SwitchOnly");
+		autoChooser.setDefaultOption("Cross Auto (Default)", "CrossAuto");
+		autoChooser.addOption("Prioritize Scale", "Scale");
+		autoChooser.addOption("Scale ONLY", "ScaleOnly");
+		autoChooser.addOption("Prioritize Switch", "Switch");
+		autoChooser.addOption("Switch ONLY", "SwitchOnly");
 		SmartDashboard.putData("Autonomous Mode", autoChooser);
 		
-		autoPosition.addDefault("Left", "Left");
-		autoPosition.addObject("Center", "Center");
-		autoPosition.addObject("Right", "Right");
+		autoPosition.setDefaultOption("Left", "Left");
+		autoPosition.addOption("Center", "Center");
+		autoPosition.addOption("Right", "Right");
 		SmartDashboard.putData("Starting Position", autoPosition);
 		
 		//Choose between field and robot-oriented drive
@@ -212,12 +212,12 @@ public class Robot extends TimedRobot{
 		SmartDashboard.putBoolean("Reset Sensors", false);
 		
 		//Switch between flightsticks and Xbox joystick
-		controlType.addDefault("Dual Flightsticks", 0);
-		controlType.addObject("Xbox Controller", 1);
-		controlType.addObject("Daniel (Xbox)", 2);
-		controlType.addObject("Hannah (Flightsticks)", 3);
-		controlType.addObject("Hunter (Flightsticks)", 4);
-		controlType.addObject("Arcade Flightstick", 5);
+		controlType.setDefaultOption("Dual Flightsticks", 0);
+		controlType.addOption("Xbox Controller", 1);
+		controlType.addOption("Daniel (Xbox)", 2);
+		controlType.addOption("Hannah (Flightsticks)", 3);
+		controlType.addOption("Hunter (Flightsticks)", 4);
+		controlType.addOption("Arcade Flightstick", 5);
 		SmartDashboard.putData("Control Method", controlType);
 		
 		//Displays whether or not Balance Protection is enabled via a color changing "Boolean Box" in Shuffleboard
