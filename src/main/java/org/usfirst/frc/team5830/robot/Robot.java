@@ -12,7 +12,7 @@ import org.usfirst.frc.team5830.robot.commands.JoystickMappingInit;
 import org.usfirst.frc.team5830.robot.commands.JoystickMappingPeriodic;
 import org.usfirst.frc.team5830.robot.subsystems.GyroSubsystem;
 import org.usfirst.frc.team5830.robot.subsystems.LIDARSubsystem;
-import org.usfirst.frc.team5830.robot.subsystems.PIDElevator;
+import org.usfirst.frc.team5830.robot.subsystems.PIDArm;
 import org.usfirst.frc.team5830.robot.subsystems.PIDLIDARDistance;
 import org.usfirst.frc.team5830.robot.subsystems.PIDRotationCorrection;
 import org.usfirst.frc.team5830.robot.subsystems.PIDWheelDistance;
@@ -49,10 +49,10 @@ public class Robot extends TimedRobot{
 	public static final double xboxTriggerDeadzone = 0.2;
 	//Distance from LIDAR cube has to be to switch intake from sucking to spitting
 	public static final double cubeDistance = 9.5; //Inches
-	//Maximum elevator speed up
-	public static final double maxElevatorSpeedUp = 1; //Between 0 and 1. NEGATIVE NUMBERS WILL NOT WORK!
-	//Maximum elevator speed up
-	public static final double maxElevatorSpeedDown = -0.75; //Between -1 and 0. POSITIVE NUMBERS WILL NOT WORK!
+	//Maximum arm speed up
+	public static final double maxArmSpeedUp = 1; //Between 0 and 1. NEGATIVE NUMBERS WILL NOT WORK!
+	//Maximum arm speed up
+	public static final double maxArmSpeedDown = -0.75; //Between -1 and 0. POSITIVE NUMBERS WILL NOT WORK!
 	//Pixy 2 line margin of error`
 	public static final double pixy2LineError = 40; //Error in pixels allowed when aligning
 
@@ -124,7 +124,7 @@ public class Robot extends TimedRobot{
 	public static final PIDRotationCorrection pidROTATIONCORRECTION = new PIDRotationCorrection();
 	public static final PIDWheelDistance WHEELDISTANCEPID = new PIDWheelDistance();
 	public static final GyroSubsystem GYROSUBSYSTEM = new GyroSubsystem();
-	public static final PIDElevator ELEVATOR = new PIDElevator();
+	public static final PIDArm ARM = new PIDArm();
 	
 	/**
 	 * Commands
@@ -186,8 +186,8 @@ public class Robot extends TimedRobot{
 		 * Sensor Calibration/Setup
 		 */
 		RobotMap.gyro.calibrate();
-		RobotMap.elevatorEncoder.setDistancePerPulse(1);
-		RobotMap.elevatorEncoder.reset();
+		RobotMap.armEncoder.setDistancePerPulse(1);
+		RobotMap.armEncoder.reset();
 		RobotMap.winchEncoder.setDistancePerPulse(1);
 		RobotMap.winchEncoder.reset();
 		RobotMap.wheelEncoder1.setDistancePerPulse(0.0965989132622258);
@@ -208,13 +208,13 @@ public class Robot extends TimedRobot{
 	public void disabledPeriodic() {
 		Scheduler.getInstance().run();
 		SmartDashboard.putNumber("Gyro Angle", GYROSUBSYSTEM.getGyroClampedNeg180To180());
-		SmartDashboard.putNumber("Elevator Encoder Distance", RobotMap.elevatorEncoder.getDistance());
+		SmartDashboard.putNumber("Arm Encoder Distance", RobotMap.armEncoder.getDistance());
 		SmartDashboard.putNumber("Winch Encoder Distance", RobotMap.winchEncoder.getDistance());
 		
 		//If Reset Sensors button is pressed in SmartDashboard, it will calibrate the gyro. The robot MUST NOT BE MOVING. It then resets the button back to false state.
 		if (SmartDashboard.getBoolean("Reset Sensors", false)) {
 			RobotMap.gyro.calibrate();
-			RobotMap.elevatorEncoder.reset();
+			RobotMap.armEncoder.reset();
 			RobotMap.wheelEncoder1.reset();
 			RobotMap.winchEncoder.reset();
 			SmartDashboard.putBoolean("Reset Sensors", false);

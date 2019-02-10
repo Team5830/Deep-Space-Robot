@@ -42,7 +42,7 @@ public class RobotMap {
 	 */
 
 	//Encoders
-	public static Encoder elevatorEncoder = new Encoder(5,6,true);
+	public static Encoder armEncoder = new Encoder(5,6,true);
 	public static Encoder winchEncoder = new Encoder(7,8);
 	public static Encoder wheelEncoder1 = new Encoder(1,2);
 	

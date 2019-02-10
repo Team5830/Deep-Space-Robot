@@ -10,15 +10,15 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class ArmLow extends Command {
   public ArmLow() {
     
-      requires(Robot.ELEVATOR);
+      requires(Robot.ARM);
     }
 
   // Called just before this Command runs the first time
   @Override
   protected void execute() {
     SmartDashboard.putString("Status", "Hatch to Portal");
-     Robot.ELEVATOR.setSetpoint(2500);
-    Robot.ELEVATOR.enable();
+     Robot.ARM.setSetpoint(2500);
+    Robot.ARM.enable();
   }
 
   // Called repeatedly when this Command is scheduled to run
@@ -28,7 +28,7 @@ public class ArmLow extends Command {
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return Math.abs (Robot.ELEVATOR.getSetpoint() - Robot.ELEVATOR.getPosition()) < 250;
+    return Math.abs (Robot.ARM.getSetpoint() - Robot.ARM.getPosition()) < 250;
   }
 
   // Called once after isFinished returns true
