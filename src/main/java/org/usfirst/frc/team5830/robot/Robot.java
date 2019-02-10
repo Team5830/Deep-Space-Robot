@@ -55,6 +55,8 @@ public class Robot extends TimedRobot{
 	public static final double maxArmSpeedDown = -0.75; //Between -1 and 0. POSITIVE NUMBERS WILL NOT WORK!
 	//Pixy 2 line margin of error`
 	public static final double pixy2LineError = 40; //Error in pixels allowed when aligning
+	//Margin of error allowed when using LIDAR for finding distance
+	public static final int lidarError = 3; //Inches
 
 	/**
 	 * System-Defined Variables
