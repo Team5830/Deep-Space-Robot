@@ -11,24 +11,26 @@ import org.usfirst.frc.team5830.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-public class PixyLineRotation extends Command {
+public class PixyLineStrafe extends Command {
 
+  //This is the center pixel of the tracking area (X direction)
+  private double trackingCenterPoint = 318; //TODO Verify correct
   private boolean isItFinished = false;
 
-  public PixyLineRotation() {
-    // Use requires() here to declare subsystem dependencies
-    // eg. requires(chassis);
+  public PixyLineStrafe() {
+    requires(Robot.swerveDrive);
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    if(Math.abs(Robot.pixy1x0 - Robot.pixy1x1) > Robot.pixy2LineRotationError){
-      while(Robot.pixy1x0 < Robot.pixy1x1){
-        Robot.swerveDrive.drive(0.15, 0, -0.15);
+    isItFinished  = false;
+    if(Math.abs(Robot.pixy1x0 - trackingCenterPoint) > Robot.pixy2LineStrafeError){ //If not centered
+      while(Robot.pixy1x0 < trackingCenterPoint){ //To the left of center
+        Robot.swerveDrive.drive(0.15, 0, 0);
       }
-      while(Robot.pixy1x0 > Robot.pixy1x1){
-        Robot.swerveDrive.drive(-0.15, 0, 0.15);
+      while(Robot.pixy1x0 > trackingCenterPoint){ //To the right of center
+        Robot.swerveDrive.drive(-0.15, 0, 0);
       }
     } else {
       Robot.swerveDrive.drive(0, 0, 0);
@@ -45,13 +47,11 @@ public class PixyLineRotation extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    isItFinished = false;
   }
 
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
-    isItFinished = false;
   }
 }
