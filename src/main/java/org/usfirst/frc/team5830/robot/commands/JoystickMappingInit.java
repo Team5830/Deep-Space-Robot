@@ -28,11 +28,11 @@ public class JoystickMappingInit extends InstantCommand {
 			case 0: //General Flightsticks (Default)
 				Robot.leftJoy = new Joystick(0);
 				Robot.rightJoy = new Joystick(1);
-				Robot.button1 = new JoystickButton(Robot.leftJoy, 1);             //Trigger
-				Robot.button2 = new JoystickButton(Robot.rightJoy, 1);            //Trigger
 				break;
 			case 1: //General Xbox
 				Robot.xbox = new Joystick(2);
+				Robot.testPixyAlign = new JoystickButton(Robot.xbox, 1); //A
+				Robot.testPixyAlign.whenPressed(new PixyAlign());
 				break;
 			case 2: //Daniel
 				Robot.xbox = new Joystick(2);
@@ -40,20 +40,14 @@ public class JoystickMappingInit extends InstantCommand {
 			case 3: //Hannah
 				Robot.leftJoy = new Joystick(0);
 				Robot.rightJoy = new Joystick(1);
-				Robot.button1 = new JoystickButton(Robot.leftJoy, 1);             //Trigger
-				Robot.button2 = new JoystickButton(Robot.rightJoy, 1);            //Trigger
 				break;
 			case 4: //Hunter
 				Robot.leftJoy = new Joystick(0);
 				Robot.rightJoy = new Joystick(1);
-				Robot.button1 = new JoystickButton(Robot.leftJoy, 1);             //Trigger
-				Robot.button2 = new JoystickButton(Robot.rightJoy, 1);            //Trigger
 				break;
 			case 5:
 				Robot.leftJoy = new Joystick(0);
 				Robot.rightJoy = new Joystick(1);
-				Robot.button1 = new JoystickButton(Robot.rightJoy, 2);            //Thumb button?
-				Robot.button2 = new JoystickButton(Robot.rightJoy, 1);            //Trigger
 				break;
 			}
 		

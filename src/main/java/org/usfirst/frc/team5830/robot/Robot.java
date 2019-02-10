@@ -78,8 +78,7 @@ public class Robot extends TimedRobot{
 	public static Joystick rightJoy;
 	public static Joystick xbox;
 	
-	public static Button button1;
-	public static Button button2;
+	public static Button testPixyAlign;
 	
 	//Misc
 	public static SendableChooser<Boolean> driveType = new SendableChooser<>();
