@@ -72,27 +72,5 @@ public class JoystickMappingPeriodic extends InstantCommand {
     				//	if(Robot.button2.get()) Robot.commandSpitCube.start(); else Robot.commandSpitCube.cancel();
     					break;
     			}
-    			
-    			//Listens for controller POV/D-pad movements, calls rotate commands based on them. Case numbers are POV/D-pad angles
-    			/*switch (Robot.povPosition) {
-    				case 0: 
-    					Robot.rotateTo0.start();
-    					break;
-    				case 45:
-    					Robot.rotateTo45.start();
-    					break;
-    				case 90:
-    					Robot.rotateTo90.start();
-    					break;
-    				case 180:
-    					Robot.rotateTo180.start();
-    					break;
-    				case 270:
-    					Robot.rotateToNeg90.start();
-    					break;
-    				case 315:
-    					Robot.rotateToNeg45.start();
-    					break;
-    			}*/
     }
 }
