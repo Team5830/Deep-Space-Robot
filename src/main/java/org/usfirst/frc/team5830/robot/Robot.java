@@ -7,7 +7,6 @@
 
 package org.usfirst.frc.team5830.robot;
 
-import org.usfirst.frc.team5830.robot.commands.DriveBalance;
 import org.usfirst.frc.team5830.robot.commands.DriveStraight;
 import org.usfirst.frc.team5830.robot.commands.JoystickMappingInit;
 import org.usfirst.frc.team5830.robot.commands.JoystickMappingPeriodic;
@@ -44,8 +43,6 @@ public class Robot extends TimedRobot{
 	 * User-Defined Variables
 	 */
 	
-	//Balance protection elevator height theshold
-	public static final double balanceProtectionElevatorHeight = 1000; //For comparison, ground height is ~300, full raise is ~6000
 	//Xbox controller stick deadzone size. 1 is entire range, 0 is disabled, closer to zero means less deadzone
 	public static final double xboxStickDeadzone = 0.1;
 	//Xbox controller trigger deadzone size. 1 is entire range, 0 is disabled, closer to zero means less deadzone
@@ -83,7 +80,6 @@ public class Robot extends TimedRobot{
 	//Misc
 	public static SendableChooser<Boolean> driveType = new SendableChooser<>();
 	public static SendableChooser<Integer> controlType = new SendableChooser<>();
-	public static SendableChooser<Command> autoTest = new SendableChooser<>();
 	public static boolean isFieldOriented = false;
 	public static OI m_oi;
 	
@@ -135,7 +131,6 @@ public class Robot extends TimedRobot{
 	 */
 	private static Command joystickMappingInit = new JoystickMappingInit();
 	private static Command joystickMappingPeriodic = new JoystickMappingPeriodic();
-	private static Command driveBalance = new DriveBalance();
 	
 	/**
 	 * This function is run when the robot is first started up and should be
@@ -177,10 +172,7 @@ public class Robot extends TimedRobot{
 		controlType.addOption("Hannah (Flightsticks)", 3);
 		controlType.addOption("Hunter (Flightsticks)", 4);
 		controlType.addOption("Arcade Flightstick", 5);
-		SmartDashboard.putData("Control Method", controlType);
-		
-		//Displays whether or not Balance Protection is enabled via a color changing "Boolean Box" in Shuffleboard
-		SmartDashboard.putBoolean("Balance Protection enabled?", false);		
+		SmartDashboard.putData("Control Method", controlType);		
 		
 		//Shows current robot command running
 		SmartDashboard.putString("Status", "Waiting for Match Start");
@@ -266,19 +258,6 @@ public class Robot extends TimedRobot{
 		//Enables SmartDashboard driveType chooser
 		isFieldOriented = SmartDashboard.getBoolean("Field Oriented?", false);
 		
-		/**
-		 * Balance Protection
-		 */
-		//If the elevator is raised above specified height, drivetrain speed will be reduced to quarter speed.
-		//Threshold specified in "User-Defined Variables" near top
-		if(RobotMap.elevatorEncoder.getDistance() > Robot.balanceProtectionElevatorHeight) {
-			driveBalance.start();
-			SmartDashboard.putBoolean("Balance Protection enabled?", true);//Changes color of "Bal. Protection?" boolean box in Shuffleboard to notify the driver
-		} else {
-			SmartDashboard.putBoolean("Balance Protection enabled?", false);
-		}
-		
-
 		/**
 		 * Vision Processing
 		 */
