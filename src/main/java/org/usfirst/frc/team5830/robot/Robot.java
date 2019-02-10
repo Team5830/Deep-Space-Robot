@@ -24,7 +24,6 @@ import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
-import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.buttons.Button;
@@ -107,9 +106,6 @@ public class Robot extends TimedRobot{
 	public static double pixy1y0 = 0;
 	public static double pixy1x1 = 0;
 	public static double pixy1y1 = 0;
-
-	//Pneumatics
-	Compressor c = new Compressor(0);
 
 
 	/**
@@ -196,9 +192,6 @@ public class Robot extends TimedRobot{
 		RobotMap.wheelEncoder1.setDistancePerPulse(0.0965989132622258);
 		RobotMap.wheelEncoder1.reset();
 
-		//Pneumatics
-		c.setClosedLoopControl(true);
-
 	}
 
 	@Override
@@ -245,8 +238,6 @@ public class Robot extends TimedRobot{
 		//Takes ShuffleBoard button layout presets and maps buttons accordingly
 		joystickMappingInit.start();
 
-		//Pneumatics
-		c.setClosedLoopControl(true);
 	}
 
 	@Override

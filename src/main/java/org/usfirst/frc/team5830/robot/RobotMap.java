@@ -8,6 +8,7 @@
 package org.usfirst.frc.team5830.robot;
 
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
+import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.PowerDistributionPanel;
 import edu.wpi.first.wpilibj.Spark;
@@ -28,6 +29,9 @@ public class RobotMap {
 	public static Spark stageOne = new Spark(8);
 	public static Victor powerCube = new Victor(9);
 	public static Spark winch = new Spark(10);
+	
+	//Pneumatics
+	public static Compressor c = new Compressor(0);
 	
 	
 	/**
@@ -52,7 +56,5 @@ public class RobotMap {
 	//LIDAR
 	public static final class DIO{
 		public static final int LIDAR_PORT = 0;	
-
-		
 	}
 }
