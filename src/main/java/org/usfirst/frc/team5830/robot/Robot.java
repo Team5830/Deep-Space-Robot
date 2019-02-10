@@ -158,13 +158,6 @@ public class Robot extends TimedRobot{
 	private static Command joystickMappingInit = new JoystickMappingInit();
 	private static Command joystickMappingPeriodic = new JoystickMappingPeriodic();
 	private static Command driveBalance = new DriveBalance();
-	/*public static Command rotateTo0 = new DriveRotationSetpoint(0);
-	public static Command rotateTo45 = new DriveRotationSetpoint(45);
-	public static Command rotateTo90 = new DriveRotationSetpoint(90);
-	public static Command rotateTo180 = new DriveRotationSetpoint(180);
-	public static Command rotateToNeg90 = new DriveRotationSetpoint(-90);
-	public static Command rotateToNeg45 = new DriveRotationSetpoint(-45);*/
-	
 	
 	/**
 	 * This function is run when the robot is first started up and should be
