@@ -83,6 +83,7 @@ public class Robot extends TimedRobot{
 	public static Button testPixyAlign;
 	public static Button raiseFront;
 	public static Button raiseRear;
+	public static Button cylinderOff;
 	
 	//Misc
 	public static SendableChooser<Boolean> driveType = new SendableChooser<>();
