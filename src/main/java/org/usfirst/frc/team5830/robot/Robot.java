@@ -10,7 +10,8 @@ package org.usfirst.frc.team5830.robot;
 import org.usfirst.frc.team5830.robot.commands.DriveStraight;
 import org.usfirst.frc.team5830.robot.commands.JoystickMappingInit;
 import org.usfirst.frc.team5830.robot.commands.JoystickMappingPeriodic;
-import org.usfirst.frc.team5830.robot.subsystems.CylinderFront;
+import org.usfirst.frc.team5830.robot.subsystems.CylinderFrontLeft;
+import org.usfirst.frc.team5830.robot.subsystems.CylinderFrontRight;
 import org.usfirst.frc.team5830.robot.subsystems.CylinderRear;
 import org.usfirst.frc.team5830.robot.subsystems.CylinderSide;
 import org.usfirst.frc.team5830.robot.subsystems.GyroSubsystem;
@@ -122,7 +123,8 @@ public class Robot extends TimedRobot{
 	 */
 	
 	//Regular
-	public static final CylinderFront CYLINDERFRONT = new CylinderFront();
+	public static final CylinderFrontLeft CYLINDERFRONTLEFT = new CylinderFrontLeft();
+	public static final CylinderFrontRight CYLINDERFRONTRIGHT = new CylinderFrontRight();
 	public static final CylinderRear CYLINDERREAR = new CylinderRear();
 	public static final CylinderSide CYLINDERSIDE = new CylinderSide();
 

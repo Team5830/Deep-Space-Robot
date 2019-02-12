@@ -16,16 +16,19 @@ public class PistonFront extends InstantCommand {
   private boolean isExtended = false;
 
   public PistonFront() {
-    requires(Robot.CYLINDERFRONT);
+    requires(Robot.CYLINDERFRONTLEFT);
+    requires(Robot.CYLINDERFRONTRIGHT);
   }
 
   @Override
   protected void execute() {
     if (isExtended){
-      Robot.CYLINDERFRONT.in();
+      Robot.CYLINDERFRONTLEFT.in();
+      Robot.CYLINDERFRONTRIGHT.in();
       isExtended = true;
       } else {
-        Robot.CYLINDERFRONT.out();
+        Robot.CYLINDERFRONTLEFT.out();
+        Robot.CYLINDERFRONTRIGHT.out();
         isExtended = false;
       }
       }
