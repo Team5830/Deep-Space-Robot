@@ -40,21 +40,6 @@ public class JoystickMappingInit extends InstantCommand {
 				Robot.habClimb = new JoystickButton(Robot.xbox, 4); //Y
 				Robot.habClimb.whenPressed(new ClimbHab());
 				break;
-			case 2: //Daniel
-				Robot.xbox = new Joystick(2);
-				break;
-			case 3: //Hannah
-				Robot.leftJoy = new Joystick(0);
-				Robot.rightJoy = new Joystick(1);
-				break;
-			case 4: //Hunter
-				Robot.leftJoy = new Joystick(0);
-				Robot.rightJoy = new Joystick(1);
-				break;
-			case 5:
-				Robot.leftJoy = new Joystick(0);
-				Robot.rightJoy = new Joystick(1);
-				break;
 			}
 		
     }

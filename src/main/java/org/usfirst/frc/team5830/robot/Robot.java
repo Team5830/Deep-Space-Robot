@@ -185,10 +185,6 @@ public class Robot extends TimedRobot{
 		//Switch between flightsticks and Xbox joystick
 		controlType.setDefaultOption("Dual Flightsticks", 0);
 		controlType.addOption("Xbox Controller", 1);
-		controlType.addOption("Daniel (Xbox)", 2);
-		controlType.addOption("Hannah (Flightsticks)", 3);
-		controlType.addOption("Hunter (Flightsticks)", 4);
-		controlType.addOption("Arcade Flightstick", 5);
 		SmartDashboard.putData("Control Method", controlType);		
 		
 		//Shows current robot command running
