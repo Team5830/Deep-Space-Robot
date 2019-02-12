@@ -11,22 +11,22 @@ import org.usfirst.frc.team5830.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.InstantCommand;
 
-public class RaiseFront extends InstantCommand {
+public class PistonRear extends InstantCommand {
 
   private boolean isExtended = false;
 
-  public RaiseFront() {
-    requires(Robot.CYLINDERFRONT);
+  public PistonRear() {
+    requires(Robot.CYLINDERREAR);
   }
 
   @Override
   protected void execute() {
-    if (isExtended){
-      Robot.CYLINDERFRONT.in();
+    if(isExtended){
+      Robot.CYLINDERREAR.in();
       isExtended = true;
-      } else {
-        Robot.CYLINDERFRONT.out();
-        isExtended = false;
-      }
-      }
+    } else {
+      Robot.CYLINDERREAR.out();
+      isExtended = false;
+    }
+  }
 }
