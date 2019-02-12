@@ -86,12 +86,24 @@ public class Robot extends TimedRobot{
 	public static Button raiseFront;
 	public static Button raiseRear;
 	public static Button habClimb;
+	//Testing
+	public static Button testPistonFrontLeft;
+	public static Button testPistonFrontRight;
+	public static Button testPistonFront;
+	public static Button testPistonSide;
+	public static Button testPistonRear;
+	public static Button testClimbHab;
 	
 	//Misc
 	public static SendableChooser<Boolean> driveType = new SendableChooser<>();
 	public static SendableChooser<Integer> controlType = new SendableChooser<>();
 	public static boolean isFieldOriented = false;
 	public static int climbHabStepCount = 1;
+	public static boolean isPistonFrontExtended = false;
+	public static boolean isPistonFrontLeftExtended = false;
+	public static boolean isPistonFrontRightExtended = false;
+	public static boolean isPistonRearExtended = false;
+	public static boolean isPistonSideExtended = false;
 	public static OI m_oi;
 	
 	//Swerve Drive
@@ -185,6 +197,7 @@ public class Robot extends TimedRobot{
 		//Switch between flightsticks and Xbox joystick
 		controlType.setDefaultOption("Dual Flightsticks", 0);
 		controlType.addOption("Xbox Controller", 1);
+		controlType.addOption("Piston Test (Right Flightstick)", 2);
 		SmartDashboard.putData("Control Method", controlType);		
 		
 		//Shows current robot command running

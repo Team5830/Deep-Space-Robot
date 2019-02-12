@@ -13,8 +13,6 @@ import edu.wpi.first.wpilibj.command.InstantCommand;
 
 public class PistonFront extends InstantCommand {
 
-  private boolean isExtended = false;
-
   public PistonFront() {
     requires(Robot.CYLINDERFRONTLEFT);
     requires(Robot.CYLINDERFRONTRIGHT);
@@ -22,14 +20,14 @@ public class PistonFront extends InstantCommand {
 
   @Override
   protected void execute() {
-    if (isExtended){
+    if (Robot.isPistonFrontExtended){
       Robot.CYLINDERFRONTLEFT.in();
       Robot.CYLINDERFRONTRIGHT.in();
-      isExtended = true;
-      } else {
-        Robot.CYLINDERFRONTLEFT.out();
-        Robot.CYLINDERFRONTRIGHT.out();
-        isExtended = false;
-      }
-      }
+      Robot.isPistonFrontExtended = true;
+    } else {
+      Robot.CYLINDERFRONTLEFT.out();
+      Robot.CYLINDERFRONTRIGHT.out();
+      Robot.isPistonFrontExtended = false;
+    }
+  }
 }
