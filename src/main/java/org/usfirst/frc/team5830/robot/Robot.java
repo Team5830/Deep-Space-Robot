@@ -85,11 +85,13 @@ public class Robot extends TimedRobot{
 	public static Button testPixyAlign;
 	public static Button raiseFront;
 	public static Button raiseRear;
+	public static Button habClimb;
 	
 	//Misc
 	public static SendableChooser<Boolean> driveType = new SendableChooser<>();
 	public static SendableChooser<Integer> controlType = new SendableChooser<>();
 	public static boolean isFieldOriented = false;
+	public static int climbHabStepCount = 1;
 	public static OI m_oi;
 	
 	//Swerve Drive
@@ -176,6 +178,9 @@ public class Robot extends TimedRobot{
 		
 		//Initiate Gyro reset
 		SmartDashboard.putBoolean("Reset Sensors", false);
+
+		//Climbing status
+		SmartDashboard.putString("Climb Next Step", "Raise Robot from Side");
 		
 		//Switch between flightsticks and Xbox joystick
 		controlType.setDefaultOption("Dual Flightsticks", 0);
