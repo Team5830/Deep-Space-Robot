@@ -48,9 +48,9 @@ public class RobotMap {
 	//Pneumatics
 
 	 //Front and Rear Solenoids for climbing
-	public static DoubleSolenoid frontSolenoid = new DoubleSolenoid(1, 2);
-	public static DoubleSolenoid rearSolenoid = new DoubleSolenoid(3, 4);
-	public static DoubleSolenoid sideSolenoid = new DoubleSolenoid(5, 6);
+	public static DoubleSolenoid frontSolenoid = new DoubleSolenoid(0, 1);
+	public static DoubleSolenoid rearSolenoid = new DoubleSolenoid(2, 3);
+	public static DoubleSolenoid sideSolenoid = new DoubleSolenoid(4, 5);
 
 	//Encoders
 	public static Encoder armEncoder = new Encoder(5,6,true);
