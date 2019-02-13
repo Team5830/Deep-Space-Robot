@@ -33,27 +33,32 @@ public class JoystickMappingInit extends InstantCommand {
 				Robot.xbox = new Joystick(2);
 				Robot.testPixyAlign = new JoystickButton(Robot.xbox, 1); //A
 				Robot.testPixyAlign.whenPressed(new PixyAlign());
+<<<<<<< HEAD
 				Robot.raiseFront = new JoystickButton(Robot.xbox, 2); //B
 				Robot.raiseFront.whenPressed(new RaiseFront());
 				Robot.raiseRear = new JoystickButton(Robot.xbox, 3); //X
 				Robot.raiseRear.whenPressed(new RearPiston());
 				Robot.cylinderOff = new JoystickButton(Robot.xbox, 4); //Y
 				Robot.cylinderOff.whenPressed(new CylinderOff());
+=======
+				Robot.habClimb = new JoystickButton(Robot.xbox, 4); //Y
+				Robot.habClimb.whenPressed(new ClimbHab());
+>>>>>>> 9cf925ddf8d37bc8508e46032d8ee4eece795eef
 				break;
-			case 2: //Daniel
-				Robot.xbox = new Joystick(2);
-				break;
-			case 3: //Hannah
-				Robot.leftJoy = new Joystick(0);
+			case 2: //Pneumatics Test (Right Flightstick)
 				Robot.rightJoy = new Joystick(1);
-				break;
-			case 4: //Hunter
-				Robot.leftJoy = new Joystick(0);
-				Robot.rightJoy = new Joystick(1);
-				break;
-			case 5:
-				Robot.leftJoy = new Joystick(0);
-				Robot.rightJoy = new Joystick(1);
+				Robot.testPistonFront = new JoystickButton(Robot.rightJoy, 7);
+				Robot.testPistonRear = new JoystickButton(Robot.rightJoy, 8);
+				Robot.testPistonFrontLeft = new JoystickButton(Robot.rightJoy, 9);
+				Robot.testPistonFrontRight = new JoystickButton(Robot.rightJoy, 10);
+				Robot.testClimbHab = new JoystickButton(Robot.rightJoy, 11);
+
+				Robot.testPistonFront.whenPressed(new PistonFront());
+				Robot.testPistonFrontLeft.whenPressed(new PistonFrontLeft());
+				Robot.testPistonFrontRight.whenPressed(new PistonFrontRight());
+				Robot.testPistonRear.whenPressed(new PistonRear());
+				Robot.testPistonSide.whenPressed(new PistonSide());
+				Robot.testClimbHab.whenPressed(new ClimbHab());
 				break;
 			}
 		

@@ -15,21 +15,16 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 /**
  * Add your docs here.
  */
-public class CylinderFront extends Subsystem {
+public class CylinderFrontLeft extends Subsystem {
 
   @Override
   public void initDefaultCommand() {}
 
   public void out(){
-    RobotMap.frontSolenoid.set(DoubleSolenoid.Value.kForward);
+    RobotMap.frontLeftSolenoid.set(DoubleSolenoid.Value.kForward);
   }
 
   public void in(){
-    RobotMap.frontSolenoid.set(DoubleSolenoid.Value.kForward);
+    RobotMap.frontLeftSolenoid.set(DoubleSolenoid.Value.kReverse);
   }
-
-  public void stop(){
-    RobotMap.frontSolenoid.set(DoubleSolenoid.Value.kReverse);
-  }
-
 }

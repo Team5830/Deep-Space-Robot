@@ -10,8 +10,10 @@ package org.usfirst.frc.team5830.robot;
 import org.usfirst.frc.team5830.robot.commands.DriveStraight;
 import org.usfirst.frc.team5830.robot.commands.JoystickMappingInit;
 import org.usfirst.frc.team5830.robot.commands.JoystickMappingPeriodic;
-import org.usfirst.frc.team5830.robot.subsystems.CylinderFront;
+import org.usfirst.frc.team5830.robot.subsystems.CylinderFrontLeft;
+import org.usfirst.frc.team5830.robot.subsystems.CylinderFrontRight;
 import org.usfirst.frc.team5830.robot.subsystems.CylinderRear;
+import org.usfirst.frc.team5830.robot.subsystems.CylinderSide;
 import org.usfirst.frc.team5830.robot.subsystems.GyroSubsystem;
 import org.usfirst.frc.team5830.robot.subsystems.LIDARSubsystem;
 import org.usfirst.frc.team5830.robot.subsystems.PIDArm;
@@ -83,12 +85,29 @@ public class Robot extends TimedRobot{
 	public static Button testPixyAlign;
 	public static Button raiseFront;
 	public static Button raiseRear;
+<<<<<<< HEAD
 	public static Button cylinderOff;
+=======
+	public static Button habClimb;
+	//Testing
+	public static Button testPistonFrontLeft;
+	public static Button testPistonFrontRight;
+	public static Button testPistonFront;
+	public static Button testPistonSide;
+	public static Button testPistonRear;
+	public static Button testClimbHab;
+>>>>>>> 9cf925ddf8d37bc8508e46032d8ee4eece795eef
 	
 	//Misc
 	public static SendableChooser<Boolean> driveType = new SendableChooser<>();
 	public static SendableChooser<Integer> controlType = new SendableChooser<>();
 	public static boolean isFieldOriented = false;
+	public static int climbHabStepCount = 1;
+	public static boolean isPistonFrontExtended = false;
+	public static boolean isPistonFrontLeftExtended = false;
+	public static boolean isPistonFrontRightExtended = false;
+	public static boolean isPistonRearExtended = false;
+	public static boolean isPistonSideExtended = false;
 	public static OI m_oi;
 	
 	//Swerve Drive
@@ -122,8 +141,10 @@ public class Robot extends TimedRobot{
 	 */
 	
 	//Regular
-	public static final CylinderFront CYLINDERFRONT = new CylinderFront();
+	public static final CylinderFrontLeft CYLINDERFRONTLEFT = new CylinderFrontLeft();
+	public static final CylinderFrontRight CYLINDERFRONTRIGHT = new CylinderFrontRight();
 	public static final CylinderRear CYLINDERREAR = new CylinderRear();
+	public static final CylinderSide CYLINDERSIDE = new CylinderSide();
 
 	//LIDAR
 	public static final LIDARSubsystem lidarSubsystem = new LIDARSubsystem();
@@ -173,14 +194,14 @@ public class Robot extends TimedRobot{
 		
 		//Initiate Gyro reset
 		SmartDashboard.putBoolean("Reset Sensors", false);
+
+		//Climbing status
+		SmartDashboard.putString("Climb Next Step", "Raise Robot from Side");
 		
 		//Switch between flightsticks and Xbox joystick
 		controlType.setDefaultOption("Dual Flightsticks", 0);
 		controlType.addOption("Xbox Controller", 1);
-		controlType.addOption("Daniel (Xbox)", 2);
-		controlType.addOption("Hannah (Flightsticks)", 3);
-		controlType.addOption("Hunter (Flightsticks)", 4);
-		controlType.addOption("Arcade Flightstick", 5);
+		controlType.addOption("Piston Test (Right Flightstick)", 2);
 		SmartDashboard.putData("Control Method", controlType);		
 		
 		//Shows current robot command running
