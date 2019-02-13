@@ -8,6 +8,7 @@
 package org.usfirst.frc.team5830.robot;
 
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
+import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.PowerDistributionPanel;
@@ -61,6 +62,8 @@ public class RobotMap {
 	//Gyroscope
 	public static ADXRS450_Gyro gyro = new ADXRS450_Gyro();
 	
+	//Ultrasonic
+	public static final AnalogInput mb1013 = new AnalogInput(0);
 	
 	//LIDAR
 	public static final class DIO{

@@ -21,6 +21,7 @@ import org.usfirst.frc.team5830.robot.subsystems.PIDLIDARDistance;
 import org.usfirst.frc.team5830.robot.subsystems.PIDRotationCorrection;
 import org.usfirst.frc.team5830.robot.subsystems.PIDWheelDistance;
 import org.usfirst.frc.team5830.robot.subsystems.SwerveDrive;
+import org.usfirst.frc.team5830.robot.subsystems.UltrasonicSubsystem;
 import org.usfirst.frc.team5830.robot.subsystems.WheelDrive;
 
 import edu.wpi.cscore.UsbCamera;
@@ -63,6 +64,10 @@ public class Robot extends TimedRobot{
 	public static final double pixy2LineStrafeError = 40; //Error in pixels allowed when aligning
 	//Margin of error allowed when using LIDAR for finding distance
 	public static final int lidarError = 3; //Inches
+	//Distance robot needs to be from HAB to climb. 
+	public static final double habDistance = 4; //inches
+	//Margin of error allowed when using Ultrasonic for finding distance
+	public static final int ultrasonicError = 1; //Inches
 
 	/**
 	 * System-Defined Variables
@@ -85,9 +90,6 @@ public class Robot extends TimedRobot{
 	public static Button testPixyAlign;
 	public static Button raiseFront;
 	public static Button raiseRear;
-<<<<<<< HEAD
-	public static Button cylinderOff;
-=======
 	public static Button habClimb;
 	//Testing
 	public static Button testPistonFrontLeft;
@@ -96,7 +98,6 @@ public class Robot extends TimedRobot{
 	public static Button testPistonSide;
 	public static Button testPistonRear;
 	public static Button testClimbHab;
->>>>>>> 9cf925ddf8d37bc8508e46032d8ee4eece795eef
 	
 	//Misc
 	public static SendableChooser<Boolean> driveType = new SendableChooser<>();
@@ -146,6 +147,7 @@ public class Robot extends TimedRobot{
 	public static final CylinderRear CYLINDERREAR = new CylinderRear();
 	public static final CylinderSide CYLINDERSIDE = new CylinderSide();
 
+
 	//LIDAR
 	public static final LIDARSubsystem lidarSubsystem = new LIDARSubsystem();
 	
@@ -155,6 +157,9 @@ public class Robot extends TimedRobot{
 	public static final PIDWheelDistance WHEELDISTANCEPID = new PIDWheelDistance();
 	public static final GyroSubsystem GYROSUBSYSTEM = new GyroSubsystem();
 	public static final PIDArm ARM = new PIDArm();
+
+	//Ultrasonic 
+	public static final UltrasonicSubsystem ULTRASONIC_SUBSYSTEM = new UltrasonicSubsystem();
 	
 	/**
 	 * Commands
@@ -295,6 +300,12 @@ public class Robot extends TimedRobot{
 		pixy1y0 = pixy1y0Network.getDouble(0);
 		pixy1x1 = pixy1x1Network.getDouble(0);
 		pixy1y1 = pixy1y1Network.getDouble(0);
+
+		// Ultrasonic sensor for hab approach
+
+		SmartDashboard.putNumber("Distance (volts)", RobotMap.mb1013.getVoltage());
+  		SmartDashboard.putNumber("Distance (real)", UltrasonicSubsystem.getDistance());
+
 	}
 
 	@Override
