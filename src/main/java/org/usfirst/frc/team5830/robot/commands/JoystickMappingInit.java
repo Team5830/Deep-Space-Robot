@@ -43,6 +43,7 @@ public class JoystickMappingInit extends InstantCommand {
 				Robot.testPistonFrontLeft = new JoystickButton(Robot.rightJoy, 9);
 				Robot.testPistonFrontRight = new JoystickButton(Robot.rightJoy, 10);
 				Robot.testClimbHab = new JoystickButton(Robot.rightJoy, 11);
+				Robot.testPistonSide = new JoystickButton(Robot.rightJoy, 12);
 
 				Robot.testPistonFront.whenPressed(new PistonFront());
 				Robot.testPistonFrontLeft.whenPressed(new PistonFrontLeft());

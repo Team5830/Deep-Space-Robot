@@ -21,10 +21,10 @@ public class PistonSide extends InstantCommand {
   protected void execute() {
     if(Robot.isPistonSideExtended){
       Robot.CYLINDERSIDE.in();
-      Robot.isPistonSideExtended = true;
+      Robot.isPistonSideExtended = false;
     } else {
       Robot.CYLINDERSIDE.out();
-      Robot.isPistonSideExtended = false;
+      Robot.isPistonSideExtended = true;
     }
   }
 }

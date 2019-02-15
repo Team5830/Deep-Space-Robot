@@ -21,10 +21,10 @@ public class PistonRear extends InstantCommand {
   protected void execute() {
     if(Robot.isPistonRearExtended){
       Robot.CYLINDERREAR.in();
-      Robot.isPistonRearExtended = true;
+      Robot.isPistonRearExtended = false;
     } else {
       Robot.CYLINDERREAR.out();
-      Robot.isPistonRearExtended = false;
+      Robot.isPistonRearExtended = true;
     }
   }
 }

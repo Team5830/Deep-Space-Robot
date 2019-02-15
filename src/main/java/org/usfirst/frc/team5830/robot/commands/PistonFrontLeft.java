@@ -22,10 +22,10 @@ public class PistonFrontLeft extends InstantCommand {
   protected void execute() {
     if (Robot.isPistonFrontLeftExtended){
       Robot.CYLINDERFRONTLEFT.in();
-      Robot.isPistonFrontLeftExtended = true;
+      Robot.isPistonFrontLeftExtended = false;
     } else {
       Robot.CYLINDERFRONTLEFT.out();
-      Robot.isPistonFrontLeftExtended = false;
+      Robot.isPistonFrontLeftExtended = true;
     }
   }
 }
