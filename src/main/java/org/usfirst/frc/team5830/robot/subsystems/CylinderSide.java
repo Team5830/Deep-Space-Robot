@@ -27,4 +27,5 @@ public class CylinderSide extends Subsystem {
   public void in(){
     RobotMap.sideSolenoid.set(DoubleSolenoid.Value.kReverse);
   }
+
 }

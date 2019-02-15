@@ -14,13 +14,18 @@ import org.usfirst.frc.team5830.robot.subsystems.CylinderFrontLeft;
 import org.usfirst.frc.team5830.robot.subsystems.CylinderFrontRight;
 import org.usfirst.frc.team5830.robot.subsystems.CylinderRear;
 import org.usfirst.frc.team5830.robot.subsystems.CylinderSide;
+import org.usfirst.frc.team5830.robot.subsystems.SonicFrontLeft;
+import org.usfirst.frc.team5830.robot.subsystems.SonicFrontRight;
 import org.usfirst.frc.team5830.robot.subsystems.GyroSubsystem;
 import org.usfirst.frc.team5830.robot.subsystems.LIDARSubsystem;
+import org.usfirst.frc.team5830.robot.subsystems.SonicLeftSideFront;
+import org.usfirst.frc.team5830.robot.subsystems.SonicLeftSideRear;
 import org.usfirst.frc.team5830.robot.subsystems.PIDArm;
 import org.usfirst.frc.team5830.robot.subsystems.PIDLIDARDistance;
 import org.usfirst.frc.team5830.robot.subsystems.PIDRotationCorrection;
 import org.usfirst.frc.team5830.robot.subsystems.PIDWheelDistance;
 import org.usfirst.frc.team5830.robot.subsystems.SwerveDrive;
+
 import org.usfirst.frc.team5830.robot.subsystems.WheelDrive;
 
 import edu.wpi.cscore.UsbCamera;
@@ -63,6 +68,10 @@ public class Robot extends TimedRobot{
 	public static final double pixy2LineStrafeError = 40; //Error in pixels allowed when aligning
 	//Margin of error allowed when using LIDAR for finding distance
 	public static final int lidarError = 3; //Inches
+	//Distance robot needs to be from HAB to climb. 
+	public static final double habDistance = 4; //inches
+	//Margin of error allowed when using Ultrasonic for finding distance
+	public static final int ultrasonicError = 1; //Inches
 
 	/**
 	 * System-Defined Variables
@@ -142,6 +151,7 @@ public class Robot extends TimedRobot{
 	public static final CylinderRear CYLINDERREAR = new CylinderRear();
 	public static final CylinderSide CYLINDERSIDE = new CylinderSide();
 
+
 	//LIDAR
 	public static final LIDARSubsystem lidarSubsystem = new LIDARSubsystem();
 	
@@ -151,7 +161,12 @@ public class Robot extends TimedRobot{
 	public static final PIDWheelDistance WHEELDISTANCEPID = new PIDWheelDistance();
 	public static final GyroSubsystem GYROSUBSYSTEM = new GyroSubsystem();
 	public static final PIDArm ARM = new PIDArm();
-	
+
+	//Ultrasonic 
+	public static final SonicLeftSideFront LEFTSIDEFRONTSONIC = new SonicLeftSideFront();
+	public static final SonicLeftSideRear LEFTSIDEREARSONIC = new SonicLeftSideRear();
+	public static final SonicFrontLeft FRONTLEFTSONIC = new SonicFrontLeft();
+	public static final SonicFrontRight FRONTRIGHTSONIC = new SonicFrontRight();
 	/**
 	 * Commands
 	 */
@@ -291,6 +306,19 @@ public class Robot extends TimedRobot{
 		pixy1y0 = pixy1y0Network.getDouble(0);
 		pixy1x1 = pixy1x1Network.getDouble(0);
 		pixy1y1 = pixy1y1Network.getDouble(0);
+
+		// Ultrasonic sensor for hab approach
+
+		SmartDashboard.putNumber("Sonic Front Left Distance (volts)", RobotMap.frontLeftSonic.getVoltage());
+		SmartDashboard.putNumber("Sonic Front Left Distance (real)", SonicFrontLeft.getDistance());
+		SmartDashboard.putNumber("Sonic Front Right Distance (volts)", RobotMap.frontLeftSonic.getVoltage());
+		SmartDashboard.putNumber("Sonic Front Right Distance (real)", SonicFrontLeft.getDistance());
+		SmartDashboard.putNumber("Sonic Side Front Distance (volts)", RobotMap.leftsideFrontSonic.getVoltage());
+		SmartDashboard.putNumber("Sonic Side Front Distance (real)", SonicLeftSideFront.getDistance());
+		SmartDashboard.putNumber("Sonic Side Rear Distance (volts)", RobotMap.leftsideRearSonic.getVoltage());
+		SmartDashboard.putNumber("Sonic Side Rear Distance (real)", SonicLeftSideRear.getDistance());
+		  
+
 	}
 
 	@Override
