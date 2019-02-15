@@ -33,17 +33,8 @@ public class JoystickMappingInit extends InstantCommand {
 				Robot.xbox = new Joystick(2);
 				Robot.testPixyAlign = new JoystickButton(Robot.xbox, 1); //A
 				Robot.testPixyAlign.whenPressed(new PixyAlign());
-<<<<<<< HEAD
-				Robot.raiseFront = new JoystickButton(Robot.xbox, 2); //B
-				Robot.raiseFront.whenPressed(new RaiseFront());
-				Robot.raiseRear = new JoystickButton(Robot.xbox, 3); //X
-				Robot.raiseRear.whenPressed(new RearPiston());
-				Robot.cylinderOff = new JoystickButton(Robot.xbox, 4); //Y
-				Robot.cylinderOff.whenPressed(new CylinderOff());
-=======
 				Robot.habClimb = new JoystickButton(Robot.xbox, 4); //Y
 				Robot.habClimb.whenPressed(new ClimbHab());
->>>>>>> 9cf925ddf8d37bc8508e46032d8ee4eece795eef
 				break;
 			case 2: //Pneumatics Test (Right Flightstick)
 				Robot.rightJoy = new Joystick(1);

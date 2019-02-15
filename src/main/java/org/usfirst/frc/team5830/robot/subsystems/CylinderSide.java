@@ -25,15 +25,7 @@ public class CylinderSide extends Subsystem {
   }
 
   public void in(){
-<<<<<<< HEAD:src/main/java/org/usfirst/frc/team5830/robot/subsystems/CylinderFront.java
-    RobotMap.frontSolenoid.set(DoubleSolenoid.Value.kForward);
-  }
-
-  public void stop(){
-    RobotMap.frontSolenoid.set(DoubleSolenoid.Value.kReverse);
-=======
     RobotMap.sideSolenoid.set(DoubleSolenoid.Value.kReverse);
->>>>>>> 9cf925ddf8d37bc8508e46032d8ee4eece795eef:src/main/java/org/usfirst/frc/team5830/robot/subsystems/CylinderSide.java
   }
 
 }

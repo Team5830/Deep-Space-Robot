@@ -63,7 +63,10 @@ public class RobotMap {
 	public static ADXRS450_Gyro gyro = new ADXRS450_Gyro();
 	
 	//Ultrasonic
-	public static final AnalogInput mb1013 = new AnalogInput(0);
+	public static final AnalogInput frontLeftSonic = new AnalogInput(0);
+	public static final AnalogInput frontRightSonic = new AnalogInput(1);
+	public static final AnalogInput leftsideFrontSonic = new AnalogInput(2);
+	public static final AnalogInput leftsideRearSonic = new AnalogInput(3);
 	
 	//LIDAR
 	public static final class DIO{

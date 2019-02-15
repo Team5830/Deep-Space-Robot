@@ -19,16 +19,6 @@ public class PistonSide extends InstantCommand {
 
   @Override
   protected void execute() {
-<<<<<<< HEAD:src/main/java/org/usfirst/frc/team5830/robot/commands/RaiseFront.java
-    if (isExtended){
-        Robot.CYLINDERFRONT.in();
-        isExtended = true;
-      } else {
-        Robot.CYLINDERFRONT.out();
-        isExtended = false;
-      }
-      }
-=======
     if(Robot.isPistonSideExtended){
       Robot.CYLINDERSIDE.in();
       Robot.isPistonSideExtended = true;
@@ -37,5 +27,4 @@ public class PistonSide extends InstantCommand {
       Robot.isPistonSideExtended = false;
     }
   }
->>>>>>> 9cf925ddf8d37bc8508e46032d8ee4eece795eef:src/main/java/org/usfirst/frc/team5830/robot/commands/PistonSide.java
 }
