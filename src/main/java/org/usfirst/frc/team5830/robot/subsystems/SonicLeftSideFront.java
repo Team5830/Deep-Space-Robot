@@ -13,7 +13,7 @@ import org.usfirst.frc.team5830.robot.RobotMap;
 /**
  * Add your docs here.
  */
-public class LeftSideRearSonic extends Subsystem {
+public class SonicLeftSideFront extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
 
@@ -21,7 +21,7 @@ public class LeftSideRearSonic extends Subsystem {
 private static final double VOLTS_TO_DIST = 1.0;
 
   public static double getVoltage() {
-    return RobotMap.leftsideRearSonic.getVoltage();
+    return RobotMap.leftsideFrontSonic.getVoltage();
   }
 
   public static double getDistance() {

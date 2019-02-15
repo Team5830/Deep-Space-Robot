@@ -13,7 +13,7 @@ import org.usfirst.frc.team5830.robot.RobotMap;
 /**
  * Add your docs here.
  */
-public class FrontLeftSonic extends Subsystem {
+public class SonicFrontLeft extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
 

@@ -14,12 +14,12 @@ import org.usfirst.frc.team5830.robot.subsystems.CylinderFrontLeft;
 import org.usfirst.frc.team5830.robot.subsystems.CylinderFrontRight;
 import org.usfirst.frc.team5830.robot.subsystems.CylinderRear;
 import org.usfirst.frc.team5830.robot.subsystems.CylinderSide;
-import org.usfirst.frc.team5830.robot.subsystems.FrontLeftSonic;
-import org.usfirst.frc.team5830.robot.subsystems.FrontRightSonic;
+import org.usfirst.frc.team5830.robot.subsystems.SonicFrontLeft;
+import org.usfirst.frc.team5830.robot.subsystems.SonicFrontRight;
 import org.usfirst.frc.team5830.robot.subsystems.GyroSubsystem;
 import org.usfirst.frc.team5830.robot.subsystems.LIDARSubsystem;
-import org.usfirst.frc.team5830.robot.subsystems.LeftSideFrontSonic;
-import org.usfirst.frc.team5830.robot.subsystems.LeftSideRearSonic;
+import org.usfirst.frc.team5830.robot.subsystems.SonicLeftSideFront;
+import org.usfirst.frc.team5830.robot.subsystems.SonicLeftSideRear;
 import org.usfirst.frc.team5830.robot.subsystems.PIDArm;
 import org.usfirst.frc.team5830.robot.subsystems.PIDLIDARDistance;
 import org.usfirst.frc.team5830.robot.subsystems.PIDRotationCorrection;
@@ -163,10 +163,10 @@ public class Robot extends TimedRobot{
 	public static final PIDArm ARM = new PIDArm();
 
 	//Ultrasonic 
-	public static final LeftSideFrontSonic LEFTSIDEFRONTSONIC = new LeftSideFrontSonic();
-	public static final LeftSideRearSonic LEFTSIDEREARSONIC = new LeftSideRearSonic();
-	public static final FrontLeftSonic FRONTLEFTSONIC = new FrontLeftSonic();
-	public static final FrontRightSonic FRONTRIGHTSONIC = new FrontRightSonic();
+	public static final SonicLeftSideFront LEFTSIDEFRONTSONIC = new SonicLeftSideFront();
+	public static final SonicLeftSideRear LEFTSIDEREARSONIC = new SonicLeftSideRear();
+	public static final SonicFrontLeft FRONTLEFTSONIC = new SonicFrontLeft();
+	public static final SonicFrontRight FRONTRIGHTSONIC = new SonicFrontRight();
 	/**
 	 * Commands
 	 */
@@ -310,13 +310,13 @@ public class Robot extends TimedRobot{
 		// Ultrasonic sensor for hab approach
 
 		SmartDashboard.putNumber("Sonic Front Left Distance (volts)", RobotMap.frontLeftSonic.getVoltage());
-		SmartDashboard.putNumber("Sonic Front Left Distance (real)", FrontLeftSonic.getDistance());
+		SmartDashboard.putNumber("Sonic Front Left Distance (real)", SonicFrontLeft.getDistance());
 		SmartDashboard.putNumber("Sonic Front Right Distance (volts)", RobotMap.frontLeftSonic.getVoltage());
-		SmartDashboard.putNumber("Sonic Front Right Distance (real)", FrontLeftSonic.getDistance());
+		SmartDashboard.putNumber("Sonic Front Right Distance (real)", SonicFrontLeft.getDistance());
 		SmartDashboard.putNumber("Sonic Side Front Distance (volts)", RobotMap.leftsideFrontSonic.getVoltage());
-		SmartDashboard.putNumber("Sonic Side Front Distance (real)", LeftSideFrontSonic.getDistance());
+		SmartDashboard.putNumber("Sonic Side Front Distance (real)", SonicLeftSideFront.getDistance());
 		SmartDashboard.putNumber("Sonic Side Rear Distance (volts)", RobotMap.leftsideRearSonic.getVoltage());
-		SmartDashboard.putNumber("Sonic Side Rear Distance (real)", LeftSideRearSonic.getDistance());
+		SmartDashboard.putNumber("Sonic Side Rear Distance (real)", SonicLeftSideRear.getDistance());
 		  
 
 	}
