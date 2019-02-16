@@ -1,8 +1,6 @@
 package org.usfirst.frc.team5830.robot.commands;
 
 import org.usfirst.frc.team5830.robot.Robot;
-import org.usfirst.frc.team5830.robot.subsystems.SonicFrontLeft;
-import org.usfirst.frc.team5830.robot.subsystems.SonicFrontRight;
 import org.usfirst.frc.team5830.robot.subsystems.SonicLeftSideFront;
 import org.usfirst.frc.team5830.robot.subsystems.SonicLeftSideRear;
 
