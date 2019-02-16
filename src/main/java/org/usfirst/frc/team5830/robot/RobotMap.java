@@ -32,6 +32,8 @@ public class RobotMap {
 	public static Spark vacuum = new Spark(9);
 	public static Spark winch = new Spark(10);
 	public static Spark manipulator = new Spark(7);
+	public static Spark manipulator2 = new Spark(12);
+
 	
 	//Pneumatics
 	public static Compressor c = new Compressor(0);

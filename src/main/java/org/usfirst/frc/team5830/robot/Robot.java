@@ -20,6 +20,7 @@ import org.usfirst.frc.team5830.robot.subsystems.SonicFrontLeft;
 import org.usfirst.frc.team5830.robot.subsystems.SonicFrontRight;
 import org.usfirst.frc.team5830.robot.subsystems.GyroSubsystem;
 import org.usfirst.frc.team5830.robot.subsystems.LIDARSubsystem;
+import org.usfirst.frc.team5830.robot.subsystems.Manipulator2;
 import org.usfirst.frc.team5830.robot.subsystems.SonicLeftSideFront;
 import org.usfirst.frc.team5830.robot.subsystems.SonicLeftSideRear;
 import org.usfirst.frc.team5830.robot.subsystems.PIDArm;
@@ -119,6 +120,8 @@ public class Robot extends TimedRobot{
 	public static Button testArmLowHatchP;
 	public static Button testArmMiddleHatchP;
 	public static Button testManipulatorLowHatchP;
+	public static Button testSuckCargo;
+	public static Button testSpitCargo; 
 	//Misc
 	public static SendableChooser<Boolean> driveType = new SendableChooser<>();
 	public static SendableChooser<Integer> controlType = new SendableChooser<>();
@@ -168,6 +171,8 @@ public class Robot extends TimedRobot{
 	public static final CylinderSide CYLINDERSIDE = new CylinderSide();
 	public static final CylinderManipulator CYLINDERMANIPULATOR = new CylinderManipulator();
 	public static final Vacuum VACUUM = new Vacuum();
+	public static final Manipulator2 MANIPULATOR2 = new Manipulator2();
+
 
 	//LIDAR
 	public static final LIDARSubsystem lidarSubsystem = new LIDARSubsystem();
@@ -179,7 +184,7 @@ public class Robot extends TimedRobot{
 	public static final GyroSubsystem GYROSUBSYSTEM = new GyroSubsystem();
 	public static final PIDArm ARM = new PIDArm();
 	public static final PIDManipulator MANIPULATOR = new PIDManipulator();
-
+	
 	//Ultrasonic 
 	public static final SonicLeftSideFront LEFTSIDEFRONTSONIC = new SonicLeftSideFront();
 	public static final SonicLeftSideRear LEFTSIDEREARSONIC = new SonicLeftSideRear();
