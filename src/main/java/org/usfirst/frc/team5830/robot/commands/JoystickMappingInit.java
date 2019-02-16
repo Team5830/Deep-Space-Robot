@@ -65,7 +65,11 @@ public class JoystickMappingInit extends InstantCommand {
 				Robot.testManipulatorFloorCargo = new JoystickButton(Robot.leftJoy, 4);
 				Robot.testManipulatorMiddleCargo = new JoystickButton(Robot.leftJoy, 8);
 				Robot.testManipulatorLowHatchP = new JoystickButton(Robot.leftJoy, 6);
+				Robot.testSuckCargo = new JoystickButton(Robot.leftJoy, 11);
+				Robot.testSpitCargo = new JoystickButton(Robot.leftJoy, 12);
 				
+				Robot.testSuckCargo.whenPressed(new SuckCargo());
+				Robot.testSpitCargo.whenPressed(new SpitCargo());
 				Robot.testManipulatorFloorCargo.whenPressed(new ManipulatorFloorCargo());
 				Robot.testArmLowCargo.whenPressed(new ArmLowCargo());
 				Robot.testManipulatorMiddleCargo.whenPressed(new ManipulatorMiddleCargo());
