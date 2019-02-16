@@ -14,7 +14,7 @@ public class PickupHatchPLS extends CommandGroup {
    * Add your docs here.
    */
   public PickupHatchPLS() {
-    addSequential(new ArmLow());
+    addSequential(new ArmLowHatchP());
     addSequential(new ManipulatorLowHatchP());
     addSequential(new VacuumGamePiece());
     // Add Commands here:

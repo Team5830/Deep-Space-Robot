@@ -14,7 +14,7 @@ public class PlaceHatchPLow extends CommandGroup {
    * Add your docs here.
    */
   public PlaceHatchPLow() {
-    addSequential(new ArmLow());
+    addSequential(new ArmLowHatchP());
     addSequential(new ManipulatorLowCargo());
     addSequential(new DropGamePiece());
     // Add Commands here:

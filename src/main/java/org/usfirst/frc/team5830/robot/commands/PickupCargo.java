@@ -14,7 +14,7 @@ public class PickupCargo extends CommandGroup {
    * Add your docs here.
    */
   public PickupCargo() {
-    addSequential(new ArmLow());
+    addSequential(new ArmLowCargo());
     addSequential(new ManipulatorFloorCargo());
     addSequential(new VacuumGamePiece());
     // Add Commands here:

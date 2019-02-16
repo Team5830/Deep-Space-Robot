@@ -14,7 +14,7 @@ public class PlaceCargoLow extends CommandGroup {
    * Add your docs here.
    */
   public PlaceCargoLow() {
-    addSequential(new ArmLow());
+    addSequential(new ArmLowCargo());
     addSequential(new ManipulatorMiddleCargo());
     addSequential(new DropGamePiece());
     // Add Commands here:

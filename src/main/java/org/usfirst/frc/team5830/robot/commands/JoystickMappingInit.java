@@ -55,21 +55,27 @@ public class JoystickMappingInit extends InstantCommand {
 				break;
 				case 3: //Manipulator Arm Test (Left Flightstick)
 				Robot.leftJoy = new Joystick(2);
-				Robot.testArmLow = new JoystickButton(Robot.leftJoy, 3);
+				Robot.testArmLowCargo = new JoystickButton(Robot.leftJoy, 3);
+				Robot.testArmLowHatchP = new JoystickButton(Robot.leftJoy, 5);
+				Robot.testArmMiddleHatchP = new JoystickButton(Robot.leftJoy, 9);
 				Robot.testVacuumGamePiece = new JoystickButton(Robot.leftJoy, 1);
-				Robot.testArmMiddle= new JoystickButton(Robot.leftJoy, 5);
-				Robot.testManipulatorMiddleHatchP = new JoystickButton(Robot.leftJoy, 4);
-				Robot.testDropGamePiece = new JoystickButton(Robot.leftJoy, 6);
-				Robot.testManipulatorFloorCargo = new JoystickButton(Robot.leftJoy, 11);
-				Robot.testManipulatorMiddleCargo = new JoystickButton(Robot.leftJoy, 12);
+				Robot.testArmMiddleCargo= new JoystickButton(Robot.leftJoy, 7);
+				Robot.testManipulatorMiddleHatchP = new JoystickButton(Robot.leftJoy, 10);
+				Robot.testDropGamePiece = new JoystickButton(Robot.leftJoy, 2);
+				Robot.testManipulatorFloorCargo = new JoystickButton(Robot.leftJoy, 4);
+				Robot.testManipulatorMiddleCargo = new JoystickButton(Robot.leftJoy, 8);
+				Robot.testManipulatorLowHatchP = new JoystickButton(Robot.leftJoy, 6);
 				
 				Robot.testManipulatorFloorCargo.whenPressed(new ManipulatorFloorCargo());
-				Robot.testArmLow.whenPressed(new ArmLow());
+				Robot.testArmLowCargo.whenPressed(new ArmLowCargo());
 				Robot.testManipulatorMiddleCargo.whenPressed(new ManipulatorMiddleCargo());
 				Robot.testVacuumGamePiece.whenPressed(new VacuumGamePiece());
-				Robot.testArmMiddle.whenPressed(new ArmMiddle());
+				Robot.testArmMiddleCargo.whenPressed(new ArmMiddleCargo());
 				Robot.testManipulatorMiddleHatchP.whenPressed(new ManipulatorMiddleHatchP());
 				Robot.testDropGamePiece.whenPressed(new DropGamePiece());
+				Robot.testArmLowHatchP.whenPressed(new ArmLowHatchP());
+				Robot.testArmMiddleHatchP.whenPressed(new ArmMiddleHatchP());
+				Robot.testManipulatorLowHatchP.whenPressed(new ManipulatorLowHatchP());
 				break;
 
 			}

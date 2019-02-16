@@ -109,13 +109,16 @@ public class Robot extends TimedRobot{
 	public static Button testPistonSide;
 	public static Button testPistonRear;
 	public static Button testClimbHab;
-	public static Button testArmMiddle;
+	public static Button testArmMiddleCargo;
 	public static Button testManipulatorMiddleHatchP;
 	public static Button testVacuumGamePiece;
 	public static Button testDropGamePiece;
-	public static Button testArmLow; 
+	public static Button testArmLowCargo; 
 	public static Button testManipulatorMiddleCargo;
 	public static Button testManipulatorFloorCargo;
+	public static Button testArmLowHatchP;
+	public static Button testArmMiddleHatchP;
+	public static Button testManipulatorLowHatchP;
 	//Misc
 	public static SendableChooser<Boolean> driveType = new SendableChooser<>();
 	public static SendableChooser<Integer> controlType = new SendableChooser<>();
