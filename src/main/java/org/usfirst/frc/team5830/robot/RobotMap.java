@@ -31,7 +31,7 @@ public class RobotMap {
 	public static Spark arm = new Spark(8);
 	public static Spark vacuum = new Spark(9);
 	public static Spark winch = new Spark(10);
-	public static Spark manipulator = new Spark(7);
+	public static Spark manipulator = new Spark(11);
 	
 	//Pneumatics
 	public static Compressor c = new Compressor(0);
@@ -49,14 +49,15 @@ public class RobotMap {
 	 */
 	//Pneumatics
 
+	
 	 //Front and Rear Solenoids for climbing
-	public static DoubleSolenoid frontLeftSolenoid = new DoubleSolenoid(0, 1);
+	//public static DoubleSolenoid frontLeftSolenoid = new DoubleSolenoid(0, 1);
 	public static DoubleSolenoid frontRightSolenoid = new DoubleSolenoid(2, 3);
 	public static DoubleSolenoid rearSolenoid = new DoubleSolenoid(4, 5);
 	public static DoubleSolenoid sideSolenoid = new DoubleSolenoid(6, 7);
 
 	//Manipulator Solenoid
-	public static DoubleSolenoid manipulatorSolenoid = new DoubleSolenoid(8, 9);
+	public static DoubleSolenoid manipulatorSolenoid = new DoubleSolenoid(0, 1);
 
 	//Encoders
 	public static Encoder armEncoder = new Encoder(5,6,true);
@@ -68,10 +69,10 @@ public class RobotMap {
 	public static ADXRS450_Gyro gyro = new ADXRS450_Gyro();
 	
 	//Ultrasonic
-	public static final AnalogInput frontLeftSonic = new AnalogInput(0);
-	public static final AnalogInput frontRightSonic = new AnalogInput(1);
-	public static final AnalogInput leftsideFrontSonic = new AnalogInput(2);
-	public static final AnalogInput leftsideRearSonic = new AnalogInput(3);
+	public static final AnalogInput frontLeftSonic = new AnalogInput(4);
+	public static final AnalogInput frontRightSonic = new AnalogInput(5);
+	public static final AnalogInput leftsideFrontSonic = new AnalogInput(6);
+	public static final AnalogInput leftsideRearSonic = new AnalogInput(7);
 	
 	//LIDAR
 	public static final class DIO{

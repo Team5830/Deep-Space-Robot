@@ -1,3 +1,12 @@
+to have more than one pcm:
+
+private DoubleSolenoid _solenoid1;
+private DoubleSolenoid _solenoid2;
+_solenoid1 = new DoubleSolenoid([CAN Address of PCM #1], [Port on PCM #1] ,[Port on PCM #1]);
+_solenoid2 = new DoubleSolenoid([CAN Address of PCM #2], [Port on PCM #2], [port on PCM #2]);
+
+
+
 Pixy 2 Line Alignment Pseudo Code
 
 var error = 10
