@@ -109,6 +109,10 @@ public class Robot extends TimedRobot{
 	public static Button testPistonSide;
 	public static Button testPistonRear;
 	public static Button testClimbHab;
+	public static Button testArmMiddle;
+	public static Button testManipulatorMiddleHatchP;
+	public static Button testVacuumGamePiece;
+	public static Button testDropGamePiece;
 	
 	//Misc
 	public static SendableChooser<Boolean> driveType = new SendableChooser<>();
@@ -223,6 +227,7 @@ public class Robot extends TimedRobot{
 		controlType.setDefaultOption("Dual Flightsticks", 0);
 		controlType.addOption("Xbox Controller", 1);
 		controlType.addOption("Piston Test (Right Flightstick)", 2);
+        controlType.addOption("Manipulator Test (Left Flightstick)", 3);
 		SmartDashboard.putData("Control Method", controlType);		
 		
 		//Shows current robot command running
