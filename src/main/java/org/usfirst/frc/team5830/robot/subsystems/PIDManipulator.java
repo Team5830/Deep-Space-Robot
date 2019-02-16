@@ -10,20 +10,20 @@ import edu.wpi.first.wpilibj.command.PIDSubsystem;
  * @author Hunter P.
  *
  */
-public class PIDArm extends PIDSubsystem {
+public class PIDManipulator extends PIDSubsystem {
 
-    public PIDArm() {
-    	super("ArmPID", 0.001, 0.0, 0.0);
-    	setOutputRange(Robot.maxArmSpeedDown, Robot.maxArmSpeedUp);
+    public PIDManipulator() {
+    	super("ManipulatorPID", 0.001, 0.0, 0.0);
+    	setOutputRange(Robot.maxManipulatorSpeedDown, Robot.maxManipulatorSpeedUp);
     }
 
     public void initDefaultCommand() {}
 
     protected double returnPIDInput() {
-    	return RobotMap.armEncoder.getDistance();
+    	return RobotMap.manipulatorEncoder.getDistance();
     }
 
     protected void usePIDOutput(double output) {
-    	RobotMap.arm.set(output);
+    	RobotMap.manipulator.set(output);
     }
 }

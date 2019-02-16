@@ -28,9 +28,10 @@ public class RobotMap {
 	 * OUTPUTS
 	 */
 	
-	public static Spark stageOne = new Spark(8);
-	public static Victor powerCube = new Victor(9);
+	public static Spark arm = new Spark(8);
+	public static Spark vacuum = new Spark(9);
 	public static Spark winch = new Spark(10);
+	public static Spark manipulator = new Spark(7);
 	
 	//Pneumatics
 	public static Compressor c = new Compressor(0);
@@ -54,10 +55,14 @@ public class RobotMap {
 	public static DoubleSolenoid rearSolenoid = new DoubleSolenoid(4, 5);
 	public static DoubleSolenoid sideSolenoid = new DoubleSolenoid(6, 7);
 
+	//Manipulator Solenoid
+	public static DoubleSolenoid manipulatorSolenoid = new DoubleSolenoid(8, 9);
+
 	//Encoders
 	public static Encoder armEncoder = new Encoder(5,6,true);
 	public static Encoder winchEncoder = new Encoder(7,8);
 	public static Encoder wheelEncoder1 = new Encoder(1,2);
+	public static Encoder manipulatorEncoder = new Encoder(3,4,true);
 	
 	//Gyroscope
 	public static ADXRS450_Gyro gyro = new ADXRS450_Gyro();

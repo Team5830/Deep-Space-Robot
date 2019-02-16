@@ -10,10 +10,12 @@ package org.usfirst.frc.team5830.robot;
 import org.usfirst.frc.team5830.robot.commands.DriveStraight;
 import org.usfirst.frc.team5830.robot.commands.JoystickMappingInit;
 import org.usfirst.frc.team5830.robot.commands.JoystickMappingPeriodic;
+import org.usfirst.frc.team5830.robot.commands.VacuumGamePiece;
 import org.usfirst.frc.team5830.robot.subsystems.CylinderFrontLeft;
 import org.usfirst.frc.team5830.robot.subsystems.CylinderFrontRight;
 import org.usfirst.frc.team5830.robot.subsystems.CylinderRear;
 import org.usfirst.frc.team5830.robot.subsystems.CylinderSide;
+import org.usfirst.frc.team5830.robot.subsystems.CylinderManipulator;
 import org.usfirst.frc.team5830.robot.subsystems.SonicFrontLeft;
 import org.usfirst.frc.team5830.robot.subsystems.SonicFrontRight;
 import org.usfirst.frc.team5830.robot.subsystems.GyroSubsystem;
@@ -22,10 +24,11 @@ import org.usfirst.frc.team5830.robot.subsystems.SonicLeftSideFront;
 import org.usfirst.frc.team5830.robot.subsystems.SonicLeftSideRear;
 import org.usfirst.frc.team5830.robot.subsystems.PIDArm;
 import org.usfirst.frc.team5830.robot.subsystems.PIDLIDARDistance;
+import org.usfirst.frc.team5830.robot.subsystems.PIDManipulator;
 import org.usfirst.frc.team5830.robot.subsystems.PIDRotationCorrection;
 import org.usfirst.frc.team5830.robot.subsystems.PIDWheelDistance;
 import org.usfirst.frc.team5830.robot.subsystems.SwerveDrive;
-
+import org.usfirst.frc.team5830.robot.subsystems.Vacuum;
 import org.usfirst.frc.team5830.robot.subsystems.WheelDrive;
 
 import edu.wpi.cscore.UsbCamera;
@@ -62,6 +65,10 @@ public class Robot extends TimedRobot{
 	public static final double maxArmSpeedUp = 1; //Between 0 and 1. NEGATIVE NUMBERS WILL NOT WORK!
 	//Maximum arm speed up
 	public static final double maxArmSpeedDown = -0.75; //Between -1 and 0. POSITIVE NUMBERS WILL NOT WORK!
+	//Maximum manipulator speed up
+	public static final double maxManipulatorSpeedUp = 1; //Between 0 and 1. NEGATIVE NUMBERS WILL NOT WORK!
+	//Maximum manipulator speed up
+	public static final double maxManipulatorSpeedDown = -0.75; //Between -1 and 0. POSITIVE NUMBERS WILL NOT WORK!
 	//Pixy 2 line margin of error
 	public static final double pixy2LineRotationError = 40; //Error in pixels allowed when aligning
 	//Pixy 2 line margin of error
@@ -150,7 +157,8 @@ public class Robot extends TimedRobot{
 	public static final CylinderFrontRight CYLINDERFRONTRIGHT = new CylinderFrontRight();
 	public static final CylinderRear CYLINDERREAR = new CylinderRear();
 	public static final CylinderSide CYLINDERSIDE = new CylinderSide();
-
+	public static final CylinderManipulator CYLINDERMANIPULATOR = new CylinderManipulator();
+	public static final Vacuum VACUUM = new Vacuum();
 
 	//LIDAR
 	public static final LIDARSubsystem lidarSubsystem = new LIDARSubsystem();
@@ -161,6 +169,7 @@ public class Robot extends TimedRobot{
 	public static final PIDWheelDistance WHEELDISTANCEPID = new PIDWheelDistance();
 	public static final GyroSubsystem GYROSUBSYSTEM = new GyroSubsystem();
 	public static final PIDArm ARM = new PIDArm();
+	public static final PIDManipulator MANIPULATOR = new PIDManipulator();
 
 	//Ultrasonic 
 	public static final SonicLeftSideFront LEFTSIDEFRONTSONIC = new SonicLeftSideFront();
@@ -172,6 +181,7 @@ public class Robot extends TimedRobot{
 	 */
 	private static Command joystickMappingInit = new JoystickMappingInit();
 	private static Command joystickMappingPeriodic = new JoystickMappingPeriodic();
+	//public static Command Vacuum = new VacuumGamePiece();
 	
 	/**
 	 * This function is run when the robot is first started up and should be

@@ -1,6 +1,7 @@
 package org.usfirst.frc.team5830.robot.commands;
 
 import org.usfirst.frc.team5830.robot.Robot;
+import org.usfirst.frc.team5830.robot.subsystems.Vacuum;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
