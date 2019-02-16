@@ -5,15 +5,15 @@ import org.usfirst.frc.team5830.robot.Robot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-public class ArmMiddle extends Command {
-  public ArmMiddle() {
+public class ArmMiddleCargo extends Command {
+  public ArmMiddleCargo() {
     requires(Robot.ARM);
     }
 
   // Called just before this Command runs the first time
   @Override
   protected void execute() {
-    SmartDashboard.putString("Status", "Hatch to Rocket Middle");
+    SmartDashboard.putString("Status", "Cargo to Rocket Middle");
     Robot.ARM.setSetpoint(4500); //TODO Calibrate this number or you will kill the robot.
     Robot.ARM.enable();
   }
