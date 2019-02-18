@@ -10,7 +10,16 @@ package org.usfirst.frc.team5830.robot;
 import org.usfirst.frc.team5830.robot.commands.DriveStraight;
 import org.usfirst.frc.team5830.robot.commands.JoystickMappingInit;
 import org.usfirst.frc.team5830.robot.commands.JoystickMappingPeriodic;
-import org.usfirst.frc.team5830.robot.commands.VacuumGamePiece;
+import org.usfirst.frc.team5830.robot.commands.PickupCargo;
+import org.usfirst.frc.team5830.robot.commands.PickupCargoLS;
+import org.usfirst.frc.team5830.robot.commands.PickupHatchPFloor;
+import org.usfirst.frc.team5830.robot.commands.PickupHatchPLS;
+import org.usfirst.frc.team5830.robot.commands.PlaceCargoHigh;
+import org.usfirst.frc.team5830.robot.commands.PlaceCargoLow;
+import org.usfirst.frc.team5830.robot.commands.PlaceCargoMiddle;
+import org.usfirst.frc.team5830.robot.commands.PlaceHatchPHigh;
+import org.usfirst.frc.team5830.robot.commands.PlaceHatchPLow;
+import org.usfirst.frc.team5830.robot.commands.PlaceHatchPMiddle;
 import org.usfirst.frc.team5830.robot.subsystems.CylinderFrontLeft;
 import org.usfirst.frc.team5830.robot.subsystems.CylinderFrontRight;
 import org.usfirst.frc.team5830.robot.subsystems.CylinderRear;
@@ -98,11 +107,20 @@ public class Robot extends TimedRobot{
 	public static Joystick leftJoy;
 	public static Joystick rightJoy;
 	public static Joystick xbox;
+	public static Joystick arduino;
 	
 	public static Button testPixyAlign;
 	public static Button raiseFront;
 	public static Button raiseRear;
 	public static Button habClimb;
+	public static Button HatchPanel;
+	public static Button Cargo;
+	public static Button ArmLow;
+	public static Button ArmMiddle;
+	public static Button ArmHigh;
+	public static Button Floor;
+	public static Button LoadingStation;
+
 	//Testing
 	public static Button testPistonFrontLeft;
 	public static Button testPistonFrontRight;
@@ -122,7 +140,10 @@ public class Robot extends TimedRobot{
 	public static Button testManipulatorLowHatchP;
 	public static Button testSuckCargo;
 	public static Button testSpitCargo; 
+	
+
 	//Misc
+	
 	public static SendableChooser<Boolean> driveType = new SendableChooser<>();
 	public static SendableChooser<Integer> controlType = new SendableChooser<>();
 	public static boolean isFieldOriented = false;
@@ -132,6 +153,11 @@ public class Robot extends TimedRobot{
 	public static boolean isPistonFrontRightExtended = false;
 	public static boolean isPistonRearExtended = false;
 	public static boolean isPistonSideExtended = false;
+	public static boolean isHatchPanel = false;
+	public static boolean isCargo = false;
+	public static boolean isArmLow = false;
+	public static boolean isArmMiddle = false;
+	public static boolean isArmHigh = false;
 	public static OI m_oi;
 	
 	//Swerve Drive
@@ -157,7 +183,7 @@ public class Robot extends TimedRobot{
 	public static double pixy1y1 = 0;
 
 	//Pneumatics
-	Compressor c = new Compressor(0);
+	//Compressor c = new Compressor(0);
 
 
 	/**
@@ -217,12 +243,22 @@ public class Robot extends TimedRobot{
 		SmartDashboard.putBoolean("lined up", false);
 
 		
+		
 		/**
 		 * SmartDashboard
 		 */		
 		
 		//Choose between field and robot-oriented drive
 		SmartDashboard.putBoolean("Field Oriented?", false);
+
+		//Choose between Cargo and Hatch Panel
+		SmartDashboard.putBoolean("Hatch Panel", false);
+		SmartDashboard.putBoolean("Cargo", false); 
+		SmartDashboard.putBoolean("Floor", false);
+		SmartDashboard.putBoolean("Loading Station", false);
+		SmartDashboard.putBoolean("Put Game Piece Low", false);
+		SmartDashboard.putBoolean("Put Game Piece Middle", false);
+		SmartDashboard.putBoolean("Put Game Piece High", false);
 		
 		//Overrides cube distance check if enabled and runs instake on button command regardless of what the LIDAR distance is.
 		SmartDashboard.putBoolean("Override Intake Sensor", true);
@@ -259,7 +295,7 @@ public class Robot extends TimedRobot{
 		RobotMap.wheelEncoder1.setDistancePerPulse(0.0965989132622258);
 		RobotMap.wheelEncoder1.reset();
 		//Pneumatics
-		c.setClosedLoopControl(true);
+		//c.setClosedLoopControl(true);
 
 	}
 
@@ -286,6 +322,7 @@ public class Robot extends TimedRobot{
 			SmartDashboard.putNumber("Wheel Encoder", RobotMap.wheelEncoder1.getDistance());
 		}
 		
+		
 		SmartDashboard.putBoolean("Troubleshoot - Boolean", DriveStraight.isItFinished);
 		
 	}
@@ -301,14 +338,44 @@ public class Robot extends TimedRobot{
 	@Override
 	public void teleopInit() {
 		
-		
+		if (SmartDashboard.getBoolean("Cargo", true) && SmartDashboard.getBoolean("Floor", true)){
+			Robot.ArmLow.whenPressed(new PickupCargo());
+		}
+		if (SmartDashboard.getBoolean("Cargo", true) && SmartDashboard.getBoolean("Loading Station", true)){
+			Robot.ArmLow.whenPressed(new PickupCargoLS());
+		}
+		if (SmartDashboard.getBoolean("Panel", true) && SmartDashboard.getBoolean("Loading Station", true)){
+			Robot.ArmLow.whenPressed(new PickupHatchPLS());
+		}
+		if (SmartDashboard.getBoolean("Panel", true) && SmartDashboard.getBoolean("Floor", true)) {
+			Robot.ArmLow.whenPressed(new PickupHatchPFloor());
+		}
+		if (SmartDashboard.getBoolean("Cargo", true) && SmartDashboard.getBoolean("Put Game Piece Low", true)) {
+			Robot.ArmLow.whenPressed(new PlaceCargoLow());
+		}
+		if (SmartDashboard.getBoolean("Cargo", true) && SmartDashboard.getBoolean("Put Game Piece Middle", true)) {
+			Robot.ArmLow.whenPressed(new PlaceCargoMiddle());
+		}
+		if (SmartDashboard.getBoolean("Cargo", true) && SmartDashboard.getBoolean("Put Game Piece High", true)) {
+			Robot.ArmLow.whenPressed(new PlaceCargoHigh());
+		}
+		if (SmartDashboard.getBoolean("Hatch", true) && SmartDashboard.getBoolean("Put Game Piece Low", true)) {
+			Robot.ArmLow.whenPressed(new PlaceHatchPLow());
+		}
+		if (SmartDashboard.getBoolean("Hatch", true) && SmartDashboard.getBoolean("Put Game Piece Middle", true)) {
+			Robot.ArmLow.whenPressed(new PlaceHatchPMiddle());
+		}
+		if (SmartDashboard.getBoolean("Hatch", true) && SmartDashboard.getBoolean("Put Game Piece Low", true)) {
+			Robot.ArmLow.whenPressed(new PlaceHatchPHigh());
+		}
+
 		SmartDashboard.putString("Status", "Teleop Driving");
 		
 		//Takes ShuffleBoard button layout presets and maps buttons accordingly
 		joystickMappingInit.start();
 
 		//Pneumatics
-		c.setClosedLoopControl(true);
+		// c.setClosedLoopControl(true);
 	}
 
 	@Override
@@ -322,7 +389,8 @@ public class Robot extends TimedRobot{
 		
 		//Enables SmartDashboard driveType chooser
 		isFieldOriented = SmartDashboard.getBoolean("Field Oriented?", false);
-		
+
+
 		/**
 		 * Vision Processing
 		 */
@@ -343,12 +411,14 @@ public class Robot extends TimedRobot{
 		SmartDashboard.putNumber("Sonic Side Rear Distance (volts)", RobotMap.leftsideRearSonic.getVoltage());
 		SmartDashboard.putNumber("Sonic Side Rear Distance (real)", SonicLeftSideRear.getDistance());
 		  
+		}
 
-	}
 
+ 
 	@Override
 	public void testPeriodic() {
 		SmartDashboard.putString("Status", "TEST MODE");
 		swerveDrive.drive(0, pidOutputWheel, pidOutputAngle);
 	}
+	
 }
