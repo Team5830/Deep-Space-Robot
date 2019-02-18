@@ -10,16 +10,6 @@ package org.usfirst.frc.team5830.robot;
 import org.usfirst.frc.team5830.robot.commands.DriveStraight;
 import org.usfirst.frc.team5830.robot.commands.JoystickMappingInit;
 import org.usfirst.frc.team5830.robot.commands.JoystickMappingPeriodic;
-import org.usfirst.frc.team5830.robot.commands.PickupCargo;
-import org.usfirst.frc.team5830.robot.commands.PickupCargoLS;
-import org.usfirst.frc.team5830.robot.commands.PickupHatchPFloor;
-import org.usfirst.frc.team5830.robot.commands.PickupHatchPLS;
-import org.usfirst.frc.team5830.robot.commands.PlaceCargoHigh;
-import org.usfirst.frc.team5830.robot.commands.PlaceCargoLow;
-import org.usfirst.frc.team5830.robot.commands.PlaceCargoMiddle;
-import org.usfirst.frc.team5830.robot.commands.PlaceHatchPHigh;
-import org.usfirst.frc.team5830.robot.commands.PlaceHatchPLow;
-import org.usfirst.frc.team5830.robot.commands.PlaceHatchPMiddle;
 import org.usfirst.frc.team5830.robot.subsystems.CylinderFrontLeft;
 import org.usfirst.frc.team5830.robot.subsystems.CylinderFrontRight;
 import org.usfirst.frc.team5830.robot.subsystems.CylinderRear;
@@ -46,7 +36,6 @@ import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
-import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.buttons.Button;
@@ -291,8 +280,8 @@ public class Robot extends TimedRobot{
 		RobotMap.gyro.calibrate();
 		RobotMap.armEncoder.setDistancePerPulse(1);
 		RobotMap.armEncoder.reset();
-		RobotMap.winchEncoder.setDistancePerPulse(1);
-		RobotMap.winchEncoder.reset();
+		RobotMap.manipulatorEncoder.setDistancePerPulse(1);
+		RobotMap.manipulatorEncoder.reset();
 		RobotMap.wheelEncoder1.setDistancePerPulse(0.0965989132622258);
 		RobotMap.wheelEncoder1.reset();
 		//Pneumatics
@@ -311,14 +300,14 @@ public class Robot extends TimedRobot{
 		Scheduler.getInstance().run();
 		SmartDashboard.putNumber("Gyro Angle", GYROSUBSYSTEM.getGyroClampedNeg180To180());
 		SmartDashboard.putNumber("Arm Encoder Distance", RobotMap.armEncoder.getDistance());
-		SmartDashboard.putNumber("Winch Encoder Distance", RobotMap.winchEncoder.getDistance());
+		SmartDashboard.putNumber("Manipulator Encoder Distance", RobotMap.manipulatorEncoder.getDistance());
 		
 		//If Reset Sensors button is pressed in SmartDashboard, it will calibrate the gyro. The robot MUST NOT BE MOVING. It then resets the button back to false state.
 		if (SmartDashboard.getBoolean("Reset Sensors", false)) {
 			RobotMap.gyro.calibrate();
 			RobotMap.armEncoder.reset();
 			RobotMap.wheelEncoder1.reset();
-			RobotMap.winchEncoder.reset();
+			RobotMap.manipulatorEncoder.reset();
 			SmartDashboard.putBoolean("Reset Sensors", false);
 			SmartDashboard.putNumber("Wheel Encoder", RobotMap.wheelEncoder1.getDistance());
 		}
