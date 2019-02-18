@@ -35,8 +35,8 @@ public class JoystickMappingInit extends InstantCommand {
 		switch (Robot.controlType.getSelected()) {
 			case 0: //General Flightsticks (Default)
 				Robot.leftJoy = new Joystick(0);
-				//Robot.rightJoy = new Joystick(1);
-				Robot.arduino = new Joystick(1);
+				Robot.rightJoy = new Joystick(1);
+				//Robot.arduino = new Joystick(1);
 			
 				break;
 			case 1: //General Xbox
