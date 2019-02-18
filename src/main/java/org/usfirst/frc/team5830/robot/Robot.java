@@ -153,6 +153,7 @@ public class Robot extends TimedRobot{
 	public static boolean isPistonFrontRightExtended = false;
 	public static boolean isPistonRearExtended = false;
 	public static boolean isPistonSideExtended = false;
+	public static boolean isPistonManipulatorExtended= false;
 	public static boolean isHatchPanel = false;
 	public static boolean isCargo = false;
 	public static boolean isArmLow = false;

@@ -21,10 +21,10 @@ public class CylinderFrontLeft extends Subsystem {
   public void initDefaultCommand() {}
 
   public void out(){
-   // RobotMap.frontLeftSolenoid.set(DoubleSolenoid.Value.kForward);
+   RobotMap.frontLeftSolenoid.set(DoubleSolenoid.Value.kForward);
   }
 
   public void in(){
-   // RobotMap.frontLeftSolenoid.set(DoubleSolenoid.Value.kReverse);
+   RobotMap.frontLeftSolenoid.set(DoubleSolenoid.Value.kReverse);
   }
 }
