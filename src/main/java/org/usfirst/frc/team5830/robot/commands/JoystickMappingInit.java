@@ -21,7 +21,16 @@ public class JoystickMappingInit extends InstantCommand {
     protected void execute() {
     	//There is no isFinished defined because this is an InstantCommand. 
     	//An InstantCommand is just shorthand for returning true in isFinished, meaning execute will only run once.
-		Robot.arduino = new Joystick(3);
+		/*Robot.arduino = new Joystick(3);
+		Robot.HatchPanel = new JoystickButton(Robot.arduino, 1);
+		Robot.Cargo = new JoystickButton(Robot.arduino, 2);
+		Robot.ArmLow = new JoystickButton(Robot.arduino, 3);
+		Robot.ArmMiddle = new JoystickButton(Robot.arduino, 4);
+		Robot.ArmHigh = new JoystickButton(Robot.arduino, 5);
+		Robot.Floor = new JoystickButton(Robot.arduino, 6);
+		Robot.LoadingStation = new JoystickButton(Robot.arduino, 7);*/
+
+		Robot.arduino = new Joystick(1);
 		Robot.HatchPanel = new JoystickButton(Robot.arduino, 1);
 		Robot.Cargo = new JoystickButton(Robot.arduino, 2);
 		Robot.ArmLow = new JoystickButton(Robot.arduino, 3);
@@ -36,7 +45,8 @@ public class JoystickMappingInit extends InstantCommand {
 		switch (Robot.controlType.getSelected()) {
 			case 0: //General Flightsticks (Default)
 				Robot.leftJoy = new Joystick(0);
-				Robot.rightJoy = new Joystick(1);
+				//Robot.rightJoy = new Joystick(1);
+				Robot.arduino = new Joystick(1);
 			
 				break;
 			case 1: //General Xbox
@@ -47,8 +57,8 @@ public class JoystickMappingInit extends InstantCommand {
 				Robot.habClimb.whenPressed(new ClimbHab());
 				break;
 			case 2: //Pneumatics Test (Right Flightstick)
-				Robot.rightJoy = new Joystick(1);
-				Robot.testPistonFront = new JoystickButton(Robot.rightJoy, 7);
+				//Robot.rightJoy = new Joystick(1);
+				/*Robot.testPistonFront = new JoystickButton(Robot.rightJoy, 7);
 				Robot.testPistonRear = new JoystickButton(Robot.rightJoy, 8);
 				Robot.testPistonFrontLeft = new JoystickButton(Robot.rightJoy, 9);
 				Robot.testPistonFrontRight = new JoystickButton(Robot.rightJoy, 10);
@@ -60,10 +70,10 @@ public class JoystickMappingInit extends InstantCommand {
 				Robot.testPistonFrontRight.whenPressed(new PistonFrontRight());
 				Robot.testPistonRear.whenPressed(new PistonRear());
 				Robot.testPistonSide.whenPressed(new PistonSide());
-				Robot.testClimbHab.whenPressed(new ClimbHab());
+				Robot.testClimbHab.whenPressed(new ClimbHab());*/
 				break;
 				case 3: //Manipulator Arm Test (Left Flightstick)
-				Robot.leftJoy = new Joystick(2);
+				Robot.leftJoy = new Joystick(4);
 				Robot.testArmLowCargo = new JoystickButton(Robot.leftJoy, 3);
 				Robot.testArmLowHatchP = new JoystickButton(Robot.leftJoy, 5);
 				Robot.testArmMiddleHatchP = new JoystickButton(Robot.leftJoy, 9);
