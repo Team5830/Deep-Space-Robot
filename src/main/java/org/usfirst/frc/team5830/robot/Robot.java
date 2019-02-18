@@ -338,36 +338,7 @@ public class Robot extends TimedRobot{
 	@Override
 	public void teleopInit() {
 		
-		if (SmartDashboard.getBoolean("Cargo", true) && SmartDashboard.getBoolean("Floor", true)){
-			Robot.ArmLow.whenPressed(new PickupCargo());
-		}
-		if (SmartDashboard.getBoolean("Cargo", true) && SmartDashboard.getBoolean("Loading Station", true)){
-			Robot.ArmLow.whenPressed(new PickupCargoLS());
-		}
-		if (SmartDashboard.getBoolean("Panel", true) && SmartDashboard.getBoolean("Loading Station", true)){
-			Robot.ArmLow.whenPressed(new PickupHatchPLS());
-		}
-		if (SmartDashboard.getBoolean("Panel", true) && SmartDashboard.getBoolean("Floor", true)) {
-			Robot.ArmLow.whenPressed(new PickupHatchPFloor());
-		}
-		if (SmartDashboard.getBoolean("Cargo", true) && SmartDashboard.getBoolean("Put Game Piece Low", true)) {
-			Robot.ArmLow.whenPressed(new PlaceCargoLow());
-		}
-		if (SmartDashboard.getBoolean("Cargo", true) && SmartDashboard.getBoolean("Put Game Piece Middle", true)) {
-			Robot.ArmLow.whenPressed(new PlaceCargoMiddle());
-		}
-		if (SmartDashboard.getBoolean("Cargo", true) && SmartDashboard.getBoolean("Put Game Piece High", true)) {
-			Robot.ArmLow.whenPressed(new PlaceCargoHigh());
-		}
-		if (SmartDashboard.getBoolean("Hatch", true) && SmartDashboard.getBoolean("Put Game Piece Low", true)) {
-			Robot.ArmLow.whenPressed(new PlaceHatchPLow());
-		}
-		if (SmartDashboard.getBoolean("Hatch", true) && SmartDashboard.getBoolean("Put Game Piece Middle", true)) {
-			Robot.ArmLow.whenPressed(new PlaceHatchPMiddle());
-		}
-		if (SmartDashboard.getBoolean("Hatch", true) && SmartDashboard.getBoolean("Put Game Piece Low", true)) {
-			Robot.ArmLow.whenPressed(new PlaceHatchPHigh());
-		}
+		
 
 		SmartDashboard.putString("Status", "Teleop Driving");
 		
@@ -384,6 +355,7 @@ public class Robot extends TimedRobot{
 		
 		//Processes axis values
 		joystickMappingPeriodic.start();
+	
 		
 		//SmartDashboard data publishing
 		
