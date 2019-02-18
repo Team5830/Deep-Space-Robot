@@ -30,17 +30,7 @@ public class JoystickMappingInit extends InstantCommand {
 		Robot.Floor = new JoystickButton(Robot.arduino, 6);
 		Robot.LoadingStation = new JoystickButton(Robot.arduino, 7);*/
 
-		Robot.arduino = new Joystick(1);
-		Robot.HatchPanel = new JoystickButton(Robot.arduino, 1);
-		Robot.Cargo = new JoystickButton(Robot.arduino, 2);
-		Robot.ArmLow = new JoystickButton(Robot.arduino, 3);
-		Robot.ArmMiddle = new JoystickButton(Robot.arduino, 4);
-		Robot.ArmHigh = new JoystickButton(Robot.arduino, 5);
-		Robot.Floor = new JoystickButton(Robot.arduino, 6);
-		Robot.LoadingStation = new JoystickButton(Robot.arduino, 7);
-
-
-
+		
     	//Initiates command to call buttons according to the option selected on SmartDashboard (Command name = ChooseButtonLayout)
 		switch (Robot.controlType.getSelected()) {
 			case 0: //General Flightsticks (Default)
@@ -56,7 +46,16 @@ public class JoystickMappingInit extends InstantCommand {
 				Robot.habClimb = new JoystickButton(Robot.xbox, 4); //Y
 				Robot.habClimb.whenPressed(new ClimbHab());
 				break;
-			case 2: //Pneumatics Test (Right Flightstick)
+			case 2: //Arduino Button Test
+				Robot.arduino = new Joystick(1);
+				Robot.HatchPanel = new JoystickButton(Robot.arduino, 1);
+				Robot.Cargo = new JoystickButton(Robot.arduino, 2);
+				Robot.ArmLow = new JoystickButton(Robot.arduino, 3);
+				Robot.ArmMiddle = new JoystickButton(Robot.arduino, 4);
+				Robot.ArmHigh = new JoystickButton(Robot.arduino, 5);
+				Robot.Floor = new JoystickButton(Robot.arduino, 6);
+				Robot.LoadingStation = new JoystickButton(Robot.arduino, 7);
+			//Pneumatics Test (Right Flightstick)
 				//Robot.rightJoy = new Joystick(1);
 				/*Robot.testPistonFront = new JoystickButton(Robot.rightJoy, 7);
 				Robot.testPistonRear = new JoystickButton(Robot.rightJoy, 8);
