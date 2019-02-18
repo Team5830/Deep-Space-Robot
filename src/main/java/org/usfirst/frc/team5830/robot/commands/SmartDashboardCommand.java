@@ -28,7 +28,7 @@ public class SmartDashboardCommand extends Command{
     	SmartDashboard.putNumber("Gyro PID Output", Robot.pidOutputAngle);
 		SmartDashboard.putNumber("Gyro Angle", Robot.GYROSUBSYSTEM.getGyroClampedNeg180To180());
 		SmartDashboard.putNumber("Arm Encoder Distance", RobotMap.armEncoder.getDistance());
-		SmartDashboard.putNumber("Winch Encoder Distance", RobotMap.winchEncoder.getDistance());		
+		SmartDashboard.putNumber("Manipulator Encoder Distance", RobotMap.manipulatorEncoder.getDistance());		
 		//SmartDashboard.putNumber("POV Position", Robot.xbox.getPOV());
     }
 

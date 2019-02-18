@@ -61,10 +61,10 @@ public class RobotMap {
 	public static DoubleSolenoid manipulatorSolenoid = new DoubleSolenoid(1, 0, 1);
 
 	//Encoders
-	public static Encoder armEncoder = new Encoder(5,6,true);
-	public static Encoder winchEncoder = new Encoder(7,8);
+	public static Encoder armEncoder = new Encoder(3,4,true);
+	//public static Encoder winchEncoder = new Encoder(7,8);
 	public static Encoder wheelEncoder1 = new Encoder(1,2);
-	public static Encoder manipulatorEncoder = new Encoder(3,4,true);
+	public static Encoder manipulatorEncoder = new Encoder(7,8,true);
 	
 	//Gyroscope
 	public static ADXRS450_Gyro gyro = new ADXRS450_Gyro();
