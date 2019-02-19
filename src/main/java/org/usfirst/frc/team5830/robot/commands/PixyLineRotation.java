@@ -24,11 +24,11 @@ public class PixyLineRotation extends Command {
   @Override
   protected void execute() {
     if(Math.abs(Robot.pixy1x0 - Robot.pixy1x1) > Robot.pixy2LineRotationError){
-      while(Robot.pixy1x0 < Robot.pixy1x1){
-        Robot.swerveDrive.drive(0.15, 0, -0.15);
+     if(Robot.pixy1x0 < Robot.pixy1x1){
+        Robot.swerveDrive.drive(0.2, 0, 0.15);
       }
-      while(Robot.pixy1x0 > Robot.pixy1x1){
-        Robot.swerveDrive.drive(-0.15, 0, 0.15);
+      if(Robot.pixy1x0 > Robot.pixy1x1){
+        Robot.swerveDrive.drive(-0.2, 0, -0.15);
       }
     } else {
       Robot.swerveDrive.drive(0, 0, 0);

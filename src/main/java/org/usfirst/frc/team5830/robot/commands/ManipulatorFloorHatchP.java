@@ -14,7 +14,7 @@ public class ManipulatorFloorHatchP extends Command {
   @Override
   protected void execute() {
     SmartDashboard.putString("Status", "Cargo to Rocket Low");
-    Robot.MANIPULATOR.setSetpoint(10000); //TODO Calibrate this number or you will kill the robot.
+    Robot.MANIPULATOR.setSetpoint(1400); //TODO Calibrate this number or you will kill the robot.
     Robot.MANIPULATOR.enable();
   }
 

@@ -14,7 +14,7 @@ import edu.wpi.first.wpilibj.command.Command;
 public class PixyLineStrafe extends Command {
 
   //This is the center pixel of the tracking area (X direction)
-  private double trackingCenterPoint = 318; //TODO Verify correct
+  private double trackingCenterPoint = 50; //TODO Verify correct
   private boolean isItFinished = false;
 
   public PixyLineStrafe() {
@@ -25,12 +25,12 @@ public class PixyLineStrafe extends Command {
   @Override
   protected void execute() {
     isItFinished  = false;
-    if(Math.abs(Robot.pixy1x0 - trackingCenterPoint) > Robot.pixy2LineStrafeError){ //If not centered
-      while(Robot.pixy1x0 < trackingCenterPoint){ //To the left of center
-        Robot.swerveDrive.drive(0.15, 0, 0);
+    if(Math.abs((Robot.pixy1x0 + Robot.pixy1x1)/2- trackingCenterPoint) > Robot.pixy2LineStrafeError){ //If not centered
+      if((Robot.pixy1x0 + Robot.pixy1x1)/2 < trackingCenterPoint){ //To the left of center
+        Robot.swerveDrive.drive(0.22, 0, 0);
       }
-      while(Robot.pixy1x0 > trackingCenterPoint){ //To the right of center
-        Robot.swerveDrive.drive(-0.15, 0, 0);
+      if((Robot.pixy1x0 + Robot.pixy1x1)/2 > trackingCenterPoint){ //To the right of center
+        Robot.swerveDrive.drive(-0.22, 0, 0);
       }
     } else {
       Robot.swerveDrive.drive(0, 0, 0);

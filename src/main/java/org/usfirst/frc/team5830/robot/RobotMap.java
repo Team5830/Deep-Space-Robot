@@ -27,10 +27,10 @@ public class RobotMap {
 	 * OUTPUTS
 	 */
 	
-	public static Spark arm = new Spark(8);
+	public static Spark arm = new Spark(11);
 	public static Spark vacuum = new Spark(9);
-	public static Spark winch = new Spark(10);
-	public static Spark manipulator = new Spark(11);
+	//public static Spark winch = new Spark(10);
+	public static Spark manipulator = new Spark(10);
 	public static Spark manipulator2 = new Spark(12);
 
 	
@@ -61,19 +61,19 @@ public class RobotMap {
 	public static DoubleSolenoid manipulatorSolenoid = new DoubleSolenoid(1, 0, 1);
 
 	//Encoders
-	public static Encoder armEncoder = new Encoder(3,4,true);
+	public static Encoder armEncoder = new Encoder(3,4);
 	//public static Encoder winchEncoder = new Encoder(7,8);
 	public static Encoder wheelEncoder1 = new Encoder(1,2);
-	public static Encoder manipulatorEncoder = new Encoder(7,8,true);
+	public static Encoder manipulatorEncoder = new Encoder(7,8);
 	
 	//Gyroscope
 	public static ADXRS450_Gyro gyro = new ADXRS450_Gyro();
 	
 	//Ultrasonic
-	public static final AnalogInput frontLeftSonic = new AnalogInput(4);
-	public static final AnalogInput frontRightSonic = new AnalogInput(5);
-	public static final AnalogInput leftsideFrontSonic = new AnalogInput(6);
-	public static final AnalogInput leftsideRearSonic = new AnalogInput(7);
+	public static final AnalogInput frontLeftSonic = new AnalogInput(0);
+	public static final AnalogInput frontRightSonic = new AnalogInput(1);
+	public static final AnalogInput leftsideFrontSonic = new AnalogInput(2);
+	public static final AnalogInput leftsideRearSonic = new AnalogInput(3);
 	
 	//LIDAR
 	public static final class DIO{

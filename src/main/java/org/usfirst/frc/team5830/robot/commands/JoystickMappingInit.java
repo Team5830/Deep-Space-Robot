@@ -43,6 +43,10 @@ public class JoystickMappingInit extends InstantCommand {
 				Robot.xbox = new Joystick(2);
 				Robot.testPixyAlign = new JoystickButton(Robot.xbox, 1); //A
 				Robot.testPixyAlign.whenPressed(new PixyAlign());
+				Robot.testPixyStrafe = new JoystickButton(Robot.xbox, 2); //B
+				Robot.testPixyStrafe.whenPressed(new PixyLineStrafe());
+				Robot.testPixyAngle = new JoystickButton(Robot.xbox, 3); //X
+				Robot.testPixyAngle.whenPressed(new PixyLineRotation());
 				Robot.habClimb = new JoystickButton(Robot.xbox, 4); //Y
 				Robot.habClimb.whenPressed(new ClimbHab());
 				break;
@@ -72,15 +76,15 @@ public class JoystickMappingInit extends InstantCommand {
 				Robot.testClimbHab.whenPressed(new ClimbHab());*/
 				break;
 				case 3: //Manipulator Arm Test (Left Flightstick)
-				Robot.leftJoy = new Joystick(4);
-				Robot.testArmLowCargo = new JoystickButton(Robot.leftJoy, 3);
+				Robot.leftJoy = new Joystick(0);
+				Robot.testArmHighCargo = new JoystickButton(Robot.leftJoy, 3);
 				Robot.testArmLowHatchP = new JoystickButton(Robot.leftJoy, 5);
 				Robot.testArmMiddleHatchP = new JoystickButton(Robot.leftJoy, 9);
 				Robot.testVacuumGamePiece = new JoystickButton(Robot.leftJoy, 1);
 				Robot.testArmMiddleCargo= new JoystickButton(Robot.leftJoy, 7);
 				Robot.testManipulatorMiddleHatchP = new JoystickButton(Robot.leftJoy, 10);
 				Robot.testDropGamePiece = new JoystickButton(Robot.leftJoy, 2);
-				Robot.testManipulatorFloorCargo = new JoystickButton(Robot.leftJoy, 4);
+				Robot.testManipulatorHighCargo = new JoystickButton(Robot.leftJoy, 4);
 				Robot.testManipulatorMiddleCargo = new JoystickButton(Robot.leftJoy, 8);
 				Robot.testManipulatorLowHatchP = new JoystickButton(Robot.leftJoy, 6);
 				Robot.testSuckCargo = new JoystickButton(Robot.leftJoy, 11);
@@ -88,8 +92,8 @@ public class JoystickMappingInit extends InstantCommand {
 				
 				Robot.testSuckCargo.whenPressed(new SuckCargo());
 				Robot.testSpitCargo.whenPressed(new SpitCargo());
-				Robot.testManipulatorFloorCargo.whenPressed(new ManipulatorFloorCargo());
-				Robot.testArmLowCargo.whenPressed(new ArmLowCargo());
+				Robot.testManipulatorHighCargo.whenPressed(new ManipulatorHighCargo());
+				Robot.testArmHighCargo.whenPressed(new ArmHighCargo());
 				Robot.testManipulatorMiddleCargo.whenPressed(new ManipulatorMiddleCargo());
 				Robot.testVacuumGamePiece.whenPressed(new VacuumGamePiece());
 				Robot.testArmMiddleCargo.whenPressed(new ArmMiddleCargo());

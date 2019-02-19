@@ -7,21 +7,27 @@
 
 package org.usfirst.frc.team5830.robot.commands;
 
-import edu.wpi.first.wpilibj.command.CommandGroup;
+import edu.wpi.first.wpilibj.Timer;
+import edu.wpi.first.wpilibj.command.InstantCommand;
 
-public class PixyAlign extends CommandGroup {
+/**
+ * Add your docs here.
+ */
+public class TimerDelay extends InstantCommand {
   /**
    * Add your docs here.
    */
-  public PixyAlign() {
-    addSequential(new PixyLineRotation());
-    addSequential(new TimerDelay());
-    addSequential(new PixyLineRotation());
-    addSequential(new TimerDelay());
-    addSequential(new PixyLineStrafe());
-    addSequential(new TimerDelay());
-    addSequential(new PixyLineStrafe());
-    addSequential(new TimerDelay());
-    addSequential(new PixyLineRotation());
+  public TimerDelay() {
+    super();
+ 
+    // Use requires() here to declare subsystem dependencies
+    // eg. requires(chassis);
   }
+
+  // Called once when the command executes
+  @Override
+  protected void initialize() {
+    Timer.delay(0.25);
+  }
+
 }

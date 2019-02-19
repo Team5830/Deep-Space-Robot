@@ -18,7 +18,7 @@ public class SonicLeftSideFront extends Subsystem {
   // here. Call these from Commands.
 
     // //  determine how to convert voltage to distance from spec sheet  (divide voltage/512 to get inches)
-private static final double VOLTS_TO_DIST = 0.001953125;
+private static final double VOLTS_TO_DIST = 9.766;
 
   public static double getVoltage() {
     return RobotMap.leftsideFrontSonic.getVoltage();

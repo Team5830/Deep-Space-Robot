@@ -13,7 +13,7 @@ import edu.wpi.first.wpilibj.command.PIDSubsystem;
 public class PIDArm extends PIDSubsystem {
 
     public PIDArm() {
-    	super("ArmPID", 0.001, 0.0, 0.0);
+    	super("ArmPID", 0.002, 0.0, 0.0);
     	setOutputRange(Robot.maxArmSpeedDown, Robot.maxArmSpeedUp);
     }
 
@@ -24,6 +24,6 @@ public class PIDArm extends PIDSubsystem {
     }
 
     protected void usePIDOutput(double output) {
-    	RobotMap.arm.set(output);
+    	RobotMap.arm.set(-output);
     }
 }

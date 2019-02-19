@@ -14,7 +14,7 @@ public class ArmLowHatchP extends Command {
   @Override
   protected void execute() {
     SmartDashboard.putString("Status", "Hatch to Rocket Low");
-    Robot.ARM.setSetpoint(3000); //TODO Calibrate this number or you will kill the robot.
+    Robot.ARM.setSetpoint(20); //TODO Calibrate this number or you will kill the robot.
     Robot.ARM.enable();
   }
 

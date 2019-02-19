@@ -61,17 +61,17 @@ public class Robot extends TimedRobot{
 	//Distance from LIDAR cube has to be to switch intake from sucking to spitting
 	public static final double cubeDistance = 9.5; //Inches
 	//Maximum arm speed up
-	public static final double maxArmSpeedUp = 1; //Between 0 and 1. NEGATIVE NUMBERS WILL NOT WORK!
+	public static final double maxArmSpeedUp = .5; //Between 0 and 1. NEGATIVE NUMBERS WILL NOT WORK!
 	//Maximum arm speed up
-	public static final double maxArmSpeedDown = -0.75; //Between -1 and 0. POSITIVE NUMBERS WILL NOT WORK!
+	public static final double maxArmSpeedDown = -.5; //Between -1 and 0. POSITIVE NUMBERS WILL NOT WORK!
 	//Maximum manipulator speed up
-	public static final double maxManipulatorSpeedUp = 1; //Between 0 and 1. NEGATIVE NUMBERS WILL NOT WORK!
+	public static final double maxManipulatorSpeedUp = .25; //Between 0 and 1. NEGATIVE NUMBERS WILL NOT WORK!
 	//Maximum manipulator speed up
-	public static final double maxManipulatorSpeedDown = -0.75; //Between -1 and 0. POSITIVE NUMBERS WILL NOT WORK!
+	public static final double maxManipulatorSpeedDown = -0.25; //Between -1 and 0. POSITIVE NUMBERS WILL NOT WORK!
 	//Pixy 2 line margin of error
-	public static final double pixy2LineRotationError = 40; //Error in pixels allowed when aligning
+	public static final double pixy2LineRotationError = 1; //Error in pixels allowed when aligning
 	//Pixy 2 line margin of error
-	public static final double pixy2LineStrafeError = 40; //Error in pixels allowed when aligning
+	public static final double pixy2LineStrafeError = 1; //Error in pixels allowed when aligning
 	//Margin of error allowed when using LIDAR for finding distance
 	public static final int lidarError = 3; //Inches
 	//Distance robot needs to be from HAB to climb. 
@@ -97,8 +97,9 @@ public class Robot extends TimedRobot{
 	public static Joystick rightJoy;
 	public static Joystick xbox;
 	public static Joystick arduino;
-	
+	public static Button testPixyStrafe;
 	public static Button testPixyAlign;
+	public static Button testPixyAngle;
 	public static Button raiseFront;
 	public static Button raiseRear;
 	public static Button habClimb;
@@ -121,9 +122,9 @@ public class Robot extends TimedRobot{
 	public static Button testManipulatorMiddleHatchP;
 	public static Button testVacuumGamePiece;
 	public static Button testDropGamePiece;
-	public static Button testArmLowCargo; 
+	public static Button testArmHighCargo; 
 	public static Button testManipulatorMiddleCargo;
-	public static Button testManipulatorFloorCargo;
+	public static Button testManipulatorHighCargo;
 	public static Button testArmLowHatchP;
 	public static Button testArmMiddleHatchP;
 	public static Button testManipulatorLowHatchP;
@@ -151,10 +152,10 @@ public class Robot extends TimedRobot{
 	public static OI m_oi;
 	
 	//Swerve Drive
-	public static WheelDrive backRight = new WheelDrive (0, 1, 0);
-	public static WheelDrive backLeft = new WheelDrive (2, 3, 1);
-	public static WheelDrive frontRight = new WheelDrive (4, 5, 2);
-	public static WheelDrive frontLeft = new WheelDrive (6, 7, 3);
+	public static WheelDrive backRight = new WheelDrive (0, 1, 5);
+	public static WheelDrive backLeft = new WheelDrive (2, 3, 6);
+	public static WheelDrive frontRight = new WheelDrive (4, 5, 4);
+	public static WheelDrive frontLeft = new WheelDrive (6, 7, 7);
 	public static SwerveDrive swerveDrive = new SwerveDrive (backRight, backLeft, frontRight, frontLeft);
 	
 	//Vision Processing
@@ -364,15 +365,17 @@ public class Robot extends TimedRobot{
 
 		// Ultrasonic sensor for hab approach
 
-		SmartDashboard.putNumber("Sonic Front Left Distance (volts)", RobotMap.frontLeftSonic.getVoltage());
-		SmartDashboard.putNumber("Sonic Front Left Distance (real)", SonicFrontLeft.getDistance());
-		SmartDashboard.putNumber("Sonic Front Right Distance (volts)", RobotMap.frontLeftSonic.getVoltage());
-		SmartDashboard.putNumber("Sonic Front Right Distance (real)", SonicFrontLeft.getDistance());
-		SmartDashboard.putNumber("Sonic Side Front Distance (volts)", RobotMap.leftsideFrontSonic.getVoltage());
-		SmartDashboard.putNumber("Sonic Side Front Distance (real)", SonicLeftSideFront.getDistance());
-		SmartDashboard.putNumber("Sonic Side Rear Distance (volts)", RobotMap.leftsideRearSonic.getVoltage());
-		SmartDashboard.putNumber("Sonic Side Rear Distance (real)", SonicLeftSideRear.getDistance());
+		SmartDashboard.putNumber("Sonic FL (volts)", RobotMap.frontLeftSonic.getVoltage());
+		SmartDashboard.putNumber("Sonic FL (real)", SonicFrontLeft.getDistance());
+		SmartDashboard.putNumber("Sonic FR (volts)", RobotMap.frontRightSonic.getVoltage());
+		SmartDashboard.putNumber("Sonic FR (real)", SonicFrontRight.getDistance());
+		SmartDashboard.putNumber("Sonic SF (volts)", RobotMap.leftsideFrontSonic.getVoltage());
+		//SmartDashboard.putNumber("Sonic SF(real)", SonicLeftSideFront.getDistance());
+		SmartDashboard.putNumber("Sonic SR (volts)", RobotMap.leftsideRearSonic.getVoltage());
+		//SmartDashboard.putNumber("Sonic SR (real)", SonicLeftSideRear.getDistance());
 		  
+		
+
 		}
 
 
