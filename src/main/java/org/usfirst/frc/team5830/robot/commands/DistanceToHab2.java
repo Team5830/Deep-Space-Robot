@@ -6,6 +6,12 @@ import org.usfirst.frc.team5830.robot.subsystems.SonicLeftSideRear;
 
 import edu.wpi.first.wpilibj.command.Command;
 
+/**
+ * 
+ * @author Arlene A.
+ * 
+ */
+
 
 public class DistanceToHab2 extends Command {
 
