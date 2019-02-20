@@ -20,7 +20,7 @@ public class ArmLowHatchP extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void execute() {
-    SmartDashboard.putString("Status", "Hatch to Rocket Low");
+    SmartDashboard.putString("Status", "Arm with Hatch to Rocket Low");
     Robot.ARM.setSetpoint(20); //TODO Calibrate this number or you will kill the robot.
     Robot.ARM.enable();
   }

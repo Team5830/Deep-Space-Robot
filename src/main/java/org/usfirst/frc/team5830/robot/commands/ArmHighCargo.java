@@ -19,7 +19,7 @@ public class ArmHighCargo extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void execute() {
-    SmartDashboard.putString("Status", "Cargo to Rocket High");
+    SmartDashboard.putString("Status", "Arm with Cargo to Rocket High");
     Robot.ARM.setSetpoint(850); //TODO Calibrate this number or you will kill the robot.
     Robot.ARM.enable();
   }
