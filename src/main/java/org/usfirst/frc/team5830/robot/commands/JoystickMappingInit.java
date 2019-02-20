@@ -103,9 +103,19 @@ public class JoystickMappingInit extends InstantCommand {
 				Robot.testArmMiddleHatchP.whenPressed(new ArmMiddleHatchP());
 				Robot.testManipulatorLowHatchP.whenPressed(new ManipulatorLowHatchP());
 				break;
+				 case 4: //Manipulator Arm Test (Left Flightstick) hab climming test
+				Robot.leftJoy = new Joystick(0);
+				Robot.testPistonFrontHab23 = new JoystickButton(Robot.leftJoy, 3);
+				Robot.testPistonRearHab23 = new JoystickButton(Robot.leftJoy, 5);
+				Robot.testPistonManipulator = new JoystickButton(Robot.leftJoy, 9);
+				Robot.testPistonSideHab12First= new JoystickButton(Robot.leftJoy, 1);
+				Robot.testPistonSideHab12Last= new JoystickButton(Robot.leftJoy, 7);
+				break;
+
+			}
 
 			}
 
 		
     }
-}
+
