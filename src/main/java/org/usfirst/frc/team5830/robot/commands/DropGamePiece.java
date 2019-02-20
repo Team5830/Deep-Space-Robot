@@ -7,6 +7,11 @@
 
 package org.usfirst.frc.team5830.robot.commands;
 
+/**
+ * 
+ * @author Arlene A.
+ * 
+ */
 
 
 import org.usfirst.frc.team5830.robot.Robot;

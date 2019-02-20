@@ -5,6 +5,13 @@ import org.usfirst.frc.team5830.robot.Robot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+/**
+ * 
+ * @author Arlene A.
+ * 
+ */
+
+
 public class ManipulatorFloorHatchP extends Command {
   public ManipulatorFloorHatchP() {
     requires(Robot.MANIPULATOR);

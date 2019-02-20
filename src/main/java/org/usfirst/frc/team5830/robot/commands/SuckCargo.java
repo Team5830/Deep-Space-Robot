@@ -13,6 +13,13 @@ import org.usfirst.frc.team5830.robot.Robot;
 import edu.wpi.first.wpilibj.command.InstantCommand;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+/**
+ * 
+ * @author Arlene A.
+ * 
+ */
+
+
 public class SuckCargo extends InstantCommand {
   public SuckCargo() {
     requires(Robot.MANIPULATOR2);

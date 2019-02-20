@@ -17,7 +17,7 @@ import edu.wpi.first.wpilibj.DoubleSolenoid;
 
 /**
  * 
- * @author Hunter P.
+ * @author Hunter P. and Arlene A.
  *
  */
 public class RobotMap {

@@ -7,7 +7,7 @@ import edu.wpi.first.wpilibj.command.InstantCommand;
 
 /**
  * 
- * @author Hunter P.
+ * @author Hunter P. and Arlene A.
  * DEPRECATED! To avoid nullPointerExceptions, this code was moved directly into teleopInit. Still have no idea why that worked.
  * Gets the status of the SmartDashboard chooser for Joystick Input, 
  * then creates and maps joystick buttons. Axes definition in Robot.teleopPeriodic

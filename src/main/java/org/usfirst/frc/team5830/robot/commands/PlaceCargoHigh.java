@@ -9,6 +9,13 @@ package org.usfirst.frc.team5830.robot.commands;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
+/**
+ * 
+ * @author Arlene A.
+ * 
+ */
+
+
 public class PlaceCargoHigh extends CommandGroup {
   /**
    * Add your docs here.

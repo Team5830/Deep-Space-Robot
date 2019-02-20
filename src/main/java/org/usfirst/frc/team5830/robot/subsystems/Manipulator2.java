@@ -12,6 +12,13 @@ import org.usfirst.frc.team5830.robot.RobotMap;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
+ * 
+ * @author Arlene A.
+ * 
+ */
+
+
+/**
  * Add your docs here.
  */
 public class Manipulator2 extends Subsystem {
