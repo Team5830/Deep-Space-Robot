@@ -5,26 +5,26 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package org.usfirst.frc.team5830.robot.commands;
+package org.usfirst.frc.team5830.robot.subsystems;
 
-import org.usfirst.frc.team5830.robot.Robot;
+import org.usfirst.frc.team5830.robot.RobotMap;
 
-import edu.wpi.first.wpilibj.command.InstantCommand;
+import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.command.Subsystem;
 
-public class PistonSide extends InstantCommand {
-
-  public PistonSide() {
-    requires(Robot.CYLINDERSIDE);
-  }
+/**
+ * Add your docs here.
+ */
+public class Cylinders23Front extends Subsystem {
 
   @Override
-  protected void execute() {
-    if(Robot.isPistonSideExtended){
-      Robot.CYLINDERSIDE.in();
-      Robot.isPistonSideExtended = false;
-    } else {
-      Robot.CYLINDERSIDE.out();
-      Robot.isPistonSideExtended = true;
-    }
+  public void initDefaultCommand() {}
+
+  public void out(){
+    RobotMap.front23Solenoid.set(DoubleSolenoid.Value.kForward);
+  }
+
+  public void in(){
+    RobotMap.front23Solenoid.set(DoubleSolenoid.Value.kReverse);
   }
 }

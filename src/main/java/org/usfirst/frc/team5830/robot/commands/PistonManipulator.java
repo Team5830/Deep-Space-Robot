@@ -14,7 +14,7 @@ import edu.wpi.first.wpilibj.command.InstantCommand;
 public class PistonManipulator extends InstantCommand {
 
   public PistonManipulator() {
-    requires(Robot.CYLINDERREAR);
+    requires(Robot.CYLINDERMANIPULATOR);
   }
 
   @Override

@@ -17,10 +17,10 @@ public class ClimbHab extends InstantCommand {
 
   public ClimbHab() {
     requires(Robot.swerveDrive);
-    requires(Robot.CYLINDERFRONTRIGHT);
-    requires(Robot.CYLINDERFRONTLEFT);
-    requires(Robot.CYLINDERREAR);
-    requires(Robot.CYLINDERSIDE);
+    requires(Robot.CYLINDERS23Front);
+    requires(Robot.CYLINDER23REAR);
+    requires(Robot.CYLINDER12SIDEFIRST);
+    requires(Robot.CYLINDER12SIDELAST);
   }
 
   @Override
@@ -38,7 +38,7 @@ public class ClimbHab extends InstantCommand {
       public void run() {
         switch(Robot.climbHabStepCount){
           case 1: //Extend side piston
-            Robot.CYLINDERSIDE.out();
+            Robot.CYLINDER12SIDEFIRST.out();
             SmartDashboard.putString("Status", "Raising Robot from Side");
             SmartDashboard.putString("Climb Next Step", "Drive Sideways");
             break;
@@ -52,8 +52,8 @@ public class ClimbHab extends InstantCommand {
             break;
 
           case 3: //Retracts piston near hab, extends one away from hab to level robot
-            Robot.CYLINDERSIDE.in();
-            Robot.CYLINDERFRONTRIGHT.out();
+            Robot.CYLINDER12SIDEFIRST.in();
+            Robot.CYLINDER12SIDELAST.out();
             SmartDashboard.putString("Status", "Raising Robot from Side");
             SmartDashboard.putString("Climb Next Step", "Drive Onto Platform");
             break;
@@ -67,7 +67,7 @@ public class ClimbHab extends InstantCommand {
             break;
 
           case 5: //Retracts Cylinder
-            Robot.CYLINDERFRONTRIGHT.in();
+            Robot.CYLINDER12SIDELAST.in();
             SmartDashboard.putString("Status", "Retracting Last Cylinder");
             SmartDashboard.putString("Climb Next Step", "Drive Fully Onto Platform");
             break;
@@ -89,8 +89,7 @@ public class ClimbHab extends InstantCommand {
             break;
 
           case 8: //Raises front of robot
-            Robot.CYLINDERFRONTLEFT.out();
-            Robot.CYLINDERFRONTRIGHT.out();
+            Robot.CYLINDERS23Front.out();
             SmartDashboard.putString("Status", "Raising Robot from Front");
             SmartDashboard.putString("Climb Next Step", "Drive Forward");
             break;
@@ -104,9 +103,8 @@ public class ClimbHab extends InstantCommand {
             break;
 
           case 10: //Raises rear of robot
-            Robot.CYLINDERFRONTLEFT.in();
-            Robot.CYLINDERFRONTRIGHT.in();
-            Robot.CYLINDERREAR.out();
+            Robot.CYLINDERS23Front.in();
+            Robot.CYLINDER23REAR.out();
             SmartDashboard.putString("Status", "Raising Robot from Rear");
             SmartDashboard.putString("Climb Next Step", "Drive Onto Platform");
             break;
@@ -120,7 +118,7 @@ public class ClimbHab extends InstantCommand {
             break;
 
           case 12: //Retracts rear piston, robot is now fully supported by hab 3
-            Robot.CYLINDERREAR.in();
+            Robot.CYLINDER23REAR.in();
             Robot.climbHabStepCount = -4; //Resets counter five less to prevent accidental restart
             SmartDashboard.putString("Status", "Press 5 times to restart climbing");
             SmartDashboard.putString("Climb Next Step", "NONE - End of Routine");

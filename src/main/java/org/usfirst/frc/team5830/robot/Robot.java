@@ -10,11 +10,11 @@ package org.usfirst.frc.team5830.robot;
 import org.usfirst.frc.team5830.robot.commands.DriveStraight;
 import org.usfirst.frc.team5830.robot.commands.JoystickMappingInit;
 import org.usfirst.frc.team5830.robot.commands.JoystickMappingPeriodic;
-import org.usfirst.frc.team5830.robot.subsystems.CylinderFrontLeft;
-import org.usfirst.frc.team5830.robot.subsystems.CylinderFrontRight;
-import org.usfirst.frc.team5830.robot.subsystems.CylinderRear;
-import org.usfirst.frc.team5830.robot.subsystems.CylinderSide;
+import org.usfirst.frc.team5830.robot.subsystems.Cylinder12SideFirst;
+import org.usfirst.frc.team5830.robot.subsystems.Cylinder12SideLast;
+import org.usfirst.frc.team5830.robot.subsystems.Cylinder23Rear;
 import org.usfirst.frc.team5830.robot.subsystems.CylinderManipulator;
+import org.usfirst.frc.team5830.robot.subsystems.Cylinders23Front;
 import org.usfirst.frc.team5830.robot.subsystems.SonicFrontLeft;
 import org.usfirst.frc.team5830.robot.subsystems.SonicFrontRight;
 import org.usfirst.frc.team5830.robot.subsystems.GyroSubsystem;
@@ -182,10 +182,10 @@ public class Robot extends TimedRobot{
 	 */
 	
 	//Regular
-	public static final CylinderFrontLeft CYLINDERFRONTLEFT = new CylinderFrontLeft();
-	public static final CylinderFrontRight CYLINDERFRONTRIGHT = new CylinderFrontRight();
-	public static final CylinderRear CYLINDERREAR = new CylinderRear();
-	public static final CylinderSide CYLINDERSIDE = new CylinderSide();
+	public static final Cylinders23Front CYLINDERS23Front = new Cylinders23Front();
+	public static final Cylinder23Rear CYLINDER23REAR = new Cylinder23Rear();
+	public static final Cylinder12SideFirst CYLINDER12SIDEFIRST = new Cylinder12SideFirst();
+	public static final Cylinder12SideLast CYLINDER12SIDELAST = new Cylinder12SideLast();
 	public static final CylinderManipulator CYLINDERMANIPULATOR = new CylinderManipulator();
 	public static final Vacuum VACUUM = new Vacuum();
 	public static final Manipulator2 MANIPULATOR2 = new Manipulator2();

@@ -11,21 +11,20 @@ import org.usfirst.frc.team5830.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.InstantCommand;
 
-public class PistonFrontLeft extends InstantCommand {
+public class PistonSideHab12Last extends InstantCommand {
 
-  public PistonFrontLeft() {
-    requires(Robot.CYLINDERFRONTLEFT);
-    requires(Robot.CYLINDERFRONTRIGHT);
+  public PistonSideHab12Last() {
+    requires(Robot.CYLINDER12SIDELAST);
   }
 
   @Override
   protected void execute() {
-    if (Robot.isPistonFrontLeftExtended){
-      Robot.CYLINDERFRONTLEFT.in();
-      Robot.isPistonFrontLeftExtended = false;
+    if(Robot.isPistonSideExtended){
+      Robot.CYLINDER12SIDELAST.in();
+      Robot.isPistonSideExtended = false;
     } else {
-      Robot.CYLINDERFRONTLEFT.out();
-      Robot.isPistonFrontLeftExtended = true;
+      Robot.CYLINDER12SIDELAST.out();
+      Robot.isPistonSideExtended = true;
     }
   }
 }
