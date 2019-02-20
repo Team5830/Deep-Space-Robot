@@ -28,9 +28,9 @@ public class RobotMap {
 	 */
 	
 	public static Spark arm = new Spark(11);
-	public static Spark vacuum = new Spark(9);
+	public static Spark vacuum = new Spark(10);
 	//public static Spark winch = new Spark(10);
-	public static Spark manipulator = new Spark(10);
+	public static Spark manipulator = new Spark(9);
 	public static Spark manipulator2 = new Spark(12);
 
 	
