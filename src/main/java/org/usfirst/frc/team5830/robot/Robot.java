@@ -269,9 +269,10 @@ public class Robot extends TimedRobot{
 		controlType.setDefaultOption("Dual Flightsticks", 0);
 		controlType.addOption("Xbox Controller", 1);
 		controlType.addOption("Piston Test (Right Flightstick)", 2);
-        controlType.addOption("Manipulator Test (Left Flightstick)", 3);
-		SmartDashboard.putData("Control Method", controlType);		
-		
+		controlType.addOption("Manipulator Test (Left Flightstick)", 3);
+		controlType.addOption("Pneumatics Test (Right Flightstick)", 4);		
+		SmartDashboard.putData("Control Method", controlType);
+	
 		//Shows current robot command running
 		SmartDashboard.putString("Status", "Waiting for Match Start");
 		
