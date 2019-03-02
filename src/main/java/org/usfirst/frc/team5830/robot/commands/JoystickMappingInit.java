@@ -144,7 +144,41 @@ public class JoystickMappingInit extends InstantCommand {
 				Robot.testPistonSideHab12First.whenPressed(new PistonSideHab12First());
 				Robot.testPistonSideHab12Last.whenPressed(new PistonSideHab12Last());
 				break;
+				
+				case 5: //flightstick Button Test
+				Robot.leftJoy = new Joystick(0);
+				Robot.rightJoy = new Joystick(1);
+				Robot.HatchPanel = new JoystickButton(Robot.leftJoy, 1);
+				Robot.Cargo = new JoystickButton(Robot.leftJoy, 2);
+				Robot.ArmLow = new JoystickButton(Robot.leftJoy, 3);
+				Robot.ArmMiddle = new JoystickButton(Robot.leftJoy, 4);
+				Robot.ArmHigh = new JoystickButton(Robot.leftJoy, 5);
+				Robot.Floor = new JoystickButton(Robot.leftJoy, 6);
+				//Robot.LoadingStation = new JoystickButton(Robot.arduino, 7);
+				Robot.Vacuum = new JoystickButton(Robot.leftJoy, 8);
+				Robot.AlignAngle = new JoystickButton(Robot.leftJoy, 9);
+				Robot.AlignStrafe = new JoystickButton(Robot.leftJoy, 10);
+				Robot.PistonHab12First = new JoystickButton(Robot.leftJoy, 11);
+				Robot.PistonHab12Last = new JoystickButton(Robot.leftJoy, 12);
+				Robot.PistonHab23First = new JoystickButton(Robot.rightJoy, 13);
+				Robot.PistonHab23Last = new JoystickButton(Robot.rightJoy, 14);
+				Robot.ArmDefault = new JoystickButton(Robot.rightJoy, 15);
+				Robot.Orientation = new JoystickButton(Robot.rightJoy, 16);
+				Robot.ControllerInput = new JoystickButton(Robot.rightJoy, 17);
+				Robot.testManipulatorLow = new JoystickButton(Robot.rightJoy, 18);
 
+				Robot.Floor.whenPressed(new ManipulatorFloorCargo());
+				Robot.ArmDefault.whenPressed(new ArmDefault());
+				Robot.AlignAngle.whenPressed(new PixyLineStrafe());
+				Robot.AlignAngle.whenPressed(new PixyLineRotation());
+				Robot.Vacuum.whenPressed(new VacuumGamePiece());
+				Robot.PistonHab23First.whenPressed(new PistonFrontHab23());
+				Robot.PistonHab23Last.whenPressed(new PistonRearHab23());
+				Robot.PistonHab12First.whenPressed(new PistonSideHab12First());
+				Robot.PistonHab12Last.whenPressed(new PistonSideHab12Last());
+				Robot.ArmHigh.whenPressed(new ArmHigh());
+				Robot.ArmMiddle.whenPressed(new ArmMiddle());
+				Robot.ArmLow.whenPressed(new ArmLow());
 			}
 
 			}
