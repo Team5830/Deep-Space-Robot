@@ -158,13 +158,15 @@ public class JoystickMappingInit extends InstantCommand {
 				Robot.AlignAngle = new JoystickButton(Robot.leftJoy, 10);
 				Robot.AlignStrafe = new JoystickButton(Robot.leftJoy, 11);
 				Robot.PistonHab12First = new JoystickButton(Robot.leftJoy, 12);
-				Robot.PistonHab12Last = new JoystickButton(Robot.leftJoy, 2);
+				Robot.PistonHab12Last = new JoystickButton(Robot.rightJoy, 2);
 				Robot.PistonHab23First = new JoystickButton(Robot.rightJoy,3);
 				Robot.PistonHab23Last = new JoystickButton(Robot.rightJoy, 4);
 				Robot.Orientation = new JoystickButton(Robot.rightJoy, 5);
 				Robot.ControllerInput = new JoystickButton(Robot.rightJoy, 6);
-				Robot.testManipulatorLow = new JoystickButton(Robot.rightJoy, 7);
+				Robot.MoveToHatch = new JoystickButton(Robot.rightJoy, 7);
+			
 
+				Robot.MoveToHatch.whenPressed(new DistanceToHatch());
 				Robot.Floor.whenPressed(new ManipulatorFloorCargo());
 				Robot.ArmDefault.whenPressed(new ArmDefault());
 				Robot.AlignAngle.whenPressed(new PixyLineStrafe());

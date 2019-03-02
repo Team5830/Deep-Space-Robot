@@ -21,8 +21,16 @@ public class ArmLow extends Command {
   @Override
   protected void execute() {
     SmartDashboard.putString("Status", "Arm to Rocket Low");
-    Robot.ARM.setSetpoint(15); //TODO Calibrate this number or you will kill the robot.
-    Robot.ARM.enable();
+    if (Robot.isCargo) {
+      Robot.ARM.setSetpoint(200); //TODO Calibrate this number or you will kill the robot.
+      Robot.MANIPULATOR.setSetpoint(300);
+      Robot.ARM.enable();}
+      else {  //assumes it is hatchpanel 
+        Robot.ARM.setSetpoint(300); //TODO Calibrate this number or you will kill the robot.
+        Robot.MANIPULATOR.setSetpoint(300);
+        Robot.ARM.enable();}
+  
+      
   }
 
   // Make this return true when this Command no longer needs to run execute()

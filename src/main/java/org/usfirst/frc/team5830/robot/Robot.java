@@ -120,6 +120,7 @@ public class Robot extends TimedRobot{
 	public static Button ArmDefault;
 	public static Button Orientation;
 	public static Button ControllerInput;
+	public static Button MoveToHatch;
 
 	//Testing
 	public static Button testPistonFrontLeft;
