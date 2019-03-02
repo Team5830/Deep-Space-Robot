@@ -1,7 +1,5 @@
 package org.usfirst.frc.team5830.robot.commands;
 
-import javax.print.attribute.standard.OrientationRequested;
-
 import org.usfirst.frc.team5830.robot.Robot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -71,10 +69,11 @@ public class JoystickMappingInit extends InstantCommand {
 				Robot.ArmDefault = new JoystickButton(Robot.arduino, 15);
 				Robot.Orientation = new JoystickButton(Robot.arduino, 16);
 				Robot.ControllerInput = new JoystickButton(Robot.arduino, 17);
-				Robot.testManipulatorLow = new JoystickButton(Robot.arduino, 18);
 
+				Robot.Cargo.whenPressed(new IsCargo());
 				Robot.Floor.whenPressed(new ManipulatorFloorCargo());
 				Robot.ArmDefault.whenPressed(new ArmDefault());
+				Robot.ArmDefault.whenPressed(new ArmLow());
 				Robot.AlignAngle.whenPressed(new PixyLineStrafe());
 				Robot.AlignAngle.whenPressed(new PixyLineRotation());
 				Robot.Vacuum.whenPressed(new VacuumGamePiece());
@@ -82,9 +81,8 @@ public class JoystickMappingInit extends InstantCommand {
 				Robot.PistonHab23Last.whenPressed(new PistonRearHab23());
 				Robot.PistonHab12First.whenPressed(new PistonSideHab12First());
 				Robot.PistonHab12Last.whenPressed(new PistonSideHab12Last());
-				Robot.ArmHigh.whenPressed(new ArmHigh());
-				Robot.ArmMiddle.whenPressed(new ArmMiddle());
-				Robot.ArmLow.whenPressed(new ArmLow());
+
+
 
 			//Pneumatics Test (Right Flightstick)
 				//Robot.rightJoy = new Joystick(1);
