@@ -83,34 +83,5 @@ public class JoystickMappingPeriodic extends InstantCommand {
     				//	if(Robot.button2.get()) Robot.commandSpitCube.start(); else Robot.commandSpitCube.cancel();
 						break;
 				}
-				/*if (SmartDashboard.getBoolean("Cargo", true) && SmartDashboard.getBoolean("Floor", true)){
-					Robot.ArmLow.whenPressed(new PickupCargo());
-				}
-				if (SmartDashboard.getBoolean("Cargo", true) && SmartDashboard.getBoolean("Loading Station", true)){
-					Robot.ArmLow.whenPressed(new PickupCargoLS());
-				}
-				if (SmartDashboard.getBoolean("Panel", true) && SmartDashboard.getBoolean("Loading Station", true)){
-					Robot.ArmLow.whenPressed(new PickupHatchPLS());
-				}
-				if (SmartDashboard.getBoolean("Panel", true) && SmartDashboard.getBoolean("Floor", true)) {
-					Robot.ArmLow.whenPressed(new PickupHatchPFloor());
-				}
-				if (SmartDashboard.getBoolean("Cargo", true) && SmartDashboard.getBoolean("Put Game Piece Low", true)) {
-					Robot.ArmLow.whenPressed(new PlaceCargoLow());
-				}
-				if (SmartDashboard.getBoolean("Cargo", true) && SmartDashboard.getBoolean("Put Game Piece Middle", true)) {
-					Robot.ArmMiddle.whenPressed(new PlaceCargoMiddle());
-				}
-				if (SmartDashboard.getBoolean("Cargo", true) && SmartDashboard.getBoolean("Put Game Piece High", true)) {
-					Robot.ArmHigh.whenPressed(new PlaceCargoHigh());
-				}
-				if (SmartDashboard.getBoolean("Hatch", true) && SmartDashboard.getBoolean("Put Game Piece Low", true)) {
-					Robot.ArmLow.whenPressed(new PlaceHatchPLow());
-				}
-				if (SmartDashboard.getBoolean("Hatch", true) && SmartDashboard.getBoolean("Put Game Piece Middle", true)) {
-					Robot.ArmMiddle.whenPressed(new PlaceHatchPMiddle());
-				}
-				if (SmartDashboard.getBoolean("Hatch", true) && SmartDashboard.getBoolean("Put Game Piece Low", true)) {
-					Robot.ArmHigh.whenPressed(new PlaceHatchPHigh());
-				}*/
+				
 }}

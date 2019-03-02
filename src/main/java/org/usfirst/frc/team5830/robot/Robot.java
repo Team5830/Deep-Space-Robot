@@ -167,6 +167,7 @@ public class Robot extends TimedRobot{
 	public static boolean isArmLow = false;
 	public static boolean isArmMiddle = false;
 	public static boolean isArmHigh = false;
+	public static boolean isArmDefault = false;
 	public static boolean isFloor = false;
 	public static OI m_oi;
 	
@@ -262,16 +263,17 @@ public class Robot extends TimedRobot{
 		SmartDashboard.putBoolean("Field Oriented?", false);
 
 		//Choose between Cargo and Hatch Panel
-		SmartDashboard.putBoolean("Hatch Panel", false);
-		SmartDashboard.putBoolean("Cargo", false); 
-		SmartDashboard.putBoolean("Floor", false);
-		SmartDashboard.putBoolean("Loading Station", false);
-		SmartDashboard.putBoolean("Put Game Piece Low", false);
-		SmartDashboard.putBoolean("Put Game Piece Middle", false);
-		SmartDashboard.putBoolean("Put Game Piece High", false);
+		SmartDashboard.putBoolean("Hatch Panel?", false);
+		SmartDashboard.putBoolean("Cargo?", false); 
+		SmartDashboard.putBoolean("Floor?", false);
+		//SmartDashboard.putBoolean("Loading Station", false);
+		SmartDashboard.putBoolean("Arm Low?", false);
+		SmartDashboard.putBoolean("Arm Middle?", false);
+		SmartDashboard.putBoolean("Arm High?", false);
+		SmartDashboard.putBoolean("Arm Default?", false);
 		
 		//Overrides cube distance check if enabled and runs instake on button command regardless of what the LIDAR distance is.
-		SmartDashboard.putBoolean("Override Intake Sensor", true);
+		//SmartDashboard.putBoolean("Override Intake Sensor", true);
 		
 		//Initiate Gyro reset
 		SmartDashboard.putBoolean("Reset Sensors", false);
@@ -284,7 +286,8 @@ public class Robot extends TimedRobot{
 		controlType.addOption("Xbox Controller", 1);
 		controlType.addOption("Piston Test (Right Flightstick)", 2);
 		controlType.addOption("Manipulator Test (Left Flightstick)", 3);
-		controlType.addOption("Pneumatics Test (Right Flightstick)", 4);		
+		controlType.addOption("Pneumatics Test (Right Flightstick)", 4);	
+		controlType.addOption("Arduino Test (Dual Flightsticks)", 5);	
 		SmartDashboard.putData("Control Method", controlType);
 	
 		//Shows current robot command running
@@ -373,6 +376,12 @@ public class Robot extends TimedRobot{
 		//Enables SmartDashboard driveType chooser
 		isFieldOriented = SmartDashboard.getBoolean("Field Oriented?", false);
 
+		isCargo = SmartDashboard.getBoolean("Cargo?", false);
+		isHatch = SmartDashboard.getBoolean("Hatch?", false);
+		isArmLow = SmartDashboard.getBoolean("Arm Low?", false);
+		isArmMiddle = SmartDashboard.getBoolean("Arm Middle?", false);
+		isArmHigh = SmartDashboard.getBoolean("Arm High?", false);
+		isArmDefault = SmartDashboard.getBoolean("Arm Default?", false);
 
 		/**
 		 * Vision Processing
