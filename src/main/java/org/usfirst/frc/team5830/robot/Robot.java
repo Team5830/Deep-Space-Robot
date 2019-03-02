@@ -162,6 +162,7 @@ public class Robot extends TimedRobot{
 	public static boolean isPistonManipulatorExtended= false;
 	//public static boolean isHatchPanel = false;
 	public static boolean isCargo = false;
+	public static boolean isHatch = false;
 	public static boolean isArmLow = false;
 	public static boolean isArmMiddle = false;
 	public static boolean isArmHigh = false;
