@@ -5,25 +5,25 @@ import org.usfirst.frc.team5830.robot.Robot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-public class ArmDefault extends Command {
-  public ArmDefault() {
+/**
+ * 
+ * @author Arlene A.
+ * 
+ */
+
+
+public class ArmLowCargo extends Command {
+  public ArmLowCargo() {
     requires(Robot.ARM);
     }
 
   // Called just before this Command runs the first time
   @Override
   protected void execute() {
-    SmartDashboard.putString("Status", "Arm Default");
-    if (Robot.isCargo) {
-    Robot.ARM.setSetpoint(100); //TODO Calibrate this number or you will kill the robot.
-    Robot.ARM.enable();}
-    else {  //assumes it is hatchpanel 
-      Robot.ARM.setSetpoint(100); //TODO Calibrate this number or you will kill the robot.
-      Robot.ARM.enable();}
-
-    }
-
-  
+    SmartDashboard.putString("Status", "Arm with Cargo to Rocket Low");
+    Robot.ARM.setSetpoint(15); //TODO Calibrate this number or you will kill the robot.
+    Robot.ARM.enable();
+  }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override

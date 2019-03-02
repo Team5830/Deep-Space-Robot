@@ -1,5 +1,7 @@
 package org.usfirst.frc.team5830.robot.commands;
 
+import javax.print.attribute.standard.OrientationRequested;
+
 import org.usfirst.frc.team5830.robot.Robot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -36,7 +38,7 @@ public class JoystickMappingInit extends InstantCommand {
 			case 0: //General Flightsticks (Default)
 				Robot.leftJoy = new Joystick(0);
 				Robot.rightJoy = new Joystick(1);
-				//Robot.arduino = new Joystick(1);
+				//Robot.arduino = new Joystick(2);
 			
 				break;
 			case 1: //General Xbox
@@ -58,7 +60,30 @@ public class JoystickMappingInit extends InstantCommand {
 				Robot.ArmMiddle = new JoystickButton(Robot.arduino, 4);
 				Robot.ArmHigh = new JoystickButton(Robot.arduino, 5);
 				Robot.Floor = new JoystickButton(Robot.arduino, 6);
-				Robot.LoadingStation = new JoystickButton(Robot.arduino, 7);
+				//Robot.LoadingStation = new JoystickButton(Robot.arduino, 7);
+				Robot.Vacuum = new JoystickButton(Robot.arduino, 8);
+				Robot.AlignAngle = new JoystickButton(Robot.arduino, 9);
+				Robot.AlignStrafe = new JoystickButton(Robot.arduino, 10);
+				Robot.PistonHab12First = new JoystickButton(Robot.arduino, 11);
+				Robot.PistonHab12Last = new JoystickButton(Robot.arduino, 12);
+				Robot.PistonHab23First = new JoystickButton(Robot.arduino, 13);
+				Robot.PistonHab23Last = new JoystickButton(Robot.arduino, 14);
+				Robot.ArmDefault = new JoystickButton(Robot.arduino, 15);
+				Robot.Orientation = new JoystickButton(Robot.arduino, 16);
+				Robot.ControllerInput = new JoystickButton(Robot.arduino, 17);
+
+				Robot.Floor.whenPressed(new ManipulatorFloorCargo());
+				Robot.ArmDefault.whenPressed(new ArmDefault());
+				Robot.AlignAngle.whenPressed(new PixyLineStrafe());
+				Robot.AlignAngle.whenPressed(new PixyLineRotation());
+				Robot.Vacuum.whenPressed(new VacuumGamePiece());
+				Robot.PistonHab23First.whenPressed(new PistonFrontHab23());
+				Robot.PistonHab23Last.whenPressed(new PistonRearHab23());
+				Robot.PistonHab12First.whenPressed(new PistonSideHab12First());
+				Robot.PistonHab12Last.whenPressed(new PistonSideHab12Last());
+
+
+
 			//Pneumatics Test (Right Flightstick)
 				//Robot.rightJoy = new Joystick(1);
 				/*Robot.testPistonFront = new JoystickButton(Robot.rightJoy, 7);

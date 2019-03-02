@@ -110,6 +110,16 @@ public class Robot extends TimedRobot{
 	public static Button ArmHigh;
 	public static Button Floor;
 	public static Button LoadingStation;
+	public static Button Vacuum;
+	public static Button AlignAngle;
+	public static Button AlignStrafe;
+	public static Button PistonHab12First;
+	public static Button PistonHab12Last;
+	public static Button PistonHab23First;
+	public static Button PistonHab23Last;
+	public static Button ArmDefault;
+	public static Button Orientation;
+	public static Button ControllerInput;
 
 	//Testing
 	public static Button testPistonFrontLeft;
@@ -149,11 +159,12 @@ public class Robot extends TimedRobot{
 	public static boolean isPistonRearExtended = false;
 	public static boolean isPistonSideExtended = false;
 	public static boolean isPistonManipulatorExtended= false;
-	public static boolean isHatchPanel = false;
+	//public static boolean isHatchPanel = false;
 	public static boolean isCargo = false;
 	public static boolean isArmLow = false;
 	public static boolean isArmMiddle = false;
 	public static boolean isArmHigh = false;
+	public static boolean isFloor = false;
 	public static OI m_oi;
 	
 	//Swerve Drive
