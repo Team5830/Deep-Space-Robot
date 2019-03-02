@@ -20,7 +20,7 @@ public class ManipulatorLow extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void execute() {
-    SmartDashboard.putString("Status", "Manipuplator to Rocket Low");
+    SmartDashboard.putString("Status Manipulator", "Manipulator to Rocket Low");
     if (Robot.isCargo) {
         Robot.MANIPULATOR.setSetpoint(600); //TODO Calibrate this number or you will kill the robot.
         Robot.MANIPULATOR.enable();}

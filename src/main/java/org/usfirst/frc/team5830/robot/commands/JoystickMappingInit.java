@@ -143,7 +143,7 @@ public class JoystickMappingInit extends InstantCommand {
 				Robot.testPistonSideHab12Last.whenPressed(new PistonSideHab12Last());
 				break;
 				
-				case 5: //flightstick Button Test
+				case 6: //flightstick Button Test
 				Robot.leftJoy = new Joystick(0);
 				Robot.rightJoy = new Joystick(1);
 				Robot.HatchPanel = new JoystickButton(Robot.leftJoy, 2);
@@ -169,7 +169,7 @@ public class JoystickMappingInit extends InstantCommand {
 				Robot.MoveToHatch.whenPressed(new DistanceToHatch());
 				Robot.Floor.whenPressed(new ManipulatorFloorCargo());
 				Robot.ArmDefault.whenPressed(new ArmDefault());
-				Robot.AlignAngle.whenPressed(new PixyLineStrafe());
+				Robot.AlignStrafe.whenPressed(new PixyLineStrafe());
 				Robot.AlignAngle.whenPressed(new PixyLineRotation());
 				Robot.Vacuum.whenPressed(new VacuumGamePiece());
 				Robot.PistonHab23First.whenPressed(new PistonFrontHab23());

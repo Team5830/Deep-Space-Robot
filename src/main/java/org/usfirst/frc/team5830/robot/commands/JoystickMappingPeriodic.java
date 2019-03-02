@@ -71,9 +71,19 @@ public class JoystickMappingPeriodic extends InstantCommand {
     					//This weird format fixes the bug where the wheels would only spin for one tick, or not spin at all. Basically whileHeld in a raw format
     				//	if(Robot.button1.get()) Robot.commandSuckCube.start(); else Robot.commandSuckCube.cancel();
     				//	if(Robot.button2.get()) Robot.commandSpitCube.start(); else Robot.commandSpitCube.cancel();
-    					break;
+						break;
+					case 6: //Arcade RightJoy
+    					Robot.driveX = Robot.rightJoy.getRawAxis(0);
+    					Robot.driveY = Robot.rightJoy.getRawAxis(1);
+    					Robot.rotX = Robot.rightJoy.getRawAxis(2);
+    					Robot.povPosition = Robot.rightJoy.getPOV();
+    					//Links triggers to cube functions
+    					//This weird format fixes the bug where the wheels would only spin for one tick, or not spin at all. Basically whileHeld in a raw format
+    				//	if(Robot.button1.get()) Robot.commandSuckCube.start(); else Robot.commandSuckCube.cancel();
+    				//	if(Robot.button2.get()) Robot.commandSpitCube.start(); else Robot.commandSpitCube.cancel();
+						break;
 				}
-				if (SmartDashboard.getBoolean("Cargo", true) && SmartDashboard.getBoolean("Floor", true)){
+				/*if (SmartDashboard.getBoolean("Cargo", true) && SmartDashboard.getBoolean("Floor", true)){
 					Robot.ArmLow.whenPressed(new PickupCargo());
 				}
 				if (SmartDashboard.getBoolean("Cargo", true) && SmartDashboard.getBoolean("Loading Station", true)){
@@ -102,5 +112,5 @@ public class JoystickMappingPeriodic extends InstantCommand {
 				}
 				if (SmartDashboard.getBoolean("Hatch", true) && SmartDashboard.getBoolean("Put Game Piece Low", true)) {
 					Robot.ArmHigh.whenPressed(new PlaceHatchPHigh());
-				}
+				}*/
 }}
