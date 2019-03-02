@@ -12,15 +12,15 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 
 
-public class ManipulatorLow extends Command {
-  public ManipulatorLow() {
+public class ManipulatorMiddle extends Command {
+  public ManipulatorMiddle() {
     requires(Robot.MANIPULATOR);
     }
 
   // Called just before this Command runs the first time
   @Override
   protected void execute() {
-    SmartDashboard.putString("Status", "Manipuplator to Rocket Low");
+    SmartDashboard.putString("Status", "Manipuplator to Rocket Middle");
     if (Robot.isCargo) {
         Robot.MANIPULATOR.setSetpoint(600); //TODO Calibrate this number or you will kill the robot.
         Robot.MANIPULATOR.enable();}

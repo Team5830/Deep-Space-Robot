@@ -12,15 +12,15 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 
 
-public class ArmLowCargo extends Command {
-  public ArmLowCargo() {
+public class ArmLow extends Command {
+  public ArmLow() {
     requires(Robot.ARM);
     }
 
   // Called just before this Command runs the first time
   @Override
   protected void execute() {
-    SmartDashboard.putString("Status", "Arm with Cargo to Rocket Low");
+    SmartDashboard.putString("Status", "Arm to Rocket Low");
     Robot.ARM.setSetpoint(15); //TODO Calibrate this number or you will kill the robot.
     Robot.ARM.enable();
   }

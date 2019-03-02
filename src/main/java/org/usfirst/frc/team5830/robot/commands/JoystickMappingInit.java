@@ -71,6 +71,7 @@ public class JoystickMappingInit extends InstantCommand {
 				Robot.ArmDefault = new JoystickButton(Robot.arduino, 15);
 				Robot.Orientation = new JoystickButton(Robot.arduino, 16);
 				Robot.ControllerInput = new JoystickButton(Robot.arduino, 17);
+				Robot.testManipulatorLow = new JoystickButton(Robot.arduino, 18);
 
 				Robot.Floor.whenPressed(new ManipulatorFloorCargo());
 				Robot.ArmDefault.whenPressed(new ArmDefault());
@@ -81,8 +82,9 @@ public class JoystickMappingInit extends InstantCommand {
 				Robot.PistonHab23Last.whenPressed(new PistonRearHab23());
 				Robot.PistonHab12First.whenPressed(new PistonSideHab12First());
 				Robot.PistonHab12Last.whenPressed(new PistonSideHab12Last());
-
-
+				Robot.ArmHigh.whenPressed(new ArmHigh());
+				Robot.ArmMiddle.whenPressed(new ArmMiddle());
+				Robot.ArmLow.whenPressed(new ArmLow());
 
 			//Pneumatics Test (Right Flightstick)
 				//Robot.rightJoy = new Joystick(1);

@@ -5,22 +5,22 @@ import org.usfirst.frc.team5830.robot.Robot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-public class ArmDefault extends Command {
-  public ArmDefault() {
+public class ArmMiddle extends Command {
+  public ArmMiddle() {
     requires(Robot.ARM);
     }
 
   // Called just before this Command runs the first time
   @Override
   protected void execute() {
-    SmartDashboard.putString("Status", "Arm Default");
+    SmartDashboard.putString("Status", "Arm Middle");
     if (Robot.isCargo) {
-    Robot.ARM.setSetpoint(100); //TODO Calibrate this number or you will kill the robot.
-    Robot.MANIPULATOR.setSetpoint(450);
+    Robot.ARM.setSetpoint(450); //TODO Calibrate this number or you will kill the robot.
+    Robot.MANIPULATOR.setSetpoint(600);
     Robot.ARM.enable();}
     else {  //assumes it is hatchpanel 
-      Robot.ARM.setSetpoint(100); //TODO Calibrate this number or you will kill the robot.
-      Robot.MANIPULATOR.setSetpoint(500);
+      Robot.ARM.setSetpoint(500); //TODO Calibrate this number or you will kill the robot.
+      Robot.MANIPULATOR.setSetpoint(600);
       Robot.ARM.enable();}
 
     }

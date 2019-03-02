@@ -145,6 +145,7 @@ public class Robot extends TimedRobot{
 	public static Button testPistonManipulator;
 	public static Button testPistonSideHab12First;
 	public static Button testPistonSideHab12Last;
+	public static Button testManipulatorLow;
 
 
 	//Misc
