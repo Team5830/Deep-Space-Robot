@@ -13,7 +13,7 @@ public class ArmDefault extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void execute() {
-    SmartDashboard.putString(" Arm Status", "Arm Default");
+    SmartDashboard.putString("Arm Status", "Arm Default");
     if (Robot.isCargo) {
     Robot.ARM.setSetpoint(100);
     Robot.MANIPULATOR.setSetpoint(450);

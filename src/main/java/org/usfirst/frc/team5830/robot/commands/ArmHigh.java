@@ -13,7 +13,7 @@ public class ArmHigh extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void execute() {
-    SmartDashboard.putString(" Arm Status", "Arm High");
+    SmartDashboard.putString("Arm Status", "Arm High");
     if (Robot.isCargo) {
     Robot.ARM.setSetpoint(850);
     Robot.MANIPULATOR.setSetpoint(400);

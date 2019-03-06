@@ -13,7 +13,7 @@ public class ArmMiddle extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void execute() {
-    SmartDashboard.putString(" Arm Status", "Arm Middle");
+    SmartDashboard.putString("Arm Status", "Arm Middle");
     if (Robot.isCargo) {
     Robot.ARM.setSetpoint(450);
     Robot.MANIPULATOR.setSetpoint(600);
