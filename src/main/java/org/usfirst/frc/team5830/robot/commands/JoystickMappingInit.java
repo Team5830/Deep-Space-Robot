@@ -70,7 +70,7 @@ public class JoystickMappingInit extends InstantCommand {
 				Robot.Orientation = new JoystickButton(Robot.arduino, 16);
 				Robot.ControllerInput = new JoystickButton(Robot.arduino, 17);
 
-				Robot.Cargo.whenPressed(new IsCargo());
+				Robot.Cargo.whenPressed(new ChooseHatchCargo());
 				Robot.Floor.whenPressed(new ManipulatorFloorCargo());
 				Robot.ArmDefault.whenPressed(new ArmDefault());
 				Robot.ArmDefault.whenPressed(new ArmLow());
@@ -185,6 +185,49 @@ public class JoystickMappingInit extends InstantCommand {
 				Robot.ArmLow.whenPressed(new ArmLow());
 				Robot.testDropGamePiece.whenPressed(new DropGamePiece());
 				Robot.pickupCargoFloor.whenPressed(new PickupCargo());
+				break;
+
+				case 7: //DIDBoard and Flightsticks
+				Robot.leftJoy = new Joystick(0);
+				Robot.rightJoy = new Joystick(1);
+				Robot.arduino = new Joystick(3);
+
+				Robot.selectCargoOrHatch = new JoystickButton(Robot.arduino, 1);
+				
+				Robot.ArmDefault = new JoystickButton(Robot.arduino, 10);
+				Robot.Floor = new JoystickButton(Robot.arduino, 11);
+				Robot.ArmLow = new JoystickButton(Robot.arduino, 12);
+				Robot.ArmMiddle = new JoystickButton(Robot.arduino, 13);
+				Robot.ArmHigh = new JoystickButton(Robot.arduino, 14);
+
+				Robot.AlignAngle = new JoystickButton(Robot.arduino, 15);
+				Robot.AlignStrafe = new JoystickButton(Robot.arduino, 16);
+
+				Robot.pistonManipulator = new JoystickButton(Robot.arduino, 2);
+				Robot.PistonHab12First = new JoystickButton(Robot.arduino, 5);
+				Robot.PistonHab12Last = new JoystickButton(Robot.arduino, 6);
+
+				Robot.Vacuum = new JoystickButton(Robot.arduino, 3);
+
+				Robot.isField = new JoystickButton(Robot.arduino, 4); //This is a WhileHeld button. This is handled in JoystickMappingPeriodic.
+
+
+				Robot.selectCargoOrHatch.whenPressed(new ChooseHatchCargo());
+
+				Robot.ArmDefault.whenPressed(new ArmDefault());
+				Robot.Floor.whenPressed(new LOGICPickup());
+				Robot.ArmLow.whenPressed(new ArmLow());
+				Robot.ArmMiddle.whenPressed(new ArmMiddle());
+				Robot.ArmHigh.whenPressed(new ArmHigh());
+
+				Robot.AlignStrafe.whenPressed(new PixyLineStrafe());
+				Robot.AlignAngle.whenPressed(new PixyLineRotation());
+
+				Robot.pistonManipulator.whenPressed(new PistonManipulator());
+				Robot.PistonHab12First.whenPressed(new PistonSideHab12First());
+				Robot.PistonHab12Last.whenPressed(new PistonSideHab12Last());
+
+				Robot.Vacuum.whenPressed(new VacuumGamePiece());
 			}
 
 			}

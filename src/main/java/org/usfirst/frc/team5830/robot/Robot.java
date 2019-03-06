@@ -117,6 +117,8 @@ public class Robot extends TimedRobot{
 	public static Button Orientation;
 	public static Button ControllerInput;
 	public static Button MoveToHatch;
+	public static Button isField;
+	public static Button selectCargoOrHatch;
 
 	//Testing
 	public static Button testPistonFrontLeft;
@@ -159,9 +161,7 @@ public class Robot extends TimedRobot{
 	public static boolean isPistonRearExtended = false;
 	public static boolean isPistonSideExtended = false;
 	public static boolean isPistonManipulatorExtended= false;
-	//public static boolean isHatchPanel = false;
 	public static boolean isCargo = false;
-	public static boolean isHatch = false;
 	public static boolean isArmLow = false;
 	public static boolean isArmMiddle = false;
 	public static boolean isArmHigh = false;
@@ -256,9 +256,6 @@ public class Robot extends TimedRobot{
 		/**
 		 * SmartDashboard
 		 */		
-		
-		//Choose between field and robot-oriented drive
-		SmartDashboard.putBoolean("Field Oriented?", false);
 
 		//Choose between Cargo and Hatch Panel
 		SmartDashboard.putBoolean("Hatch Panel?", false);
@@ -370,12 +367,8 @@ public class Robot extends TimedRobot{
 	
 		
 		//SmartDashboard data publishing
-		
-		//Enables SmartDashboard driveType chooser
-		isFieldOriented = SmartDashboard.getBoolean("Field Oriented?", false);
 
 		isCargo = SmartDashboard.getBoolean("Cargo?", false);
-		isHatch = SmartDashboard.getBoolean("Hatch?", false);
 		isArmLow = SmartDashboard.getBoolean("Arm Low?", false);
 		isArmMiddle = SmartDashboard.getBoolean("Arm Middle?", false);
 		isArmHigh = SmartDashboard.getBoolean("Arm High?", false);

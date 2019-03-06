@@ -81,6 +81,15 @@ public class JoystickMappingPeriodic extends InstantCommand {
     				//	if(Robot.button1.get()) Robot.commandSuckCube.start(); else Robot.commandSuckCube.cancel();
     				//	if(Robot.button2.get()) Robot.commandSpitCube.start(); else Robot.commandSpitCube.cancel();
 						break;
+
+					case 7:
+					Robot.driveX = Robot.leftJoy.getRawAxis(0);
+					Robot.driveY = Robot.leftJoy.getRawAxis(1);
+					Robot.rotX = Robot.rightJoy.getRawAxis(0);
+					Robot.povPosition = Robot.rightJoy.getPOV();
+					
+					//Sets field vs robot oriented according to whether the button is pressed or not
+					Robot.isFieldOriented = Robot.isField.get();
 				}
 				
 }}
