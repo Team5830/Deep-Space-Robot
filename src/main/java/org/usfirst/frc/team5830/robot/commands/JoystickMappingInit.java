@@ -164,8 +164,12 @@ public class JoystickMappingInit extends InstantCommand {
 				Robot.Orientation = new JoystickButton(Robot.rightJoy, 5);
 				Robot.ControllerInput = new JoystickButton(Robot.rightJoy, 6);
 				Robot.MoveToHatch = new JoystickButton(Robot.rightJoy, 7);
-			
+				Robot.testDropGamePiece = new JoystickButton(Robot.rightJoy, 8);
+				Robot.pickupCargoFloor = new JoystickButton(Robot.rightJoy, 9);
+				Robot.pistonManipulator = new JoystickButton(Robot.rightJoy, 10);
 
+
+				Robot.pistonManipulator.whenPressed(new PistonManipulator());
 				Robot.MoveToHatch.whenPressed(new DistanceToHatch());
 				Robot.Floor.whenPressed(new ManipulatorFloorCargo());
 				Robot.ArmDefault.whenPressed(new ArmDefault());
@@ -179,6 +183,8 @@ public class JoystickMappingInit extends InstantCommand {
 				Robot.ArmHigh.whenPressed(new ArmHigh());
 				Robot.ArmMiddle.whenPressed(new ArmMiddle());
 				Robot.ArmLow.whenPressed(new ArmLow());
+				Robot.testDropGamePiece.whenPressed(new DropGamePiece());
+				Robot.pickupCargoFloor.whenPressed(new PickupCargo());
 			}
 
 			}

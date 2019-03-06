@@ -17,11 +17,13 @@ public class ArmMiddle extends Command {
     if (Robot.isCargo) {
     Robot.ARM.setSetpoint(450); //TODO Calibrate this number or you will kill the robot.
     Robot.MANIPULATOR.setSetpoint(600);
-    Robot.ARM.enable();}
+    Robot.ARM.enable();
+    Robot.MANIPULATOR.enable();}
     else {  //assumes it is hatchpanel 
       Robot.ARM.setSetpoint(500); //TODO Calibrate this number or you will kill the robot.
       Robot.MANIPULATOR.setSetpoint(600);
-      Robot.ARM.enable();}
+      Robot.ARM.enable();
+      Robot.MANIPULATOR.enable();}
 
     }
 
