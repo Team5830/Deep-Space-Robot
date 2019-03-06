@@ -30,7 +30,7 @@ public class SuckCargo extends InstantCommand {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    SmartDashboard.putString("status", "MANIPULATOR2 Game Piece");
+    SmartDashboard.putString("Status", "MANIPULATOR2 Game Piece");
     Robot.MANIPULATOR2.suck();
   }
 
@@ -38,7 +38,7 @@ public class SuckCargo extends InstantCommand {
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    SmartDashboard.putString("status", "Waiting For Next Command");
+    SmartDashboard.putString("Status", "Waiting For Next Command");
   }
 
   // Called when another command which requires one or more of the same

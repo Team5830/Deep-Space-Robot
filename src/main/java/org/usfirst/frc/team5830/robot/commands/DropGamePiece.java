@@ -28,7 +28,7 @@ public class DropGamePiece extends InstantCommand {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    SmartDashboard.putString("status", "Drop Game Piece");
+    SmartDashboard.putString("Status", "Drop Game Piece");
     Robot.VACUUM.stop();
   }
 
@@ -36,7 +36,7 @@ public class DropGamePiece extends InstantCommand {
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    SmartDashboard.putString("status", "Waiting For Next Command");
+    SmartDashboard.putString("Status", "Waiting For Next Command");
   }
 
   // Called when another command which requires one or more of the same
