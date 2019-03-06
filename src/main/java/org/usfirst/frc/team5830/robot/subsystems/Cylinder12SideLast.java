@@ -22,10 +22,12 @@ public class Cylinder12SideLast extends Subsystem {
 
   public void out(){
     RobotMap.side12lastSolenoid.set(DoubleSolenoid.Value.kForward);
+    //TODO Turn ON DIDBoard LED
   }
 
   public void in(){
     RobotMap.side12lastSolenoid.set(DoubleSolenoid.Value.kReverse);
+    //TODO Turn OFF DIDBoard LED
   }
 
 }

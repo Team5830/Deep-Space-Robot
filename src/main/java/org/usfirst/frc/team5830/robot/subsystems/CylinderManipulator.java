@@ -24,10 +24,12 @@ public class CylinderManipulator extends Subsystem {
   public void out(){
     RobotMap.manipulatorSolenoid.set(DoubleSolenoid.Value.kForward);
     Robot.isPistonManipulatorExtended = true;
+    //TODO Turn ON DIDBoard LED
   }
 
   public void in(){
     RobotMap.manipulatorSolenoid.set(DoubleSolenoid.Value.kReverse);
     Robot.isPistonManipulatorExtended = false;
+    //TODO Turn OFF DIDBoard LED
   }
 }

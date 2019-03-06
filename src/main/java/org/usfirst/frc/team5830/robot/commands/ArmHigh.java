@@ -14,6 +14,8 @@ public class ArmHigh extends Command {
   @Override
   protected void execute() {
     SmartDashboard.putString("Arm Status", "Arm High");
+    //TODO Turn ON High DIDBoard LED
+    //TODO Turn OFF Default, Floor, Low, Mid DIDBoard LEDs
     if (Robot.isCargo) {
     Robot.ARM.setSetpoint(850);
     Robot.MANIPULATOR.setSetpoint(400);

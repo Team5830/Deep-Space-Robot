@@ -14,6 +14,8 @@ public class ArmDefault extends Command {
   @Override
   protected void execute() {
     SmartDashboard.putString("Arm Status", "Arm Default");
+    //TODO Turn ON Default DIDBoard LED
+    //TODO Turn OFF Floor, Low, Mid, High DIDBoard LEDs
     if (Robot.isCargo) {
     Robot.ARM.setSetpoint(100);
     Robot.MANIPULATOR.setSetpoint(450);

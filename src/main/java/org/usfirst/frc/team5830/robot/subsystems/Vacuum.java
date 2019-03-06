@@ -25,10 +25,12 @@ public class Vacuum extends Subsystem {
 
   public void suck(){
     RobotMap.vacuum.set(1.0);
+    //TODO Turn ON DIDBoard LED
   } 
 
   public void stop(){
     RobotMap.vacuum.set(0);
+    //TODO Turn OFF DIDBoard LED
   }
 
   @Override

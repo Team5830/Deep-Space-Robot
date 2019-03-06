@@ -21,6 +21,8 @@ public class ArmLowHatchP extends Command {
   @Override
   protected void execute() {
     SmartDashboard.putString("Status", "Arm with Hatch to Rocket Low");
+    //TODO Turn ON Floor DIDBoard LED
+    //TODO Turn OFF Default, Low, Mid, High DIDBoard LEDs
     Robot.ARM.setSetpoint(20);
     Robot.ARM.enable();
   }

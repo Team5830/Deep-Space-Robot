@@ -14,6 +14,8 @@ public class ArmMiddle extends Command {
   @Override
   protected void execute() {
     SmartDashboard.putString("Arm Status", "Arm Middle");
+    //TODO Turn ON Mid DIDBoard LED
+    //TODO Turn OFF Default, Floor, Low, High DIDBoard LEDs
     if (Robot.isCargo) {
     Robot.ARM.setSetpoint(450);
     Robot.MANIPULATOR.setSetpoint(600);

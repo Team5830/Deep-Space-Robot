@@ -26,11 +26,11 @@ public class ChooseHatchCargo extends InstantCommand {
   protected void initialize() {
     if(Robot.isCargo){
       Robot.isCargo = false;
-      //TODO Place LED feedback here
+      //TODO Place DIDBoard LED feedback here
     }
     else{
       Robot.isCargo = true;
-      //TODO Place LED feedback here
+      //TODO Place DIDBoard LED feedback here
     }
   }
 
