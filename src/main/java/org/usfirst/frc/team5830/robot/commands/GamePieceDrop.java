@@ -18,8 +18,8 @@ import org.usfirst.frc.team5830.robot.Robot;
 import edu.wpi.first.wpilibj.command.InstantCommand;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-public class DropGamePiece extends InstantCommand {
-  public DropGamePiece() {
+public class GamePieceDrop extends InstantCommand {
+  public GamePieceDrop() {
     requires(Robot.VACUUM);
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);

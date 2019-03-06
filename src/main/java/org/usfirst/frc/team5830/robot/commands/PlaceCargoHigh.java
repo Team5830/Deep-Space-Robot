@@ -23,8 +23,8 @@ public class PlaceCargoHigh extends CommandGroup {
   public PlaceCargoHigh() {
     addSequential(new ArmHighCargo());
     addSequential(new ManipulatorHighCargo());
-    addSequential(new PistonManipulator());
-    addSequential(new DropGamePiece());
+    addSequential(new ManipulatorPistonOut());
+    addSequential(new GamePieceDrop());
     // Add Commands here:
     // e.g. addSequential(new Command1());
     // addSequential(new Command2());

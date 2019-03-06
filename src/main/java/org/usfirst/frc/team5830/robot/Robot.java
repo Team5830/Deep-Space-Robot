@@ -129,8 +129,8 @@ public class Robot extends TimedRobot{
 	public static Button testClimbHab;
 	public static Button testArmMiddleCargo;
 	public static Button testManipulatorMiddleHatchP;
-	public static Button testVacuumGamePiece;
-	public static Button testDropGamePiece;
+	public static Button testGamePieceVacuum;
+	public static Button testGamePieceDrop;
 	public static Button testArmHighCargo; 
 	public static Button testManipulatorMiddleCargo;
 	public static Button testManipulatorHighCargo;
@@ -225,7 +225,7 @@ public class Robot extends TimedRobot{
 	 */
 	private static Command joystickMappingInit = new JoystickMappingInit();
 	private static Command joystickMappingPeriodic = new JoystickMappingPeriodic();
-	//public static Command Vacuum = new VacuumGamePiece();
+	//public static Command Vacuum = new GamePieceVacuum();
 	
 	/**
 	 * This function is run when the robot is first started up and should be

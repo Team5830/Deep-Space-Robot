@@ -23,8 +23,8 @@ public class PickupHatchPFloor extends CommandGroup {
   public PickupHatchPFloor() {
     addSequential(new ArmLowHatchP());
     addSequential(new ManipulatorFloorHatchP());
-    addSequential(new PistonManipulator());
-    addSequential(new VacuumGamePiece());
+    addSequential(new ManipulatorPistonOut());
+    addSequential(new GamePieceVacuum());
     // Add Commands here:
     // e.g. addSequential(new Command1());
     // addSequential(new Command2());

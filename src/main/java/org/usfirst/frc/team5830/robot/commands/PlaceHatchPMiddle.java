@@ -22,8 +22,9 @@ public class PlaceHatchPMiddle extends CommandGroup {
    */
   public PlaceHatchPMiddle() {
     addSequential(new ArmMiddleHatchP());
+    addSequential(new ManipulatorPistonIn());
     addSequential(new ManipulatorMiddleHatchP());
-    addSequential(new DropGamePiece());
+    addSequential(new GamePieceDrop());
     // Add Commands here:
     // e.g. addSequential(new Command1());
     // addSequential(new Command2());

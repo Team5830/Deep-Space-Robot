@@ -76,7 +76,7 @@ public class JoystickMappingInit extends InstantCommand {
 				Robot.ArmDefault.whenPressed(new ArmLow());
 				Robot.AlignAngle.whenPressed(new PixyLineStrafe());
 				Robot.AlignAngle.whenPressed(new PixyLineRotation());
-				Robot.Vacuum.whenPressed(new VacuumGamePiece());
+				Robot.Vacuum.whenPressed(new GamePieceVacuum());
 				Robot.PistonHab23First.whenPressed(new PistonFrontHab23());
 				Robot.PistonHab23Last.whenPressed(new PistonRearHab23());
 				Robot.PistonHab12First.whenPressed(new PistonSideHab12First());
@@ -105,10 +105,10 @@ public class JoystickMappingInit extends InstantCommand {
 				Robot.testArmHighCargo = new JoystickButton(Robot.leftJoy, 3);
 				Robot.testArmLowHatchP = new JoystickButton(Robot.leftJoy, 5);
 				Robot.testArmMiddleHatchP = new JoystickButton(Robot.leftJoy, 9);
-				Robot.testVacuumGamePiece = new JoystickButton(Robot.leftJoy, 1);
+				//Robot.testGamePieceVacuum = new JoystickButton(Robot.leftJoy, 1);
 				Robot.testArmMiddleCargo= new JoystickButton(Robot.leftJoy, 7);
 				Robot.testManipulatorMiddleHatchP = new JoystickButton(Robot.leftJoy, 10);
-				Robot.testDropGamePiece = new JoystickButton(Robot.leftJoy, 2);
+				//Robot.testGamePieceDrop = new JoystickButton(Robot.leftJoy, 2);
 				Robot.testManipulatorHighCargo = new JoystickButton(Robot.leftJoy, 4);
 				Robot.testManipulatorMiddleCargo = new JoystickButton(Robot.leftJoy, 8);
 				Robot.testManipulatorLowHatchP = new JoystickButton(Robot.leftJoy, 6);
@@ -120,10 +120,10 @@ public class JoystickMappingInit extends InstantCommand {
 				Robot.testManipulatorHighCargo.whenPressed(new ManipulatorHighCargo());
 				Robot.testArmHighCargo.whenPressed(new ArmHighCargo());
 				Robot.testManipulatorMiddleCargo.whenPressed(new ManipulatorMiddleCargo());
-				Robot.testVacuumGamePiece.whenPressed(new VacuumGamePiece());
+				//Robot.testGamePieceVacuum.whenPressed(new GamePieceVacuum());
 				Robot.testArmMiddleCargo.whenPressed(new ArmMiddleCargo());
 				Robot.testManipulatorMiddleHatchP.whenPressed(new ManipulatorMiddleHatchP());
-				Robot.testDropGamePiece.whenPressed(new DropGamePiece());
+				//Robot.testGamePieceDrop.whenPressed(new GamePieceDrop());
 				Robot.testArmLowHatchP.whenPressed(new ArmLowHatchP());
 				Robot.testArmMiddleHatchP.whenPressed(new ArmMiddleHatchP());
 				Robot.testManipulatorLowHatchP.whenPressed(new ManipulatorLowHatchP());
@@ -164,7 +164,7 @@ public class JoystickMappingInit extends InstantCommand {
 				Robot.Orientation = new JoystickButton(Robot.rightJoy, 5);
 				Robot.ControllerInput = new JoystickButton(Robot.rightJoy, 6);
 				Robot.MoveToHatch = new JoystickButton(Robot.rightJoy, 7);
-				Robot.testDropGamePiece = new JoystickButton(Robot.rightJoy, 8);
+				//Robot.testGamePieceDrop = new JoystickButton(Robot.rightJoy, 8);
 				Robot.pickupCargoFloor = new JoystickButton(Robot.rightJoy, 9);
 				Robot.pistonManipulator = new JoystickButton(Robot.rightJoy, 10);
 
@@ -175,7 +175,7 @@ public class JoystickMappingInit extends InstantCommand {
 				Robot.ArmDefault.whenPressed(new ArmDefault());
 				Robot.AlignStrafe.whenPressed(new PixyLineStrafe());
 				Robot.AlignAngle.whenPressed(new PixyLineRotation());
-				Robot.Vacuum.whenPressed(new VacuumGamePiece());
+				Robot.Vacuum.whenPressed(new GamePieceVacuum());
 				Robot.PistonHab23First.whenPressed(new PistonFrontHab23());
 				Robot.PistonHab23Last.whenPressed(new PistonRearHab23());
 				Robot.PistonHab12First.whenPressed(new PistonSideHab12First());
@@ -183,7 +183,7 @@ public class JoystickMappingInit extends InstantCommand {
 				Robot.ArmHigh.whenPressed(new ArmHigh());
 				Robot.ArmMiddle.whenPressed(new ArmMiddle());
 				Robot.ArmLow.whenPressed(new ArmLow());
-				Robot.testDropGamePiece.whenPressed(new DropGamePiece());
+				//Robot.testGamePieceDrop.whenPressed(new GamePieceDrop());
 				Robot.pickupCargoFloor.whenPressed(new PickupCargo());
 				break;
 
@@ -227,7 +227,7 @@ public class JoystickMappingInit extends InstantCommand {
 				Robot.PistonHab12First.whenPressed(new PistonSideHab12First());
 				Robot.PistonHab12Last.whenPressed(new PistonSideHab12Last());
 
-				Robot.Vacuum.whenPressed(new VacuumGamePiece());
+				Robot.Vacuum.whenPressed(new GamePieceVacuum());
 			}
 
 			}

@@ -17,9 +17,9 @@ public class PlaceHatchPHigh extends CommandGroup {
    */
   public PlaceHatchPHigh() {
     addSequential(new ArmHighHatchP());
+    addSequential(new ManipulatorPistonOut());
     addSequential(new ManipulatorHighHatchP());
-    addSequential(new PistonManipulator());
-    addSequential(new DropGamePiece());
+    addSequential(new GamePieceDrop());
     // Add Commands here:
     // e.g. addSequential(new Command1());
     // addSequential(new Command2());

@@ -20,8 +20,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 
 
-public class VacuumGamePiece extends InstantCommand {
-  public VacuumGamePiece() {
+public class GamePieceVacuum extends InstantCommand {
+  public GamePieceVacuum() {
     requires(Robot.VACUUM);
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);

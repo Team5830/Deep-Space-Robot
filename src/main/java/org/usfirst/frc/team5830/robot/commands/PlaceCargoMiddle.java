@@ -22,8 +22,9 @@ public class PlaceCargoMiddle extends CommandGroup {
    */
   public PlaceCargoMiddle() {
     addSequential(new ArmMiddleCargo());
+    addSequential(new ManipulatorPistonIn());
     addSequential(new ManipulatorMiddleCargo());
-    addSequential(new DropGamePiece());
+    addSequential(new GamePieceDrop());
     // Add Commands here:
     // e.g. addSequential(new Command1());
     // addSequential(new Command2());
