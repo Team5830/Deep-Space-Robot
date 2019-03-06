@@ -57,11 +57,11 @@ public class Robot extends TimedRobot{
 	//Distance from LIDAR cube has to be to switch intake from sucking to spitting
 	public static final double cubeDistance = 9.5; //Inches
 	//Maximum arm speed up
-	public static final double maxArmSpeedUp = .5; //Between 0 and 1. NEGATIVE NUMBERS WILL NOT WORK!
+	public static final double maxArmSpeedUp = .6; //Between 0 and 1. NEGATIVE NUMBERS WILL NOT WORK!
 	//Maximum arm speed up
 	public static final double maxArmSpeedDown = -.5; //Between -1 and 0. POSITIVE NUMBERS WILL NOT WORK!
 	//Maximum manipulator speed up
-	public static final double maxManipulatorSpeedUp = .25; //Between 0 and 1. NEGATIVE NUMBERS WILL NOT WORK!
+	public static final double maxManipulatorSpeedUp = .35; //Between 0 and 1. NEGATIVE NUMBERS WILL NOT WORK!
 	//Maximum manipulator speed up
 	public static final double maxManipulatorSpeedDown = -0.25; //Between -1 and 0. POSITIVE NUMBERS WILL NOT WORK!
 	//Pixy 2 line margin of error
@@ -143,6 +143,8 @@ public class Robot extends TimedRobot{
 	public static Button testPistonSideHab12First;
 	public static Button testPistonSideHab12Last;
 	public static Button testManipulatorLow;
+	public static Button pickupCargoFloor;
+	public static Button pistonManipulator;
 
 
 	//Misc
@@ -283,7 +285,7 @@ public class Robot extends TimedRobot{
 		controlType.addOption("Piston Test (Right Flightstick)", 2);
 		controlType.addOption("Manipulator Test (Left Flightstick)", 3);
 		controlType.addOption("Pneumatics Test (Right Flightstick)", 4);	
-		controlType.addOption("Arduino Test (Dual Flightsticks)", 5);	
+		controlType.addOption("Arduino Test (Dual Flightsticks)", 6);	
 		SmartDashboard.putData("Control Method", controlType);
 	
 		//Shows current robot command running

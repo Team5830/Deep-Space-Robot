@@ -62,20 +62,20 @@ public class JoystickMappingPeriodic extends InstantCommand {
     				//	if(Robot.button2.get()) Robot.commandSpitCube.start(); else Robot.commandSpitCube.cancel();
     					break;
     				case 5: //Arcade RightJoy
-    					Robot.driveX = Robot.rightJoy.getRawAxis(0);
-    					Robot.driveY = Robot.rightJoy.getRawAxis(1);
-    					Robot.rotX = Robot.rightJoy.getRawAxis(2);
-    					Robot.povPosition = Robot.rightJoy.getPOV();
+				//	Robot.driveX = Robot.leftJoy.getRawAxis(0);
+				//	Robot.driveY = Robot.leftJoy.getRawAxis(1);
+				//	Robot.rotX = Robot.rightJoy.getRawAxis(0);
+				//	Robot.povPosition = Robot.rightJoy.getPOV();
     					//Links triggers to cube functions
     					//This weird format fixes the bug where the wheels would only spin for one tick, or not spin at all. Basically whileHeld in a raw format
     				//	if(Robot.button1.get()) Robot.commandSuckCube.start(); else Robot.commandSuckCube.cancel();
     				//	if(Robot.button2.get()) Robot.commandSpitCube.start(); else Robot.commandSpitCube.cancel();
 						break;
 					case 6: //Arcade RightJoy
-    					Robot.driveX = Robot.rightJoy.getRawAxis(0);
-    					Robot.driveY = Robot.rightJoy.getRawAxis(1);
-    					Robot.rotX = Robot.rightJoy.getRawAxis(2);
-    					Robot.povPosition = Robot.rightJoy.getPOV();
+    				Robot.driveX = Robot.leftJoy.getRawAxis(0);
+					Robot.driveY = Robot.leftJoy.getRawAxis(1);
+					Robot.rotX = Robot.rightJoy.getRawAxis(0);
+					Robot.povPosition = Robot.rightJoy.getPOV();
     					//Links triggers to cube functions
     					//This weird format fixes the bug where the wheels would only spin for one tick, or not spin at all. Basically whileHeld in a raw format
     				//	if(Robot.button1.get()) Robot.commandSuckCube.start(); else Robot.commandSuckCube.cancel();
