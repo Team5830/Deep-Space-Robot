@@ -21,7 +21,7 @@ public class ArmMiddleCargo extends Command {
   @Override
   protected void execute() {
     SmartDashboard.putString("Status", "Arm with Cargo Rocket Middle");
-    Robot.ARM.setSetpoint(450);
+    if(Robot.isArmAutomatic) Robot.ARM.setSetpoint(450);
     Robot.ARM.enable();
   }
 

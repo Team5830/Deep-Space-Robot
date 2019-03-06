@@ -24,12 +24,12 @@ public class ArmLow extends Command {
     //TODO Turn ON Low DIDBoard LED
     //TODO Turn OFF Default, Floor, Mid, High DIDBoard LEDs
     if (Robot.isCargo) {
-      Robot.ARM.setSetpoint(300); //TODO Calibrate this number or you will kill the robot.
+      if(Robot.isArmAutomatic) Robot.ARM.setSetpoint(300); //TODO Calibrate this number or you will kill the robot.
       Robot.MANIPULATOR.setSetpoint(1200);
       Robot.ARM.enable();
     Robot.MANIPULATOR.enable();}
       else {  //assumes it is hatchpanel 
-        Robot.ARM.setSetpoint(300);
+        if(Robot.isArmAutomatic) Robot.ARM.setSetpoint(300);
         Robot.MANIPULATOR.setSetpoint(300);
         Robot.ARM.enable();
       Robot.MANIPULATOR.enable();}

@@ -17,12 +17,12 @@ public class ArmMiddle extends Command {
     //TODO Turn ON Mid DIDBoard LED
     //TODO Turn OFF Default, Floor, Low, High DIDBoard LEDs
     if (Robot.isCargo) {
-    Robot.ARM.setSetpoint(450);
+      if(Robot.isArmAutomatic)Robot.ARM.setSetpoint(450);
     Robot.MANIPULATOR.setSetpoint(600);
     Robot.ARM.enable();
     Robot.MANIPULATOR.enable();}
     else {  //assumes it is hatchpanel 
-      Robot.ARM.setSetpoint(500);
+      if(Robot.isArmAutomatic) Robot.ARM.setSetpoint(500);
       Robot.MANIPULATOR.setSetpoint(600);
       Robot.ARM.enable();
       Robot.MANIPULATOR.enable();}

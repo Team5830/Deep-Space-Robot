@@ -7,6 +7,7 @@
 
 package org.usfirst.frc.team5830.robot;
 
+import org.usfirst.frc.team5830.robot.commands.ArmManual;
 import org.usfirst.frc.team5830.robot.commands.DriveStraight;
 import org.usfirst.frc.team5830.robot.commands.JoystickMappingInit;
 import org.usfirst.frc.team5830.robot.commands.JoystickMappingPeriodic;
@@ -74,6 +75,8 @@ public class Robot extends TimedRobot{
 	public static final double habDistance = 4; //inches
 	//Margin of error allowed when using Ultrasonic for finding distance
 	public static final int ultrasonicError = 1; //Inches
+	//Highest arm position
+	public static final int armMaxHeight = 950;
 
 	/**
 	 * System-Defined Variables
@@ -167,6 +170,7 @@ public class Robot extends TimedRobot{
 	public static boolean isArmHigh = false;
 	public static boolean isArmDefault = false;
 	public static boolean isFloor = false;
+	public static boolean isArmAutomatic = true;
 	public static OI m_oi;
 	
 	//Swerve Drive
@@ -225,6 +229,7 @@ public class Robot extends TimedRobot{
 	 */
 	private static Command joystickMappingInit = new JoystickMappingInit();
 	private static Command joystickMappingPeriodic = new JoystickMappingPeriodic();
+	private static Command armManual = new ArmManual();
 	//public static Command Vacuum = new GamePieceVacuum();
 	
 	/**
@@ -382,6 +387,10 @@ public class Robot extends TimedRobot{
 		pixy1y0 = pixy1y0Network.getDouble(0);
 		pixy1x1 = pixy1x1Network.getDouble(0);
 		pixy1y1 = pixy1y1Network.getDouble(0);
+
+		//Starts the arm's joystick control if automatic arm is disabled
+		if(!isArmAutomatic) armManual.start();
+
 		}
 
 

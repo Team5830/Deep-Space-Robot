@@ -23,7 +23,7 @@ public class ArmLowCargo extends Command {
     SmartDashboard.putString("Status", "Arm with Cargo to Rocket Low");
     //TODO Turn ON Floor DIDBoard LED
     //TODO Turn OFF Default, Low, Mid, High DIDBoard LEDs
-    Robot.ARM.setSetpoint(100); //TODO Calibrate this number or you will kill the robot.
+    if(Robot.isArmAutomatic) Robot.ARM.setSetpoint(100); //TODO Calibrate this number or you will kill the robot.
     Robot.ARM.enable();
   }
 

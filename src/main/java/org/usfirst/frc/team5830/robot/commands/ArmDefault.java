@@ -17,11 +17,11 @@ public class ArmDefault extends Command {
     //TODO Turn ON Default DIDBoard LED
     //TODO Turn OFF Floor, Low, Mid, High DIDBoard LEDs
     if (Robot.isCargo) {
-    Robot.ARM.setSetpoint(100);
+    if(Robot.isArmAutomatic) Robot.ARM.setSetpoint(100);
     Robot.MANIPULATOR.setSetpoint(450);
     Robot.ARM.enable();}
     else {  //assumes it is hatchpanel 
-      Robot.ARM.setSetpoint(100);
+      if(Robot.isArmAutomatic) Robot.ARM.setSetpoint(100);
       Robot.MANIPULATOR.setSetpoint(500);
       Robot.ARM.enable();}
 

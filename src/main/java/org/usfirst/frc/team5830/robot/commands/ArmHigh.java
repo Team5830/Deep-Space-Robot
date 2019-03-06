@@ -17,13 +17,13 @@ public class ArmHigh extends Command {
     //TODO Turn ON High DIDBoard LED
     //TODO Turn OFF Default, Floor, Low, Mid DIDBoard LEDs
     if (Robot.isCargo) {
-    Robot.ARM.setSetpoint(850);
+      if(Robot.isArmAutomatic) Robot.ARM.setSetpoint(Robot.armMaxHeight);
     Robot.MANIPULATOR.setSetpoint(400);
     Robot.CYLINDERMANIPULATOR.out();
       Robot.isPistonManipulatorExtended = true;
     Robot.ARM.enable();}
     else {  //assumes it is hatchpanel 
-      Robot.ARM.setSetpoint(850);
+      if(Robot.isArmAutomatic) Robot.ARM.setSetpoint(Robot.armMaxHeight);
       Robot.MANIPULATOR.setSetpoint(600);
       Robot.CYLINDERMANIPULATOR.out();
       Robot.isPistonManipulatorExtended = true;

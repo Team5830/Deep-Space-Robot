@@ -20,7 +20,7 @@ public class ArmHighHatchP extends Command {
   @Override
   protected void execute() {
     SmartDashboard.putString("Status", "Arm with Hatch to Rocket High");
-    Robot.ARM.setSetpoint(900);
+    if(Robot.isArmAutomatic) Robot.ARM.setSetpoint(900);
     Robot.ARM.enable();
   }
 

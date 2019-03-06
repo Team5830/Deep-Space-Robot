@@ -21,7 +21,7 @@ public class ArmMiddleHatchP extends Command {
   @Override
   protected void execute() {
     SmartDashboard.putString("Status", "Arm with Hatch to Rocket Middle");
-    Robot.ARM.setSetpoint(500);
+    if(Robot.isArmAutomatic) Robot.ARM.setSetpoint(500);
     Robot.ARM.enable();
   }
 

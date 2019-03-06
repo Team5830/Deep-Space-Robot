@@ -20,7 +20,7 @@ public class ArmHighCargo extends Command {
   @Override
   protected void execute() {
     SmartDashboard.putString("Status", "Arm with Cargo to Rocket High");
-    Robot.ARM.setSetpoint(850);
+    if(Robot.isArmAutomatic) Robot.ARM.setSetpoint(Robot.armMaxHeight);
     Robot.ARM.enable();
   }
 
