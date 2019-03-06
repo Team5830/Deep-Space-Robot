@@ -22,11 +22,11 @@ public class ArmLow extends Command {
   protected void execute() {
     SmartDashboard.putString("Arm Status", "Arm to Rocket Low");
     if (Robot.isCargo) {
-      Robot.ARM.setSetpoint(200); //TODO Calibrate this number or you will kill the robot.
+      Robot.ARM.setSetpoint(200);
       Robot.MANIPULATOR.setSetpoint(300);
       Robot.ARM.enable();}
       else {  //assumes it is hatchpanel 
-        Robot.ARM.setSetpoint(300); //TODO Calibrate this number or you will kill the robot.
+        Robot.ARM.setSetpoint(300);
         Robot.MANIPULATOR.setSetpoint(300);
         Robot.ARM.enable();}
   

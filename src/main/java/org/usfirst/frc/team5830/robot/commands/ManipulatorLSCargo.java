@@ -21,7 +21,7 @@ public class ManipulatorLSCargo extends Command {
   @Override
   protected void execute() {
     SmartDashboard.putString("Status Manipulator", "Manipulator Cargo to Rocket Low");
-    Robot.MANIPULATOR.setSetpoint(600); //TODO Calibrate this number or you will kill the robot.
+    Robot.MANIPULATOR.setSetpoint(600);
     Robot.MANIPULATOR.enable();
   }
 

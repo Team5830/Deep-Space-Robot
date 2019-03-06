@@ -15,11 +15,11 @@ public class ArmMiddle extends Command {
   protected void execute() {
     SmartDashboard.putString(" Arm Status", "Arm Middle");
     if (Robot.isCargo) {
-    Robot.ARM.setSetpoint(450); //TODO Calibrate this number or you will kill the robot.
+    Robot.ARM.setSetpoint(450);
     Robot.MANIPULATOR.setSetpoint(600);
     Robot.ARM.enable();}
     else {  //assumes it is hatchpanel 
-      Robot.ARM.setSetpoint(500); //TODO Calibrate this number or you will kill the robot.
+      Robot.ARM.setSetpoint(500);
       Robot.MANIPULATOR.setSetpoint(600);
       Robot.ARM.enable();}
 

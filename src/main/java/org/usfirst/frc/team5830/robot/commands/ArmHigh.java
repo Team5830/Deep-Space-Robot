@@ -15,13 +15,13 @@ public class ArmHigh extends Command {
   protected void execute() {
     SmartDashboard.putString(" Arm Status", "Arm High");
     if (Robot.isCargo) {
-    Robot.ARM.setSetpoint(850); //TODO Calibrate this number or you will kill the robot.
+    Robot.ARM.setSetpoint(850);
     Robot.MANIPULATOR.setSetpoint(400);
     Robot.CYLINDERMANIPULATOR.out();
       Robot.isPistonManipulatorExtended = true;
     Robot.ARM.enable();}
     else {  //assumes it is hatchpanel 
-      Robot.ARM.setSetpoint(850); //TODO Calibrate this number or you will kill the robot.
+      Robot.ARM.setSetpoint(850);
       Robot.MANIPULATOR.setSetpoint(600);
       Robot.CYLINDERMANIPULATOR.out();
       Robot.isPistonManipulatorExtended = true;

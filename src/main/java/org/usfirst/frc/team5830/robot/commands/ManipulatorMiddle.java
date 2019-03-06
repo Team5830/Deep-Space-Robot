@@ -22,10 +22,10 @@ public class ManipulatorMiddle extends Command {
   protected void execute() {
     SmartDashboard.putString("Status Manipulator", "Manipulator to Rocket Middle");
     if (Robot.isCargo) {
-        Robot.MANIPULATOR.setSetpoint(600); //TODO Calibrate this number or you will kill the robot.
+        Robot.MANIPULATOR.setSetpoint(600);
         Robot.MANIPULATOR.enable();}
         else {  //assumes it is hatchpanel 
-          Robot.MANIPULATOR.setSetpoint(700); //TODO Calibrate this number or you will kill the robot.
+          Robot.MANIPULATOR.setSetpoint(700);
           Robot.MANIPULATOR.enable();}
     
   }

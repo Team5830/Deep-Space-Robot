@@ -15,11 +15,11 @@ public class ArmDefault extends Command {
   protected void execute() {
     SmartDashboard.putString(" Arm Status", "Arm Default");
     if (Robot.isCargo) {
-    Robot.ARM.setSetpoint(100); //TODO Calibrate this number or you will kill the robot.
+    Robot.ARM.setSetpoint(100);
     Robot.MANIPULATOR.setSetpoint(450);
     Robot.ARM.enable();}
     else {  //assumes it is hatchpanel 
-      Robot.ARM.setSetpoint(100); //TODO Calibrate this number or you will kill the robot.
+      Robot.ARM.setSetpoint(100);
       Robot.MANIPULATOR.setSetpoint(500);
       Robot.ARM.enable();}
 

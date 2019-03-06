@@ -52,7 +52,7 @@ public class DriveMotionProfiling extends Command {
     	SmartDashboard.putString("Auto Rotation Angle", "All the way!");
     	
     	//If the robot isn't at the angle it's supposed to be at, it will wait until the gyro PID finishes correcting it.
-    	if(Math.abs(Robot.pidROTATIONCORRECTION.getSetpoint() - Robot.pidROTATIONCORRECTION.getPosition()) > 5) {//TODO set tolerance (currently 5)
+    	if(Math.abs(Robot.pidROTATIONCORRECTION.getSetpoint() - Robot.pidROTATIONCORRECTION.getPosition()) > 5) {
     		SmartDashboard.putString("Autonomous Status", "I got to MotionProfiling Stage 1");
     		
     		Robot.pidROTATIONCORRECTION.getPIDController().setP(0.1);
