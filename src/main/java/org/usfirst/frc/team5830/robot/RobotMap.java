@@ -8,7 +8,6 @@
 package org.usfirst.frc.team5830.robot;
 
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
-import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.Encoder;
 
@@ -48,8 +47,6 @@ public class RobotMap {
 	/*
 	 * Sensors
 	 */
-	//Pneumatics
-
 	
 	 //Front and Rear Solenoids for climbing
 	public static DoubleSolenoid front23Solenoid = new DoubleSolenoid(0, 2, 3);
@@ -69,15 +66,8 @@ public class RobotMap {
 	//Gyroscope
 	public static ADXRS450_Gyro gyro = new ADXRS450_Gyro();
 	
-	//Ultrasonic
-	public static final AnalogInput frontLeftSonic = new AnalogInput(0);
-	public static final AnalogInput frontRightSonic = new AnalogInput(1);
-	public static final AnalogInput leftsideFrontSonic = new AnalogInput(2);
-	public static final AnalogInput leftsideRearSonic = new AnalogInput(3);
-	
 	//LIDAR
 	public static final class DIO{
 		public static final int LIDAR_PORT = 0;	
-
-		}
+	}
 }

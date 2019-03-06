@@ -15,13 +15,9 @@ import org.usfirst.frc.team5830.robot.subsystems.Cylinder12SideLast;
 import org.usfirst.frc.team5830.robot.subsystems.Cylinder23Rear;
 import org.usfirst.frc.team5830.robot.subsystems.CylinderManipulator;
 import org.usfirst.frc.team5830.robot.subsystems.Cylinders23Front;
-import org.usfirst.frc.team5830.robot.subsystems.SonicFrontLeft;
-import org.usfirst.frc.team5830.robot.subsystems.SonicFrontRight;
 import org.usfirst.frc.team5830.robot.subsystems.GyroSubsystem;
 import org.usfirst.frc.team5830.robot.subsystems.LIDARSubsystem;
 import org.usfirst.frc.team5830.robot.subsystems.Manipulator2;
-import org.usfirst.frc.team5830.robot.subsystems.SonicLeftSideFront;
-import org.usfirst.frc.team5830.robot.subsystems.SonicLeftSideRear;
 import org.usfirst.frc.team5830.robot.subsystems.PIDArm;
 import org.usfirst.frc.team5830.robot.subsystems.PIDLIDARDistance;
 import org.usfirst.frc.team5830.robot.subsystems.PIDManipulator;
@@ -221,12 +217,7 @@ public class Robot extends TimedRobot{
 	public static final GyroSubsystem GYROSUBSYSTEM = new GyroSubsystem();
 	public static final PIDArm ARM = new PIDArm();
 	public static final PIDManipulator MANIPULATOR = new PIDManipulator();
-	
-	//Ultrasonic 
-	public static final SonicLeftSideFront LEFTSIDEFRONTSONIC = new SonicLeftSideFront();
-	public static final SonicLeftSideRear LEFTSIDEREARSONIC = new SonicLeftSideRear();
-	public static final SonicFrontLeft FRONTLEFTSONIC = new SonicFrontLeft();
-	public static final SonicFrontRight FRONTRIGHTSONIC = new SonicFrontRight();
+
 	/**
 	 * Commands
 	 */
@@ -392,20 +383,6 @@ public class Robot extends TimedRobot{
 		pixy1y0 = pixy1y0Network.getDouble(0);
 		pixy1x1 = pixy1x1Network.getDouble(0);
 		pixy1y1 = pixy1y1Network.getDouble(0);
-
-		// Ultrasonic sensor for hab approach
-
-		SmartDashboard.putNumber("Sonic FL (volts)", RobotMap.frontLeftSonic.getVoltage());
-		SmartDashboard.putNumber("Sonic FL (real)", SonicFrontLeft.getDistance());
-		SmartDashboard.putNumber("Sonic FR (volts)", RobotMap.frontRightSonic.getVoltage());
-		SmartDashboard.putNumber("Sonic FR (real)", SonicFrontRight.getDistance());
-		SmartDashboard.putNumber("Sonic SF (volts)", RobotMap.leftsideFrontSonic.getVoltage());
-		//SmartDashboard.putNumber("Sonic SF(real)", SonicLeftSideFront.getDistance());
-		SmartDashboard.putNumber("Sonic SR (volts)", RobotMap.leftsideRearSonic.getVoltage());
-		//SmartDashboard.putNumber("Sonic SR (real)", SonicLeftSideRear.getDistance());
-		  
-		
-
 		}
 
 
