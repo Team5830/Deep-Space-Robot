@@ -22,10 +22,10 @@ public class ManipulatorLow extends Command {
   protected void execute() {
     SmartDashboard.putString("Status Manipulator", "Manipulator to Rocket Low");
     if (Robot.isCargo) {
-        Robot.MANIPULATOR.setSetpoint(600);
+      if(Robot.isArmAutomatic) Robot.MANIPULATOR.setSetpoint(600);
         Robot.MANIPULATOR.enable();}
         else {  //assumes it is hatchpanel 
-          Robot.MANIPULATOR.setSetpoint(700);
+          if(Robot.isArmAutomatic) Robot.MANIPULATOR.setSetpoint(700);
           Robot.MANIPULATOR.enable();}
     
   }

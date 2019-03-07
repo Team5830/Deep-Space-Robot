@@ -77,6 +77,8 @@ public class Robot extends TimedRobot{
 	public static final int ultrasonicError = 1; //Inches
 	//Highest arm position
 	public static final int armMaxHeight = 950;
+	//Maximum Manipulator Rotation
+	public static final int manipulatorMaxRotation = 1200;
 
 	/**
 	 * System-Defined Variables

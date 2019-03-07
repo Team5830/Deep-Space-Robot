@@ -28,6 +28,8 @@ public class ArmManual extends Command {
     //Multiplies that by half of the arm's max height so when the throttle is at full (2) the arm is at max.
     Robot.ARM.setSetpoint((Robot.rightJoy.getRawAxis(3) + 1) * (Robot.armMaxHeight / 2));
     Robot.ARM.enable();
+    Robot.MANIPULATOR.setSetpoint((Robot.leftJoy.getRawAxis(3) + 1) * (Robot.manipulatorMaxRotation / 2));
+    Robot.MANIPULATOR.enable();
   }
 
   // Make this return true when this Command no longer needs to run execute()

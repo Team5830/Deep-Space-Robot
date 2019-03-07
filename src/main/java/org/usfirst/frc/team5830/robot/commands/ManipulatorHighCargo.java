@@ -21,7 +21,7 @@ public class ManipulatorHighCargo extends Command {
   @Override
   protected void execute() {
     SmartDashboard.putString("Status Maninipulator", "Manipulator with Cargo to Rocket High");
-    Robot.MANIPULATOR.setSetpoint(400);
+    if(Robot.isArmAutomatic) Robot.MANIPULATOR.setSetpoint(400);
     Robot.MANIPULATOR.enable();
   }
 

@@ -21,7 +21,7 @@ public class ManipulatorHighHatchP extends Command {
   @Override
   protected void execute() {
     SmartDashboard.putString("Status Manipulator", "Manipulator with Hatch to Rocket Low");
-    Robot.MANIPULATOR.setSetpoint(350);
+    if(Robot.isArmAutomatic) Robot.MANIPULATOR.setSetpoint(350);
     Robot.MANIPULATOR.enable();
   }
 

@@ -14,7 +14,7 @@ public class ManipulatorDefault extends Command {
   @Override
   protected void execute() {
     SmartDashboard.putString("Status", "Manipulator Default");
-    Robot.MANIPULATOR.setSetpoint(400);
+    if(Robot.isArmAutomatic) Robot.MANIPULATOR.setSetpoint(400);
     Robot.MANIPULATOR.enable();
   }
 
