@@ -4,6 +4,7 @@ import org.usfirst.frc.team5830.robot.Robot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.command.InstantCommand;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * 
@@ -115,6 +116,9 @@ public class JoystickMappingInit extends InstantCommand {
 			Robot.PistonHab12Last.whenPressed(new PistonSideHab12Last());
 
 			Robot.Vacuum.whenPressed(new GamePieceVacuum());
+
+			SmartDashboard.putBoolean("Field Oriented?", false);
+			SmartDashboard.putData("Toggle Arm Automatic", new ActivateArmAutomatic());
 			break;
 
 			case 2: //Manipulator Arm Test (Left Flightstick) hab climming test

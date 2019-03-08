@@ -284,12 +284,12 @@ public class Robot extends TimedRobot{
 		SmartDashboard.putString("Climb Next Step", "Raise Robot from Side");
 		
 		//Switch between flightsticks and Xbox joystick
-		controlType.setDefaultOption("Dual Flightsticks", 0);
-		controlType.addOption("Xbox Controller", 1);
-		controlType.addOption("Piston Test (Right Flightstick)", 2);
+		controlType.setDefaultOption("DIDBoard Flightsticks", 0);
+		controlType.addOption("NO DIDBoard, Flightsticks & Xbox", 1);
+		/*controlType.addOption("Piston Test (Right Flightstick)", 2);
 		controlType.addOption("Manipulator Test (Left Flightstick)", 3);
 		controlType.addOption("Pneumatics Test (Right Flightstick)", 4);	
-		controlType.addOption("Arduino Test (Dual Flightsticks)", 6);	
+		controlType.addOption("Arduino Test (Dual Flightsticks)", 6);	*/
 		SmartDashboard.putData("Control Method", controlType);
 	
 		//Shows current robot command running
@@ -375,11 +375,11 @@ public class Robot extends TimedRobot{
 		
 		//SmartDashboard data publishing
 
-		isCargo = SmartDashboard.getBoolean("Cargo?", false);
+		/*isCargo = SmartDashboard.getBoolean("Cargo?", false);
 		isArmLow = SmartDashboard.getBoolean("Arm Low?", false);
 		isArmMiddle = SmartDashboard.getBoolean("Arm Middle?", false);
 		isArmHigh = SmartDashboard.getBoolean("Arm High?", false);
-		isArmDefault = SmartDashboard.getBoolean("Arm Default?", false);
+		isArmDefault = SmartDashboard.getBoolean("Arm Default?", false);*/
 
 		/**
 		 * Vision Processing
