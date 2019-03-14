@@ -23,18 +23,12 @@ public class ArmLow extends Command {
     SmartDashboard.putString("Arm Status", "Arm to Rocket Low");
     //TODO Turn ON Low DIDBoard LED
     //TODO Turn OFF Default, Floor, Mid, High DIDBoard LEDs
-    if (Robot.isCargo) {
-      if(Robot.isArmAutomatic) Robot.ARM.setSetpoint(300); //TODO Calibrate this number or you will kill the robot.
-      Robot.MANIPULATOR.setSetpoint(1200);
+    if(Robot.isArmAutomatic) {
+      Robot.ARM.setSetpoint(280); //TODO Calibrate this number or you will kill the robot.
+      Robot.MANIPULATOR.setSetpoint(480);
       Robot.ARM.enable();
-    Robot.MANIPULATOR.enable();}
-      else {  //assumes it is hatchpanel 
-        if(Robot.isArmAutomatic) Robot.ARM.setSetpoint(300);
-        Robot.MANIPULATOR.setSetpoint(300);
-        Robot.ARM.enable();
-      Robot.MANIPULATOR.enable();}
-  
-      
+      Robot.MANIPULATOR.enable();
+    }
   }
 
   // Make this return true when this Command no longer needs to run execute()

@@ -16,19 +16,12 @@ public class ArmDefault extends Command {
     SmartDashboard.putString("Arm Status", "Arm Default");
     //TODO Turn ON Default DIDBoard LED
     //TODO Turn OFF Floor, Low, Mid, High DIDBoard LEDs
-    if (Robot.isCargo) {
-    if(Robot.isArmAutomatic) Robot.ARM.setSetpoint(100);
-    Robot.MANIPULATOR.setSetpoint(450);
-    Robot.ARM.enable();}
-    else {  //assumes it is hatchpanel 
-      if(Robot.isArmAutomatic) Robot.ARM.setSetpoint(100);
-      Robot.MANIPULATOR.setSetpoint(500);
-      Robot.ARM.enable();}
-
-    }
-
-  
-
+    if(Robot.isArmAutomatic){
+      Robot.ARM.setSetpoint(100);
+      Robot.MANIPULATOR.setSetpoint(450);
+      Robot.ARM.enable();
+    }  
+  }
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {

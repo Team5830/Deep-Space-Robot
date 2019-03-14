@@ -66,7 +66,7 @@ public class Robot extends TimedRobot{
 	//Distance from LIDAR cube has to be to switch intake from sucking to spitting
 	public static final double cubeDistance = 9.5; //Inches
 	//Maximum arm speed up
-	public static final double maxArmSpeedUp = .8; //Between 0 and 1. NEGATIVE NUMBERS WILL NOT WORK!
+	public static final double maxArmSpeedUp = 1; //Between 0 and 1. NEGATIVE NUMBERS WILL NOT WORK!
 	//Maximum arm speed up
 	public static final double maxArmSpeedDown = -.5; //Between -1 and 0. POSITIVE NUMBERS WILL NOT WORK!
 	//Maximum manipulator speed up

@@ -35,7 +35,7 @@ public class JoystickMappingInit extends InstantCommand {
 		
     	//Initiates command to call buttons according to the option selected on SmartDashboard (Command name = ChooseButtonLayout)
 		switch (Robot.controlType.getSelected()) {
-			case 0: //DIDBoard and Flightsticks
+			case 0: //DIDBoard and Flightsticks //TODO update for new DIDBoard layout and cargo only commands
 			Robot.leftJoy = new Joystick(0);
 			Robot.rightJoy = new Joystick(1);
 			Robot.arduino = new Joystick(3);
@@ -63,7 +63,6 @@ public class JoystickMappingInit extends InstantCommand {
 			Robot.selectCargoOrHatch.whenPressed(new ChooseHatchCargo());
 
 			Robot.ArmDefault.whenPressed(new ArmDefault());
-			Robot.Floor.whenPressed(new LOGICPickup());
 			Robot.ArmLow.whenPressed(new ArmLow());
 			Robot.ArmMiddle.whenPressed(new ArmMiddle());
 			Robot.ArmHigh.whenPressed(new ArmHigh());
@@ -101,10 +100,9 @@ public class JoystickMappingInit extends InstantCommand {
 			Robot.Vacuum = new JoystickButton(Robot.xbox, 10);			  //R Stick (Push Down)
 
 
-			Robot.selectCargoOrHatch.whenPressed(new ChooseHatchCargo());
+			Robot.selectCargoOrHatch.whenPressed(new ArmLoadingStation());
 
 			Robot.ArmDefault.whenPressed(new ArmDefault());
-			Robot.Floor.whenPressed(new LOGICPickup());
 			Robot.ArmLow.whenPressed(new ArmLow());
 			Robot.ArmMiddle.whenPressed(new ArmMiddle());
 			Robot.ArmHigh.whenPressed(new ArmHigh());

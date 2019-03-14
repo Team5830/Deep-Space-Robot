@@ -5,20 +5,28 @@ import org.usfirst.frc.team5830.robot.Robot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-public class ArmMiddle extends Command {
-  public ArmMiddle() {
+/**
+ * 
+ * @author Arlene A.
+ * 
+ */
+
+
+public class ArmLoadingStation extends Command {
+  public ArmLoadingStation() {
     requires(Robot.ARM);
+    requires(Robot.MANIPULATOR);
     }
 
   // Called just before this Command runs the first time
   @Override
   protected void execute() {
-    SmartDashboard.putString("Arm Status", "Arm Middle");
-    //TODO Turn ON Mid DIDBoard LED
-    //TODO Turn OFF Default, Floor, Low, High DIDBoard LEDs
-    if(Robot.isArmAutomatic){
-      Robot.ARM.setSetpoint(770);
-      Robot.MANIPULATOR.setSetpoint(520);
+    SmartDashboard.putString("Arm Status", "Arm to Rocket Low");
+    //TODO Turn ON Low DIDBoard LED
+    //TODO Turn OFF Default, Floor, Mid, High DIDBoard LEDs
+    if(Robot.isArmAutomatic) {
+      Robot.ARM.setSetpoint(600); //TODO Calibrate this number or you will kill the robot.
+      Robot.MANIPULATOR.setSetpoint(800);
       Robot.ARM.enable();
       Robot.MANIPULATOR.enable();
     }
