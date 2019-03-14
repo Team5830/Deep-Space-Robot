@@ -2,6 +2,7 @@ package org.usfirst.frc.team5830.robot.commands;
 
 import org.usfirst.frc.team5830.robot.Robot;
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.command.InstantCommand;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -80,7 +81,7 @@ public class JoystickMappingInit extends InstantCommand {
 			case 1: //No DIDBoard (Xbox Backup)
 			Robot.leftJoy = new Joystick(0);
 			Robot.rightJoy = new Joystick(1);
-			Robot.xbox = new Joystick(2);
+			Robot.xbox = new XboxController(2);
 
 			Robot.selectCargoOrHatch = new JoystickButton(Robot.xbox, 7); //Back
 			
@@ -90,8 +91,8 @@ public class JoystickMappingInit extends InstantCommand {
 			Robot.ArmMiddle = new JoystickButton(Robot.xbox, 3);		  //X
 			Robot.ArmHigh = new JoystickButton(Robot.xbox, 4);			  //Y
 
-			Robot.AlignAngle = new JoystickButton(Robot.xbox, 15);
-			Robot.AlignStrafe = new JoystickButton(Robot.xbox, 16);
+			//Robot.AlignAngle = new JoystickButton(Robot.xbox, 15);
+			//Robot.AlignStrafe = new JoystickButton(Robot.xbox, 16);
 
 			Robot.pistonManipulator = new JoystickButton(Robot.xbox, 9);  //L Stick (Push Down)
 			Robot.PistonHab12First = new JoystickButton(Robot.xbox, 6);   //RB
@@ -108,8 +109,8 @@ public class JoystickMappingInit extends InstantCommand {
 			Robot.ArmMiddle.whenPressed(new ArmMiddle());
 			Robot.ArmHigh.whenPressed(new ArmHigh());
 
-			Robot.AlignStrafe.whenPressed(new PixyLineStrafe());
-			Robot.AlignAngle.whenPressed(new PixyLineRotation());
+			//Robot.AlignStrafe.whenPressed(new PixyLineStrafe());
+			//Robot.AlignAngle.whenPressed(new PixyLineRotation());
 
 			Robot.pistonManipulator.whenPressed(new PistonManipulator());
 			Robot.PistonHab12First.whenPressed(new PistonSideHab12First());

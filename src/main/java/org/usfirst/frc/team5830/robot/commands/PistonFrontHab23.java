@@ -28,6 +28,7 @@ public class PistonFrontHab23 extends InstantCommand {
       SmartDashboard.putString("Status2","False");
       Robot.CYLINDERS23Front.out();
       Robot.isPistonFrontExtended = true;
+      SmartDashboard.putBoolean("Backup Piston Extended?", Robot.isPistonFrontExtended);
     }
   }
 }

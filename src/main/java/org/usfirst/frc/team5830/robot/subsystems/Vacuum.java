@@ -10,6 +10,7 @@ package org.usfirst.frc.team5830.robot.subsystems;
 import org.usfirst.frc.team5830.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * 
@@ -24,12 +25,20 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 public class Vacuum extends Subsystem {
 
   public void suck(){
-    RobotMap.vacuum.set(1.0);
+    RobotMap.vacuum.set(1);
+    SmartDashboard.putBoolean("Vacuum On?", true);
+    //TODO Turn ON DIDBoard LED
+  } 
+
+  public void suckSlow(){
+    RobotMap.vacuum.set(0.92);
+    SmartDashboard.putBoolean("Vacuum On?", true);
     //TODO Turn ON DIDBoard LED
   } 
 
   public void stop(){
     RobotMap.vacuum.set(0);
+    SmartDashboard.putBoolean("Vacuum On?", false);
     //TODO Turn OFF DIDBoard LED
   }
 

@@ -7,10 +7,17 @@
 
 package org.usfirst.frc.team5830.robot;
 
+import org.usfirst.frc.team5830.robot.commands.ActivateArmAutomatic;
+import org.usfirst.frc.team5830.robot.commands.ActivateArmManual;
 import org.usfirst.frc.team5830.robot.commands.ArmManual;
 import org.usfirst.frc.team5830.robot.commands.DriveStraight;
+import org.usfirst.frc.team5830.robot.commands.GamePieceDrop;
+import org.usfirst.frc.team5830.robot.commands.GamePieceVacuumSlow;
 import org.usfirst.frc.team5830.robot.commands.JoystickMappingInit;
 import org.usfirst.frc.team5830.robot.commands.JoystickMappingPeriodic;
+import org.usfirst.frc.team5830.robot.commands.PistonFrontHab23;
+import org.usfirst.frc.team5830.robot.commands.PixyLineRotation;
+import org.usfirst.frc.team5830.robot.commands.PixyLineStrafe;
 import org.usfirst.frc.team5830.robot.subsystems.Cylinder12SideFirst;
 import org.usfirst.frc.team5830.robot.subsystems.Cylinder12SideLast;
 import org.usfirst.frc.team5830.robot.subsystems.Cylinder23Rear;
@@ -35,6 +42,7 @@ import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -58,13 +66,13 @@ public class Robot extends TimedRobot{
 	//Distance from LIDAR cube has to be to switch intake from sucking to spitting
 	public static final double cubeDistance = 9.5; //Inches
 	//Maximum arm speed up
-	public static final double maxArmSpeedUp = .6; //Between 0 and 1. NEGATIVE NUMBERS WILL NOT WORK!
+	public static final double maxArmSpeedUp = .8; //Between 0 and 1. NEGATIVE NUMBERS WILL NOT WORK!
 	//Maximum arm speed up
 	public static final double maxArmSpeedDown = -.5; //Between -1 and 0. POSITIVE NUMBERS WILL NOT WORK!
 	//Maximum manipulator speed up
-	public static final double maxManipulatorSpeedUp = .35; //Between 0 and 1. NEGATIVE NUMBERS WILL NOT WORK!
+	public static final double maxManipulatorSpeedUp = .4; //Between 0 and 1. NEGATIVE NUMBERS WILL NOT WORK!
 	//Maximum manipulator speed up
-	public static final double maxManipulatorSpeedDown = -0.25; //Between -1 and 0. POSITIVE NUMBERS WILL NOT WORK!
+	public static final double maxManipulatorSpeedDown = -0.7; //Between -1 and 0. POSITIVE NUMBERS WILL NOT WORK!
 	//Pixy 2 line margin of error
 	public static final double pixy2LineRotationError = 1; //Error in pixels allowed when aligning
 	//Pixy 2 line margin of error
@@ -96,7 +104,7 @@ public class Robot extends TimedRobot{
 	public static int povPosition;
 	public static Joystick leftJoy;
 	public static Joystick rightJoy;
-	public static Joystick xbox;
+	public static XboxController xbox;
 	public static Joystick arduino;
 	public static Button testPixyStrafe;
 	public static Button testPixyAlign;
@@ -273,6 +281,7 @@ public class Robot extends TimedRobot{
 		SmartDashboard.putBoolean("Arm Middle?", false);
 		SmartDashboard.putBoolean("Arm High?", false);
 		SmartDashboard.putBoolean("Arm Default?", false);
+		SmartDashboard.putBoolean("Vacuum On?", false);
 		
 		//Overrides cube distance check if enabled and runs instake on button command regardless of what the LIDAR distance is.
 		//SmartDashboard.putBoolean("Override Intake Sensor", true);
@@ -284,8 +293,8 @@ public class Robot extends TimedRobot{
 		SmartDashboard.putString("Climb Next Step", "Raise Robot from Side");
 		
 		//Switch between flightsticks and Xbox joystick
-		controlType.setDefaultOption("DIDBoard Flightsticks", 0);
-		controlType.addOption("NO DIDBoard, Flightsticks & Xbox", 1);
+		controlType.addOption("DIDBoard Flightsticks", 0);
+		controlType.setDefaultOption("NO DIDBoard, Flightsticks & Xbox", 1);
 		/*controlType.addOption("Piston Test (Right Flightstick)", 2);
 		controlType.addOption("Manipulator Test (Left Flightstick)", 3);
 		controlType.addOption("Pneumatics Test (Right Flightstick)", 4);	
@@ -299,7 +308,14 @@ public class Robot extends TimedRobot{
 		SmartDashboard.putString("Troubleshoot - String", "null");
 		//SmartDashboard.putBoolean("Troubleshoot - Boolean", false); //Commented out to avoid confusion with an actual "false" troubleshooting step
 		SmartDashboard.putNumber("Troubleshoot - Number", 0);
-		
+
+		SmartDashboard.putData("Stop Vacuum", new GamePieceDrop());
+		SmartDashboard.putData("Activate Arm Automatic", new ActivateArmAutomatic());
+		SmartDashboard.putData("Activate Arm Manual", new ActivateArmManual());
+		SmartDashboard.putData("Pixy Rotation", new PixyLineRotation());
+		SmartDashboard.putData("Pixy Strafe", new PixyLineStrafe());
+		SmartDashboard.putData("Backup Piston", new PistonFrontHab23());
+		SmartDashboard.putData("Slow Vacuum", new GamePieceVacuumSlow());
 		/**
 		 * Sensor Calibration/Setup
 		 */
@@ -344,11 +360,37 @@ public class Robot extends TimedRobot{
 	}
 	
 	@Override
-	public void autonomousInit() {}
+	public void autonomousInit() {
+		joystickMappingInit.start();
+	}
 	
 	@Override
 	public void autonomousPeriodic() {
 		Scheduler.getInstance().run();
+
+		//Processes axis values
+		joystickMappingPeriodic.start();
+	
+		
+		//SmartDashboard data publishing
+
+		/*isCargo = SmartDashboard.getBoolean("Cargo?", false);
+		isArmLow = SmartDashboard.getBoolean("Arm Low?", false);
+		isArmMiddle = SmartDashboard.getBoolean("Arm Middle?", false);
+		isArmHigh = SmartDashboard.getBoolean("Arm High?", false);
+		isArmDefault = SmartDashboard.getBoolean("Arm Default?", false);*/
+
+		/**
+		 * Vision Processing
+		 */
+
+		pixy1x0 = pixy1x0Network.getDouble(0);
+		pixy1y0 = pixy1y0Network.getDouble(0);
+		pixy1x1 = pixy1x1Network.getDouble(0);
+		pixy1y1 = pixy1y1Network.getDouble(0);
+
+		//Starts the arm's joystick control if automatic arm is disabled
+		if(!isArmAutomatic) armManual.start();
 		}
 
 	@Override

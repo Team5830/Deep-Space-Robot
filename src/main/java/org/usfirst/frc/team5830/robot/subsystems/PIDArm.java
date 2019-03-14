@@ -13,7 +13,7 @@ import edu.wpi.first.wpilibj.command.PIDSubsystem;
 public class PIDArm extends PIDSubsystem {
 
     public PIDArm() {
-    	super("ArmPID", 0.002, 0.0, 0.0);
+    	super("ArmPID", 0.003, 0.0, 0.0);
     	setOutputRange(Robot.maxArmSpeedDown, Robot.maxArmSpeedUp);
     }
 

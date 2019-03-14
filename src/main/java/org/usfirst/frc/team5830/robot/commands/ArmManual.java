@@ -8,13 +8,18 @@
 package org.usfirst.frc.team5830.robot.commands;
 
 import org.usfirst.frc.team5830.robot.Robot;
+import org.usfirst.frc.team5830.robot.subsystems.MathHelper;
 
+import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj.command.Command;
 
 public class ArmManual extends Command {
   public ArmManual() {
     requires(Robot.ARM);
   }
+
+  double protectedArm = 0;
+  double protectedManip = 0;
 
   // Called just before this Command runs the first time
   @Override
@@ -26,9 +31,33 @@ public class ArmManual extends Command {
   protected void execute() {
     //Raw throttle input (-1 to 1) needs conversion for arm setpoint. Math adds 1 to the raw joystick to give it 0 to 2.
     //Multiplies that by half of the arm's max height so when the throttle is at full (2) the arm is at max.
-    Robot.ARM.setSetpoint((Robot.rightJoy.getRawAxis(3) + 1) * (Robot.armMaxHeight / 2));
+    //double valLeft = -(Robot.xbox.getY(Hand.kLeft) + 1) / 2;
+    //double valArm = MathHelper.map(valLeft, 0, 1, 0, Robot.armMaxHeight);
+    //Robot.ARM.setSetpoint((-Robot.rightJoy.getRawAxis(3) + 1) * (Robot.armMaxHeight / 2));
+
+    if(protectedArm < Robot.xbox.getY(Hand.kLeft)){
+      protectedArm = (protectedArm + 0.1) * (Robot.armMaxHeight / 2);
+    } else if(protectedArm > Robot.xbox.getY(Hand.kLeft)) {
+      protectedArm = (protectedArm - 0.1)  * (Robot.armMaxHeight / 2);
+    }
+
+    if(protectedManip < Robot.xbox.getY(Hand.kLeft)){
+      protectedManip = protectedManip + 0.1;
+    } else if(protectedManip > Robot.xbox.getY(Hand.kLeft)) {
+      protectedManip = protectedManip - 0.1;
+    }
+
+    //Robot.ARM.setSetpoint(Robot.xbox.getY(Hand.kLeft));
+    Robot.ARM.setSetpoint(protectedArm);
+    //Robot.ARM.setSetpoint(setpoint);
     Robot.ARM.enable();
-    Robot.MANIPULATOR.setSetpoint((Robot.leftJoy.getRawAxis(3) + 1) * (Robot.manipulatorMaxRotation / 2));
+
+    
+
+    //double valRight = (Robot.xbox.getY(Hand.kRight) + 1) / 2;
+    //double valManip = MathHelper.map(valRight, 0, 1, 0, Robot.manipulatorMaxRotation);
+    //Robot.MANIPULATOR.setSetpoint((Robot.leftJoy.getRawAxis(3) + 1) * (Robot.manipulatorMaxRotation / 2));
+    Robot.MANIPULATOR.setSetpoint(protectedManip);
     Robot.MANIPULATOR.enable();
   }
 
