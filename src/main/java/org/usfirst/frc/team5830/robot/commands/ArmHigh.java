@@ -14,17 +14,14 @@ public class ArmHigh extends Command {
   @Override
   protected void execute() {
     SmartDashboard.putString("Arm Status", "Arm High");
-    //TODO Turn ON High DIDBoard LED
-    //TODO Turn OFF Default, Floor, Low, Mid DIDBoard LEDs
       if(Robot.isArmAutomatic) {
         Robot.ARM.setSetpoint(Robot.armMaxHeight);
-        Robot.MANIPULATOR.setSetpoint(290);
+        Robot.MANIPULATOR.setSetpoint(384);
+        Robot.armCommandRunning = true;
       }
 
-    Robot.ARM.enable();}
-
-
-  
+    Robot.ARM.enable();
+  }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
@@ -37,6 +34,7 @@ Math.abs (Robot.MANIPULATOR.getSetpoint() - Robot.MANIPULATOR.getPosition()) < R
   @Override
   protected void end() {
     SmartDashboard.putString("Status", "Driving");
+    Robot.armCommandRunning = false;
   }
 }
 

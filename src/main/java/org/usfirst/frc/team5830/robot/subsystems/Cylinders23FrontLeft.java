@@ -7,6 +7,7 @@
 
 package org.usfirst.frc.team5830.robot.subsystems;
 
+import org.usfirst.frc.team5830.robot.Robot;
 import org.usfirst.frc.team5830.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
@@ -15,16 +16,18 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 /**
  * Add your docs here.
  */
-public class Cylinders23Front extends Subsystem {
+public class Cylinders23FrontLeft extends Subsystem {
 
   @Override
   public void initDefaultCommand() {}
 
   public void out(){
-    RobotMap.front23Solenoid.set(DoubleSolenoid.Value.kForward);
+    RobotMap.frontLeft23Solenoid.set(DoubleSolenoid.Value.kForward);
+    Robot.isPistonFrontLeftExtended = true;
   }
 
   public void in(){
-    RobotMap.front23Solenoid.set(DoubleSolenoid.Value.kReverse);
+    RobotMap.frontLeft23Solenoid.set(DoubleSolenoid.Value.kReverse);
+    Robot.isPistonFrontLeftExtended = false;
   }
 }

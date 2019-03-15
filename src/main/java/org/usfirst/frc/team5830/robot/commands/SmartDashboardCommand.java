@@ -30,7 +30,29 @@ public class SmartDashboardCommand extends Command{
 		SmartDashboard.putNumber("Arm Encoder Distance", RobotMap.armEncoder.getDistance());
 		SmartDashboard.putNumber("Manipulator Encoder Distance", RobotMap.manipulatorEncoder.getDistance());
 		SmartDashboard.putNumber("Arm Setpoint", Robot.ARM.getSetpoint());
-		SmartDashboard.putNumber("Pivot Setpoint", Robot.MANIPULATOR.getSetpoint());		
+		SmartDashboard.putNumber("Pivot Setpoint", Robot.MANIPULATOR.getSetpoint());
+
+		//DIDBoard
+		SmartDashboard.putBoolean("DIDArmHasCommand", Robot.armCommandRunning);
+		SmartDashboard.putNumber("DIDArmValue", RobotMap.armEncoder.getDistance());
+		SmartDashboard.putNumber("DIDArmPower", RobotMap.pdp.getCurrent(5));
+		SmartDashboard.putNumber("DIDWristHasCommand", RobotMap.manipulatorEncoder.getDistance());
+		SmartDashboard.putNumber("DIDWristPower", RobotMap.pdp.getCurrent(7));
+		SmartDashboard.putNumber("DIDWheelFRPower", RobotMap.pdp.getCurrent(14));
+		SmartDashboard.putNumber("DIDWheelFLPower", RobotMap.pdp.getCurrent(1));
+		SmartDashboard.putNumber("DIDWheelBRPower", RobotMap.pdp.getCurrent(12));
+		SmartDashboard.putNumber("DIDWheelBLPower", RobotMap.pdp.getCurrent(3));
+		SmartDashboard.putNumber("DIDTotalPower", RobotMap.pdp.getTotalCurrent());
+		SmartDashboard.putBoolean("DIDPlugerOut", Robot.isPistonManipulatorExtended);
+		SmartDashboard.putBoolean("DID12HabFirstOut", Robot.isPiston12FirstExtended);
+		SmartDashboard.putBoolean("DID12HabLastOut", Robot.isPiston12LastExtended);
+		if(Robot.isPistonFrontLeftExtended && Robot.isPistonFrontRightExtended){
+			SmartDashboard.putBoolean("DID23HabFirstOut", true);
+		} else {
+			SmartDashboard.putBoolean("DID23HabFirstOut", false);
+		}
+		SmartDashboard.putBoolean("DID23HabLastOut", Robot.isPistonRearExtended);
+
 		//SmartDashboard.putNumber("POV Position", Robot.xbox.getPOV());
     }
 

@@ -5,31 +5,29 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package org.usfirst.frc.team5830.robot.commands;
+package org.usfirst.frc.team5830.robot.subsystems;
 
 import org.usfirst.frc.team5830.robot.Robot;
+import org.usfirst.frc.team5830.robot.RobotMap;
 
-import edu.wpi.first.wpilibj.command.InstantCommand;
+import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
  * Add your docs here.
  */
-public class ChooseHatchCargo extends InstantCommand {
-  /**
-   * Add your docs here.
-   */
-  public ChooseHatchCargo() {
-    super();
-  }
+public class Cylinders23FrontRight extends Subsystem {
 
   @Override
-  protected void initialize() {
-    if(Robot.isCargo){
-      Robot.isCargo = false;
-    }
-    else{
-      Robot.isCargo = true;
-    }
+  public void initDefaultCommand() {}
+
+  public void out(){
+    RobotMap.frontRight23Solenoid.set(DoubleSolenoid.Value.kForward);
+    Robot.isPistonFrontRightExtended = true;
   }
 
+  public void in(){
+    RobotMap.frontRight23Solenoid.set(DoubleSolenoid.Value.kReverse);
+    Robot.isPistonFrontRightExtended = false;
+  }
 }

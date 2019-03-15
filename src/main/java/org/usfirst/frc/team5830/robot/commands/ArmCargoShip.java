@@ -14,11 +14,9 @@ public class ArmCargoShip extends Command {
   @Override
   protected void execute() {
     SmartDashboard.putString("Arm Status", "Arm High");
-    //TODO Turn ON High DIDBoard LED
-    //TODO Turn OFF Default, Floor, Low, Mid DIDBoard LEDs
       if(Robot.isArmAutomatic) {
-        Robot.ARM.setSetpoint(500);
-        Robot.MANIPULATOR.setSetpoint(290);
+        Robot.ARM.setSetpoint(690);
+        Robot.MANIPULATOR.setSetpoint(800);
       }
 
     Robot.ARM.enable();}

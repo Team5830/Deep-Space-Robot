@@ -88,7 +88,9 @@ public class JoystickMappingInit extends InstantCommand {
 			Robot.Floor = new JoystickButton(Robot.xbox, 1);			  //A
 			Robot.ArmLow = new JoystickButton(Robot.xbox, 2);			  //B
 			Robot.ArmMiddle = new JoystickButton(Robot.xbox, 3);		  //X
-			Robot.ArmHigh = new JoystickButton(Robot.xbox, 4);			  //Y
+			Robot.ArmHigh = new JoystickButton(Robot.xbox, 4);	
+			
+			Robot.testPixyAlign = new JoystickButton(Robot.rightJoy, 7);
 
 			//Robot.AlignAngle = new JoystickButton(Robot.xbox, 15);
 			//Robot.AlignStrafe = new JoystickButton(Robot.xbox, 16);
@@ -103,6 +105,7 @@ public class JoystickMappingInit extends InstantCommand {
 			Robot.selectCargoOrHatch.whenPressed(new ArmLoadingStation());
 
 			Robot.ArmDefault.whenPressed(new ArmDefault());
+			Robot.Floor.whenPressed(new ArmFloor());
 			Robot.ArmLow.whenPressed(new ArmLow());
 			Robot.ArmMiddle.whenPressed(new ArmMiddle());
 			Robot.ArmHigh.whenPressed(new ArmHigh());
@@ -118,6 +121,8 @@ public class JoystickMappingInit extends InstantCommand {
 
 			SmartDashboard.putBoolean("Field Oriented?", false);
 			SmartDashboard.putData("Toggle Arm Automatic", new ActivateArmAutomatic());
+
+			Robot.testPixyAlign.whenPressed(new ArmPounce());
 			break;
 
 			case 2: //Manipulator Arm Test (Left Flightstick) hab climming test

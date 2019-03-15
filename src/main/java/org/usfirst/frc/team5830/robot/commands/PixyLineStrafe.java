@@ -14,7 +14,7 @@ import edu.wpi.first.wpilibj.command.Command;
 public class PixyLineStrafe extends Command {
 
   //This is the center pixel of the tracking area (X direction)
-  private double trackingCenterPoint = 50; //TODO Verify correct
+  private double trackingCenterPoint = 50;
   private boolean isItFinished = false;
 
   public PixyLineStrafe() {

@@ -14,12 +14,11 @@ public class ArmDefault extends Command {
   @Override
   protected void execute() {
     SmartDashboard.putString("Arm Status", "Arm Default");
-    //TODO Turn ON Default DIDBoard LED
-    //TODO Turn OFF Floor, Low, Mid, High DIDBoard LEDs
     if(Robot.isArmAutomatic){
-      Robot.ARM.setSetpoint(100);
-      Robot.MANIPULATOR.setSetpoint(450);
+      Robot.ARM.setSetpoint(0);
+      Robot.MANIPULATOR.setSetpoint(365);
       Robot.ARM.enable();
+      Robot.armCommandRunning = true;
     }  
   }
   // Make this return true when this Command no longer needs to run execute()
@@ -33,6 +32,7 @@ public class ArmDefault extends Command {
   @Override
   protected void end() {
     SmartDashboard.putString("Status", "Driving");
+    Robot.armCommandRunning = false;
   }
 }
 

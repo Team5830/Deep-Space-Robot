@@ -26,20 +26,17 @@ public class Vacuum extends Subsystem {
 
   public void suck(){
     RobotMap.vacuum.set(1);
-    SmartDashboard.putBoolean("Vacuum On?", true);
-    //TODO Turn ON DIDBoard LED
+    SmartDashboard.putBoolean("DIDVacOn", true);
   } 
 
   public void suckSlow(){
     RobotMap.vacuum.set(0.92);
-    SmartDashboard.putBoolean("Vacuum On?", true);
-    //TODO Turn ON DIDBoard LED
+    SmartDashboard.putBoolean("DIDVacOn", true);
   } 
 
   public void stop(){
     RobotMap.vacuum.set(0);
-    SmartDashboard.putBoolean("Vacuum On?", false);
-    //TODO Turn OFF DIDBoard LED
+    SmartDashboard.putBoolean("DIDVacOn", false);
   }
 
   @Override

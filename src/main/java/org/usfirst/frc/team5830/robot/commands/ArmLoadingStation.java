@@ -22,13 +22,12 @@ public class ArmLoadingStation extends Command {
   @Override
   protected void execute() {
     SmartDashboard.putString("Arm Status", "Arm Low");
-    //TODO Turn ON Low DIDBoard LED
-    //TODO Turn OFF Default, Floor, Mid, High DIDBoard LEDs
     if(Robot.isArmAutomatic) {
-      Robot.ARM.setSetpoint(600); //TODO Calibrate this number or you will kill the robot.
+      Robot.ARM.setSetpoint(600);
       Robot.MANIPULATOR.setSetpoint(800);
       Robot.ARM.enable();
       Robot.MANIPULATOR.enable();
+      Robot.armCommandRunning = true;
     }
   }
 
@@ -43,6 +42,7 @@ public class ArmLoadingStation extends Command {
   @Override
   protected void end() {
     SmartDashboard.putString("Status", "Driving");
+    Robot.armCommandRunning = false;
   }
 }
 

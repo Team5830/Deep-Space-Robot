@@ -10,7 +10,6 @@ package org.usfirst.frc.team5830.robot.commands;
 import org.usfirst.frc.team5830.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.InstantCommand;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class PistonSideHab12First extends InstantCommand {
 
@@ -20,12 +19,10 @@ public class PistonSideHab12First extends InstantCommand {
 
   @Override
   protected void execute() {
-    if(Robot.isPistonSideExtended){
+    if(Robot.isPiston12FirstExtended){
       Robot.CYLINDER12SIDEFIRST.in();
-      Robot.isPistonSideExtended = false;
     } else {
       Robot.CYLINDER12SIDEFIRST.out();
-      Robot.isPistonSideExtended = true;
     }
     //SmartDashboard.putBoolean("Is", value))
   }

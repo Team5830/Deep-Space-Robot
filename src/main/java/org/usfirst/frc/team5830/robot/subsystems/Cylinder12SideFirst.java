@@ -7,6 +7,7 @@
 
 package org.usfirst.frc.team5830.robot.subsystems;
 
+import org.usfirst.frc.team5830.robot.Robot;
 import org.usfirst.frc.team5830.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
@@ -22,12 +23,12 @@ public class Cylinder12SideFirst extends Subsystem {
 
   public void out(){
     RobotMap.side12firstSolenoid.set(DoubleSolenoid.Value.kForward);
-    //TODO Turn ON DIDBoard LED
+    Robot.isPiston12FirstExtended = true;
   }
 
   public void in(){
     RobotMap.side12firstSolenoid.set(DoubleSolenoid.Value.kReverse);
-    //TODO Turn OFF DIDBoard LED
+    Robot.isPiston12FirstExtended = false;
   }
 
 }

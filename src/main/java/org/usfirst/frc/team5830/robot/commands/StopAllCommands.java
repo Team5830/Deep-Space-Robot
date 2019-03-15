@@ -23,7 +23,8 @@ public class StopAllCommands extends InstantCommand {
     requires(Robot.CYLINDER12SIDEFIRST);
     requires(Robot.CYLINDER12SIDELAST);
     requires(Robot.CYLINDER23REAR);
-    requires(Robot.CYLINDERS23Front);
+    requires(Robot.CYLINDERS23FrontLeft);
+    requires(Robot.CYLINDERS23FrontRight);
     requires(Robot.CYLINDERMANIPULATOR);
     requires(Robot.GYROSUBSYSTEM);
     requires(Robot.MANIPULATOR);

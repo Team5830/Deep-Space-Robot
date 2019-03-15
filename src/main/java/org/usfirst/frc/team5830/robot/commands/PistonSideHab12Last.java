@@ -19,12 +19,10 @@ public class PistonSideHab12Last extends InstantCommand {
 
   @Override
   protected void execute() {
-    if(Robot.isPistonSideExtended){
+    if(Robot.isPiston12LastExtended){
       Robot.CYLINDER12SIDELAST.in();
-      Robot.isPistonSideExtended = false;
     } else {
       Robot.CYLINDER12SIDELAST.out();
-      Robot.isPistonSideExtended = true;
     }
   }
 }

@@ -7,6 +7,7 @@
 
 package org.usfirst.frc.team5830.robot.subsystems;
 
+import org.usfirst.frc.team5830.robot.Robot;
 import org.usfirst.frc.team5830.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
@@ -22,9 +23,11 @@ public class Cylinder23Rear extends Subsystem {
 
   public void out(){
     RobotMap.rear23Solenoid.set(DoubleSolenoid.Value.kForward);
+    Robot.isPistonRearExtended = true;
   }
 
   public void in(){
     RobotMap.rear23Solenoid.set(DoubleSolenoid.Value.kReverse);
+    Robot.isPistonRearExtended = false;
   }
 }

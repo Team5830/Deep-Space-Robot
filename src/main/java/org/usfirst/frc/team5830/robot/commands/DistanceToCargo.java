@@ -18,7 +18,7 @@ public class DistanceToCargo extends Command {
 
   @Override
   protected void execute() {
-    Robot.auto_LIDAR_Distance_Swerve.setSetpoint(24); //TODO Calibrate
+    Robot.auto_LIDAR_Distance_Swerve.setSetpoint(24);
     Robot.auto_LIDAR_Distance_Swerve.enable();
     Robot.swerveDrive.drive(0, Robot.pidOutputRobot, 0);
   }

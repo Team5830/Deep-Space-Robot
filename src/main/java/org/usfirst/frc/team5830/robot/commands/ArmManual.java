@@ -8,9 +8,6 @@
 package org.usfirst.frc.team5830.robot.commands;
 
 import org.usfirst.frc.team5830.robot.Robot;
-import org.usfirst.frc.team5830.robot.subsystems.MathHelper;
-
-import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj.command.Command;
 
 public class ArmManual extends Command {

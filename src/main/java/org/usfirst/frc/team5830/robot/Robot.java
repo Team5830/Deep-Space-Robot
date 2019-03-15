@@ -22,7 +22,8 @@ import org.usfirst.frc.team5830.robot.subsystems.Cylinder12SideFirst;
 import org.usfirst.frc.team5830.robot.subsystems.Cylinder12SideLast;
 import org.usfirst.frc.team5830.robot.subsystems.Cylinder23Rear;
 import org.usfirst.frc.team5830.robot.subsystems.CylinderManipulator;
-import org.usfirst.frc.team5830.robot.subsystems.Cylinders23Front;
+import org.usfirst.frc.team5830.robot.subsystems.Cylinders23FrontLeft;
+import org.usfirst.frc.team5830.robot.subsystems.Cylinders23FrontRight;
 import org.usfirst.frc.team5830.robot.subsystems.GyroSubsystem;
 import org.usfirst.frc.team5830.robot.subsystems.LIDARSubsystem;
 import org.usfirst.frc.team5830.robot.subsystems.Manipulator2;
@@ -84,7 +85,7 @@ public class Robot extends TimedRobot{
 	//Margin of error allowed when using Ultrasonic for finding distance
 	public static final int ultrasonicError = 1; //Inches
 	//Highest arm position
-	public static final int armMaxHeight = 950;
+	public static final int armMaxHeight = 900;
 	//Maximum Manipulator Rotation
 	public static final int manipulatorMaxRotation = 1200;
 	//Arm Error
@@ -172,11 +173,11 @@ public class Robot extends TimedRobot{
 	public static SendableChooser<Integer> controlType = new SendableChooser<>();
 	public static boolean isFieldOriented = false;
 	public static int climbHabStepCount = 1;
-	public static boolean isPistonFrontExtended = false;
 	public static boolean isPistonFrontLeftExtended = false;
 	public static boolean isPistonFrontRightExtended = false;
 	public static boolean isPistonRearExtended = false;
-	public static boolean isPistonSideExtended = false;
+	public static boolean isPiston12FirstExtended = false;
+	public static boolean isPiston12LastExtended = false;
 	public static boolean isPistonManipulatorExtended= false;
 	public static boolean isCargo = false;
 	public static boolean isArmLow = false;
@@ -185,6 +186,7 @@ public class Robot extends TimedRobot{
 	public static boolean isArmDefault = false;
 	public static boolean isFloor = false;
 	public static boolean isArmAutomatic = true;
+	public static boolean armCommandRunning = false;
 	public static OI m_oi;
 	
 	//Swerve Drive
@@ -218,7 +220,8 @@ public class Robot extends TimedRobot{
 	 */
 	
 	//Regular
-	public static final Cylinders23Front CYLINDERS23Front = new Cylinders23Front();
+	public static final Cylinders23FrontLeft CYLINDERS23FrontLeft = new Cylinders23FrontLeft();
+	public static final Cylinders23FrontRight CYLINDERS23FrontRight = new Cylinders23FrontRight();
 	public static final Cylinder23Rear CYLINDER23REAR = new Cylinder23Rear();
 	public static final Cylinder12SideFirst CYLINDER12SIDEFIRST = new Cylinder12SideFirst();
 	public static final Cylinder12SideLast CYLINDER12SIDELAST = new Cylinder12SideLast();

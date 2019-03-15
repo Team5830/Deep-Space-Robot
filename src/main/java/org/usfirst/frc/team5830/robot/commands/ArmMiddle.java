@@ -14,13 +14,12 @@ public class ArmMiddle extends Command {
   @Override
   protected void execute() {
     SmartDashboard.putString("Arm Status", "Arm Middle");
-    //TODO Turn ON Mid DIDBoard LED
-    //TODO Turn OFF Default, Floor, Low, High DIDBoard LEDs
     if(Robot.isArmAutomatic){
-      Robot.ARM.setSetpoint(770);
-      Robot.MANIPULATOR.setSetpoint(520);
+      Robot.ARM.setSetpoint(575);
+      Robot.MANIPULATOR.setSetpoint(580);
       Robot.ARM.enable();
       Robot.MANIPULATOR.enable();
+      Robot.armCommandRunning = true;
     }
   }
 
@@ -35,6 +34,7 @@ public class ArmMiddle extends Command {
   @Override
   protected void end() {
     SmartDashboard.putString("Status", "Driving");
+    Robot.armCommandRunning = false;
   }
 }
 
