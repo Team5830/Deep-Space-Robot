@@ -87,6 +87,10 @@ public class Robot extends TimedRobot{
 	public static final int armMaxHeight = 950;
 	//Maximum Manipulator Rotation
 	public static final int manipulatorMaxRotation = 1200;
+	//Arm Error
+	public static final int armError = 100;
+	//Manipulator Error
+	public static final int manipulatorError = 100;
 
 	/**
 	 * System-Defined Variables
