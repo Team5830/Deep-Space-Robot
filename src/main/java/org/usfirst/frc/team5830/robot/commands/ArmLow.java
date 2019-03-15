@@ -20,7 +20,7 @@ public class ArmLow extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void execute() {
-    SmartDashboard.putString("Arm Status", "Arm to Rocket Low");
+    SmartDashboard.putString("Arm Status", "Arm Low");
     //TODO Turn ON Low DIDBoard LED
     //TODO Turn OFF Default, Floor, Mid, High DIDBoard LEDs
     if(Robot.isArmAutomatic) {
@@ -41,7 +41,7 @@ public class ArmLow extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    SmartDashboard.putString("Status", "Teleop Driving");
+    SmartDashboard.putString("Status", "Driving");
   }
 }
 

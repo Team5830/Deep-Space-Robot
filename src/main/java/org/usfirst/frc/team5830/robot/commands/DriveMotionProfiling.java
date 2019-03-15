@@ -45,7 +45,7 @@ public class DriveMotionProfiling extends Command {
     }
 
     protected void initialize() {
-    	SmartDashboard.putString("Status", "Automatically Driving");
+    	SmartDashboard.putString("Status", "Auto Drive");
     }
 
     protected void execute() {

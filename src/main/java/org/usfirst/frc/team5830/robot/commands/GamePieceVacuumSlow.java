@@ -30,7 +30,7 @@ public class GamePieceVacuumSlow extends InstantCommand {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    SmartDashboard.putString("Status", "Vacuum Game Piece Slowly");
+    SmartDashboard.putString("Status", "VacSlow Slowly");
     Robot.VACUUM.suckSlow();
   }
 
@@ -38,7 +38,7 @@ public class GamePieceVacuumSlow extends InstantCommand {
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    SmartDashboard.putString("Status", "Waiting For Next Command");
+    SmartDashboard.putString("Status", "Idle");
   }
 
   // Called when another command which requires one or more of the same

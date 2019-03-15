@@ -13,7 +13,7 @@ public class ManipulatorDefault extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void execute() {
-    SmartDashboard.putString("Status", "Manipulator Default");
+    SmartDashboard.putString("Status", "Default");
     if(Robot.isArmAutomatic) Robot.MANIPULATOR.setSetpoint(400);
     Robot.MANIPULATOR.enable();
   }
@@ -27,7 +27,7 @@ public class ManipulatorDefault extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    SmartDashboard.putString("Status", "Teleop Driving");
+    SmartDashboard.putString("Status", "Driving");
   }
 }
 

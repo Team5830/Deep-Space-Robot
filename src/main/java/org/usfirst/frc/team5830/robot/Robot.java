@@ -398,7 +398,7 @@ public class Robot extends TimedRobot{
 		
 		
 
-		SmartDashboard.putString("Status", "Teleop Driving");
+		SmartDashboard.putString("Status", "Driving");
 		
 		//Takes ShuffleBoard button layout presets and maps buttons accordingly
 		joystickMappingInit.start();

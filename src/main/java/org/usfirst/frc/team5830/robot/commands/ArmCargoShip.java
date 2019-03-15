@@ -36,7 +36,7 @@ Math.abs (Robot.MANIPULATOR.getSetpoint() - Robot.MANIPULATOR.getPosition()) < 2
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    SmartDashboard.putString("Status", "Teleop Driving");
+    SmartDashboard.putString("Status", "Driving");
   }
 }
 
