@@ -21,7 +21,7 @@ public class DriveTeleop extends Command {
     	Robot.swerveDrive.drive(Robot.driveX, Robot.driveY, Robot.rotX);
     	
     	//CALIBRATION ONLY
-    	//sRobot.swerveDrive.drive(0, Robot.driveY, 0);
+    	//Robot.swerveDrive.drive(0, Robot.driveY, 0);
     }
 
     protected boolean isFinished() {

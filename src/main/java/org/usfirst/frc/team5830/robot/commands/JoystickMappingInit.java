@@ -38,43 +38,92 @@ public class JoystickMappingInit extends InstantCommand {
 			case 0: //DIDBoard and Flightsticks //TODO update for new DIDBoard layout and cargo only commands
 			Robot.leftJoy = new Joystick(0);
 			Robot.rightJoy = new Joystick(1);
+			Robot.xbox = new XboxController(2);
 			Robot.arduino = new Joystick(3);
 
-			Robot.selectCargoOrHatch = new JoystickButton(Robot.arduino, 1);
+			Robot.selectCargoOrHatch = new JoystickButton(Robot.arduino, 3); //Back THIS IS ARM CARGO SHIP!!!
 			
-			Robot.ArmDefault = new JoystickButton(Robot.arduino, 10);
-			Robot.Floor = new JoystickButton(Robot.arduino, 11);
-			Robot.ArmLow = new JoystickButton(Robot.arduino, 12);
-			Robot.ArmMiddle = new JoystickButton(Robot.arduino, 13);
-			Robot.ArmHigh = new JoystickButton(Robot.arduino, 14);
+			Robot.ArmDefault = new JoystickButton(Robot.arduino, 1);         //Start
+			Robot.Floor = new JoystickButton(Robot.arduino, 8);			  //A
+			Robot.ArmLow = new JoystickButton(Robot.xbox, 2);			  //B
+			Robot.ArmMiddle = new JoystickButton(Robot.xbox, 3);		  //X
+			Robot.ArmHigh = new JoystickButton(Robot.xbox, 4);	          //Y
+			Robot.ship = new JoystickButton(Robot.arduino, 2);
+			
+			Robot.testPixyAlign = new JoystickButton(Robot.arduino, 9); //THIS IS ARM POUNCE!!!
 
-			Robot.AlignAngle = new JoystickButton(Robot.arduino, 15);
-			Robot.AlignStrafe = new JoystickButton(Robot.arduino, 16);
+			//Robot.AlignAngle = new JoystickButton(Robot.xbox, 15);
+			//Robot.AlignStrafe = new JoystickButton(Robot.xbox, 16);
 
-			Robot.pistonManipulator = new JoystickButton(Robot.arduino, 2);
-			Robot.PistonHab12First = new JoystickButton(Robot.arduino, 5);
-			Robot.PistonHab12Last = new JoystickButton(Robot.arduino, 6);
+			Robot.pistonManipulator = new JoystickButton(Robot.arduino, 4);  //L Stick (Push Down)
+			Robot.PistonHab12First = new JoystickButton(Robot.arduino, 6);   //RB
+			Robot.PistonHab12Last = new JoystickButton(Robot.arduino, 7);	  //LB
 
-			Robot.Vacuum = new JoystickButton(Robot.arduino, 3);
-
-			Robot.isField = new JoystickButton(Robot.arduino, 4); //This is a WhileHeld button. This is handled in JoystickMappingPeriodic.
+			Robot.Vacuum = new JoystickButton(Robot.arduino, 5);			  //R Stick (Push Down)
 
 
-			Robot.selectCargoOrHatch.whenPressed(new ChooseHatchCargo());
+			Robot.selectCargoOrHatch.whenPressed(new ArmLoadingStation());
 
 			Robot.ArmDefault.whenPressed(new ArmDefault());
+			Robot.Floor.whenPressed(new ArmFloor());
 			Robot.ArmLow.whenPressed(new ArmLow());
 			Robot.ArmMiddle.whenPressed(new ArmMiddle());
 			Robot.ArmHigh.whenPressed(new ArmHigh());
+			Robot.ship.whenPressed(new ArmShip());
 
-			Robot.AlignStrafe.whenPressed(new PixyLineStrafe());
-			Robot.AlignAngle.whenPressed(new PixyLineRotation());
+			//Robot.AlignStrafe.whenPressed(new PixyLineStrafe());
+			//Robot.AlignAngle.whenPressed(new PixyLineRotation());
 
 			Robot.pistonManipulator.whenPressed(new PistonManipulator());
 			Robot.PistonHab12First.whenPressed(new PistonSideHab12First());
 			Robot.PistonHab12Last.whenPressed(new PistonSideHab12Last());
 
 			Robot.Vacuum.whenPressed(new GamePieceVacuum());
+
+			SmartDashboard.putBoolean("Field Oriented?", false);
+			SmartDashboard.putData("Toggle Arm Automatic", new ActivateArmAutomatic());
+
+			Robot.testPixyAlign.whenPressed(new ArmPounce());
+
+			// Robot.leftJoy = new Joystick(0);
+			// Robot.rightJoy = new Joystick(1);
+			// Robot.arduino = new Joystick(3);
+
+			// Robot.selectCargoOrHatch = new JoystickButton(Robot.arduino, 1);
+			
+			// Robot.ArmDefault = new JoystickButton(Robot.arduino, 10);
+			// Robot.Floor = new JoystickButton(Robot.arduino, 11);
+			// Robot.ArmLow = new JoystickButton(Robot.arduino, 12);
+			// Robot.ArmMiddle = new JoystickButton(Robot.arduino, 13);
+			// Robot.ArmHigh = new JoystickButton(Robot.arduino, 14);
+
+			// Robot.AlignAngle = new JoystickButton(Robot.arduino, 15);
+			// Robot.AlignStrafe = new JoystickButton(Robot.arduino, 16);
+
+			// Robot.pistonManipulator = new JoystickButton(Robot.arduino, 2);
+			// Robot.PistonHab12First = new JoystickButton(Robot.arduino, 5);
+			// Robot.PistonHab12Last = new JoystickButton(Robot.arduino, 6);
+
+			// Robot.Vacuum = new JoystickButton(Robot.arduino, 3);
+
+			// Robot.isField = new JoystickButton(Robot.arduino, 4); //This is a WhileHeld button. This is handled in JoystickMappingPeriodic.
+
+
+			// Robot.selectCargoOrHatch.whenPressed(new ChooseHatchCargo());
+
+			// Robot.ArmDefault.whenPressed(new ArmDefault());
+			// Robot.ArmLow.whenPressed(new ArmLow());
+			// Robot.ArmMiddle.whenPressed(new ArmMiddle());
+			// Robot.ArmHigh.whenPressed(new ArmHigh());
+
+			// Robot.AlignStrafe.whenPressed(new PixyLineStrafe());
+			// Robot.AlignAngle.whenPressed(new PixyLineRotation());
+
+			// Robot.pistonManipulator.whenPressed(new PistonManipulator());
+			// Robot.PistonHab12First.whenPressed(new PistonSideHab12First());
+			// Robot.PistonHab12Last.whenPressed(new PistonSideHab12Last());
+
+			// Robot.Vacuum.whenPressed(new GamePieceVacuum());
 			break;
 
 			case 1: //No DIDBoard (Xbox Backup)
@@ -82,15 +131,16 @@ public class JoystickMappingInit extends InstantCommand {
 			Robot.rightJoy = new Joystick(1);
 			Robot.xbox = new XboxController(2);
 
-			Robot.selectCargoOrHatch = new JoystickButton(Robot.xbox, 7); //Back
+			Robot.selectCargoOrHatch = new JoystickButton(Robot.xbox, 7); //Back THIS IS ARM CARGO SHIP!!!
 			
 			Robot.ArmDefault = new JoystickButton(Robot.xbox, 8);         //Start
 			Robot.Floor = new JoystickButton(Robot.xbox, 1);			  //A
 			Robot.ArmLow = new JoystickButton(Robot.xbox, 2);			  //B
 			Robot.ArmMiddle = new JoystickButton(Robot.xbox, 3);		  //X
-			Robot.ArmHigh = new JoystickButton(Robot.xbox, 4);	
+			Robot.ArmHigh = new JoystickButton(Robot.xbox, 4);	          //Y
+			Robot.ship = new JoystickButton(Robot.rightJoy, 11);
 			
-			Robot.testPixyAlign = new JoystickButton(Robot.rightJoy, 7);
+			Robot.testPixyAlign = new JoystickButton(Robot.rightJoy, 7); //THIS IS ARM POUNCE!!!
 
 			//Robot.AlignAngle = new JoystickButton(Robot.xbox, 15);
 			//Robot.AlignStrafe = new JoystickButton(Robot.xbox, 16);
@@ -98,6 +148,8 @@ public class JoystickMappingInit extends InstantCommand {
 			Robot.pistonManipulator = new JoystickButton(Robot.xbox, 9);  //L Stick (Push Down)
 			Robot.PistonHab12First = new JoystickButton(Robot.xbox, 6);   //RB
 			Robot.PistonHab12Last = new JoystickButton(Robot.xbox, 5);	  //LB
+			Robot.PistonHab23First = new JoystickButton(Robot.leftJoy, 11);
+			Robot.PistonHab23Last = new JoystickButton(Robot.leftJoy, 12);
 
 			Robot.Vacuum = new JoystickButton(Robot.xbox, 10);			  //R Stick (Push Down)
 
@@ -109,6 +161,7 @@ public class JoystickMappingInit extends InstantCommand {
 			Robot.ArmLow.whenPressed(new ArmLow());
 			Robot.ArmMiddle.whenPressed(new ArmMiddle());
 			Robot.ArmHigh.whenPressed(new ArmHigh());
+			Robot.ship.whenPressed(new ArmShip());
 
 			//Robot.AlignStrafe.whenPressed(new PixyLineStrafe());
 			//Robot.AlignAngle.whenPressed(new PixyLineRotation());
@@ -116,6 +169,8 @@ public class JoystickMappingInit extends InstantCommand {
 			Robot.pistonManipulator.whenPressed(new PistonManipulator());
 			Robot.PistonHab12First.whenPressed(new PistonSideHab12First());
 			Robot.PistonHab12Last.whenPressed(new PistonSideHab12Last());
+			Robot.PistonHab23First.whenPressed(new PistonFrontHab23());
+			Robot.PistonHab23Last.whenPressed(new PistonRearHab23());
 
 			Robot.Vacuum.whenPressed(new GamePieceVacuum());
 

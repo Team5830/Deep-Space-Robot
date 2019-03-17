@@ -23,8 +23,8 @@ public class ArmFloor extends Command {
   protected void execute() {
     SmartDashboard.putString("Arm Status", "Arm Low");
     if(Robot.isArmAutomatic) {
-      Robot.ARM.setSetpoint(415);
-      Robot.MANIPULATOR.setSetpoint(1200);
+      Robot.armSetpointRaw = 570;
+      Robot.manipulatorSetpointRaw = 1200;
       Robot.ARM.enable();
       Robot.MANIPULATOR.enable();
       Robot.armCommandRunning = true;

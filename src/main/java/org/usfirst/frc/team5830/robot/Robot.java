@@ -137,6 +137,7 @@ public class Robot extends TimedRobot{
 	public static Button MoveToHatch;
 	public static Button isField;
 	public static Button selectCargoOrHatch;
+	public static Button ship;
 
 	//Testing
 	public static Button testPistonFrontLeft;
@@ -187,6 +188,10 @@ public class Robot extends TimedRobot{
 	public static boolean isFloor = false;
 	public static boolean isArmAutomatic = true;
 	public static boolean armCommandRunning = false;
+
+	public static double manipulatorSetpointRaw = 0;
+	public static double armSetpointRaw = 0;
+
 	public static OI m_oi;
 	
 	//Swerve Drive
@@ -266,9 +271,9 @@ public class Robot extends TimedRobot{
 		camera1.setResolution(640, 480);
 		camera1.setFPS(30);
 
-		UsbCamera camera2 = CameraServer.getInstance().startAutomaticCapture(1);
+		/*UsbCamera camera2 = CameraServer.getInstance().startAutomaticCapture(1);
 		camera2.setResolution(640, 480);
-		camera2.setFPS(30);
+		camera2.setFPS(30);*/
 		
 		//Vision Coordinates
 		SmartDashboard.putBoolean("lined up", false);
@@ -421,14 +426,18 @@ public class Robot extends TimedRobot{
 		//Processes axis values
 		joystickMappingPeriodic.start();
 	
-		
-		//SmartDashboard data publishing
+		//Arm and Manipulator Ramp
+		if(Robot.armSetpointRaw < Robot.ARM.getSetpoint()){
+			Robot.ARM.setSetpoint(Robot.ARM.getSetpoint() - 10);
+		} else if(Robot.armSetpointRaw > Robot.ARM.getSetpoint()){
+			Robot.ARM.setSetpoint(Robot.ARM.getSetpoint() + 10);
+		}
 
-		/*isCargo = SmartDashboard.getBoolean("Cargo?", false);
-		isArmLow = SmartDashboard.getBoolean("Arm Low?", false);
-		isArmMiddle = SmartDashboard.getBoolean("Arm Middle?", false);
-		isArmHigh = SmartDashboard.getBoolean("Arm High?", false);
-		isArmDefault = SmartDashboard.getBoolean("Arm Default?", false);*/
+		if(Robot.manipulatorSetpointRaw < Robot.MANIPULATOR.getSetpoint()){
+			Robot.MANIPULATOR.setSetpoint(Robot.MANIPULATOR.getSetpoint() - 10);
+		} else if(Robot.manipulatorSetpointRaw > Robot.MANIPULATOR.getSetpoint()){
+			Robot.MANIPULATOR.setSetpoint(Robot.MANIPULATOR.getSetpoint() + 10);
+		}
 
 		/**
 		 * Vision Processing

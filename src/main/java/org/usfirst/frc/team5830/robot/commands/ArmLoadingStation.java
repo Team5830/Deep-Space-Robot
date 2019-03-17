@@ -23,8 +23,8 @@ public class ArmLoadingStation extends Command {
   protected void execute() {
     SmartDashboard.putString("Arm Status", "Arm Low");
     if(Robot.isArmAutomatic) {
-      Robot.ARM.setSetpoint(600);
-      Robot.MANIPULATOR.setSetpoint(800);
+      Robot.armSetpointRaw = 0;
+      Robot.manipulatorSetpointRaw = 450;
       Robot.ARM.enable();
       Robot.MANIPULATOR.enable();
       Robot.armCommandRunning = true;

@@ -15,8 +15,8 @@ public class ArmMiddle extends Command {
   protected void execute() {
     SmartDashboard.putString("Arm Status", "Arm Middle");
     if(Robot.isArmAutomatic){
-      Robot.ARM.setSetpoint(575);
-      Robot.MANIPULATOR.setSetpoint(580);
+      Robot.armSetpointRaw = 575;
+      Robot.manipulatorSetpointRaw = 450;
       Robot.ARM.enable();
       Robot.MANIPULATOR.enable();
       Robot.armCommandRunning = true;

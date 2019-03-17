@@ -15,8 +15,8 @@ public class ArmHigh extends Command {
   protected void execute() {
     SmartDashboard.putString("Arm Status", "Arm High");
       if(Robot.isArmAutomatic) {
-        Robot.ARM.setSetpoint(Robot.armMaxHeight);
-        Robot.MANIPULATOR.setSetpoint(384);
+        Robot.armSetpointRaw = Robot.armMaxHeight;
+        Robot.manipulatorSetpointRaw = 384;
         Robot.armCommandRunning = true;
       }
 

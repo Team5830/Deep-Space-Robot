@@ -18,11 +18,17 @@ public class JoystickMappingPeriodic extends InstantCommand {
     	//Changes axes according to what was selected in SmartDashboard (controlType SendableChooser)
     			switch(Robot.controlType.getSelected()) {
     				case 0:  //DIDBoard and Flightsticks
+					// Robot.driveX = -Robot.leftJoy.getRawAxis(0);
+					// Robot.driveY = -Robot.leftJoy.getRawAxis(1);
+					// Robot.rotX = Robot.rightJoy.getRawAxis(0);
+					// Robot.povPosition = Robot.rightJoy.getPOV();
+					// Robot.isFieldOriented = Robot.isField.get();
 					Robot.driveX = -Robot.leftJoy.getRawAxis(0);
 					Robot.driveY = -Robot.leftJoy.getRawAxis(1);
 					Robot.rotX = Robot.rightJoy.getRawAxis(0);
 					Robot.povPosition = Robot.rightJoy.getPOV();
-					Robot.isFieldOriented = Robot.isField.get();
+
+					Robot.isFieldOriented = SmartDashboard.getBoolean("Field Oriented?", false);
 					break;
 
 					case 1: //No DIDBoard (Xbox Backup)

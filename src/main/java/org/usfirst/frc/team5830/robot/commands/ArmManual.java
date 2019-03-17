@@ -30,7 +30,7 @@ public class ArmManual extends Command {
     //Multiplies that by half of the arm's max height so when the throttle is at full (2) the arm is at max.
     //double valLeft = -(Robot.xbox.getY(Hand.kLeft) + 1) / 2;
     //double valArm = MathHelper.map(valLeft, 0, 1, 0, Robot.armMaxHeight);
-    Robot.ARM.setSetpoint((-Robot.rightJoy.getRawAxis(3) + 1) * (Robot.armMaxHeight / 2));
+    Robot.armSetpointRaw = (-Robot.rightJoy.getRawAxis(3) + 1) * (Robot.armMaxHeight / 2);
 
    /* if(protectedArm < Robot.xbox.getY(Hand.kLeft)){
       protectedArm = (protectedArm + 0.1) * (Robot.armMaxHeight / 2);
@@ -44,17 +44,17 @@ public class ArmManual extends Command {
       protectedManip = protectedManip - 0.1;
     }*/
 
-    //Robot.ARM.setSetpoint(Robot.xbox.getY(Hand.kLeft));
-    //Robot.ARM.setSetpoint(protectedArm);
-    //Robot.ARM.setSetpoint(setpoint);
+    //Robot.armSetpointRaw(Robot.xbox.getY(Hand.kLeft));
+    //Robot.armSetpointRaw(protectedArm);
+    //Robot.armSetpointRaw(setpoint);
     Robot.ARM.enable();
 
     
 
     //double valRight = (Robot.xbox.getY(Hand.kRight) + 1) / 2;
     //double valManip = MathHelper.map(valRight, 0, 1, 0, Robot.manipulatorMaxRotation);
-    Robot.MANIPULATOR.setSetpoint((Robot.leftJoy.getRawAxis(3) + 1) * (Robot.manipulatorMaxRotation / 2));
-    //Robot.MANIPULATOR.setSetpoint(protectedManip);
+    Robot.manipulatorSetpointRaw = (Robot.leftJoy.getRawAxis(3) + 1) * (Robot.manipulatorMaxRotation / 2);
+    //Robot.manipulatorSetpointRaw(protectedManip);
     Robot.MANIPULATOR.enable();
   }
 

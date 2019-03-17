@@ -22,8 +22,8 @@ public class ArmLow extends Command {
   protected void execute() {
     SmartDashboard.putString("Arm Status", "Arm Low");
     if(Robot.isArmAutomatic) {
-      Robot.ARM.setSetpoint(0);
-      Robot.MANIPULATOR.setSetpoint(580);
+      Robot.armSetpointRaw = 0;
+      Robot.manipulatorSetpointRaw = 450;
       Robot.ARM.enable();
       Robot.MANIPULATOR.enable();
       Robot.armCommandRunning = true;

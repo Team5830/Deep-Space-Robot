@@ -23,8 +23,8 @@ public class ArmPounce extends Command {
   protected void execute() {
     SmartDashboard.putString("Arm Status", "Arm Low");
     if(Robot.isArmAutomatic) {
-      Robot.ARM.setSetpoint(80);
-      Robot.MANIPULATOR.setSetpoint(1200);
+      Robot.armSetpointRaw = 80;
+      Robot.manipulatorSetpointRaw = 1200;
       Robot.ARM.enable();
       Robot.MANIPULATOR.enable();
       Robot.armCommandRunning = true;
