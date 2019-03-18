@@ -29,9 +29,6 @@ public class StopAllCommands extends InstantCommand {
     requires(Robot.GYROSUBSYSTEM);
     requires(Robot.MANIPULATOR);
     requires(Robot.VACUUM);
-    requires(Robot.MANIPULATOR2);
-    requires(Robot.WHEELDISTANCEPID);
-    requires(Robot.auto_LIDAR_Distance_Swerve);
     requires(Robot.ARM);
   }
 

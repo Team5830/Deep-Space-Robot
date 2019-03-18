@@ -10,8 +10,6 @@ package org.usfirst.frc.team5830.robot;
 import org.usfirst.frc.team5830.robot.commands.ActivateArmAutomatic;
 import org.usfirst.frc.team5830.robot.commands.ActivateArmManual;
 import org.usfirst.frc.team5830.robot.commands.ArmManual;
-import org.usfirst.frc.team5830.robot.commands.DriveStraight;
-import org.usfirst.frc.team5830.robot.commands.GamePieceDrop;
 import org.usfirst.frc.team5830.robot.commands.GamePieceVacuumSlow;
 import org.usfirst.frc.team5830.robot.commands.JoystickMappingInit;
 import org.usfirst.frc.team5830.robot.commands.JoystickMappingPeriodic;
@@ -26,12 +24,8 @@ import org.usfirst.frc.team5830.robot.subsystems.Cylinders23FrontLeft;
 import org.usfirst.frc.team5830.robot.subsystems.Cylinders23FrontRight;
 import org.usfirst.frc.team5830.robot.subsystems.GyroSubsystem;
 import org.usfirst.frc.team5830.robot.subsystems.LIDARSubsystem;
-import org.usfirst.frc.team5830.robot.subsystems.Manipulator2;
 import org.usfirst.frc.team5830.robot.subsystems.PIDArm;
-import org.usfirst.frc.team5830.robot.subsystems.PIDLIDARDistance;
 import org.usfirst.frc.team5830.robot.subsystems.PIDManipulator;
-import org.usfirst.frc.team5830.robot.subsystems.PIDRotationCorrection;
-import org.usfirst.frc.team5830.robot.subsystems.PIDWheelDistance;
 import org.usfirst.frc.team5830.robot.subsystems.SwerveDrive;
 import org.usfirst.frc.team5830.robot.subsystems.Vacuum;
 import org.usfirst.frc.team5830.robot.subsystems.WheelDrive;
@@ -233,16 +227,12 @@ public class Robot extends TimedRobot{
 	public static final Cylinder12SideLast CYLINDER12SIDELAST = new Cylinder12SideLast();
 	public static final CylinderManipulator CYLINDERMANIPULATOR = new CylinderManipulator();
 	public static final Vacuum VACUUM = new Vacuum();
-	public static final Manipulator2 MANIPULATOR2 = new Manipulator2();
 
 
 	//LIDAR
 	public static final LIDARSubsystem lidarSubsystem = new LIDARSubsystem();
 	
 	//PID Loops
-	public static final PIDLIDARDistance auto_LIDAR_Distance_Swerve = new PIDLIDARDistance();
-	public static final PIDRotationCorrection pidROTATIONCORRECTION = new PIDRotationCorrection();
-	public static final PIDWheelDistance WHEELDISTANCEPID = new PIDWheelDistance();
 	public static final GyroSubsystem GYROSUBSYSTEM = new GyroSubsystem();
 	public static final PIDArm ARM = new PIDArm();
 	public static final PIDManipulator MANIPULATOR = new PIDManipulator();
@@ -322,7 +312,6 @@ public class Robot extends TimedRobot{
 		//SmartDashboard.putBoolean("Troubleshoot - Boolean", false); //Commented out to avoid confusion with an actual "false" troubleshooting step
 		SmartDashboard.putNumber("Troubleshoot - Number", 0);
 
-		SmartDashboard.putData("Stop Vacuum", new GamePieceDrop());
 		SmartDashboard.putData("Activate Arm Automatic", new ActivateArmAutomatic());
 		SmartDashboard.putData("Activate Arm Manual", new ActivateArmManual());
 		SmartDashboard.putData("Pixy Rotation", new PixyLineRotation());
@@ -366,9 +355,6 @@ public class Robot extends TimedRobot{
 			SmartDashboard.putBoolean("Reset Sensors", false);
 			SmartDashboard.putNumber("Wheel Encoder", RobotMap.wheelEncoder1.getDistance());
 		}
-		
-		
-		SmartDashboard.putBoolean("Troubleshoot - Boolean", DriveStraight.isItFinished);
 		
 	}
 	

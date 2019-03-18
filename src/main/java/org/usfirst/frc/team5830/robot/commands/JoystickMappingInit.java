@@ -140,7 +140,7 @@ public class JoystickMappingInit extends InstantCommand {
 			Robot.ArmHigh = new JoystickButton(Robot.xbox, 4);	          //Y
 			Robot.ship = new JoystickButton(Robot.rightJoy, 11);
 			
-			Robot.testPixyAlign = new JoystickButton(Robot.rightJoy, 7); //THIS IS ARM POUNCE!!!
+			Robot.testPixyAlign = new JoystickButton(Robot.rightJoy, 7); //THIS IS ARM POUNCE!!! //TODO Rename button
 
 			//Robot.AlignAngle = new JoystickButton(Robot.xbox, 15);
 			//Robot.AlignStrafe = new JoystickButton(Robot.xbox, 16);
