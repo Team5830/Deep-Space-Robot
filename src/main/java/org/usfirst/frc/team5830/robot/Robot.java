@@ -258,13 +258,10 @@ public class Robot extends TimedRobot{
 		 * Cameras/Vision
 		 */
 		//Camera Stream
-		UsbCamera camera1 = CameraServer.getInstance().startAutomaticCapture(0);
-		camera1.setResolution(640, 480);
-		camera1.setFPS(30);
-
-		/*UsbCamera camera2 = CameraServer.getInstance().startAutomaticCapture(1);
-		camera2.setResolution(640, 480);
-		camera2.setFPS(30);*/
+		UsbCamera frontCam = new UsbCamera("Front Wide", 0);
+		frontCam.setResolution(320, 240);
+		frontCam.setFPS(30);
+		CameraServer.getInstance().startAutomaticCapture(frontCam);
 		
 		//Vision Coordinates
 		SmartDashboard.putBoolean("lined up", false);
@@ -286,9 +283,6 @@ public class Robot extends TimedRobot{
 		SmartDashboard.putBoolean("Arm Default?", false);
 		SmartDashboard.putBoolean("DIDVacOn", false);
 		
-		//Overrides cube distance check if enabled and runs instake on button command regardless of what the LIDAR distance is.
-		//SmartDashboard.putBoolean("Override Intake Sensor", true);
-		
 		//Initiate Gyro reset
 		SmartDashboard.putBoolean("Reset Sensors", false);
 
@@ -298,10 +292,6 @@ public class Robot extends TimedRobot{
 		//Switch between flightsticks and Xbox joystick
 		controlType.addOption("DIDBoard Flightsticks", 0);
 		controlType.setDefaultOption("NO DIDBoard, Flightsticks & Xbox", 1);
-		/*controlType.addOption("Piston Test (Right Flightstick)", 2);
-		controlType.addOption("Manipulator Test (Left Flightstick)", 3);
-		controlType.addOption("Pneumatics Test (Right Flightstick)", 4);	
-		controlType.addOption("Arduino Test (Dual Flightsticks)", 6);	*/
 		SmartDashboard.putData("Control Method", controlType);
 	
 		//Shows current robot command running
