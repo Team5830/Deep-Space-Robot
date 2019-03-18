@@ -7,6 +7,7 @@
 
 package org.usfirst.frc.team5830.robot.subsystems;
 
+import org.usfirst.frc.team5830.robot.Robot;
 import org.usfirst.frc.team5830.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -27,16 +28,19 @@ public class Vacuum extends Subsystem {
   public void suck(){
     RobotMap.vacuum.set(1);
     SmartDashboard.putBoolean("DIDVacOn", true);
+    Robot.isVacuumRunning = true;
   } 
 
   public void suckSlow(){
     RobotMap.vacuum.set(0.92);
     SmartDashboard.putBoolean("DIDVacOn", true);
+    Robot.isVacuumRunning = true;
   } 
 
   public void stop(){
     RobotMap.vacuum.set(0);
     SmartDashboard.putBoolean("DIDVacOn", false);
+    Robot.isVacuumRunning = false;
   }
 
   @Override

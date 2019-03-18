@@ -16,7 +16,7 @@ public class ArmDefault extends Command {
     SmartDashboard.putString("Arm Status", "Arm Default");
     if(Robot.isArmAutomatic){
       Robot.armSetpointRaw = 0;
-      Robot.manipulatorSetpointRaw = 365;
+      Robot.manipulatorSetpointRaw = 200;
       Robot.ARM.enable();
       Robot.armCommandRunning = true;
     }  

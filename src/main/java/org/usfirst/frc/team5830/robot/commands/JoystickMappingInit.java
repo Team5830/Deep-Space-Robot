@@ -78,7 +78,7 @@ public class JoystickMappingInit extends InstantCommand {
 			Robot.PistonHab12First.whenPressed(new PistonSideHab12First());
 			Robot.PistonHab12Last.whenPressed(new PistonSideHab12Last());
 
-			Robot.Vacuum.whenPressed(new GamePieceVacuum());
+			Robot.Vacuum.whenPressed(new VacuumToggle());
 
 			SmartDashboard.putBoolean("Field Oriented?", false);
 			SmartDashboard.putData("Toggle Arm Automatic", new ActivateArmAutomatic());
@@ -172,7 +172,7 @@ public class JoystickMappingInit extends InstantCommand {
 			Robot.PistonHab23First.whenPressed(new PistonFrontHab23());
 			Robot.PistonHab23Last.whenPressed(new PistonRearHab23());
 
-			Robot.Vacuum.whenPressed(new GamePieceVacuum());
+			Robot.Vacuum.whenPressed(new VacuumToggle());
 
 			SmartDashboard.putBoolean("Field Oriented?", false);
 			SmartDashboard.putData("Toggle Arm Automatic", new ActivateArmAutomatic());

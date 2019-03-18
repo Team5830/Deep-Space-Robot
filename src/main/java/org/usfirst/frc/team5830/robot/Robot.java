@@ -188,6 +188,7 @@ public class Robot extends TimedRobot{
 	public static boolean isFloor = false;
 	public static boolean isArmAutomatic = true;
 	public static boolean armCommandRunning = false;
+	public static boolean isVacuumRunning = false;
 
 	public static double manipulatorSetpointRaw = 0;
 	public static double armSetpointRaw = 0;
@@ -293,7 +294,7 @@ public class Robot extends TimedRobot{
 		SmartDashboard.putBoolean("Arm Middle?", false);
 		SmartDashboard.putBoolean("Arm High?", false);
 		SmartDashboard.putBoolean("Arm Default?", false);
-		SmartDashboard.putBoolean("Vacuum On?", false);
+		SmartDashboard.putBoolean("DIDVacOn", false);
 		
 		//Overrides cube distance check if enabled and runs instake on button command regardless of what the LIDAR distance is.
 		//SmartDashboard.putBoolean("Override Intake Sensor", true);
@@ -374,6 +375,7 @@ public class Robot extends TimedRobot{
 	@Override
 	public void autonomousInit() {
 		joystickMappingInit.start();
+		
 	}
 	
 	@Override
@@ -382,6 +384,18 @@ public class Robot extends TimedRobot{
 
 		//Processes axis values
 		joystickMappingPeriodic.start();
+
+		if(Robot.armSetpointRaw < Robot.ARM.getSetpoint()){
+			Robot.ARM.setSetpoint(Robot.ARM.getSetpoint() - 10);
+		} else if(Robot.armSetpointRaw > Robot.ARM.getSetpoint()){
+			Robot.ARM.setSetpoint(Robot.ARM.getSetpoint() + 10);
+		}
+
+		if(Robot.manipulatorSetpointRaw < Robot.MANIPULATOR.getSetpoint()){
+			Robot.MANIPULATOR.setSetpoint(Robot.MANIPULATOR.getSetpoint() - 10);
+		} else if(Robot.manipulatorSetpointRaw > Robot.MANIPULATOR.getSetpoint()){
+			Robot.MANIPULATOR.setSetpoint(Robot.MANIPULATOR.getSetpoint() + 10);
+		}
 	
 		
 		//SmartDashboard data publishing
