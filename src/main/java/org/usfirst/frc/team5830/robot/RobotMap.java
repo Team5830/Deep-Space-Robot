@@ -10,6 +10,7 @@ package org.usfirst.frc.team5830.robot;
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.PowerDistributionPanel;
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 
@@ -51,7 +52,7 @@ public class RobotMap {
 	 */	
 	
 	//PDP //TODO Find CAN ID and fix error
-	//public static PowerDistributionPanel pdp = new PowerDistributionPanel(3); //find CAN bus ID and place in parenthesis, otherwise it will yield a CAN timeout error
+	public static PowerDistributionPanel pdp = new PowerDistributionPanel(3); //find CAN bus ID and place in parenthesis, otherwise it will yield a CAN timeout error
 	
 	/*
 	 * Sensors
