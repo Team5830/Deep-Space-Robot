@@ -197,10 +197,8 @@ public class Robot extends TimedRobot{
 		if (SmartDashboard.getBoolean("Reset Sensors", false)) {
 			RobotMap.gyro.calibrate();
 			RobotMap.armEncoder.reset();
-			RobotMap.wheelEncoder1.reset();
 			RobotMap.manipulatorEncoder.reset();
 			SmartDashboard.putBoolean("Reset Sensors", false);
-			SmartDashboard.putNumber("Wheel Encoder", RobotMap.wheelEncoder1.getDistance());
 		}
 		
 	}
