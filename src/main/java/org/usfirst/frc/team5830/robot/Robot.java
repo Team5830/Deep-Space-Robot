@@ -35,10 +35,7 @@ import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
-import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.TimedRobot;
-import edu.wpi.first.wpilibj.XboxController;
-import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
@@ -49,13 +46,9 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 
 public class Robot extends TimedRobot{ 
-	
-	/**
-	 * User-Defined Variables
-	 */
 
 	/**
-	 * System-Defined Variables
+	 * System Variables
 	 */
 	
 	//PID
@@ -68,69 +61,8 @@ public class Robot extends TimedRobot{
 	public static double driveX;
 	public static double rotX;
 	public static int povPosition;
-	public static Joystick leftJoy;
-	public static Joystick rightJoy;
-	public static XboxController xbox;
-	public static Joystick arduino;
-	public static Button testPixyStrafe;
-	public static Button testPixyAlign;
-	public static Button testPixyAngle;
-	public static Button raiseFront;
-	public static Button raiseRear;
-	public static Button habClimb;
-	public static Button HatchPanel;
-	public static Button Cargo;
-	public static Button ArmLow;
-	public static Button ArmMiddle;
-	public static Button ArmHigh;
-	public static Button Floor;
-	public static Button LoadingStation;
-	public static Button Vacuum;
-	public static Button AlignAngle;
-	public static Button AlignStrafe;
-	public static Button PistonHab12First;
-	public static Button PistonHab12Last;
-	public static Button PistonHab23First;
-	public static Button PistonHab23Last;
-	public static Button ArmDefault;
-	public static Button Orientation;
-	public static Button ControllerInput;
-	public static Button MoveToHatch;
-	public static Button isField;
-	public static Button selectCargoOrHatch;
-	public static Button ship;
-
-	//Testing
-	public static Button testPistonFrontLeft;
-	public static Button testPistonFrontRight;
-	public static Button testPistonFront;
-	public static Button testPistonSide;
-	public static Button testPistonRear;
-	public static Button testClimbHab;
-	public static Button testArmMiddleCargo;
-	public static Button testManipulatorMiddleHatchP;
-	public static Button testGamePieceVacuum;
-	public static Button testGamePieceDrop;
-	public static Button testArmHighCargo; 
-	public static Button testManipulatorMiddleCargo;
-	public static Button testManipulatorHighCargo;
-	public static Button testArmLowHatchP;
-	public static Button testArmMiddleHatchP;
-	public static Button testManipulatorLowHatchP;
-	public static Button testSuckCargo;
-	public static Button testSpitCargo; 
-	public static Button testPistonFrontHab23;
-	public static Button testPistonRearHab23;
-	public static Button testPistonManipulator;
-	public static Button testPistonSideHab12First;
-	public static Button testPistonSideHab12Last;
-	public static Button testManipulatorLow;
-	public static Button pickupCargoFloor;
-	public static Button pistonManipulator;
-
 
 	//Misc
-	
 	public static SendableChooser<Boolean> driveType = new SendableChooser<>();
 	public static SendableChooser<Integer> controlType = new SendableChooser<>();
 	public static boolean isFieldOriented = false;

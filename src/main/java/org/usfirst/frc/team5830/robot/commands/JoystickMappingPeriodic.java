@@ -23,19 +23,19 @@ public class JoystickMappingPeriodic extends InstantCommand {
 					// Robot.rotX = Robot.rightJoy.getRawAxis(0);
 					// Robot.povPosition = Robot.rightJoy.getPOV();
 					// Robot.isFieldOriented = Robot.isField.get();
-					Robot.driveX = -Robot.leftJoy.getRawAxis(0);
-					Robot.driveY = -Robot.leftJoy.getRawAxis(1);
-					Robot.rotX = Robot.rightJoy.getRawAxis(0);
-					Robot.povPosition = Robot.rightJoy.getPOV();
+					Robot.driveX = -JoystickMappingInit.leftJoy.getRawAxis(0);
+					Robot.driveY = -JoystickMappingInit.leftJoy.getRawAxis(1);
+					Robot.rotX = JoystickMappingInit.rightJoy.getRawAxis(0);
+					Robot.povPosition = JoystickMappingInit.rightJoy.getPOV();
 
 					Robot.isFieldOriented = SmartDashboard.getBoolean("Field Oriented?", false);
 					break;
 
 					case 1: //No DIDBoard (Xbox Backup)
-					Robot.driveX = -Robot.leftJoy.getRawAxis(0);
-					Robot.driveY = -Robot.leftJoy.getRawAxis(1);
-					Robot.rotX = Robot.rightJoy.getRawAxis(0);
-					Robot.povPosition = Robot.rightJoy.getPOV();
+					Robot.driveX = -JoystickMappingInit.leftJoy.getRawAxis(0);
+					Robot.driveY = -JoystickMappingInit.leftJoy.getRawAxis(1);
+					Robot.rotX = JoystickMappingInit.rightJoy.getRawAxis(0);
+					Robot.povPosition = JoystickMappingInit.rightJoy.getPOV();
 
 					Robot.isFieldOriented = SmartDashboard.getBoolean("Field Oriented?", false);
     					/*if (Math.abs(Robot.xbox.getRawAxis(0)) > Robot.xboxStickDeadzone) Robot.driveX = Robot.xbox.getRawAxis(0)/2; else Robot.driveX = 0;
