@@ -11,19 +11,13 @@ import org.usfirst.frc.team5830.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.InstantCommand;
 
-/**
- * Add your docs here.
- */
 public class VacuumToggle extends InstantCommand {
-  /**
-   * Add your docs here.
-   */
+
   public VacuumToggle() {
     super();
     requires(Robot.VACUUM);
   }
 
-  // Called once when the command executes
   @Override
   protected void initialize() {
     if(!Robot.isVacuumRunning){
@@ -32,5 +26,4 @@ public class VacuumToggle extends InstantCommand {
       Robot.VACUUM.stop();
     }
   }
-
 }
