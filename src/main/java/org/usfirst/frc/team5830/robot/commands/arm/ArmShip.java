@@ -1,4 +1,4 @@
-package org.usfirst.frc.team5830.robot.commands;
+package org.usfirst.frc.team5830.robot.commands.arm;
 
 import org.usfirst.frc.team5830.robot.Robot;
 import org.usfirst.frc.team5830.robot.Constants;
@@ -6,18 +6,26 @@ import org.usfirst.frc.team5830.robot.Constants;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-public class ArmMiddle extends Command {
-  public ArmMiddle() {
+/**
+ * 
+ * @author Arlene A.
+ * 
+ */
+
+
+public class ArmShip extends Command {
+  public ArmShip() {
     requires(Robot.ARM);
+    requires(Robot.MANIPULATOR);
     }
 
   // Called just before this Command runs the first time
   @Override
   protected void execute() {
-    SmartDashboard.putString("Arm Status", "Arm Middle");
-    if(Robot.isArmAutomatic){
-      Robot.armSetpointRaw = 575;
-      Robot.manipulatorSetpointRaw = 450;
+    SmartDashboard.putString("Arm Status", "Arm Low");
+    if(Robot.isArmAutomatic) {
+      Robot.armSetpointRaw = 680;
+      Robot.manipulatorSetpointRaw = 680;
       Robot.ARM.enable();
       Robot.MANIPULATOR.enable();
       Robot.armCommandRunning = true;

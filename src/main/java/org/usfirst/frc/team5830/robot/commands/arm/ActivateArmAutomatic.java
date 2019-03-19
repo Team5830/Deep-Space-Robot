@@ -5,23 +5,27 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package org.usfirst.frc.team5830.robot.commands;
+package org.usfirst.frc.team5830.robot.commands.arm;
 
-import edu.wpi.first.wpilibj.command.CommandGroup;
+import org.usfirst.frc.team5830.robot.Robot;
 
-public class PixyAlign extends CommandGroup {
+import edu.wpi.first.wpilibj.command.InstantCommand;
+
+/**
+ * Add your docs here.
+ */
+public class ActivateArmAutomatic extends InstantCommand {
   /**
    * Add your docs here.
    */
-  public PixyAlign() {
-    addSequential(new PixyLineRotation());
-    addSequential(new TimerDelay());
-    addSequential(new PixyLineRotation());
-    addSequential(new TimerDelay());
-    addSequential(new PixyLineStrafe());
-    addSequential(new TimerDelay());
-    addSequential(new PixyLineStrafe());
-    addSequential(new TimerDelay());
-    addSequential(new PixyLineRotation());
+  public ActivateArmAutomatic() {
+    super();
   }
+
+  // Called once when the command executes
+  @Override
+  protected void initialize() {
+    Robot.isArmAutomatic = true;
+  }
+
 }

@@ -5,27 +5,26 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package org.usfirst.frc.team5830.robot.commands;
+package org.usfirst.frc.team5830.robot.commands.pistons;
 
 import org.usfirst.frc.team5830.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.InstantCommand;
 
-/**
- * Add your docs here.
- */
-public class ActivateArmManual extends InstantCommand {
-  /**
-   * Add your docs here.
-   */
-  public ActivateArmManual() {
-    super();
+public class PistonRearHab23 extends InstantCommand {
+
+  public PistonRearHab23() {
+    requires(Robot.CYLINDER23REAR);
   }
 
-  // Called once when the command executes
   @Override
-  protected void initialize() {
-    Robot.isArmAutomatic = false;
+  protected void execute() {
+    if(Robot.isPistonRearExtended){
+      Robot.CYLINDER23REAR.in();
+      Robot.isPistonRearExtended = false;
+    } else {
+      Robot.CYLINDER23REAR.out();
+      Robot.isPistonRearExtended = true;
+    }
   }
-
 }

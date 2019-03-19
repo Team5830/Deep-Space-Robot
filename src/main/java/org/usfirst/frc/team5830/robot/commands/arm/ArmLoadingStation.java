@@ -1,4 +1,4 @@
-package org.usfirst.frc.team5830.robot.commands;
+package org.usfirst.frc.team5830.robot.commands.arm;
 
 import org.usfirst.frc.team5830.robot.Robot;
 import org.usfirst.frc.team5830.robot.Constants;
@@ -13,9 +13,10 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 
 
-public class ArmLow extends Command {
-  public ArmLow() {
+public class ArmLoadingStation extends Command {
+  public ArmLoadingStation() {
     requires(Robot.ARM);
+    requires(Robot.MANIPULATOR);
     }
 
   // Called just before this Command runs the first time

@@ -5,26 +5,25 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package org.usfirst.frc.team5830.robot.commands;
+package org.usfirst.frc.team5830.robot.commands.pistons;
 
 import org.usfirst.frc.team5830.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.InstantCommand;
 
-public class PistonManipulator extends InstantCommand {
+public class PistonSideHab12First extends InstantCommand {
 
-  public PistonManipulator() {
-    requires(Robot.CYLINDERMANIPULATOR);
+  public PistonSideHab12First() {
+    requires(Robot.CYLINDER12SIDEFIRST);
   }
 
   @Override
   protected void execute() {
-    if(Robot.isPistonManipulatorExtended){
-      Robot.CYLINDERMANIPULATOR.in();
-      Robot.isPistonManipulatorExtended = false;
+    if(Robot.isPiston12FirstExtended){
+      Robot.CYLINDER12SIDEFIRST.in();
     } else {
-      Robot.CYLINDERMANIPULATOR.out();
-      Robot.isPistonManipulatorExtended = true;
+      Robot.CYLINDER12SIDEFIRST.out();
     }
+    //SmartDashboard.putBoolean("Is", value))
   }
 }

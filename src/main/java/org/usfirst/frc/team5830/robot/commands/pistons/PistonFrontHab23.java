@@ -5,26 +5,30 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package org.usfirst.frc.team5830.robot.commands;
+package org.usfirst.frc.team5830.robot.commands.pistons;
 
 import org.usfirst.frc.team5830.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.InstantCommand;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-public class PistonRearHab23 extends InstantCommand {
+public class PistonFrontHab23 extends InstantCommand {
 
-  public PistonRearHab23() {
-    requires(Robot.CYLINDER23REAR);
+  public PistonFrontHab23() {
+    requires(Robot.CYLINDERS23FrontLeft);
+    requires(Robot.CYLINDERS23FrontRight);
   }
 
   @Override
   protected void execute() {
-    if(Robot.isPistonRearExtended){
-      Robot.CYLINDER23REAR.in();
-      Robot.isPistonRearExtended = false;
+    if (Robot.isPistonFrontLeftExtended){
+      SmartDashboard.putString("Status2","True");
+      Robot.CYLINDERS23FrontLeft.in();
+      Robot.CYLINDERS23FrontRight.in();
     } else {
-      Robot.CYLINDER23REAR.out();
-      Robot.isPistonRearExtended = true;
+      SmartDashboard.putString("Status2","False");
+      Robot.CYLINDERS23FrontLeft.out();
+      Robot.CYLINDERS23FrontRight.out();
     }
   }
 }

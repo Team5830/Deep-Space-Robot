@@ -5,24 +5,27 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package org.usfirst.frc.team5830.robot.commands;
+package org.usfirst.frc.team5830.robot.commands.arm;
 
 import org.usfirst.frc.team5830.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.InstantCommand;
 
-public class PistonSideHab12Last extends InstantCommand {
-
-  public PistonSideHab12Last() {
-    requires(Robot.CYLINDER12SIDELAST);
+/**
+ * Add your docs here.
+ */
+public class ActivateArmManual extends InstantCommand {
+  /**
+   * Add your docs here.
+   */
+  public ActivateArmManual() {
+    super();
   }
 
+  // Called once when the command executes
   @Override
-  protected void execute() {
-    if(Robot.isPiston12LastExtended){
-      Robot.CYLINDER12SIDELAST.in();
-    } else {
-      Robot.CYLINDER12SIDELAST.out();
-    }
+  protected void initialize() {
+    Robot.isArmAutomatic = false;
   }
+
 }

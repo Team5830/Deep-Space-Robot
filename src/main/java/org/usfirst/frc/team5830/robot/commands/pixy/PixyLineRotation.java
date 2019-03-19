@@ -5,24 +5,18 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package org.usfirst.frc.team5830.robot.commands;
-
-
+package org.usfirst.frc.team5830.robot.commands.pixy;
 
 import org.usfirst.frc.team5830.robot.Robot;
-import edu.wpi.first.wpilibj.command.InstantCommand;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import org.usfirst.frc.team5830.robot.Constants;
 
-/**
- * 
- * @author Arlene A.
- * 
- */
+import edu.wpi.first.wpilibj.command.Command;
 
+public class PixyLineRotation extends Command {
 
-public class GamePieceVacuum extends InstantCommand {
-  public GamePieceVacuum() {
-    requires(Robot.VACUUM);
+  private boolean isItFinished = false;
+
+  public PixyLineRotation() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
   }
@@ -30,21 +24,35 @@ public class GamePieceVacuum extends InstantCommand {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    SmartDashboard.putString("Status", "Vacuum");
-    Robot.VACUUM.suck();
+    if(Math.abs(Robot.pixy1x0 - Robot.pixy1x1) > Constants.pixy2LineRotationError){
+     if(Robot.pixy1x0 < Robot.pixy1x1){
+        Robot.swerveDrive.drive(0.2, 0, 0.15);
+      }
+      if(Robot.pixy1x0 > Robot.pixy1x1){
+        Robot.swerveDrive.drive(-0.2, 0, -0.15);
+      }
+    } else {
+      Robot.swerveDrive.drive(0, 0, 0);
+      isItFinished = true;
+    }
   }
 
+  // Make this return true when this Command no longer needs to run execute()
+  @Override
+  protected boolean isFinished() {
+    return isItFinished;
+  }
 
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    SmartDashboard.putString("Status", "Idle");
+    isItFinished = false;
   }
 
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
-    Robot.VACUUM.stop();
+    isItFinished = false;
   }
 }

@@ -1,4 +1,4 @@
-package org.usfirst.frc.team5830.robot.commands;
+package org.usfirst.frc.team5830.robot.commands.arm;
 
 import org.usfirst.frc.team5830.robot.Robot;
 import org.usfirst.frc.team5830.robot.Constants;
@@ -13,8 +13,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 
 
-public class ArmPounce extends Command {
-  public ArmPounce() {
+public class ArmFloor extends Command {
+  public ArmFloor() {
     requires(Robot.ARM);
     requires(Robot.MANIPULATOR);
     }
@@ -24,7 +24,7 @@ public class ArmPounce extends Command {
   protected void execute() {
     SmartDashboard.putString("Arm Status", "Arm Low");
     if(Robot.isArmAutomatic) {
-      Robot.armSetpointRaw = 80;
+      Robot.armSetpointRaw = 570;
       Robot.manipulatorSetpointRaw = 1200;
       Robot.ARM.enable();
       Robot.MANIPULATOR.enable();

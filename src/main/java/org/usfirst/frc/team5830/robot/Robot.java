@@ -7,14 +7,14 @@
 
 package org.usfirst.frc.team5830.robot;
 
-import org.usfirst.frc.team5830.robot.commands.ActivateArmAutomatic;
-import org.usfirst.frc.team5830.robot.commands.ActivateArmManual;
-import org.usfirst.frc.team5830.robot.commands.ArmManual;
+import org.usfirst.frc.team5830.robot.commands.arm.ActivateArmAutomatic;
+import org.usfirst.frc.team5830.robot.commands.arm.ActivateArmManual;
+import org.usfirst.frc.team5830.robot.commands.arm.ArmManual;
 import org.usfirst.frc.team5830.robot.commands.JoystickMappingInit;
 import org.usfirst.frc.team5830.robot.commands.JoystickMappingPeriodic;
-import org.usfirst.frc.team5830.robot.commands.PistonFrontHab23;
-import org.usfirst.frc.team5830.robot.commands.PixyLineRotation;
-import org.usfirst.frc.team5830.robot.commands.PixyLineStrafe;
+import org.usfirst.frc.team5830.robot.commands.pistons.PistonFrontHab23;
+import org.usfirst.frc.team5830.robot.commands.pixy.PixyLineRotation;
+import org.usfirst.frc.team5830.robot.commands.pixy.PixyLineStrafe;
 import org.usfirst.frc.team5830.robot.commands.StopAllCommands;
 import org.usfirst.frc.team5830.robot.subsystems.Cylinder12SideFirst;
 import org.usfirst.frc.team5830.robot.subsystems.Cylinder12SideLast;

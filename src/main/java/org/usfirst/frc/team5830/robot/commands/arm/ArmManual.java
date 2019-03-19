@@ -5,9 +5,10 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package org.usfirst.frc.team5830.robot.commands;
+package org.usfirst.frc.team5830.robot.commands.arm;
 
 import org.usfirst.frc.team5830.robot.Robot;
+import org.usfirst.frc.team5830.robot.commands.JoystickMappingInit;
 import org.usfirst.frc.team5830.robot.Constants;
 import edu.wpi.first.wpilibj.command.Command;
 
