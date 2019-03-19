@@ -66,19 +66,12 @@ public class Robot extends TimedRobot{
 	public static SendableChooser<Boolean> driveType = new SendableChooser<>();
 	public static SendableChooser<Integer> controlType = new SendableChooser<>();
 	public static boolean isFieldOriented = false;
-	public static int climbHabStepCount = 1;
 	public static boolean isPistonFrontLeftExtended = false;
 	public static boolean isPistonFrontRightExtended = false;
 	public static boolean isPistonRearExtended = false;
 	public static boolean isPiston12FirstExtended = false;
 	public static boolean isPiston12LastExtended = false;
-	public static boolean isPistonManipulatorExtended= false;
-	public static boolean isCargo = false;
-	public static boolean isArmLow = false;
-	public static boolean isArmMiddle = false;
-	public static boolean isArmHigh = false;
-	public static boolean isArmDefault = false;
-	public static boolean isFloor = false;
+	public static boolean isPistonManipulatorExtended = false;
 	public static boolean isArmAutomatic = true;
 	public static boolean armCommandRunning = false;
 	public static boolean isVacuumRunning = false;
@@ -110,10 +103,6 @@ public class Robot extends TimedRobot{
 	public static double pixy1x1 = 0;
 	public static double pixy1y1 = 0;
 
-	//Pneumatics
-	//Compressor c = new Compressor(0);
-
-
 	/**
 	 * Subsystems
 	 */
@@ -144,15 +133,10 @@ public class Robot extends TimedRobot{
 	private static Command armManual = new ArmManual();
 	//public static Command Vacuum = new GamePieceVacuum();
 	
-	/**
-	 * This function is run when the robot is first started up and should be
-	 * used for any initialization code.
-	 */
 	@Override
 	public void robotInit() {
 		m_oi = new OI();
 
-		
 		/**
 		 * Cameras/Vision
 		 */
@@ -161,32 +145,15 @@ public class Robot extends TimedRobot{
 		frontCam.setResolution(320, 240);
 		frontCam.setFPS(30);
 		CameraServer.getInstance().startAutomaticCapture(frontCam);
-		
-		//Vision Coordinates
-		SmartDashboard.putBoolean("lined up", false);
 
-		
-		
 		/**
 		 * SmartDashboard
 		 */		
 
-		//Choose between Cargo and Hatch Panel
-		SmartDashboard.putBoolean("Hatch Panel?", false);
-		SmartDashboard.putBoolean("Cargo?", false); 
-		SmartDashboard.putBoolean("Floor?", false);
-		//SmartDashboard.putBoolean("Loading Station", false);
-		SmartDashboard.putBoolean("Arm Low?", false);
-		SmartDashboard.putBoolean("Arm Middle?", false);
-		SmartDashboard.putBoolean("Arm High?", false);
-		SmartDashboard.putBoolean("Arm Default?", false);
 		SmartDashboard.putBoolean("DIDVacOn", false);
 		
 		//Initiate Gyro reset
 		SmartDashboard.putBoolean("Reset Sensors", false);
-
-		//Climbing status
-		SmartDashboard.putString("Climb Next Step", "Raise Robot from Side");
 		
 		//Switch between flightsticks and Xbox joystick
 		controlType.addOption("DIDBoard Flightsticks", 0);
@@ -195,11 +162,6 @@ public class Robot extends TimedRobot{
 	
 		//Shows current robot command running
 		SmartDashboard.putString("Status", "Waiting for Match Start");
-		
-		//Troubleshooting Posts - visible in tab 2 of shuffleboard, made for fast and easy logic troubleshooting
-		SmartDashboard.putString("Troubleshoot - String", "null");
-		//SmartDashboard.putBoolean("Troubleshoot - Boolean", false); //Commented out to avoid confusion with an actual "false" troubleshooting step
-		SmartDashboard.putNumber("Troubleshoot - Number", 0);
 
 		SmartDashboard.putData("Activate Arm Automatic", new ActivateArmAutomatic());
 		SmartDashboard.putData("Activate Arm Manual", new ActivateArmManual());
@@ -207,6 +169,7 @@ public class Robot extends TimedRobot{
 		SmartDashboard.putData("Pixy Strafe", new PixyLineStrafe());
 		SmartDashboard.putData("Backup Piston", new PistonFrontHab23());
 		SmartDashboard.putData("Slow Vacuum", new GamePieceVacuumSlow());
+
 		/**
 		 * Sensor Calibration/Setup
 		 */
@@ -215,11 +178,6 @@ public class Robot extends TimedRobot{
 		RobotMap.armEncoder.reset();
 		RobotMap.manipulatorEncoder.setDistancePerPulse(1);
 		RobotMap.manipulatorEncoder.reset();
-		RobotMap.wheelEncoder1.setDistancePerPulse(0.0965989132622258);
-		RobotMap.wheelEncoder1.reset();
-		//Pneumatics
-		//c.setClosedLoopControl(true);
-
 	}
 
 	@Override
@@ -271,15 +229,6 @@ public class Robot extends TimedRobot{
 		} else if(Robot.manipulatorSetpointRaw > Robot.MANIPULATOR.getSetpoint()){
 			Robot.MANIPULATOR.setSetpoint(Robot.MANIPULATOR.getSetpoint() + 10);
 		}
-	
-		
-		//SmartDashboard data publishing
-
-		/*isCargo = SmartDashboard.getBoolean("Cargo?", false);
-		isArmLow = SmartDashboard.getBoolean("Arm Low?", false);
-		isArmMiddle = SmartDashboard.getBoolean("Arm Middle?", false);
-		isArmHigh = SmartDashboard.getBoolean("Arm High?", false);
-		isArmDefault = SmartDashboard.getBoolean("Arm Default?", false);*/
 
 		/**
 		 * Vision Processing
@@ -296,16 +245,11 @@ public class Robot extends TimedRobot{
 
 	@Override
 	public void teleopInit() {
-		
-		
 
 		SmartDashboard.putString("Status", "Driving");
 		
 		//Takes ShuffleBoard button layout presets and maps buttons accordingly
 		joystickMappingInit.start();
-
-		//Pneumatics
-		// c.setClosedLoopControl(true);
 	}
 
 	@Override
