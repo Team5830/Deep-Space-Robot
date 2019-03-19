@@ -16,6 +16,7 @@ import org.usfirst.frc.team5830.robot.commands.JoystickMappingPeriodic;
 import org.usfirst.frc.team5830.robot.commands.PistonFrontHab23;
 import org.usfirst.frc.team5830.robot.commands.PixyLineRotation;
 import org.usfirst.frc.team5830.robot.commands.PixyLineStrafe;
+import org.usfirst.frc.team5830.robot.commands.StopAllCommands;
 import org.usfirst.frc.team5830.robot.subsystems.Cylinder12SideFirst;
 import org.usfirst.frc.team5830.robot.subsystems.Cylinder12SideLast;
 import org.usfirst.frc.team5830.robot.subsystems.Cylinder23Rear;
@@ -169,6 +170,7 @@ public class Robot extends TimedRobot{
 		SmartDashboard.putData("Pixy Strafe", new PixyLineStrafe());
 		SmartDashboard.putData("Backup Piston", new PistonFrontHab23());
 		SmartDashboard.putData("Slow Vacuum", new GamePieceVacuumSlow());
+		SmartDashboard.putData("Stop All Commands", new StopAllCommands());
 
 		/**
 		 * Sensor Calibration/Setup
