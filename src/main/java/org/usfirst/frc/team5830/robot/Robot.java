@@ -261,15 +261,15 @@ public class Robot extends TimedRobot{
 	
 		//Arm and Manipulator Ramp
 		if(Robot.armSetpointRaw < Robot.ARM.getSetpoint()){
-			Robot.ARM.setSetpoint(Robot.ARM.getSetpoint() - 10);
+			Robot.ARM.setSetpoint(Robot.ARM.getSetpoint() - Constants.armRampSpeed);
 		} else if(Robot.armSetpointRaw > Robot.ARM.getSetpoint()){
-			Robot.ARM.setSetpoint(Robot.ARM.getSetpoint() + 10);
+			Robot.ARM.setSetpoint(Robot.ARM.getSetpoint() + Constants.armRampSpeed);
 		}
 
 		if(Robot.manipulatorSetpointRaw < Robot.MANIPULATOR.getSetpoint()){
-			Robot.MANIPULATOR.setSetpoint(Robot.MANIPULATOR.getSetpoint() - 10);
+			Robot.MANIPULATOR.setSetpoint(Robot.MANIPULATOR.getSetpoint() - Constants.manipulatorRampSpeed);
 		} else if(Robot.manipulatorSetpointRaw > Robot.MANIPULATOR.getSetpoint()){
-			Robot.MANIPULATOR.setSetpoint(Robot.MANIPULATOR.getSetpoint() + 10);
+			Robot.MANIPULATOR.setSetpoint(Robot.MANIPULATOR.getSetpoint() + Constants.manipulatorRampSpeed);
 		}
 
 		/**

@@ -23,6 +23,8 @@ public class Constants {
 	public static final int armError = 100;
 	//Highest arm position
 	public static final int armMaxHeight = 900;
+	//Arm setpoint ramp speed
+	public static final float armRampSpeed = 10; //How much to step setpoint up/down each tick
 
 	/*
 		MANIPULATOR SETTINGS
@@ -35,6 +37,8 @@ public class Constants {
 	public static final int manipulatorMaxRotation = 1200;
 	//Manipulator Error
 	public static final int manipulatorError = 100;
+	//Manipulator setpoint ramp speed
+	public static final float manipulatorRampSpeed = 10; //How much to step setpoint up/down each tick
 
 	/*
 		SENSOR PARAMETERS
