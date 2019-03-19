@@ -52,19 +52,7 @@ public class JoystickMappingInit extends InstantCommand {
 
     public JoystickMappingInit() {}
     
-    protected void execute() {
-    	//There is no isFinished defined because this is an InstantCommand. 
-    	//An InstantCommand is just shorthand for returning true in isFinished, meaning execute will only run once.
-		/*Robot.arduino = new Joystick(3);
-		Robot.HatchPanel = new JoystickButton(Robot.arduino, 1);
-		Robot.Cargo = new JoystickButton(Robot.arduino, 2);
-		Robot.ArmLow = new JoystickButton(Robot.arduino, 3);
-		Robot.ArmMiddle = new JoystickButton(Robot.arduino, 4);
-		Robot.ArmHigh = new JoystickButton(Robot.arduino, 5);
-		Robot.Floor = new JoystickButton(Robot.arduino, 6);
-		Robot.LoadingStation = new JoystickButton(Robot.arduino, 7);*/
-
-		
+    protected void execute() {		
     	//Initiates command to call buttons according to the option selected on SmartDashboard (Command name = ChooseButtonLayout)
 		switch (Robot.controlType.getSelected()) {
 			case 0: //DIDBoard and Flightsticks
@@ -167,7 +155,7 @@ public class JoystickMappingInit extends InstantCommand {
 			break;
 			}
 
-			}
+		}
 
 		
     }
