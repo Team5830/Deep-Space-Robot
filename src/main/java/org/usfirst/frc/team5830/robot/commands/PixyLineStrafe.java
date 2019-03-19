@@ -8,6 +8,7 @@
 package org.usfirst.frc.team5830.robot.commands;
 
 import org.usfirst.frc.team5830.robot.Robot;
+import org.usfirst.frc.team5830.robot.Constants;
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -25,7 +26,7 @@ public class PixyLineStrafe extends Command {
   @Override
   protected void execute() {
     isItFinished  = false;
-    if(Math.abs((Robot.pixy1x0 + Robot.pixy1x1)/2- trackingCenterPoint) > Robot.pixy2LineStrafeError){ //If not centered
+    if(Math.abs((Robot.pixy1x0 + Robot.pixy1x1)/2- trackingCenterPoint) > Constants.pixy2LineStrafeError){ //If not centered
       if((Robot.pixy1x0 + Robot.pixy1x1)/2 < trackingCenterPoint){ //To the left of center
         Robot.swerveDrive.drive(0.22, 0, 0);
       }

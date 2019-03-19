@@ -1,5 +1,6 @@
 package org.usfirst.frc.team5830.robot.commands;
 
+import org.usfirst.frc.team5830.robot.Constants;
 import org.usfirst.frc.team5830.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
@@ -24,8 +25,8 @@ public class ArmDefault extends Command {
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return Math.abs (Robot.ARM.getSetpoint() - Robot.ARM.getPosition()) < Robot.armError &&
-    Math.abs (Robot.MANIPULATOR.getSetpoint() - Robot.MANIPULATOR.getPosition()) < Robot.manipulatorError;
+    return Math.abs (Robot.ARM.getSetpoint() - Robot.ARM.getPosition()) < Constants.armError &&
+    Math.abs (Robot.MANIPULATOR.getSetpoint() - Robot.MANIPULATOR.getPosition()) < Constants.manipulatorError;
   }
 
   // Called once after isFinished returns true

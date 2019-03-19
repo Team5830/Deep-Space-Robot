@@ -8,6 +8,7 @@
 package org.usfirst.frc.team5830.robot.commands;
 
 import org.usfirst.frc.team5830.robot.Robot;
+import org.usfirst.frc.team5830.robot.Constants;
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -23,7 +24,7 @@ public class PixyLineRotation extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    if(Math.abs(Robot.pixy1x0 - Robot.pixy1x1) > Robot.pixy2LineRotationError){
+    if(Math.abs(Robot.pixy1x0 - Robot.pixy1x1) > Constants.pixy2LineRotationError){
      if(Robot.pixy1x0 < Robot.pixy1x1){
         Robot.swerveDrive.drive(0.2, 0, 0.15);
       }

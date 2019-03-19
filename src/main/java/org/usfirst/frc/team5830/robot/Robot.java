@@ -53,39 +53,6 @@ public class Robot extends TimedRobot{
 	/**
 	 * User-Defined Variables
 	 */
-	
-	//Xbox controller stick deadzone size. 1 is entire range, 0 is disabled, closer to zero means less deadzone
-	public static final double xboxStickDeadzone = 0.1;
-	//Xbox controller trigger deadzone size. 1 is entire range, 0 is disabled, closer to zero means less deadzone
-	public static final double xboxTriggerDeadzone = 0.2;
-	//Distance from LIDAR cube has to be to switch intake from sucking to spitting
-	public static final double cubeDistance = 9.5; //Inches
-	//Maximum arm speed up
-	public static final double maxArmSpeedUp = 1; //Between 0 and 1. NEGATIVE NUMBERS WILL NOT WORK!
-	//Maximum arm speed up
-	public static final double maxArmSpeedDown = -.5; //Between -1 and 0. POSITIVE NUMBERS WILL NOT WORK!
-	//Maximum manipulator speed up
-	public static final double maxManipulatorSpeedUp = .4; //Between 0 and 1. NEGATIVE NUMBERS WILL NOT WORK!
-	//Maximum manipulator speed up
-	public static final double maxManipulatorSpeedDown = -0.7; //Between -1 and 0. POSITIVE NUMBERS WILL NOT WORK!
-	//Pixy 2 line margin of error
-	public static final double pixy2LineRotationError = 1; //Error in pixels allowed when aligning
-	//Pixy 2 line margin of error
-	public static final double pixy2LineStrafeError = 1; //Error in pixels allowed when aligning
-	//Margin of error allowed when using LIDAR for finding distance
-	public static final int lidarError = 3; //Inches
-	//Distance robot needs to be from HAB to climb. 
-	public static final double habDistance = 4; //inches
-	//Margin of error allowed when using Ultrasonic for finding distance
-	public static final int ultrasonicError = 1; //Inches
-	//Highest arm position
-	public static final int armMaxHeight = 900;
-	//Maximum Manipulator Rotation
-	public static final int manipulatorMaxRotation = 1200;
-	//Arm Error
-	public static final int armError = 100;
-	//Manipulator Error
-	public static final int manipulatorError = 100;
 
 	/**
 	 * System-Defined Variables
