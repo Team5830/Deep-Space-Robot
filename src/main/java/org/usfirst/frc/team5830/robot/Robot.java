@@ -10,6 +10,9 @@ package org.usfirst.frc.team5830.robot;
 import org.usfirst.frc.team5830.robot.commands.arm.ActivateArmAutomatic;
 import org.usfirst.frc.team5830.robot.commands.arm.ActivateArmManual;
 import org.usfirst.frc.team5830.robot.commands.arm.ArmManual;
+
+import com.kauailabs.navx.frc.AHRS;
+
 import org.usfirst.frc.team5830.robot.commands.JoystickMappingInit;
 import org.usfirst.frc.team5830.robot.commands.JoystickMappingPeriodic;
 import org.usfirst.frc.team5830.robot.commands.pistons.PistonFrontHab23;
@@ -35,7 +38,10 @@ import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
+import edu.wpi.first.wpilibj.DriverStation;
+import edu.wpi.first.wpilibj.SerialPort;
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
@@ -173,6 +179,16 @@ public class Robot extends TimedRobot{
 		/**
 		 * Sensor Calibration/Setup
 		 */
+
+		try {
+            RobotMap.ahrs = new AHRS(SerialPort.Port.kUSB1);
+            //ahrs = new AHRS(SerialPort.Port.kMXP, SerialDataType.kProcessedData, (byte)50);
+            RobotMap.ahrs.enableLogging(true);
+        } catch (RuntimeException ex ) {
+            DriverStation.reportError("Error instantiating navX MXP:  " + ex.getMessage(), true);
+        }
+        Timer.delay(1.0);
+
 		RobotMap.gyro.calibrate();
 		RobotMap.armEncoder.setDistancePerPulse(1);
 		RobotMap.armEncoder.reset();

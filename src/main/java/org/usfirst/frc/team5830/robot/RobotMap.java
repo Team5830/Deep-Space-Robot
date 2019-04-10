@@ -7,6 +7,8 @@
 
 package org.usfirst.frc.team5830.robot;
 
+import com.kauailabs.navx.frc.AHRS;
+
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.Encoder;
@@ -64,6 +66,7 @@ public class RobotMap {
 	
 	//Gyroscope
 	public static ADXRS450_Gyro gyro = new ADXRS450_Gyro();
+	public static AHRS ahrs;// = new AHRS(SerialPort.Port.kUSB1);
 	
 	//LIDAR
 	public static final class DIO{
