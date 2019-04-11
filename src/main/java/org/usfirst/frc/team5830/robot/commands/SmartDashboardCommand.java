@@ -40,14 +40,14 @@ public class SmartDashboardCommand extends Command{
 		//DIDBoard
 		SmartDashboard.putBoolean("DIDArmHasCommand", Robot.armCommandRunning);
 		SmartDashboard.putNumber("DIDArmValue", RobotMap.armEncoder.getDistance());
-		SmartDashboard.putNumber("DIDArmPower", RobotMap.pdp.getCurrent(5));
+		// SmartDashboard.putNumber("DIDArmPower", RobotMap.pdp.getCurrent(5));
 		SmartDashboard.putNumber("DIDWristHasCommand", RobotMap.manipulatorEncoder.getDistance());
-		SmartDashboard.putNumber("DIDWristPower", RobotMap.pdp.getCurrent(7));
-		SmartDashboard.putNumber("DIDWheelFRPower", RobotMap.pdp.getCurrent(14));
-		SmartDashboard.putNumber("DIDWheelFLPower", RobotMap.pdp.getCurrent(1));
-		SmartDashboard.putNumber("DIDWheelBRPower", RobotMap.pdp.getCurrent(12));
-		SmartDashboard.putNumber("DIDWheelBLPower", RobotMap.pdp.getCurrent(3));
-		SmartDashboard.putNumber("DIDTotalPower", RobotMap.pdp.getTotalCurrent());
+		// SmartDashboard.putNumber("DIDWristPower", RobotMap.pdp.getCurrent(7));
+		// SmartDashboard.putNumber("DIDWheelFRPower", RobotMap.pdp.getCurrent(14));
+		// SmartDashboard.putNumber("DIDWheelFLPower", RobotMap.pdp.getCurrent(1));
+		// SmartDashboard.putNumber("DIDWheelBRPower", RobotMap.pdp.getCurrent(12));
+		// SmartDashboard.putNumber("DIDWheelBLPower", RobotMap.pdp.getCurrent(3));
+		// SmartDashboard.putNumber("DIDTotalPower", RobotMap.pdp.getTotalCurrent());
 		SmartDashboard.putBoolean("DIDPlugerOut", Robot.isPistonManipulatorExtended);
 		SmartDashboard.putBoolean("DID12HabFirstOut", Robot.isPiston12FirstExtended);
 		SmartDashboard.putBoolean("DID12HabLastOut", Robot.isPiston12LastExtended);
@@ -57,6 +57,9 @@ public class SmartDashboardCommand extends Command{
 			SmartDashboard.putBoolean("DID23HabFirstOut", false);
 		}
 		SmartDashboard.putBoolean("DID23HabLastOut", Robot.isPistonRearExtended);
+
+		//Camera Chooser
+		SmartDashboard.putData("CameraChooser", Robot.cameraChooser);
     }
 
     protected boolean isFinished() {

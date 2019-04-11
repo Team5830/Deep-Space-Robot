@@ -71,6 +71,7 @@ public class Robot extends TimedRobot{
 	//Misc
 	public static SendableChooser<Boolean> driveType = new SendableChooser<>();
 	public static SendableChooser<Integer> controlType = new SendableChooser<>();
+	public static SendableChooser<Integer> cameraChooser = new SendableChooser<>();
 	public static boolean isFieldOriented = false;
 	public static boolean isPistonFrontLeftExtended = false;
 	public static boolean isPistonFrontRightExtended = false;
@@ -175,6 +176,10 @@ public class Robot extends TimedRobot{
 		SmartDashboard.putData("Pixy Strafe", new PixyLineStrafe());
 		SmartDashboard.putData("Backup Piston", new PistonFrontHab23());
 		SmartDashboard.putData("Stop All Commands", new StopAllCommands());
+
+		//Camera Chooser
+		cameraChooser.setDefaultOption("Front Camera", 0);
+		cameraChooser.addOption("Rear Camera", 1);
 
 		/**
 		 * Sensor Calibration/Setup
