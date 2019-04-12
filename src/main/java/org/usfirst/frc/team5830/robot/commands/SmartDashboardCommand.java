@@ -59,14 +59,14 @@ public class SmartDashboardCommand extends Command{
 		SmartDashboard.putBoolean("DID23HabLastOut", Robot.isPistonRearExtended);
 
 		//Cargo Attached?
-		if(RobotMap.pdp.getCurrent(4) < 17){ //TODO Find correct channel number
+		if(RobotMap.pdp.getCurrent(4) < 17 && Robot.isVacuumRunning){ //TODO Find correct channel number
 			SmartDashboard.putBoolean("Cargo Attached?", true);
 		} else {
 			SmartDashboard.putBoolean("Cargo Attached?", false);
 		}
 
 		//Compressor On?
-		if(RobotMap.pdp.getCurrent(7) > 7){ //TODO Find correct channel number
+		if(RobotMap.pdp.getCurrent(8) > 4){ //TODO Find correct channel number
 			SmartDashboard.putBoolean("Compressor On?", true);
 		} else {
 			SmartDashboard.putBoolean("Compressor On?", false);
