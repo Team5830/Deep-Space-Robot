@@ -34,8 +34,6 @@ import org.usfirst.frc.team5830.robot.subsystems.SwerveDrive;
 import org.usfirst.frc.team5830.robot.subsystems.Vacuum;
 import org.usfirst.frc.team5830.robot.subsystems.WheelDrive;
 
-import edu.wpi.cscore.UsbCamera;
-import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
