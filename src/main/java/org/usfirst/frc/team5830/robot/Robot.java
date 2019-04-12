@@ -197,7 +197,7 @@ public class Robot extends TimedRobot{
         }
         Timer.delay(1.0);
 
-		RobotMap.gyro.calibrate();
+		//RobotMap.gyro.calibrate();
 		RobotMap.armEncoder.setDistancePerPulse(1);
 		RobotMap.armEncoder.reset();
 		RobotMap.manipulatorEncoder.setDistancePerPulse(1);
@@ -219,7 +219,7 @@ public class Robot extends TimedRobot{
 		
 		//If Reset Sensors button is pressed in SmartDashboard, it will calibrate the gyro. The robot MUST NOT BE MOVING. It then resets the button back to false state.
 		if (SmartDashboard.getBoolean("Reset Sensors", false)) {
-			RobotMap.gyro.calibrate();
+			//RobotMap.gyro.calibrate();
 			RobotMap.ahrs.enableBoardlevelYawReset(true);
 			RobotMap.ahrs.reset();
 			RobotMap.armEncoder.reset();
