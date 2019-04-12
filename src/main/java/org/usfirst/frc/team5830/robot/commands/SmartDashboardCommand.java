@@ -47,7 +47,7 @@ public class SmartDashboardCommand extends Command{
 		// SmartDashboard.putNumber("DIDWheelFLPower", RobotMap.pdp.getCurrent(1));
 		// SmartDashboard.putNumber("DIDWheelBRPower", RobotMap.pdp.getCurrent(12));
 		// SmartDashboard.putNumber("DIDWheelBLPower", RobotMap.pdp.getCurrent(3));
-		// SmartDashboard.putNumber("DIDTotalPower", RobotMap.pdp.getTotalCurrent());
+		SmartDashboard.putNumber("DIDTotalPower", RobotMap.pdp.getTotalCurrent());
 		SmartDashboard.putBoolean("DIDPlugerOut", Robot.isPistonManipulatorExtended);
 		SmartDashboard.putBoolean("DID12HabFirstOut", Robot.isPiston12FirstExtended);
 		SmartDashboard.putBoolean("DID12HabLastOut", Robot.isPiston12LastExtended);

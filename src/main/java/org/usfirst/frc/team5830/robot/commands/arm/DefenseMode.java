@@ -27,7 +27,7 @@ public class DefenseMode extends InstantCommand {
   // Called once when the command executes
   @Override
   protected void initialize() {
-    Robot.armSetpointRaw = 0;
+    Robot.armSetpointRaw = -200;
     Robot.manipulatorSetpointRaw = 200;
   }
 

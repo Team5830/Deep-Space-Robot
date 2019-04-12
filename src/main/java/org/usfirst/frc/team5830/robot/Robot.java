@@ -10,6 +10,7 @@ package org.usfirst.frc.team5830.robot;
 import org.usfirst.frc.team5830.robot.commands.arm.ActivateArmAutomatic;
 import org.usfirst.frc.team5830.robot.commands.arm.ActivateArmManual;
 import org.usfirst.frc.team5830.robot.commands.arm.ArmManual;
+import org.usfirst.frc.team5830.robot.commands.arm.DefenseMode;
 
 import com.kauailabs.navx.frc.AHRS;
 
@@ -176,10 +177,12 @@ public class Robot extends TimedRobot{
 		SmartDashboard.putData("Pixy Strafe", new PixyLineStrafe());
 		SmartDashboard.putData("Backup Piston", new PistonFrontHab23());
 		SmartDashboard.putData("Stop All Commands", new StopAllCommands());
+		SmartDashboard.putData("Defense Mode", new DefenseMode());
 
 		//Camera Chooser
 		cameraChooser.setDefaultOption("Front Camera", 0);
 		cameraChooser.addOption("Rear Camera", 1);
+		SmartDashboard.putData("CameraChooser", cameraChooser);
 
 		/**
 		 * Sensor Calibration/Setup

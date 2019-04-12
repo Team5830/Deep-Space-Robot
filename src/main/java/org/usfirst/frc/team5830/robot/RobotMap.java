@@ -54,7 +54,7 @@ public class RobotMap {
 	 */	
 	
 	//PDP //TODO Find CAN ID and fix error
-	//public static PowerDistributionPanel pdp = new PowerDistributionPanel(3); //find CAN bus ID and place in parenthesis, otherwise it will yield a CAN timeout error
+	public static PowerDistributionPanel pdp = new PowerDistributionPanel(10); //find CAN bus ID and place in parenthesis, otherwise it will yield a CAN timeout error
 	
 	/*
 	 * Sensors
