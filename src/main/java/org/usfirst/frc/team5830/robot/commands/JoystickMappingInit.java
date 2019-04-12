@@ -56,6 +56,12 @@ public class JoystickMappingInit extends InstantCommand {
 	Button pickupCargoFloor;
 	Button pistonManipulator;
 	Button armPounce;
+	Button hatchLow;
+	Button hatchMiddle;
+	Button hatchHigh;
+	Button hatchLoad;
+	Button hatchShip;
+	Button hatchRelease;
 
     public JoystickMappingInit() {}
     
@@ -76,6 +82,14 @@ public class JoystickMappingInit extends InstantCommand {
 			ArmMiddle = new JoystickButton(xbox, 3);		  //X
 			ArmHigh = new JoystickButton(xbox, 4);	          //Y
 			ship = new JoystickButton(arduino, 2);
+
+			hatchLow = new JoystickButton(rightJoy, 3);
+			hatchMiddle = new JoystickButton(rightJoy, 4);
+			hatchHigh = new JoystickButton(rightJoy, 5);
+			hatchLoad = new JoystickButton(leftJoy, 3);
+			hatchShip = new JoystickButton(leftJoy, 4);
+			hatchRelease = new JoystickButton(rightJoy, 1);
+
 			
 			armPounce = new JoystickButton(arduino, 9);
 
@@ -94,6 +108,13 @@ public class JoystickMappingInit extends InstantCommand {
 			ArmMiddle.whenPressed(new ArmMiddle());
 			ArmHigh.whenPressed(new ArmHigh());
 			ship.whenPressed(new ArmShip());
+
+			hatchLow.whenPressed(new ArmHatchLow());
+			hatchMiddle.whenPressed(new ArmHatchMiddle());
+			hatchHigh.whenPressed(new ArmHatchHigh());
+			hatchLoad.whenPressed(new ArmHatchLoadingStation());
+			hatchShip.whenPressed(new ArmHatchCargoShip());
+			hatchRelease.whenPressed(new ArmHatchRelease());
 
 			pistonManipulator.whenPressed(new PistonManipulator());
 			PistonHab12First.whenPressed(new PistonSideHab12First());
