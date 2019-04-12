@@ -1,7 +1,7 @@
 package org.usfirst.frc.team5830.robot.subsystems;
 
-import org.usfirst.frc.team5830.robot.Robot;
 import org.usfirst.frc.team5830.robot.RobotMap;
+import org.usfirst.frc.team5830.robot.Constants;
 
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
 
@@ -14,7 +14,7 @@ public class PIDArm extends PIDSubsystem {
 
     public PIDArm() {
     	super("ArmPID", 0.003, 0.0, 0.0);
-    	setOutputRange(Robot.maxArmSpeedDown, Robot.maxArmSpeedUp);
+    	setOutputRange(Constants.maxArmSpeedDown, Constants.maxArmSpeedUp);
     }
 
     public void initDefaultCommand() {}

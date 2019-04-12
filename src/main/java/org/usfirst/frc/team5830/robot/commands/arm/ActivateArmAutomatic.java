@@ -5,7 +5,7 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package org.usfirst.frc.team5830.robot.commands;
+package org.usfirst.frc.team5830.robot.commands.arm;
 
 import org.usfirst.frc.team5830.robot.Robot;
 
@@ -14,25 +14,18 @@ import edu.wpi.first.wpilibj.command.InstantCommand;
 /**
  * Add your docs here.
  */
-public class StopAllCommands extends InstantCommand {
+public class ActivateArmAutomatic extends InstantCommand {
   /**
    * Add your docs here.
    */
-  public StopAllCommands() {
+  public ActivateArmAutomatic() {
     super();
-    requires(Robot.CYLINDER12SIDEFIRST);
-    requires(Robot.CYLINDER12SIDELAST);
-    requires(Robot.CYLINDER23REAR);
-    requires(Robot.CYLINDERS23FrontLeft);
-    requires(Robot.CYLINDERS23FrontRight);
-    requires(Robot.CYLINDERMANIPULATOR);
-    requires(Robot.GYROSUBSYSTEM);
-    requires(Robot.MANIPULATOR);
-    requires(Robot.VACUUM);
-    requires(Robot.ARM);
   }
 
+  // Called once when the command executes
   @Override
-  protected void initialize() {}
+  protected void initialize() {
+    Robot.isArmAutomatic = true;
+  }
 
 }

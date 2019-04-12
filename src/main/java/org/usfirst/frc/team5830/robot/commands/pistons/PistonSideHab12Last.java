@@ -5,34 +5,24 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package org.usfirst.frc.team5830.robot.commands;
+package org.usfirst.frc.team5830.robot.commands.pistons;
 
 import org.usfirst.frc.team5830.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.InstantCommand;
 
-/**
- * Add your docs here.
- */
-public class StopAllCommands extends InstantCommand {
-  /**
-   * Add your docs here.
-   */
-  public StopAllCommands() {
-    super();
-    requires(Robot.CYLINDER12SIDEFIRST);
+public class PistonSideHab12Last extends InstantCommand {
+
+  public PistonSideHab12Last() {
     requires(Robot.CYLINDER12SIDELAST);
-    requires(Robot.CYLINDER23REAR);
-    requires(Robot.CYLINDERS23FrontLeft);
-    requires(Robot.CYLINDERS23FrontRight);
-    requires(Robot.CYLINDERMANIPULATOR);
-    requires(Robot.GYROSUBSYSTEM);
-    requires(Robot.MANIPULATOR);
-    requires(Robot.VACUUM);
-    requires(Robot.ARM);
   }
 
   @Override
-  protected void initialize() {}
-
+  protected void execute() {
+    if(Robot.isPiston12LastExtended){
+      Robot.CYLINDER12SIDELAST.in();
+    } else {
+      Robot.CYLINDER12SIDELAST.out();
+    }
+  }
 }

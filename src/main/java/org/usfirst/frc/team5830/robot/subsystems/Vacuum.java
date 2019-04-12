@@ -26,12 +26,6 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class Vacuum extends Subsystem {
 
   public void suck(){
-    RobotMap.vacuum.set(1);
-    SmartDashboard.putBoolean("DIDVacOn", true);
-    Robot.isVacuumRunning = true;
-  } 
-
-  public void suckSlow(){
     RobotMap.vacuum.set(0.92);
     SmartDashboard.putBoolean("DIDVacOn", true);
     Robot.isVacuumRunning = true;

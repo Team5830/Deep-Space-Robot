@@ -27,7 +27,11 @@ public class TimerDelay extends InstantCommand {
   // Called once when the command executes
   @Override
   protected void initialize() {
-    Timer.delay(0.25);
+    new Thread() {
+      public void run() {
+        Timer.delay(0.25);
+      }
+    }.start();
   }
 
 }

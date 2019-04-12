@@ -7,17 +7,19 @@
 
 package org.usfirst.frc.team5830.robot;
 
-import org.usfirst.frc.team5830.robot.commands.ActivateArmAutomatic;
-import org.usfirst.frc.team5830.robot.commands.ActivateArmManual;
-import org.usfirst.frc.team5830.robot.commands.ArmManual;
-import org.usfirst.frc.team5830.robot.commands.DriveStraight;
-import org.usfirst.frc.team5830.robot.commands.GamePieceDrop;
-import org.usfirst.frc.team5830.robot.commands.GamePieceVacuumSlow;
+import org.usfirst.frc.team5830.robot.commands.arm.ActivateArmAutomatic;
+import org.usfirst.frc.team5830.robot.commands.arm.ActivateArmManual;
+import org.usfirst.frc.team5830.robot.commands.arm.ArmManual;
+import org.usfirst.frc.team5830.robot.commands.arm.DefenseMode;
+
+import com.kauailabs.navx.frc.AHRS;
+
 import org.usfirst.frc.team5830.robot.commands.JoystickMappingInit;
 import org.usfirst.frc.team5830.robot.commands.JoystickMappingPeriodic;
-import org.usfirst.frc.team5830.robot.commands.PistonFrontHab23;
-import org.usfirst.frc.team5830.robot.commands.PixyLineRotation;
-import org.usfirst.frc.team5830.robot.commands.PixyLineStrafe;
+import org.usfirst.frc.team5830.robot.commands.pistons.PistonFrontHab23;
+import org.usfirst.frc.team5830.robot.commands.pixy.PixyLineRotation;
+import org.usfirst.frc.team5830.robot.commands.pixy.PixyLineStrafe;
+import org.usfirst.frc.team5830.robot.commands.StopAllCommands;
 import org.usfirst.frc.team5830.robot.subsystems.Cylinder12SideFirst;
 import org.usfirst.frc.team5830.robot.subsystems.Cylinder12SideLast;
 import org.usfirst.frc.team5830.robot.subsystems.Cylinder23Rear;
@@ -26,12 +28,8 @@ import org.usfirst.frc.team5830.robot.subsystems.Cylinders23FrontLeft;
 import org.usfirst.frc.team5830.robot.subsystems.Cylinders23FrontRight;
 import org.usfirst.frc.team5830.robot.subsystems.GyroSubsystem;
 import org.usfirst.frc.team5830.robot.subsystems.LIDARSubsystem;
-import org.usfirst.frc.team5830.robot.subsystems.Manipulator2;
 import org.usfirst.frc.team5830.robot.subsystems.PIDArm;
-import org.usfirst.frc.team5830.robot.subsystems.PIDLIDARDistance;
 import org.usfirst.frc.team5830.robot.subsystems.PIDManipulator;
-import org.usfirst.frc.team5830.robot.subsystems.PIDRotationCorrection;
-import org.usfirst.frc.team5830.robot.subsystems.PIDWheelDistance;
 import org.usfirst.frc.team5830.robot.subsystems.SwerveDrive;
 import org.usfirst.frc.team5830.robot.subsystems.Vacuum;
 import org.usfirst.frc.team5830.robot.subsystems.WheelDrive;
@@ -41,10 +39,10 @@ import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
-import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.DriverStation;
+import edu.wpi.first.wpilibj.SerialPort;
 import edu.wpi.first.wpilibj.TimedRobot;
-import edu.wpi.first.wpilibj.XboxController;
-import edu.wpi.first.wpilibj.buttons.Button;
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
@@ -55,46 +53,9 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 
 public class Robot extends TimedRobot{ 
-	
-	/**
-	 * User-Defined Variables
-	 */
-	
-	//Xbox controller stick deadzone size. 1 is entire range, 0 is disabled, closer to zero means less deadzone
-	public static final double xboxStickDeadzone = 0.1;
-	//Xbox controller trigger deadzone size. 1 is entire range, 0 is disabled, closer to zero means less deadzone
-	public static final double xboxTriggerDeadzone = 0.2;
-	//Distance from LIDAR cube has to be to switch intake from sucking to spitting
-	public static final double cubeDistance = 9.5; //Inches
-	//Maximum arm speed up
-	public static final double maxArmSpeedUp = 1; //Between 0 and 1. NEGATIVE NUMBERS WILL NOT WORK!
-	//Maximum arm speed up
-	public static final double maxArmSpeedDown = -.5; //Between -1 and 0. POSITIVE NUMBERS WILL NOT WORK!
-	//Maximum manipulator speed up
-	public static final double maxManipulatorSpeedUp = .4; //Between 0 and 1. NEGATIVE NUMBERS WILL NOT WORK!
-	//Maximum manipulator speed up
-	public static final double maxManipulatorSpeedDown = -0.7; //Between -1 and 0. POSITIVE NUMBERS WILL NOT WORK!
-	//Pixy 2 line margin of error
-	public static final double pixy2LineRotationError = 1; //Error in pixels allowed when aligning
-	//Pixy 2 line margin of error
-	public static final double pixy2LineStrafeError = 1; //Error in pixels allowed when aligning
-	//Margin of error allowed when using LIDAR for finding distance
-	public static final int lidarError = 3; //Inches
-	//Distance robot needs to be from HAB to climb. 
-	public static final double habDistance = 4; //inches
-	//Margin of error allowed when using Ultrasonic for finding distance
-	public static final int ultrasonicError = 1; //Inches
-	//Highest arm position
-	public static final int armMaxHeight = 900;
-	//Maximum Manipulator Rotation
-	public static final int manipulatorMaxRotation = 1200;
-	//Arm Error
-	public static final int armError = 100;
-	//Manipulator Error
-	public static final int manipulatorError = 100;
 
 	/**
-	 * System-Defined Variables
+	 * System Variables
 	 */
 	
 	//PID
@@ -107,85 +68,18 @@ public class Robot extends TimedRobot{
 	public static double driveX;
 	public static double rotX;
 	public static int povPosition;
-	public static Joystick leftJoy;
-	public static Joystick rightJoy;
-	public static XboxController xbox;
-	public static Joystick arduino;
-	public static Button testPixyStrafe;
-	public static Button testPixyAlign;
-	public static Button testPixyAngle;
-	public static Button raiseFront;
-	public static Button raiseRear;
-	public static Button habClimb;
-	public static Button HatchPanel;
-	public static Button Cargo;
-	public static Button ArmLow;
-	public static Button ArmMiddle;
-	public static Button ArmHigh;
-	public static Button Floor;
-	public static Button LoadingStation;
-	public static Button Vacuum;
-	public static Button AlignAngle;
-	public static Button AlignStrafe;
-	public static Button PistonHab12First;
-	public static Button PistonHab12Last;
-	public static Button PistonHab23First;
-	public static Button PistonHab23Last;
-	public static Button ArmDefault;
-	public static Button Orientation;
-	public static Button ControllerInput;
-	public static Button MoveToHatch;
-	public static Button isField;
-	public static Button selectCargoOrHatch;
-	public static Button ship;
-
-	//Testing
-	public static Button testPistonFrontLeft;
-	public static Button testPistonFrontRight;
-	public static Button testPistonFront;
-	public static Button testPistonSide;
-	public static Button testPistonRear;
-	public static Button testClimbHab;
-	public static Button testArmMiddleCargo;
-	public static Button testManipulatorMiddleHatchP;
-	public static Button testGamePieceVacuum;
-	public static Button testGamePieceDrop;
-	public static Button testArmHighCargo; 
-	public static Button testManipulatorMiddleCargo;
-	public static Button testManipulatorHighCargo;
-	public static Button testArmLowHatchP;
-	public static Button testArmMiddleHatchP;
-	public static Button testManipulatorLowHatchP;
-	public static Button testSuckCargo;
-	public static Button testSpitCargo; 
-	public static Button testPistonFrontHab23;
-	public static Button testPistonRearHab23;
-	public static Button testPistonManipulator;
-	public static Button testPistonSideHab12First;
-	public static Button testPistonSideHab12Last;
-	public static Button testManipulatorLow;
-	public static Button pickupCargoFloor;
-	public static Button pistonManipulator;
-
 
 	//Misc
-	
 	public static SendableChooser<Boolean> driveType = new SendableChooser<>();
 	public static SendableChooser<Integer> controlType = new SendableChooser<>();
+	public static SendableChooser<Integer> cameraChooser = new SendableChooser<>();
 	public static boolean isFieldOriented = false;
-	public static int climbHabStepCount = 1;
 	public static boolean isPistonFrontLeftExtended = false;
 	public static boolean isPistonFrontRightExtended = false;
 	public static boolean isPistonRearExtended = false;
 	public static boolean isPiston12FirstExtended = false;
 	public static boolean isPiston12LastExtended = false;
-	public static boolean isPistonManipulatorExtended= false;
-	public static boolean isCargo = false;
-	public static boolean isArmLow = false;
-	public static boolean isArmMiddle = false;
-	public static boolean isArmHigh = false;
-	public static boolean isArmDefault = false;
-	public static boolean isFloor = false;
+	public static boolean isPistonManipulatorExtended = false;
 	public static boolean isArmAutomatic = true;
 	public static boolean armCommandRunning = false;
 	public static boolean isVacuumRunning = false;
@@ -217,10 +111,6 @@ public class Robot extends TimedRobot{
 	public static double pixy1x1 = 0;
 	public static double pixy1y1 = 0;
 
-	//Pneumatics
-	//Compressor c = new Compressor(0);
-
-
 	/**
 	 * Subsystems
 	 */
@@ -233,16 +123,12 @@ public class Robot extends TimedRobot{
 	public static final Cylinder12SideLast CYLINDER12SIDELAST = new Cylinder12SideLast();
 	public static final CylinderManipulator CYLINDERMANIPULATOR = new CylinderManipulator();
 	public static final Vacuum VACUUM = new Vacuum();
-	public static final Manipulator2 MANIPULATOR2 = new Manipulator2();
 
 
 	//LIDAR
 	public static final LIDARSubsystem lidarSubsystem = new LIDARSubsystem();
 	
 	//PID Loops
-	public static final PIDLIDARDistance auto_LIDAR_Distance_Swerve = new PIDLIDARDistance();
-	public static final PIDRotationCorrection pidROTATIONCORRECTION = new PIDRotationCorrection();
-	public static final PIDWheelDistance WHEELDISTANCEPID = new PIDWheelDistance();
 	public static final GyroSubsystem GYROSUBSYSTEM = new GyroSubsystem();
 	public static final PIDArm ARM = new PIDArm();
 	public static final PIDManipulator MANIPULATOR = new PIDManipulator();
@@ -255,93 +141,67 @@ public class Robot extends TimedRobot{
 	private static Command armManual = new ArmManual();
 	//public static Command Vacuum = new GamePieceVacuum();
 	
-	/**
-	 * This function is run when the robot is first started up and should be
-	 * used for any initialization code.
-	 */
 	@Override
 	public void robotInit() {
 		m_oi = new OI();
 
-		
 		/**
 		 * Cameras/Vision
 		 */
 		//Camera Stream
-		UsbCamera camera1 = CameraServer.getInstance().startAutomaticCapture(0);
-		camera1.setResolution(640, 480);
-		camera1.setFPS(30);
+		UsbCamera frontCam = new UsbCamera("Front Wide", 0);
+		frontCam.setResolution(320, 240);
+		frontCam.setFPS(30);
+		CameraServer.getInstance().startAutomaticCapture(frontCam);
 
-		/*UsbCamera camera2 = CameraServer.getInstance().startAutomaticCapture(1);
-		camera2.setResolution(640, 480);
-		camera2.setFPS(30);*/
-		
-		//Vision Coordinates
-		SmartDashboard.putBoolean("lined up", false);
-
-		
-		
 		/**
 		 * SmartDashboard
 		 */		
 
-		//Choose between Cargo and Hatch Panel
-		SmartDashboard.putBoolean("Hatch Panel?", false);
-		SmartDashboard.putBoolean("Cargo?", false); 
-		SmartDashboard.putBoolean("Floor?", false);
-		//SmartDashboard.putBoolean("Loading Station", false);
-		SmartDashboard.putBoolean("Arm Low?", false);
-		SmartDashboard.putBoolean("Arm Middle?", false);
-		SmartDashboard.putBoolean("Arm High?", false);
-		SmartDashboard.putBoolean("Arm Default?", false);
 		SmartDashboard.putBoolean("DIDVacOn", false);
-		
-		//Overrides cube distance check if enabled and runs instake on button command regardless of what the LIDAR distance is.
-		//SmartDashboard.putBoolean("Override Intake Sensor", true);
 		
 		//Initiate Gyro reset
 		SmartDashboard.putBoolean("Reset Sensors", false);
-
-		//Climbing status
-		SmartDashboard.putString("Climb Next Step", "Raise Robot from Side");
 		
 		//Switch between flightsticks and Xbox joystick
 		controlType.addOption("DIDBoard Flightsticks", 0);
 		controlType.setDefaultOption("NO DIDBoard, Flightsticks & Xbox", 1);
-		/*controlType.addOption("Piston Test (Right Flightstick)", 2);
-		controlType.addOption("Manipulator Test (Left Flightstick)", 3);
-		controlType.addOption("Pneumatics Test (Right Flightstick)", 4);	
-		controlType.addOption("Arduino Test (Dual Flightsticks)", 6);	*/
 		SmartDashboard.putData("Control Method", controlType);
 	
 		//Shows current robot command running
 		SmartDashboard.putString("Status", "Waiting for Match Start");
-		
-		//Troubleshooting Posts - visible in tab 2 of shuffleboard, made for fast and easy logic troubleshooting
-		SmartDashboard.putString("Troubleshoot - String", "null");
-		//SmartDashboard.putBoolean("Troubleshoot - Boolean", false); //Commented out to avoid confusion with an actual "false" troubleshooting step
-		SmartDashboard.putNumber("Troubleshoot - Number", 0);
 
-		SmartDashboard.putData("Stop Vacuum", new GamePieceDrop());
 		SmartDashboard.putData("Activate Arm Automatic", new ActivateArmAutomatic());
 		SmartDashboard.putData("Activate Arm Manual", new ActivateArmManual());
 		SmartDashboard.putData("Pixy Rotation", new PixyLineRotation());
 		SmartDashboard.putData("Pixy Strafe", new PixyLineStrafe());
 		SmartDashboard.putData("Backup Piston", new PistonFrontHab23());
-		SmartDashboard.putData("Slow Vacuum", new GamePieceVacuumSlow());
+		SmartDashboard.putData("Stop All Commands", new StopAllCommands());
+		SmartDashboard.putData("Defense Mode", new DefenseMode());
+
+		//Camera Chooser
+		cameraChooser.setDefaultOption("Front Camera", 0);
+		cameraChooser.addOption("Rear Camera", 1);
+		SmartDashboard.putData("CameraChooser", cameraChooser);
+
 		/**
 		 * Sensor Calibration/Setup
 		 */
+
+		try {
+            RobotMap.ahrs = new AHRS(SerialPort.Port.kUSB1);
+            //ahrs = new AHRS(SerialPort.Port.kMXP, SerialDataType.kProcessedData, (byte)50);
+            RobotMap.ahrs.enableLogging(true);
+        } catch (RuntimeException ex ) {
+            DriverStation.reportError("Error instantiating navX MXP:  " + ex.getMessage(), true);
+        }
+        Timer.delay(1.0);
+
 		RobotMap.gyro.calibrate();
 		RobotMap.armEncoder.setDistancePerPulse(1);
 		RobotMap.armEncoder.reset();
 		RobotMap.manipulatorEncoder.setDistancePerPulse(1);
 		RobotMap.manipulatorEncoder.reset();
-		RobotMap.wheelEncoder1.setDistancePerPulse(0.0965989132622258);
-		RobotMap.wheelEncoder1.reset();
-		//Pneumatics
-		//c.setClosedLoopControl(true);
-
 	}
 
 	@Override
@@ -360,15 +220,12 @@ public class Robot extends TimedRobot{
 		//If Reset Sensors button is pressed in SmartDashboard, it will calibrate the gyro. The robot MUST NOT BE MOVING. It then resets the button back to false state.
 		if (SmartDashboard.getBoolean("Reset Sensors", false)) {
 			RobotMap.gyro.calibrate();
+			RobotMap.ahrs.enableBoardlevelYawReset(true);
+			RobotMap.ahrs.reset();
 			RobotMap.armEncoder.reset();
-			RobotMap.wheelEncoder1.reset();
 			RobotMap.manipulatorEncoder.reset();
 			SmartDashboard.putBoolean("Reset Sensors", false);
-			SmartDashboard.putNumber("Wheel Encoder", RobotMap.wheelEncoder1.getDistance());
 		}
-		
-		
-		SmartDashboard.putBoolean("Troubleshoot - Boolean", DriveStraight.isItFinished);
 		
 	}
 	
@@ -396,15 +253,6 @@ public class Robot extends TimedRobot{
 		} else if(Robot.manipulatorSetpointRaw > Robot.MANIPULATOR.getSetpoint()){
 			Robot.MANIPULATOR.setSetpoint(Robot.MANIPULATOR.getSetpoint() + 10);
 		}
-	
-		
-		//SmartDashboard data publishing
-
-		/*isCargo = SmartDashboard.getBoolean("Cargo?", false);
-		isArmLow = SmartDashboard.getBoolean("Arm Low?", false);
-		isArmMiddle = SmartDashboard.getBoolean("Arm Middle?", false);
-		isArmHigh = SmartDashboard.getBoolean("Arm High?", false);
-		isArmDefault = SmartDashboard.getBoolean("Arm Default?", false);*/
 
 		/**
 		 * Vision Processing
@@ -421,16 +269,11 @@ public class Robot extends TimedRobot{
 
 	@Override
 	public void teleopInit() {
-		
-		
 
 		SmartDashboard.putString("Status", "Driving");
 		
 		//Takes ShuffleBoard button layout presets and maps buttons accordingly
 		joystickMappingInit.start();
-
-		//Pneumatics
-		// c.setClosedLoopControl(true);
 	}
 
 	@Override
@@ -442,15 +285,15 @@ public class Robot extends TimedRobot{
 	
 		//Arm and Manipulator Ramp
 		if(Robot.armSetpointRaw < Robot.ARM.getSetpoint()){
-			Robot.ARM.setSetpoint(Robot.ARM.getSetpoint() - 10);
+			Robot.ARM.setSetpoint(Robot.ARM.getSetpoint() - Constants.armRampSpeed);
 		} else if(Robot.armSetpointRaw > Robot.ARM.getSetpoint()){
-			Robot.ARM.setSetpoint(Robot.ARM.getSetpoint() + 10);
+			Robot.ARM.setSetpoint(Robot.ARM.getSetpoint() + Constants.armRampSpeed);
 		}
 
 		if(Robot.manipulatorSetpointRaw < Robot.MANIPULATOR.getSetpoint()){
-			Robot.MANIPULATOR.setSetpoint(Robot.MANIPULATOR.getSetpoint() - 10);
+			Robot.MANIPULATOR.setSetpoint(Robot.MANIPULATOR.getSetpoint() - Constants.manipulatorRampSpeed);
 		} else if(Robot.manipulatorSetpointRaw > Robot.MANIPULATOR.getSetpoint()){
-			Robot.MANIPULATOR.setSetpoint(Robot.MANIPULATOR.getSetpoint() + 10);
+			Robot.MANIPULATOR.setSetpoint(Robot.MANIPULATOR.getSetpoint() + Constants.manipulatorRampSpeed);
 		}
 
 		/**
