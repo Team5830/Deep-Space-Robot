@@ -60,7 +60,7 @@ public class RobotMap {
 	 */
 
 	//Encoders
-	public static Encoder armEncoder = new Encoder(3,4);
+	public static Encoder armEncoder = new Encoder(5,6);
 	public static Encoder manipulatorEncoder = new Encoder(7,8);
 	
 	//Gyroscope
