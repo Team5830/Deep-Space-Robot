@@ -1,0 +1,215 @@
+{
+  "tabPane": [
+    {
+      "title": "Driving",
+      "autoPopulate": false,
+      "autoPopulatePrefix": "",
+      "widgetPane": {
+        "gridSize": 32.0,
+        "showGrid": true,
+        "hgap": 16.0,
+        "vgap": 16.0,
+        "tiles": {
+          "2,10": {
+            "size": [
+              6,
+              2
+            ],
+            "content": {
+              "_type": "Command",
+              "_source0": "network_table:///SmartDashboard/Activate Arm Automatic",
+              "_title": "/SmartDashboard/Activate Arm Automatic"
+            }
+          },
+          "2,8": {
+            "size": [
+              6,
+              2
+            ],
+            "content": {
+              "_type": "Command",
+              "_source0": "network_table:///SmartDashboard/Activate Arm Manual",
+              "_title": "SmartDashboard/Activate Arm Manual"
+            }
+          },
+          "2,17": {
+            "size": [
+              13,
+              2
+            ],
+            "content": {
+              "_type": "Split Button Chooser",
+              "_source0": "network_table:///SmartDashboard/Control Method",
+              "_title": "SmartDashboard/Control Method"
+            }
+          },
+          "8,6": {
+            "size": [
+              6,
+              3
+            ],
+            "content": {
+              "_type": "Toggle Button",
+              "_source0": "network_table:///SmartDashboard/Reset Sensors",
+              "_title": "SmartDashboard/Reset Sensors"
+            }
+          },
+          "8,13": {
+            "size": [
+              6,
+              2
+            ],
+            "content": {
+              "_type": "Text View",
+              "_source0": "network_table:///SmartDashboard/Pivot Setpoint",
+              "_title": "/SmartDashboard/Pivot Setpoint"
+            }
+          },
+          "8,15": {
+            "size": [
+              6,
+              2
+            ],
+            "content": {
+              "_type": "Text View",
+              "_source0": "network_table:///SmartDashboard/Arm Setpoint",
+              "_title": "/SmartDashboard/Arm Setpoint"
+            }
+          },
+          "8,9": {
+            "size": [
+              6,
+              4
+            ],
+            "content": {
+              "_type": "Boolean Box",
+              "_source0": "network_table:///SmartDashboard/DIDVacOn",
+              "_title": "Vacuum On?",
+              "Colors/Color when true": "#7CFC00FF",
+              "Colors/Color when false": "#8B0000FF"
+            }
+          },
+          "2,12": {
+            "size": [
+              6,
+              5
+            ],
+            "content": {
+              "_type": "Toggle Button",
+              "_source0": "network_table:///SmartDashboard/Field Oriented?",
+              "_title": "SmartDashboard/Field Oriented?"
+            }
+          },
+          "2,6": {
+            "size": [
+              6,
+              2
+            ],
+            "content": {
+              "_type": "Command",
+              "_source0": "network_table:///SmartDashboard/Defense Mode",
+              "_title": "SmartDashboard/Defense Mode"
+            }
+          },
+          "14,0": {
+            "size": [
+              4,
+              4
+            ],
+            "content": {
+              "_type": "Simple Dial",
+              "_source0": "network_table:///LiveWindow/Ungrouped/PowerDistributionPanel[10]/Chan4",
+              "_title": "Vacuum Amps",
+              "Range/Min": 0.0,
+              "Range/Max": 50.0,
+              "Visuals/Show value": true
+            }
+          },
+          "14,4": {
+            "size": [
+              4,
+              4
+            ],
+            "content": {
+              "_type": "Simple Dial",
+              "_source0": "network_table:///LiveWindow/Ungrouped/PowerDistributionPanel[10]/Chan8",
+              "_title": "Compressor Amps",
+              "Range/Min": 0.0,
+              "Range/Max": 10.0,
+              "Visuals/Show value": true
+            }
+          },
+          "2,0": {
+            "size": [
+              12,
+              6
+            ],
+            "content": {
+              "_type": "Graph",
+              "_source0": "network_table:///LiveWindow/Ungrouped/PowerDistributionPanel[10]/TotalCurrent",
+              "_title": "Total Amps",
+              "Graph/Visible time": 30.0,
+              "Visible data/LiveWindow/Ungrouped/PowerDistributionPanel[10]/TotalCurrent": true
+            }
+          },
+          "14,15": {
+            "size": [
+              4,
+              2
+            ],
+            "content": {
+              "_type": "Boolean Box",
+              "_source0": "network_table:///SmartDashboard/Compressor On?",
+              "_title": "/SmartDashboard/Compressor On?",
+              "Colors/Color when true": "#FFFF00FF",
+              "Colors/Color when false": "#5B5B18FF"
+            }
+          },
+          "14,9": {
+            "size": [
+              4,
+              4
+            ],
+            "content": {
+              "_type": "Boolean Box",
+              "_source0": "network_table:///SmartDashboard/Cargo Attached?",
+              "_title": "/SmartDashboard/Cargo Attached?",
+              "Colors/Color when true": "#0000FFFF",
+              "Colors/Color when false": "#800000FF"
+            }
+          }
+        }
+      }
+    },
+    {
+      "title": "Testing/Calibration",
+      "autoPopulate": false,
+      "autoPopulatePrefix": "",
+      "widgetPane": {
+        "gridSize": 32.0,
+        "showGrid": true,
+        "hgap": 16.0,
+        "vgap": 16.0,
+        "tiles": {
+          "5,0": {
+            "size": [
+              6,
+              3
+            ],
+            "content": {
+              "_type": "Toggle Switch",
+              "_source0": "network_table:///SmartDashboard/Swerve Calibration (Test Mode)",
+              "_title": "Swerve Calibration (Test Mode)"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "windowGeometry": {
+    "x": 847.5555419921875,
+    "y": 0.0,
+    "width": 864.888916015625,
+    "height": 925.7777709960938
+  }
+}

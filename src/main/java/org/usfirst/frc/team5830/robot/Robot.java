@@ -182,6 +182,9 @@ public class Robot extends TimedRobot{
 		cameraChooser.addOption("Rear Camera", 1);
 		SmartDashboard.putData("CameraChooser", cameraChooser);
 
+		//Test Mode
+		SmartDashboard.putBoolean("Swerve Calibration (Test Mode)", false);
+
 		/**
 		 * Sensor Calibration/Setup
 		 */
@@ -317,7 +320,9 @@ public class Robot extends TimedRobot{
 	@Override
 	public void testPeriodic() {
 		SmartDashboard.putString("Status", "TEST MODE");
-		swerveDrive.drive(0, pidOutputWheel, pidOutputAngle);
+		if(SmartDashboard.getBoolean("Swerve Calibration (Test Mode)", false)){
+			swerveDrive.drive(0, 0.15, 0);
+		}
 	}
 	
 }
