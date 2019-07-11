@@ -182,6 +182,9 @@ public class Robot extends TimedRobot{
 		cameraChooser.addOption("Rear Camera", 1);
 		SmartDashboard.putData("CameraChooser", cameraChooser);
 
+		//Test Mode
+		SmartDashboard.putBoolean("Swerve Calibration (Test Mode)", false);
+
 		/**
 		 * Sensor Calibration/Setup
 		 */
