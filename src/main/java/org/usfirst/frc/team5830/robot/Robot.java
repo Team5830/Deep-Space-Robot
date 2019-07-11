@@ -203,6 +203,10 @@ public class Robot extends TimedRobot{
 	}
 
 	@Override
+	public void robotPeriodic() {
+	}
+
+	@Override
 	public void disabledInit() {
 		SmartDashboard.putString("Status", "Waiting for Match Start");
 		isFieldOriented = false;
