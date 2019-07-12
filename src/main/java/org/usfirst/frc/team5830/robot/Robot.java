@@ -211,7 +211,6 @@ public class Robot extends TimedRobot{
 	@Override
 	public void disabledPeriodic() {
 		Scheduler.getInstance().run();
-		SmartDashboard.putNumber("Gyro Angle", GYROSUBSYSTEM.getGyroClampedNeg180To180());
 		SmartDashboard.putNumber("Arm Encoder Distance", RobotMap.armEncoder.getDistance());
 		SmartDashboard.putNumber("Manipulator Encoder Distance", RobotMap.manipulatorEncoder.getDistance());
 		
