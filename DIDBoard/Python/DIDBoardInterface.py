@@ -20,7 +20,7 @@ from networktables import NetworkTables
 # Establish the connection on a specific port
 # COMX ports for Windows
 # '/dev/tty.usbserial' or similar for Mac or Linux
-serialDevice = 'Com6'
+serialDevice = 'Com5'
 DIDBoard = serial.Serial(serialDevice, 9600)
 time.sleep(2) # wait for serial port driver to initialize
 
@@ -41,8 +41,8 @@ time.sleep(2) # wait for serial port driver to initialize
 # Initialize Network Tables
 # As a client to connect to a robot
 # NetworkTables.initialize(server='roborio-XXX-frc.local')
-# NetworkTables.initialize(server='10.58.30.2')
-NetworkTables.initialize(server='roborio-5830-frc.local')
+NetworkTables.initialize(server='10.58.30.2')
+#NetworkTables.initialize(server='roborio-5830-frc.local')
 #NetworkTables.initialize(server='127.0.0.1')
 #NetworkTables.initialize(server='192.168.1.173')
 sd = NetworkTables.getTable("SmartDashboard")
