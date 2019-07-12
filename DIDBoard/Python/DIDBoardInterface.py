@@ -42,9 +42,9 @@ time.sleep(2) # wait for serial port driver to initialize
 # As a client to connect to a robot
 # NetworkTables.initialize(server='roborio-XXX-frc.local')
 # NetworkTables.initialize(server='10.58.30.2')
-# NetworkTables.initialize(server='roborio-5830-frc.local')
+NetworkTables.initialize(server='roborio-5830-frc.local')
 #NetworkTables.initialize(server='127.0.0.1')
-NetworkTables.initialize(server='192.168.1.173')
+#NetworkTables.initialize(server='192.168.1.173')
 sd = NetworkTables.getTable("SmartDashboard")
 
 # Loop waiting for RoboRio Network Table Connection
@@ -177,7 +177,7 @@ def DataHandle(dat, val):
             #pre = "!36@"
             pre = "$"
             sendDIDBoard(pre + str(val) + end)
-    elif isinstance(val, string):
+    elif isinstance(val, str):
         if dat == "Status":
             #pre = "!43"
             pre = "+"
@@ -197,7 +197,7 @@ def interateDataCheck(old, new):
     "DIDWheelFLPower", "DIDWheelBRPower", "DIDWheelBLPower", "DIDTotalPower",
     "Gyro Angle", "Status"]
     try:
-        assert(len(old) ==len(new))
+        assert(len(old) == len(new))
     except:
         return "compaired lists are not the same length"
     for i in range(len(old)):
@@ -205,13 +205,21 @@ def interateDataCheck(old, new):
             continue
         else:
             check += 1
-            #print(dataList[i] + " -----> " + str(new[i]))
+            print(dataList[i] + " -----> " + str(new[i]))
             DataHandle(dataList[i], new[i])
-    time.sleep(.5)
+    time.sleep(.3)
     #print(str(check) + " things changed")
     return check != 0
     
 oldData = getDataSet()
+
+# Send OK Status
+
+pre = "+"
+end = "@"
+val = "READY"
+sendDIDBoard(pre + val + end)
+
 state = True
 while state:
     try:
