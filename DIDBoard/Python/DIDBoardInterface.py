@@ -60,12 +60,13 @@ print("Roborio Connected")
 # Get Data from RoboRio Network Tables
 # Send Data to DIDBoard
 def getDataSet():
-    return [sd.getBoolean("DIDVacOn", False), 
+    return [
+    sd.getBoolean("DIDVacOn", False), 
     sd.getBoolean("DIDPlungerOut", False),
     sd.getBoolean("DID12HabFirstOut", False),
     sd.getBoolean("DID12HabLastOut", False),
-    #sd.getBoolean("DID23HabFirstOut", False),
-    #sd.getBoolean("DID23HabLastOut", False),
+    sd.getBoolean("DID23HabFirstOut", False),
+    sd.getBoolean("DID23HabLastOut", False),
     
     sd.getBoolean("DIDArmHasCommand", False),    
     sd.getBoolean("DIDWristHasCommand", False),
