@@ -85,12 +85,12 @@ def getDataSet():
 def DataHandle(dat, val):
     if isinstance(val, bool):
         if dat == "DIDVacOn":
-            char = ord("d")
+            char = ord("e")
             if val:
                 char -= 32
             sendDIDBoard(chr(char))
         elif dat == "DIDPlungerOut":
-            char = ord("e")
+            char = ord("d")
             if val:
                 char -= 32
             sendDIDBoard(chr(char))
