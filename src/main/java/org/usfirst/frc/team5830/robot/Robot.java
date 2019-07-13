@@ -16,6 +16,7 @@ import com.kauailabs.navx.frc.AHRS;
 
 import org.usfirst.frc.team5830.robot.commands.JoystickMappingInit;
 import org.usfirst.frc.team5830.robot.commands.JoystickMappingPeriodic;
+import org.usfirst.frc.team5830.robot.commands.SmartDashboardCommand;
 import org.usfirst.frc.team5830.robot.commands.pistons.PistonFrontHab23;
 import org.usfirst.frc.team5830.robot.commands.pixy.PixyLineRotation;
 import org.usfirst.frc.team5830.robot.commands.pixy.PixyLineStrafe;
@@ -132,6 +133,7 @@ public class Robot extends TimedRobot{
 	private static Command joystickMappingInit = new JoystickMappingInit();
 	private static Command joystickMappingPeriodic = new JoystickMappingPeriodic();
 	private static Command armManual = new ArmManual();
+	private static Command smartDashboardCommand = new SmartDashboardCommand();
 	//public static Command Vacuum = new GamePieceVacuum();
 	
 	@Override
@@ -193,6 +195,7 @@ public class Robot extends TimedRobot{
 
 	@Override
 	public void robotPeriodic() {
+		smartDashboardCommand.start();
 	}
 
 	@Override
