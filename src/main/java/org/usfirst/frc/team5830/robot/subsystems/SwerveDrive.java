@@ -22,7 +22,7 @@ public class SwerveDrive extends Subsystem {
 	    y1 *= -1;
 	    x1 *= -1;
 	    
-	    gyroRad = RobotMap.ahrs.getAngle()*Math.PI/180; //TODO Test to see if getAngle or getYaw is needed. getAngle is total accumulated, getYaw is -180 to 180 deg
+	    gyroRad = RobotMap.ahrs.getAngle()*Math.PI/180;
 	    
 	    if(Robot.isFieldOriented) {
 	    	  double temp = y1*Math.cos(gyroRad) + x1*Math.sin(gyroRad-Math.PI);
