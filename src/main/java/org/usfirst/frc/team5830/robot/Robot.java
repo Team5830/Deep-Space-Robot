@@ -16,6 +16,7 @@ import com.kauailabs.navx.frc.AHRS;
 
 import org.usfirst.frc.team5830.robot.commands.JoystickMappingInit;
 import org.usfirst.frc.team5830.robot.commands.JoystickMappingPeriodic;
+import org.usfirst.frc.team5830.robot.commands.Ramp;
 import org.usfirst.frc.team5830.robot.commands.pistons.PistonFrontHab23;
 import org.usfirst.frc.team5830.robot.commands.pixy.PixyLineRotation;
 import org.usfirst.frc.team5830.robot.commands.pixy.PixyLineStrafe;
@@ -137,6 +138,7 @@ public class Robot extends TimedRobot{
 	private static Command joystickMappingInit = new JoystickMappingInit();
 	private static Command joystickMappingPeriodic = new JoystickMappingPeriodic();
 	private static Command armManual = new ArmManual();
+	private static Command ramp = new Ramp();
 	//public static Command Vacuum = new GamePieceVacuum();
 	
 	@Override
@@ -207,6 +209,7 @@ public class Robot extends TimedRobot{
 
 	@Override
 	public void robotPeriodic() {
+		ramp.start();
 	}
 
 	@Override
@@ -246,18 +249,6 @@ public class Robot extends TimedRobot{
 
 		//Processes axis values
 		joystickMappingPeriodic.start();
-
-		if(Robot.armSetpointRaw < Robot.ARM.getSetpoint()){
-			Robot.ARM.setSetpoint(Robot.ARM.getSetpoint() - 10);
-		} else if(Robot.armSetpointRaw > Robot.ARM.getSetpoint()){
-			Robot.ARM.setSetpoint(Robot.ARM.getSetpoint() + 10);
-		}
-
-		if(Robot.manipulatorSetpointRaw < Robot.MANIPULATOR.getSetpoint()){
-			Robot.MANIPULATOR.setSetpoint(Robot.MANIPULATOR.getSetpoint() - 10);
-		} else if(Robot.manipulatorSetpointRaw > Robot.MANIPULATOR.getSetpoint()){
-			Robot.MANIPULATOR.setSetpoint(Robot.MANIPULATOR.getSetpoint() + 10);
-		}
 
 		/**
 		 * Vision Processing
