@@ -27,7 +27,6 @@ import org.usfirst.frc.team5830.robot.subsystems.CylinderManipulator;
 import org.usfirst.frc.team5830.robot.subsystems.Cylinders23FrontLeft;
 import org.usfirst.frc.team5830.robot.subsystems.Cylinders23FrontRight;
 import org.usfirst.frc.team5830.robot.subsystems.GyroSubsystem;
-import org.usfirst.frc.team5830.robot.subsystems.LIDARSubsystem;
 import org.usfirst.frc.team5830.robot.subsystems.PIDArm;
 import org.usfirst.frc.team5830.robot.subsystems.PIDManipulator;
 import org.usfirst.frc.team5830.robot.subsystems.SwerveDrive;
@@ -122,10 +121,6 @@ public class Robot extends TimedRobot{
 	public static final CylinderManipulator CYLINDERMANIPULATOR = new CylinderManipulator();
 	public static final Vacuum VACUUM = new Vacuum();
 
-
-	//LIDAR
-	public static final LIDARSubsystem lidarSubsystem = new LIDARSubsystem();
-	
 	//PID Loops
 	public static final GyroSubsystem GYROSUBSYSTEM = new GyroSubsystem();
 	public static final PIDArm ARM = new PIDArm();
