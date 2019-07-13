@@ -35,7 +35,8 @@ public class SmartDashboardCommand extends Command{
 		//Gyro
 		SmartDashboard.putNumber("IMU_Yaw", RobotMap.ahrs.getYaw());
         SmartDashboard.putNumber("IMU_Pitch", RobotMap.ahrs.getPitch());
-        SmartDashboard.putNumber("IMU_Roll", RobotMap.ahrs.getRoll());
+		SmartDashboard.putNumber("IMU_Roll", RobotMap.ahrs.getRoll());
+		SmartDashboard.putNumber("Gyro Angle", Robot.GYROSUBSYSTEM.getGyroClampedNeg180To180());
 
 		//DIDBoard
 		SmartDashboard.putBoolean("DIDArmHasCommand", Robot.armCommandRunning);
