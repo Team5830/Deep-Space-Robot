@@ -144,15 +144,6 @@ public class Robot extends TimedRobot{
 		m_oi = new OI();
 
 		/**
-		 * Cameras/Vision
-		 */
-		//Camera Stream
-		/*UsbCamera frontCam = new UsbCamera("Front Wide", 0);
-		frontCam.setResolution(320, 240);
-		frontCam.setFPS(30);
-		CameraServer.getInstance().startAutomaticCapture(frontCam);*/
-
-		/**
 		 * SmartDashboard
 		 */		
 
