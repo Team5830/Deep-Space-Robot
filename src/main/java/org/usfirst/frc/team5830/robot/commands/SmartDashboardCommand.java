@@ -3,7 +3,6 @@ package org.usfirst.frc.team5830.robot.commands;
 import org.usfirst.frc.team5830.robot.Robot;
 import org.usfirst.frc.team5830.robot.RobotMap;
 
-import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -15,16 +14,11 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class SmartDashboardCommand extends Command{
 
     public SmartDashboardCommand() {
-    	requires(Robot.lidarSubsystem);
     }
     protected void initialize() {
-    	try {
-    	Robot.lidarSubsystem.initLIDAR(new DigitalInput(RobotMap.DIO.LIDAR_PORT));
-    	}catch(Exception e) {}
     }
 
     protected void execute() {
-    	SmartDashboard.putNumber("LIDAR Distance",Robot.lidarSubsystem.getDistanceIn(true));
     	SmartDashboard.putNumber("Gyro PID Output", Robot.pidOutputAngle);
 		SmartDashboard.putNumber("Gyro Angle", RobotMap.ahrs.getYaw());
 		SmartDashboard.putNumber("Arm Encoder Distance", RobotMap.armEncoder.getDistance());
@@ -60,14 +54,14 @@ public class SmartDashboardCommand extends Command{
 		SmartDashboard.putBoolean("DID23HabLastOut", Robot.isPistonRearExtended);
 
 		//Cargo Attached?
-		if(RobotMap.pdp.getCurrent(4) < 17 && Robot.isVacuumRunning){ //TODO Find correct channel number
+		if(RobotMap.pdp.getCurrent(4) < 17 && Robot.isVacuumRunning){
 			SmartDashboard.putBoolean("Cargo Attached?", true);
 		} else {
 			SmartDashboard.putBoolean("Cargo Attached?", false);
 		}
 
 		//Compressor On?
-		if(RobotMap.pdp.getCurrent(8) > 4){ //TODO Find correct channel number
+		if(RobotMap.pdp.getCurrent(8) > 4){
 			SmartDashboard.putBoolean("Compressor On?", true);
 		} else {
 			SmartDashboard.putBoolean("Compressor On?", false);
