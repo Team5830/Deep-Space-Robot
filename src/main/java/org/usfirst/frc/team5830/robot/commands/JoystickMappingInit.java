@@ -12,7 +12,6 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
-import edu.wpi.first.wpilibj.command.InstantCommand;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
@@ -22,50 +21,50 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  * then creates and maps joystick buttons. Axes definition in Robot.teleopPeriodic
  */
 
-public class JoystickMappingInit extends InstantCommand {
+public class JoystickMappingInit {
 	
 	public static Joystick leftJoy;
 	public static Joystick rightJoy;
 	public static XboxController xbox;
 	public static Joystick arduino;
 
-	Button raiseFront;
-	Button raiseRear;
-	Button habClimb;
-	Button HatchPanel;
-	Button Cargo;
-	Button ArmLow;
-	Button ArmMiddle;
-	Button ArmHigh;
-	Button Floor;
-	Button LoadingStation;
-	Button Vacuum;
-	Button AlignAngle;
-	Button AlignStrafe;
-	Button PistonHab12First;
-	Button PistonHab12Last;
-	Button PistonHab23First;
-	Button PistonHab23Last;
-	Button ArmDefault;
-	Button Orientation;
-	Button ControllerInput;
-	Button MoveToHatch;
-	Button isField;
-	Button selectCargoOrHatch;
-	Button ship;
-	Button pickupCargoFloor;
-	Button pistonManipulator;
-	Button armPounce;
-	Button hatchLow;
-	Button hatchMiddle;
-	Button hatchHigh;
-	Button hatchLoad;
-	Button hatchShip;
-	Button hatchRelease;
+	static Button raiseFront;
+	static Button raiseRear;
+	static Button habClimb;
+	static Button HatchPanel;
+	static Button Cargo;
+	static Button ArmLow;
+	static Button ArmMiddle;
+	static Button ArmHigh;
+	static Button Floor;
+	static Button LoadingStation;
+	static Button Vacuum;
+	static Button AlignAngle;
+	static Button AlignStrafe;
+	static Button PistonHab12First;
+	static Button PistonHab12Last;
+	static Button PistonHab23First;
+	static Button PistonHab23Last;
+	static Button ArmDefault;
+	static Button Orientation;
+	static Button ControllerInput;
+	static Button MoveToHatch;
+	static Button isField;
+	static Button selectCargoOrHatch;
+	static Button ship;
+	static Button pickupCargoFloor;
+	static Button pistonManipulator;
+	static Button armPounce;
+	static Button hatchLow;
+	static Button hatchMiddle;
+	static Button hatchHigh;
+	static Button hatchLoad;
+	static Button hatchShip;
+	static Button hatchRelease;
 
     public JoystickMappingInit() {}
     
-    protected void execute() {		
+    public static void run() {		
     	//Initiates command to call buttons according to the option selected on SmartDashboard (Command name = ChooseButtonLayout)
 		switch (Robot.controlType.getSelected()) {
 			case 0: //DIDBoard and Flightsticks

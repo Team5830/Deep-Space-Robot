@@ -41,6 +41,12 @@ public class Constants {
 	public static final float manipulatorRampSpeed = 10; //How much to step setpoint up/down each tick
 
 	/*
+		DRIVETRAIN SETTINGS
+	*/
+	//Time alotted to allow the PIDDriveRotation to self-correct before giving rotation control back to the driver
+	public static final int pidRotCorrectionTime = 500; //Milliseconds
+
+	/*
 		SENSOR PARAMETERS
 	*/
 	//Pixy 2 line margin of error

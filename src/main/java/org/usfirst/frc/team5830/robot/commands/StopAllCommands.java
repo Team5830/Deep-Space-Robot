@@ -33,6 +33,8 @@ public class StopAllCommands extends InstantCommand {
   }
 
   @Override
-  protected void initialize() {}
+  protected void initialize() {
+    Robot.stopRotate = true;
+  }
 
 }
