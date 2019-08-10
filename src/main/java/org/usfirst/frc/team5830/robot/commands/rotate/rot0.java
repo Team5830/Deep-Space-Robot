@@ -10,7 +10,6 @@ package org.usfirst.frc.team5830.robot.commands.rotate;
 import org.usfirst.frc.team5830.robot.Constants;
 import org.usfirst.frc.team5830.robot.Robot;
 
-import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 
 public class rot0 extends Command {
