@@ -7,8 +7,10 @@
 
 package org.usfirst.frc.team5830.robot.commands.rotate;
 
+import org.usfirst.frc.team5830.robot.Constants;
 import org.usfirst.frc.team5830.robot.Robot;
 
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 
 public class rot0 extends Command {
@@ -33,8 +35,17 @@ public class rot0 extends Command {
 
   @Override
   protected void end() {
-    Robot.stopRotate = false;
-    Robot.PIDDRIVEROTATION.disable();
+    new Thread() {
+      public void run() {
+        try{
+          Robot.driveCommandRunning = true;
+          Thread.sleep(Constants.pidRotCorrectionTime);
+          Robot.stopRotate = false;
+          Robot.PIDDRIVEROTATION.disable();
+          Robot.driveCommandRunning = false;
+        } catch (InterruptedException e){}
+      }
+    }.start();
   }
 
   @Override

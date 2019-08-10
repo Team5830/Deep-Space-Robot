@@ -7,6 +7,7 @@
 
 package org.usfirst.frc.team5830.robot.commands.rotate;
 
+import org.usfirst.frc.team5830.robot.Constants;
 import org.usfirst.frc.team5830.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
@@ -22,7 +23,7 @@ public class rot270 extends Command {
 
   @Override
   protected void execute() {
-    Robot.PIDDRIVEROTATION.setSetpoint(270);
+    Robot.PIDDRIVEROTATION.setSetpoint(-90);
     Robot.PIDDRIVEROTATION.enable();
   }
 
@@ -33,13 +34,22 @@ public class rot270 extends Command {
 
   @Override
   protected void end() {
-    Robot.stopRotate = false;
-    Robot.PIDDRIVEROTATION.disable();
+    new Thread() {
+      public void run() {
+        try{
+          Robot.driveCommandRunning = true;
+          Thread.sleep(Constants.pidRotCorrectionTime);
+          Robot.stopRotate = false;
+          Robot.PIDDRIVEROTATION.disable();
+          Robot.driveCommandRunning = false;
+        } catch (InterruptedException e){}
+      }
+    }.start();
   }
-
   @Override
   protected void interrupted() {
     Robot.stopRotate = false;
     Robot.PIDDRIVEROTATION.disable();
   }
 }
+

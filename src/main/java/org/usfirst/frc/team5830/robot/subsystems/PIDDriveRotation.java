@@ -22,8 +22,10 @@ public class PIDDriveRotation extends PIDSubsystem {
   public PIDDriveRotation() {
     
     // Intert a subsystem name and PID values here
-    super("SubsystemName", 0.01, 0, 0);
-    setOutputRange(-0.3, 0.3);
+    super("PIDDriveRotation", 0.05, 0.01, 0.15);
+    setOutputRange(-0.4, 0.4);
+    setInputRange(-180, 180);
+    getPIDController().setContinuous();
   }
 
   @Override

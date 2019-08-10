@@ -87,6 +87,7 @@ public class Robot extends TimedRobot{
 	public static boolean armCommandRunning = false;
 	public static boolean isVacuumRunning = false;
 	public static boolean stopRotate = false;
+	public static boolean driveCommandRunning = false;
 
 	public static double manipulatorSetpointRaw = 0;
 	public static double armSetpointRaw = 0;
@@ -323,7 +324,7 @@ public class Robot extends TimedRobot{
 		/**
 		 * Rotation Setpoints
 		 */
-		switch(JoystickMappingInit.leftJoy.getPOV()){
+		switch(JoystickMappingInit.rightJoy.getPOV()){
 			case 0:
 			Robot.rot0.start();
 			break;
