@@ -20,6 +20,10 @@ import org.usfirst.frc.team5830.robot.commands.SmartDashboardCommand;
 import org.usfirst.frc.team5830.robot.commands.pistons.PistonFrontHab23;
 import org.usfirst.frc.team5830.robot.commands.pixy.PixyLineRotation;
 import org.usfirst.frc.team5830.robot.commands.pixy.PixyLineStrafe;
+import org.usfirst.frc.team5830.robot.commands.rotate.rot0;
+import org.usfirst.frc.team5830.robot.commands.rotate.rot180;
+import org.usfirst.frc.team5830.robot.commands.rotate.rot270;
+import org.usfirst.frc.team5830.robot.commands.rotate.rot90;
 import org.usfirst.frc.team5830.robot.commands.StopAllCommands;
 import org.usfirst.frc.team5830.robot.subsystems.Cylinder12SideFirst;
 import org.usfirst.frc.team5830.robot.subsystems.Cylinder12SideLast;
@@ -29,6 +33,7 @@ import org.usfirst.frc.team5830.robot.subsystems.Cylinders23FrontLeft;
 import org.usfirst.frc.team5830.robot.subsystems.Cylinders23FrontRight;
 import org.usfirst.frc.team5830.robot.subsystems.GyroSubsystem;
 import org.usfirst.frc.team5830.robot.subsystems.PIDArm;
+import org.usfirst.frc.team5830.robot.subsystems.PIDDriveRotation;
 import org.usfirst.frc.team5830.robot.subsystems.PIDManipulator;
 import org.usfirst.frc.team5830.robot.subsystems.SwerveDrive;
 import org.usfirst.frc.team5830.robot.subsystems.Vacuum;
@@ -81,6 +86,8 @@ public class Robot extends TimedRobot{
 	public static boolean isArmAutomatic = true;
 	public static boolean armCommandRunning = false;
 	public static boolean isVacuumRunning = false;
+	public static boolean stopRotate = false;
+	public static boolean driveCommandRunning = false;
 
 	public static double manipulatorSetpointRaw = 0;
 	public static double armSetpointRaw = 0;
@@ -126,13 +133,16 @@ public class Robot extends TimedRobot{
 	public static final GyroSubsystem GYROSUBSYSTEM = new GyroSubsystem();
 	public static final PIDArm ARM = new PIDArm();
 	public static final PIDManipulator MANIPULATOR = new PIDManipulator();
+	public static final PIDDriveRotation PIDDRIVEROTATION = new PIDDriveRotation();
 
 	/**
 	 * Commands
 	 */
-	private static Command joystickMappingInit = new JoystickMappingInit();
-	private static Command joystickMappingPeriodic = new JoystickMappingPeriodic();
 	private static Command armManual = new ArmManual();
+	private static Command rot0 = new rot0();
+	private static Command rot90 = new rot90();
+	private static Command rot180 = new rot180();
+	private static Command rot270 = new rot270();
 	private static Command smartDashboardCommand = new SmartDashboardCommand();
 	//public static Command Vacuum = new GamePieceVacuum();
 	
@@ -222,7 +232,7 @@ public class Robot extends TimedRobot{
 	
 	@Override
 	public void autonomousInit() {
-		joystickMappingInit.start();
+		JoystickMappingInit.run();
 		
 	}
 	
@@ -231,18 +241,40 @@ public class Robot extends TimedRobot{
 		Scheduler.getInstance().run();
 
 		//Processes axis values
-		joystickMappingPeriodic.start();
-
+		JoystickMappingPeriodic.run();
+	
+		//Arm and Manipulator Ramp
 		if(Robot.armSetpointRaw < Robot.ARM.getSetpoint()){
-			Robot.ARM.setSetpoint(Robot.ARM.getSetpoint() - 10);
+			Robot.ARM.setSetpoint(Robot.ARM.getSetpoint() - Constants.armRampSpeed);
 		} else if(Robot.armSetpointRaw > Robot.ARM.getSetpoint()){
-			Robot.ARM.setSetpoint(Robot.ARM.getSetpoint() + 10);
+			Robot.ARM.setSetpoint(Robot.ARM.getSetpoint() + Constants.armRampSpeed);
 		}
 
 		if(Robot.manipulatorSetpointRaw < Robot.MANIPULATOR.getSetpoint()){
-			Robot.MANIPULATOR.setSetpoint(Robot.MANIPULATOR.getSetpoint() - 10);
+			Robot.MANIPULATOR.setSetpoint(Robot.MANIPULATOR.getSetpoint() - Constants.manipulatorRampSpeed);
 		} else if(Robot.manipulatorSetpointRaw > Robot.MANIPULATOR.getSetpoint()){
-			Robot.MANIPULATOR.setSetpoint(Robot.MANIPULATOR.getSetpoint() + 10);
+			Robot.MANIPULATOR.setSetpoint(Robot.MANIPULATOR.getSetpoint() + Constants.manipulatorRampSpeed);
+		}
+
+		/**
+		 * Rotation Setpoints
+		 */
+		switch(JoystickMappingInit.rightJoy.getPOV()){
+			case 0:
+			Robot.rot0.start();
+			break;
+
+			case 90:
+			Robot.rot90.start();
+			break;
+
+			case 180:
+			Robot.rot180.start();
+			break;
+
+			case 270:
+			Robot.rot270.start();
+			break;
 		}
 
 		/**
@@ -264,7 +296,7 @@ public class Robot extends TimedRobot{
 		SmartDashboard.putString("Status", "Driving");
 		
 		//Takes ShuffleBoard button layout presets and maps buttons accordingly
-		joystickMappingInit.start();
+		JoystickMappingInit.run();
 	}
 
 	@Override
@@ -272,7 +304,7 @@ public class Robot extends TimedRobot{
 		Scheduler.getInstance().run();
 		
 		//Processes axis values
-		joystickMappingPeriodic.start();
+		JoystickMappingPeriodic.run();
 	
 		//Arm and Manipulator Ramp
 		if(Robot.armSetpointRaw < Robot.ARM.getSetpoint()){
@@ -288,6 +320,27 @@ public class Robot extends TimedRobot{
 		}
 
 		/**
+		 * Rotation Setpoints
+		 */
+		switch(JoystickMappingInit.rightJoy.getPOV()){
+			case 0:
+			Robot.rot0.start();
+			break;
+
+			case 90:
+			Robot.rot90.start();
+			break;
+
+			case 180:
+			Robot.rot180.start();
+			break;
+
+			case 270:
+			Robot.rot270.start();
+			break;
+		}
+
+		/**
 		 * Vision Processing
 		 */
 
@@ -299,7 +352,7 @@ public class Robot extends TimedRobot{
 		//Starts the arm's joystick control if automatic arm is disabled
 		if(!isArmAutomatic) armManual.start();
 
-		}
+	}
 
 
  
