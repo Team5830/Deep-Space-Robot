@@ -2,7 +2,6 @@ package org.usfirst.frc.team5830.robot.commands;
 
 import org.usfirst.frc.team5830.robot.Robot;
 
-import edu.wpi.first.wpilibj.command.InstantCommand;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
@@ -10,11 +9,11 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  * @author Hunter P.
  *
  */
-public class JoystickMappingPeriodic extends InstantCommand {
+public class JoystickMappingPeriodic {
 
     public JoystickMappingPeriodic() {}
     
-    protected void execute() {
+    public static void run() {
     	//Changes axes according to what was selected in SmartDashboard (controlType SendableChooser)
 		switch(Robot.controlType.getSelected()) {
 			case 0:  //DIDBoard and Flightsticks

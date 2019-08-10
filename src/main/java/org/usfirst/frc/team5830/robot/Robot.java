@@ -141,8 +141,6 @@ public class Robot extends TimedRobot{
 	/**
 	 * Commands
 	 */
-	private static Command joystickMappingInit = new JoystickMappingInit();
-	private static Command joystickMappingPeriodic = new JoystickMappingPeriodic();
 	private static Command armManual = new ArmManual();
 	private static Command rot0 = new rot0();
 	private static Command rot90 = new rot90();
@@ -235,7 +233,7 @@ public class Robot extends TimedRobot{
 	
 	@Override
 	public void autonomousInit() {
-		joystickMappingInit.start();
+		JoystickMappingInit.run();
 		
 	}
 	
@@ -244,7 +242,7 @@ public class Robot extends TimedRobot{
 		Scheduler.getInstance().run();
 
 		//Processes axis values
-		joystickMappingPeriodic.start();
+		JoystickMappingPeriodic.run();
 	
 		//Arm and Manipulator Ramp
 		if(Robot.armSetpointRaw < Robot.ARM.getSetpoint()){
@@ -299,7 +297,7 @@ public class Robot extends TimedRobot{
 		SmartDashboard.putString("Status", "Driving");
 		
 		//Takes ShuffleBoard button layout presets and maps buttons accordingly
-		joystickMappingInit.start();
+		JoystickMappingInit.run();
 	}
 
 	@Override
@@ -307,7 +305,7 @@ public class Robot extends TimedRobot{
 		Scheduler.getInstance().run();
 		
 		//Processes axis values
-		joystickMappingPeriodic.start();
+		JoystickMappingPeriodic.run();
 	
 		//Arm and Manipulator Ramp
 		if(Robot.armSetpointRaw < Robot.ARM.getSetpoint()){
