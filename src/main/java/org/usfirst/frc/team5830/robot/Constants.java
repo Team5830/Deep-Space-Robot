@@ -41,6 +41,12 @@ public class Constants {
 	public static final float manipulatorRampSpeed = 10; //How much to step setpoint up/down each tick
 
 	/*
+		DRIVETRAIN SETTINGS
+	*/
+	//Time alotted to allow the PIDDriveRotation to self-correct before giving rotation control back to the driver
+	public static final int pidRotCorrectionTime = 500; //Milliseconds
+
+	/*
 		SENSOR PARAMETERS
 	*/
 	//Pixy 2 line margin of error
@@ -53,5 +59,11 @@ public class Constants {
 	public static final double habDistance = 4; //inches
 	//Margin of error allowed when using Ultrasonic for finding distance
 	public static final int ultrasonicError = 1; //Inches
+
+	/*
+		POWER MANAGEMENT SETTINGS
+	*/
+	//Current limit (reduces drivetrain speed temporarily)
+	public static final int currentLimit = 130; //Amps
 
 }
