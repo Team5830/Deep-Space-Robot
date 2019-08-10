@@ -16,6 +16,7 @@ import com.kauailabs.navx.frc.AHRS;
 
 import org.usfirst.frc.team5830.robot.commands.JoystickMappingInit;
 import org.usfirst.frc.team5830.robot.commands.JoystickMappingPeriodic;
+import org.usfirst.frc.team5830.robot.commands.SmartDashboardCommand;
 import org.usfirst.frc.team5830.robot.commands.pistons.PistonFrontHab23;
 import org.usfirst.frc.team5830.robot.commands.pixy.PixyLineRotation;
 import org.usfirst.frc.team5830.robot.commands.pixy.PixyLineStrafe;
@@ -31,7 +32,6 @@ import org.usfirst.frc.team5830.robot.subsystems.CylinderManipulator;
 import org.usfirst.frc.team5830.robot.subsystems.Cylinders23FrontLeft;
 import org.usfirst.frc.team5830.robot.subsystems.Cylinders23FrontRight;
 import org.usfirst.frc.team5830.robot.subsystems.GyroSubsystem;
-import org.usfirst.frc.team5830.robot.subsystems.LIDARSubsystem;
 import org.usfirst.frc.team5830.robot.subsystems.PIDArm;
 import org.usfirst.frc.team5830.robot.subsystems.PIDDriveRotation;
 import org.usfirst.frc.team5830.robot.subsystems.PIDManipulator;
@@ -129,10 +129,6 @@ public class Robot extends TimedRobot{
 	public static final CylinderManipulator CYLINDERMANIPULATOR = new CylinderManipulator();
 	public static final Vacuum VACUUM = new Vacuum();
 
-
-	//LIDAR
-	public static final LIDARSubsystem lidarSubsystem = new LIDARSubsystem();
-	
 	//PID Loops
 	public static final GyroSubsystem GYROSUBSYSTEM = new GyroSubsystem();
 	public static final PIDArm ARM = new PIDArm();
@@ -147,6 +143,7 @@ public class Robot extends TimedRobot{
 	private static Command rot90 = new rot90();
 	private static Command rot180 = new rot180();
 	private static Command rot270 = new rot270();
+	private static Command smartDashboardCommand = new SmartDashboardCommand();
 	//public static Command Vacuum = new GamePieceVacuum();
 	
 	@Override
@@ -208,6 +205,7 @@ public class Robot extends TimedRobot{
 
 	@Override
 	public void robotPeriodic() {
+		smartDashboardCommand.start();
 	}
 
 	@Override
