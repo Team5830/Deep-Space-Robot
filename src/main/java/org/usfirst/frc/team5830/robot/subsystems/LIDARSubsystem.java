@@ -1,6 +1,6 @@
 package org.usfirst.frc.team5830.robot.subsystems;
 
-import org.usfirst.frc.team5830.robot.commands.SmartDashboardCommand;
+import org.usfirst.frc.team5830.robot.commands.TownCrier;
 
 import edu.wpi.first.wpilibj.Counter;
 import edu.wpi.first.wpilibj.DigitalSource;
@@ -10,7 +10,7 @@ public class LIDARSubsystem extends Subsystem {
 
 
     public void initDefaultCommand() {
-        setDefaultCommand(new SmartDashboardCommand());
+        setDefaultCommand(new TownCrier());
     }
     
     private static final int CALIBRATION_OFFSET = -6;

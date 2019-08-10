@@ -81,6 +81,7 @@ public class Robot extends TimedRobot{
 	public static boolean isArmAutomatic = true;
 	public static boolean armCommandRunning = false;
 	public static boolean isVacuumRunning = false;
+	public static boolean overCurrent = false;
 
 	public static double manipulatorSetpointRaw = 0;
 	public static double armSetpointRaw = 0;
