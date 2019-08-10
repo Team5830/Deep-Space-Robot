@@ -60,4 +60,10 @@ public class Constants {
 	//Margin of error allowed when using Ultrasonic for finding distance
 	public static final int ultrasonicError = 1; //Inches
 
+	/*
+		POWER MANAGEMENT SETTINGS
+	*/
+	//Current limit (reduces drivetrain speed temporarily)
+	public static final int currentLimit = 130; //Amps
+
 }

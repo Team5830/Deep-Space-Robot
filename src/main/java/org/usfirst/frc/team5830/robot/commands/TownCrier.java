@@ -1,5 +1,6 @@
 package org.usfirst.frc.team5830.robot.commands;
 
+import org.usfirst.frc.team5830.robot.Constants;
 import org.usfirst.frc.team5830.robot.Robot;
 import org.usfirst.frc.team5830.robot.RobotMap;
 
@@ -11,10 +12,11 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  * @author Hunter P.
  *
  */
-public class SmartDashboardCommand extends Command{
+public class TownCrier extends Command{
 
-    public SmartDashboardCommand() {
-    }
+    public TownCrier() {
+	}
+	
     protected void initialize() {
     }
 
@@ -31,6 +33,9 @@ public class SmartDashboardCommand extends Command{
         SmartDashboard.putNumber("IMU_Pitch", RobotMap.ahrs.getPitch());
 		SmartDashboard.putNumber("IMU_Roll", RobotMap.ahrs.getRoll());
 		SmartDashboard.putNumber("Gyro Angle", Robot.GYROSUBSYSTEM.getGyroClampedNeg180To180());
+
+		//Overcurrent
+		SmartDashboard.putBoolean("Overcurrent", Robot.overCurrent);
 
 		//DIDBoard
 		SmartDashboard.putBoolean("DIDArmHasCommand", Robot.armCommandRunning);
@@ -65,6 +70,18 @@ public class SmartDashboardCommand extends Command{
 			SmartDashboard.putBoolean("Compressor On?", true);
 		} else {
 			SmartDashboard.putBoolean("Compressor On?", false);
+		}
+
+		if(RobotMap.pdp.getTotalCurrent() > Constants.currentLimit){
+			Robot.overCurrent = true;
+			new Thread() {
+				public void run() {
+				  try{
+					Thread.sleep(500);
+					Robot.overCurrent = false;
+				  } catch (InterruptedException e){}
+				}
+			}.start();
 		}
 
 		//Camera Chooser

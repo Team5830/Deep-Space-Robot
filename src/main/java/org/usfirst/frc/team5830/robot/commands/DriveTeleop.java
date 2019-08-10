@@ -17,13 +17,14 @@ public class DriveTeleop extends Command {
     }
 
     protected void execute() {
-    	SmartDashboard.putString("Status", "Driving");
+        SmartDashboard.putString("Status", "Driving");
         if(!Robot.driveCommandRunning){
-            Robot.swerveDrive.drive(Robot.driveX, Robot.driveY, Robot.rotX);
+            if(Robot.overCurrent){ //Overcurrent trip protection
+                Robot.swerveDrive.drive(Robot.driveX/4, Robot.driveY/4, Robot.rotX/4);
+            } else {
+                Robot.swerveDrive.drive(Robot.driveX, Robot.driveY, Robot.rotX);
+            }
         }
-    	
-    	//CALIBRATION ONLY
-    	//Robot.swerveDrive.drive(0, Robot.driveY, 0);
     }
 
     protected boolean isFinished() {
