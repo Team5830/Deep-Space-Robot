@@ -19,11 +19,13 @@ public class DriveTeleop extends Command {
     protected void execute() {
         SmartDashboard.putString("Status", "Driving");
         if(!Robot.driveCommandRunning){
-            if(Robot.overCurrent){ //Overcurrent trip protection
-                Robot.swerveDrive.drive(Robot.driveX/4, Robot.driveY/4, Robot.rotX/4);
-            } else {
-                Robot.swerveDrive.drive(Robot.driveX, Robot.driveY, Robot.rotX);
-            }
+            // if(Robot.overCurrent){ //Overcurrent trip protection
+            //     Robot.swerveDrive.drive(-Robot.driveX/4, -Robot.driveY/4, -Robot.rotX/4);
+            // } else {
+            //     Robot.swerveDrive.drive(-Robot.driveX, -Robot.driveY, -Robot.rotX);
+
+            // } 
+            Robot.swerveDrive.drive(-Robot.driveX, -Robot.driveY, -Robot.rotX);
         }
     }
 

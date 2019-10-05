@@ -161,8 +161,8 @@ public class Robot extends TimedRobot{
 		SmartDashboard.putBoolean("Reset Sensors", false);
 		
 		//Switch between flightsticks and Xbox joystick
-		controlType.addOption("DIDBoard Flightsticks", 0);
-		controlType.setDefaultOption("NO DIDBoard, Flightsticks & Xbox", 1);
+		controlType.setDefaultOption("DIDBoard Flightsticks", 0);
+		controlType.addOption("NO DIDBoard, Flightsticks & Xbox", 1);
 		SmartDashboard.putData("Control Method", controlType);
 	
 		//Shows current robot command running
