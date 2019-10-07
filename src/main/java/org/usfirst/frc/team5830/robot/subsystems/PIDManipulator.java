@@ -13,7 +13,7 @@ import edu.wpi.first.wpilibj.command.PIDSubsystem;
 public class PIDManipulator extends PIDSubsystem {
 
     public PIDManipulator() {
-    	super("ManipulatorPID", 0.002, 0.0, 0.0);
+    	super("ManipulatorPID", 0.0025, 0.00005, 0.0);
     	setOutputRange(Constants.maxManipulatorSpeedDown, Constants.maxManipulatorSpeedUp);
     }
 
