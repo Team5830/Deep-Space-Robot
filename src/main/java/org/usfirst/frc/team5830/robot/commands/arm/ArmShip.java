@@ -24,8 +24,8 @@ public class ArmShip extends Command {
   protected void execute() {
     SmartDashboard.putString("Arm Status", "Arm Low");
     if(Robot.isArmAutomatic) {
-      Robot.armSetpointRaw = 680;
-      Robot.manipulatorSetpointRaw = 680;
+      Robot.armSetpointRaw = 370;
+      Robot.manipulatorSetpointRaw = 380;
       Robot.ARM.enable();
       Robot.MANIPULATOR.enable();
       Robot.armCommandRunning = true;
